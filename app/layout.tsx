@@ -9,8 +9,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="min-h-screen flex flex-col">
+      <body className="bg-gray-900 text-white">
+      <div className="min-h-screen flex flex-col">
           <AppNavBar />
           <main className="flex-grow container mx-auto px-4 py-8 mt-10">
             {children}
