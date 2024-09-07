@@ -3,6 +3,7 @@
   "rules": {
     "no-console": "off", // Disable 'no-console' rule
     "@typescript-eslint/no-unused-vars": "off", // Disable unused variables rule for TypeScript
-    "react/react-in-jsx-scope": "off" // Not needed in Next.js
+    "react/react-in-jsx-scope": "off", // Not needed in Next.js
+    "react/no-unescaped-entities": "off" // Disable unescaped character rule
   }
 }
