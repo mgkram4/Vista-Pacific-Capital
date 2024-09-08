@@ -24,7 +24,7 @@ export default function VehicleFinancing() {
       title: 'Specialty Vehicles',
       description: 'Outfit your business with flexible financing for food trucks, mobile clinics, and utility vehicles that set you apart.',
       icon: FaShuttleVan,
-      image: 'https://images.unsplash.com/photo-1574672728370-f26b4ac4caf1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1656857720256-a80aca6398da?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZCUyMHRydWNrc3xlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Fleet Vehicles',

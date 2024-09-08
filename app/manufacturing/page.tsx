@@ -12,19 +12,19 @@ export default function ManufacturingEquipment() {
       title: 'CNC Machinery',
       description: 'Boost your precision manufacturing with financing for CNC mills, lathes, and multi-axis machining centers.',
       icon: FaCogs,
-      image: 'https://images.unsplash.com/photo-1553867745-6e038d085e86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1469289759076-d1484757abc3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFudWZhY3R1cmluZ3xlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Robotics and Automation',
       description: 'Streamline your operations with leasing options for robotic arms, automated assembly lines, and AGVs.',
       icon: FaRobot,
-      image: 'https://images.unsplash.com/photo-1532162420881-63a54a55d94a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80'
+      image: 'https://images.unsplash.com/photo-1717386255767-52643970d483?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXNzZW1ibHklMjBsaW5lfGVufDB8fDB8fHww'
     },
     {
       title: 'Production Line Equipment',
       description: 'Maximize your output with flexible financing for conveyor systems, packaging machines, and quality control equipment.',
       icon: FaIndustry,
-      image: 'https://images.unsplash.com/photo-1625522593489-ad64aebb5f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
     }
   ];
 
@@ -99,11 +99,11 @@ export default function ManufacturingEquipment() {
         </div>
       </section>
 
-      {/* CNC Machine Image */}
+      {/* Manufacturing Plant Image */}
       <section className="w-full relative h-96 mb-24">
         <Image
-          src="https://images.unsplash.com/photo-1501925796503-68c300a57c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-          alt="CNC Machine"
+          src="https://images.unsplash.com/photo-1676018366904-c083ed678e60?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnVmYWN0dXJpbmd8ZW58MHx8MHx8fDA%3D"
+          alt="Manufacturing Plant"
           layout="fill"
           objectFit="cover"
         />
@@ -177,11 +177,11 @@ export default function ManufacturingEquipment() {
         </div>
       </section>
 
-      {/* Automation Image */}
+      {/* Industrial Robots Image */}
       <section className="w-full relative h-96 my-24">
         <Image
-          src="https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-          alt="Industrial Automation"
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+          alt="Industrial Robots"
           layout="fill"
           objectFit="cover"
         />

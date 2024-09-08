@@ -12,19 +12,19 @@ export default function ConstructionConcreteEquipment() {
       title: 'Heavy Machinery',
       description: 'Power up your projects with financing for excavators, bulldozers, and cranes that move mountains.',
       icon: FaTruck,
-      image: 'https://images.unsplash.com/photo-1581650107963-3e8c1f48241b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVsbGRvemVyc3xlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Concrete Equipment',
       description: 'Pour a solid foundation for your business with leasing options for mixers, pumps, and formwork systems.',
       icon: FaIndustry,
-      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvbnN0cnVjdGlvbiUyMGNvbmNyZWF0ZXxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Specialty Tools',
       description: 'Tackle any task with flexible financing for compactors, graders, and power trowels that get the job done.',
       icon: FaHardHat,
-      image: 'https://images.unsplash.com/photo-1508873760731-9c3d0bb6b961?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1714562377019-e6d03ea94ba2?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbnN0dWN0aW9uJTIwJTIwY29tcGFjdG9yfGVufDB8fDB8fHww'
     }
   ];
 

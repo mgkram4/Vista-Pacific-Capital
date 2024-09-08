@@ -12,19 +12,19 @@ export default function BreweryDistilleryEquipment() {
       title: 'Brewing Systems',
       description: 'Unleash your brewing potential with financing for state-of-the-art brewhouses, fermentation tanks, and filtration systems.',
       icon: FaBeer,
-      image: 'https://images.unsplash.com/photo-1600099019421-50b9d3e41fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+      image: 'https://images.unsplash.com/photo-1532634733-cae1395e440f?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJyZXdpbmclMjBiZWVyfGVufDB8fDB8fHww'
     },
     {
       title: 'Distillation Equipment',
       description: 'Craft your signature spirits with leasing options for top-of-the-line stills, fermenters, and aging barrels.',
       icon: FaWineBottle,
-      image: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+      image: 'https://images.unsplash.com/photo-1668380608937-26e2435d369b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RGlzdGlsbGF0aW9ufGVufDB8fDB8fHww'
     },
     {
       title: 'Packaging Lines',
       description: 'Elevate your product presentation with flexible financing for high-performance bottling, canning, and kegging equipment.',
       icon: FaBox,
-      image: 'https://images.unsplash.com/photo-1592333007918-9ed1a093fd54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+      image: 'https://images.unsplash.com/photo-1536638317175-32449deccfc0?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFja2luZyUyMGxpbmVzJTIwYmVlcnxlbnwwfHwwfHx8MA%3D%3D'
     }
   ];
 
@@ -180,7 +180,7 @@ export default function BreweryDistilleryEquipment() {
       {/* Distillery Image */}
       <section className="w-full relative h-96 my-24">
         <Image
-          src="https://images.unsplash.com/photo-1596132430284-241da3938b9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src="https://images.unsplash.com/photo-1524587253133-266042ff67d0?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGFja2luZyUyMGxpbmVzJTIwYmVlcnxlbnwwfHwwfHx8MA%3D%3D"
           alt="Distillery Equipment"
           layout="fill"
           objectFit="cover"

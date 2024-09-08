@@ -18,13 +18,13 @@ export default function WarehouseRacking() {
       title: 'Mezzanines',
       description: 'Expand your storage vertically with leasing options for custom-designed mezzanine floors that optimize your warehouse space.',
       icon: FaWarehouse,
-      image: 'https://images.unsplash.com/photo-1564814534775-260eb2752c63?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+      image: 'https://images.unsplash.com/photo-1601598838108-5019bf3ea4a6?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
       title: 'Material Handling',
       description: 'Streamline your operations with flexible financing for forklifts, conveyors, and automated storage and retrieval systems.',
       icon: FaHardHat,
-      image: 'https://images.unsplash.com/photo-1574521091460-429ab1506db1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
+      image: 'https://images.unsplash.com/photo-1701849473471-666bf2b0158e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9ya2xpZnR8ZW58MHx8MHx8fDA%3D'
     }
   ];
 
@@ -180,7 +180,7 @@ export default function WarehouseRacking() {
       {/* Forklift Image */}
       <section className="w-full relative h-96 my-24">
         <Image
-          src="https://images.unsplash.com/photo-1574521091464-a55e7763c1e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src="https://images.unsplash.com/photo-1573209680076-bd7ec7007616?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZvcmtsaWZ0fGVufDB8fDB8fHww"
           alt="Forklift in Warehouse"
           layout="fill"
           objectFit="cover"
