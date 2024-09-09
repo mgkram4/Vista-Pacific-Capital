@@ -17,8 +17,8 @@ export default function Home() {
     { name: 'Medical Equipment', icon: FaMedkit, image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/medical' },
     { name: 'Warehouse Racking', icon: FaWarehouse, image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/warehouse' },
     { name: 'Industrial Machinery', icon: FaIndustry, image: 'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/industrial' },
-    { name: 'Robotics and Automation', icon: FaCogs, image: 'https://images.unsplash.com/photo-1563203369-26f2e4a5ccf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/robotics' },
-    { name: 'Brewery Equipment', icon: FaBeer, image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/brewery' },
+    { name: 'Robotics and Automation', icon: FaCogs, image: 'https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cm9iaXRpY3MlMjBhdXRvbWF0aW9ufGVufDB8fDB8fHww', route: '/robotics' },
+    { name: 'Brewery Equipment', icon: FaBeer, image: 'https://images.unsplash.com/photo-1532634786-c8f8c46a0062?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D', route: '/brewery' },
     { name: 'Construction and Concrete', icon: FaHardHat, image: 'https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/construction' },
     { name: 'Titled Vehicle Programs', icon: FaTruck, image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/vehicle' },
   ];
@@ -247,7 +247,7 @@ export default function Home() {
             className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 3.0 }}
             viewport={{ once: true }}
           >
             Unrivaled Offerings
