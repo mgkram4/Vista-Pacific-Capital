@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaBus, FaCarSide, FaShuttleVan, FaTruck } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
+
 export default function VehicleFinancing() {
   const vehicleTypes = [
     {
@@ -89,7 +90,7 @@ export default function VehicleFinancing() {
               <div className="relative h-48 mb-6">
                 <Image 
                   src={type.image}
-                  alt={type.title}
+                  alt={`${type.title} for commercial financing`}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-lg"
@@ -109,7 +110,7 @@ export default function VehicleFinancing() {
       <section className="w-full relative h-96 mb-24">
         <Image
           src="https://images.unsplash.com/photo-1605705658744-45f0fe8f9663?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt="Commercial Truck Fleet"
+          alt="Fleet of commercial trucks ready for financing"
           layout="fill"
           objectFit="cover"
         />
@@ -239,7 +240,8 @@ export default function VehicleFinancing() {
             viewport={{ once: true }}
           >
             <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" /> Get Financing Today
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Financing Today</span>
             </Link>
           </motion.div>
         </div>

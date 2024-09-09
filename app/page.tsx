@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaBeer, FaCalendarAlt, FaChartLine, FaClock, FaCogs, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
 import { GiCheckMark, GiHandSaw, GiMoneyStack, GiReceiveMoney, GiSandsOfTime } from 'react-icons/gi';
 
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,7 +83,7 @@ export default function Home() {
           >
             <Image
               src={slides[currentSlide].image}
-              alt={slides[currentSlide].title}
+              alt={`Vista Pacific Capital - ${slides[currentSlide].title}`}
               layout="fill"
               objectFit="cover"
               quality={100}
@@ -114,7 +115,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Link href="/contact" className="bg-blue-600 text-white py-3 px-8 md:py-4 md:px-10 rounded-full text-lg md:text-xl font-semibold hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                Fuel Your Growth
+                Get Started with Vista Pacific Capital
               </Link>
             </motion.div>
           </div>
@@ -125,7 +126,7 @@ export default function Home() {
       <section className="w-full py-20 px-4 bg-gray-800 relative mt-20 rounded-sm" id="about">
         <Image
           src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-          alt="Benefits background"
+          alt="Vista Pacific Capital benefits background"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -153,7 +154,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <benefit.icon className="text-5xl md:text-6xl mb-6 text-blue-400 mx-auto" />
+                <benefit.icon className="text-5xl md:text-6xl mb-6 text-blue-400 mx-auto" aria-hidden="true" />
                 <h3 className="text-xl md:text-2xl font-semibold mb-3 text-blue-200">{benefit.title}</h3>
                 <p className="text-sm md:text-base text-gray-300">{benefit.description}</p>
               </motion.div>
@@ -164,7 +165,6 @@ export default function Home() {
 
       {/* Services Carousel Section */}
       <section className="w-full py-20 px-4 bg-gray-900 relative" id="services">
-       
         <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h2 
@@ -194,9 +194,9 @@ export default function Home() {
               >
                 <div className="bg-gray-800 bg-opacity-80 rounded-lg shadow-md overflow-hidden h-full">
                   <div className="relative h-2/3">
-                    <Image
+                  <Image
                       src={services[currentServiceIndex].image}
-                      alt={services[currentServiceIndex].name}
+                      alt={`${services[currentServiceIndex].name} financing by Vista Pacific Capital`}
                       layout="fill"
                       objectFit="cover"
                     />
@@ -208,7 +208,7 @@ export default function Home() {
                     <h3 className="text-xl md:text-2xl font-semibold  text-blue-200">{services[currentServiceIndex].name}</h3>
                     <p className="text-sm md:text-base text-gray-400 mb-2">Conquer the {services[currentServiceIndex].name.toLowerCase()} sector with our tailored financing.</p>
                     <Link href={services[currentServiceIndex].route} className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-md font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                      Learn More
+                      Explore {services[currentServiceIndex].name} Financing
                     </Link>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function Home() {
       <section className="w-full py-20 px-4 bg-gray-800 relative mb-10 rounded-sm">
         <Image
           src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
-          alt="Features background"
+          alt="Vista Pacific Capital features background"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -274,7 +274,7 @@ export default function Home() {
           >
             {activeTab === 0 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaClock className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" />
+                <FaClock className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">24-48 Hour Approvals</h3>
                   <p className="text-base md:text-xl text-gray-300">Seize opportunities at breakneck speed with our rapid approval process.</p>
@@ -283,7 +283,7 @@ export default function Home() {
             )}
             {activeTab === 1 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaCalendarAlt className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" />
+                <FaCalendarAlt className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">Flexible Terms 12-72 Months</h3>
                   <p className="text-base md:text-xl text-gray-300">Customize your financing to dominate your market on your terms.</p>
@@ -292,7 +292,7 @@ export default function Home() {
             )}
             {activeTab === 2 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaChartLine className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" />
+                <FaChartLine className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">A-D Credit Financing</h3>
                   <p className="text-base md:text-xl text-gray-300">Our financial wizards craft optimal solutions across the credit spectrum.</p>
@@ -307,7 +307,7 @@ export default function Home() {
       <section className="w-full py-20 px-4 bg-gray-900 relative mb-10" >
         <Image
           src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Testimonials background"
+          alt="Vista Pacific Capital testimonials background"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -342,7 +342,7 @@ export default function Home() {
       <section className="w-full py-20 px-4 bg-gray-800 relative mb-10">
         <Image
           src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
-          alt="Calculator background"
+          alt="Vista Pacific Capital finance calculator background"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -375,7 +375,7 @@ export default function Home() {
       <section className="w-full bg-blue-900 text-white py-20 md:py-24 px-4 relative rounded-sm" id="contact">
         <Image
           src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="CTA background"
+          alt="Vista Pacific Capital CTA background"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -408,7 +408,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <Link href="/contact" className="bg-white text-blue-900 py-3 px-8 md:py-4 md:px-10 rounded-full text-lg md:text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-2xl md:text-3xl" /> Ignite Your Growth
+              <GiReceiveMoney className="mr-3 text-2xl md:text-3xl" aria-hidden="true" /> Start Your Financing Journey
             </Link>
           </motion.div>
         </div>

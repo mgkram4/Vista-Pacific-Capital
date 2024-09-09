@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaBoxes, FaHardHat, FaWarehouse } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
+
 export default function WarehouseRacking() {
   const equipmentTypes = [
     {
@@ -83,7 +84,7 @@ export default function WarehouseRacking() {
               <div className="relative h-48 mb-6">
                 <Image 
                   src={type.image}
-                  alt={type.title}
+                  alt={`${type.title} equipment`}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-lg"
@@ -103,7 +104,7 @@ export default function WarehouseRacking() {
       <section className="w-full relative h-96 mb-24">
         <Image
           src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
-          alt="Warehouse Racking"
+          alt="Modern warehouse with racking systems"
           layout="fill"
           objectFit="cover"
         />
@@ -181,7 +182,7 @@ export default function WarehouseRacking() {
       <section className="w-full relative h-96 my-24">
         <Image
           src="https://images.unsplash.com/photo-1573209680076-bd7ec7007616?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZvcmtsaWZ0fGVufDB8fDB8fHww"
-          alt="Forklift in Warehouse"
+          alt="Forklift operating in a modern warehouse"
           layout="fill"
           objectFit="cover"
         />
@@ -217,7 +218,7 @@ export default function WarehouseRacking() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Lets discuss how our warehouse racking financing can enhance your storage capabilities.
+            Let's discuss how our warehouse racking financing can enhance your storage capabilities.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -226,7 +227,8 @@ export default function WarehouseRacking() {
             viewport={{ once: true }}
           >
             <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" /> Get Financing Today
+              <GiReceiveMoney className="mr-3 text-3xl" /> 
+              <span>Get Financing Today</span>
             </Link>
           </motion.div>
         </div>

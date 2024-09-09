@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaCogs, FaIndustry, FaRobot } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
+
 export default function ManufacturingEquipment() {
   const equipmentTypes = [
     {
@@ -83,7 +84,7 @@ export default function ManufacturingEquipment() {
               <div className="relative h-48 mb-6">
                 <Image 
                   src={type.image}
-                  alt={type.title}
+                  alt={`${type.title} for manufacturing equipment financing`}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-lg"
@@ -103,7 +104,7 @@ export default function ManufacturingEquipment() {
       <section className="w-full relative h-96 mb-24">
         <Image
           src="https://images.unsplash.com/photo-1676018366904-c083ed678e60?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnVmYWN0dXJpbmd8ZW58MHx8MHx8fDA%3D"
-          alt="Manufacturing Plant"
+          alt="Modern manufacturing plant with advanced equipment"
           layout="fill"
           objectFit="cover"
         />
@@ -181,7 +182,7 @@ export default function ManufacturingEquipment() {
       <section className="w-full relative h-96 my-24">
         <Image
           src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-          alt="Industrial Robots"
+          alt="Advanced industrial robots in a manufacturing facility"
           layout="fill"
           objectFit="cover"
         />
@@ -226,7 +227,8 @@ export default function ManufacturingEquipment() {
             viewport={{ once: true }}
           >
             <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" /> Get Financing Today
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Financing Today</span>
             </Link>
           </motion.div>
         </div>

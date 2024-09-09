@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaHospital, FaMedkit, FaUserMd } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
+
 export default function MedicalEquipment() {
   const equipmentTypes = [
     {
@@ -83,7 +84,7 @@ export default function MedicalEquipment() {
               <div className="relative h-48 mb-6">
                 <Image 
                   src={type.image}
-                  alt={type.title}
+                  alt={`${type.title} medical equipment for financing`}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-lg"
@@ -103,7 +104,7 @@ export default function MedicalEquipment() {
       <section className="w-full relative h-96 mb-24">
         <Image
           src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt="Medical Equipment"
+          alt="Advanced medical equipment in a modern healthcare facility"
           layout="fill"
           objectFit="cover"
         />
@@ -181,7 +182,7 @@ export default function MedicalEquipment() {
       <section className="w-full relative h-96 my-24">
         <Image
           src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt="Healthcare Professionals"
+          alt="Healthcare professionals using advanced medical equipment"
           layout="fill"
           objectFit="cover"
         />
@@ -226,7 +227,8 @@ export default function MedicalEquipment() {
             viewport={{ once: true }}
           >
             <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" /> Get Financing Today
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Financing Today</span>
             </Link>
           </motion.div>
         </div>
