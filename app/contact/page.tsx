@@ -57,7 +57,7 @@ export default function Contact() {
               {/* </div> */}
               <div className="flex items-center mb-4">
                 <FaPhone className="text-blue-400 mr-4 text-2xl" />
-                <p className="text-gray-300">(714)985-6207</p>
+                <p className="text-gray-300">(714) 985-6207</p>
               </div>
               <div className="flex items-center">
                 <FaEnvelope className="text-blue-400 mr-4 text-2xl" />
