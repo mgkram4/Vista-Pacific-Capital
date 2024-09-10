@@ -2,7 +2,7 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
 export default function Contact() {
@@ -51,13 +51,13 @@ export default function Contact() {
             
             <div className="bg-gray-800 p-8 rounded-lg shadow-md mb-8">
               <h3 className="text-2xl font-semibold mb-4 text-blue-200">Vista Pacific Capital</h3>
-              <div className="flex items-center mb-4">
-                <FaMapMarkerAlt className="text-blue-400 mr-4 text-2xl" />
-                <p className="text-gray-300">2951 Saturn Street, Suite E<br />Brea, CA 92821</p>
-              </div>
+              {/* <div className="flex items-center mb-4"> */}
+                {/* <FaMapMarkerAlt className="text-blue-400 mr-4 text-2xl" /> */}
+                {/* <p className="text-gray-300">2951 Saturn Street, Suite E<br />Brea, CA 92821</p> */}
+              {/* </div> */}
               <div className="flex items-center mb-4">
                 <FaPhone className="text-blue-400 mr-4 text-2xl" />
-                <p className="text-gray-300">(800) 341-1288</p>
+                <p className="text-gray-300">(714)985-6207</p>
               </div>
               <div className="flex items-center">
                 <FaEnvelope className="text-blue-400 mr-4 text-2xl" />
@@ -115,7 +115,7 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="w-full py-24 px-4 bg-gray-800">
+      {/* <section className="w-full py-24 px-4 bg-gray-800">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-8 text-center text-blue-300"
@@ -138,7 +138,7 @@ export default function Contact() {
             ></iframe>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
