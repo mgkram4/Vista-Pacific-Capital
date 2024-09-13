@@ -1,23 +1,46 @@
 "use client"
 
-// File: src/pages/about.tsx
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaHandshake, FaLightbulb } from 'react-icons/fa';
+import { FaBirthdayCake, FaBuilding, FaChartLine, FaGlobe, FaHandshake, FaLightbulb, FaUserTie } from 'react-icons/fa';
 import { GiGears, GiReceiveMoney } from 'react-icons/gi';
 
 export default function About() {
   const coreValues = [
-    { name: "Trust", icon: FaHandshake, description: "Building lasting relationships with our clients through transparency and reliability." },
-    { name: "Efficiency", icon: GiGears, description: "Streamlined processes to provide quick and effective financing solutions." },
-    { name: "Simplicity", icon: FaLightbulb, description: "Clear, straightforward approaches to complex financial needs." }
+    { name: "Integrity", icon: FaHandshake, description: "We build lasting relationships with our clients through transparency and reliability." },
+    { name: "Innovation", icon: FaLightbulb, description: "We constantly seek new and creative financing solutions to meet our clients' evolving needs." },
+    { name: "Expertise", icon: FaUserTie, description: "Our team brings decades of industry knowledge to every financing solution we craft." },
+    { name: "Efficiency", icon: GiGears, description: "We streamline our processes to provide quick and effective financing solutions." }
   ];
 
-  const stats = [
-    { value: "20+", label: "Years of Experience" },
-    { value: "$3B+", label: "Equipment Funded" },
-    { value: "100+", label: "Industries Served" }
+  const teamMembers = [
+    {
+      name: "Alan Johnson",
+      title: "Equipment Investment Consultant",
+      image: "/images/alan-johnson.jpg",
+      bio: "Alan brings over 25 years of invaluable experience in the equipment finance industry. Based in Southern California, Alan's expertise is complemented by his unwavering commitment to delivering bespoke financial solutions. He has managed over 30 sales representatives and consistently drives impressive results with a client retention rate of over 96%.",
+    },
+    {
+      name: "Alec Sarrail",
+      title: "Equipment Investment Consultant",
+      image: "/images/alec-sarrail.jpg",
+      bio: "With a strong foundation in economics and 3 years of experience in the financial consulting industry, Alec is a key member of our team. He excels in crafting strategies that align with clients' financial objectives, especially for businesses with revenues under $100 million.",
+    },
+    {
+      name: "Noah Miller",
+      title: "Equipment Investment Consultant",
+      image: "/images/noah-miller.jpg",
+      bio: "Noah brings nine years of experience in equipment finance to our team. His background in the restaurant and hospitality sectors complements his financial skills, positioning him as a versatile asset in addressing both operational and financial challenges.",
+    },
+  ];
+
+  const journeyMilestones = [
+    { year: 2003, event: "Vista Pacific Capital founded", icon: FaBuilding },
+    { year: 2008, event: "Weathered the financial crisis, emerging stronger", icon: FaChartLine },
+    { year: 2013, event: "Expanded operations nationwide", icon: FaGlobe },
+    { year: 2018, event: "Surpassed $1 billion in total financed equipment", icon: GiReceiveMoney },
+    { year: 2023, event: "Celebrating 20 years of empowering businesses", icon: FaBirthdayCake },
   ];
 
   return (
@@ -50,107 +73,159 @@ export default function About() {
         ></motion.div>
       </section>
 
-      {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-24 px-4">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gray-800 rounded-lg shadow-xl p-10">
-            <h2 className="text-4xl font-bold mb-6 text-blue-300">Financing Your Success</h2>
-            <p className="mb-6 text-xl text-gray-300">
-              At Vista Pacific Capital, we understand that every business is unique, with its own set of challenges and goals. That's why we take a personalized approach to financing, working closely with each client to develop tailored solutions that fit their specific needs.
-            </p>
-            <p className="mb-6 text-xl text-gray-300">
-              Our team of experts leverages their deep industry knowledge and extensive network of funding partners to secure the best possible terms for your business. Whether you're looking to acquire new equipment, expand your facilities, or seize a new growth opportunity, we have the expertise and resources to help you succeed.
-            </p>
-            <Link href="/contact" className="bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl">
-              <GiReceiveMoney className="mr-2 text-2xl" /> Get Started
-            </Link>
-          </div>
-          <div className="relative">
-            <Image 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1415&q=80" 
-              alt="Financing Your Success" 
-              layout="fill" 
-              objectFit="cover" 
-              className="rounded-lg" 
-            />
-          </div>
-        </motion.div>
+     {/* Company History */}
+<section className="max-w-6xl mx-auto py-24 px-4">
+  <motion.h2 
+    className="text-5xl font-bold mb-20 text-blue-300 text-center"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  >
+    Our Journey
+  </motion.h2>
+  <div className="relative">
+    <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-600"></div>
+    {journeyMilestones.map((milestone, index) => (
+      <motion.div 
+        key={index}
+        className={`flex items-center mb-16 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+      >
+        {index % 2 === 0 ? (
+          <>
+            <div className="w-5/12">
+              <div className="bg-gray-800 rounded-lg shadow-xl p-6">
+                <h3 className="text-3xl font-bold text-blue-300 mb-2">{milestone.year}</h3>
+                <p className="text-xl text-gray-300">{milestone.event}</p>
+              </div>
+            </div>
+            <div className="w-2/12 flex justify-center">
+              <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center z-10">
+                <milestone.icon className="text-2xl text-blue-400" />
+              </div>
+            </div>
+            <div className="w-5/12"></div>
+          </>
+        ) : (
+          <>
+            <div className="w-5/12"></div>
+            <div className="w-2/12 flex justify-center">
+              <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center z-10">
+                <milestone.icon className="text-2xl text-blue-400" />
+              </div>
+            </div>
+            <div className="w-5/12">
+              <div className="bg-gray-800 rounded-lg shadow-xl p-6">
+                <h3 className="text-3xl font-bold text-blue-300 mb-2">{milestone.year}</h3>
+                <p className="text-xl text-gray-300">{milestone.event}</p>
+              </div>
+            </div>
+          </>
+        )}
+      </motion.div>
+    ))}
+  </div>
+  <motion.div 
+    className="bg-gray-800 rounded-lg shadow-xl p-10 mt-20"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  >
+    <p className="mb-6 text-xl text-gray-300">
+      Founded in 2003, Vista Pacific Capital has grown from a small, local financing firm to a national leader in equipment financing solutions. Our journey began with a vision to provide businesses with the financial tools they need to grow and thrive in an ever-changing economic landscape.
+    </p>
+    <p className="text-xl text-gray-300">
+      Today, Vista Pacific Capital stands as a testament to the power of perseverance, expertise, and client-focused service. We're proud of our history and excited about the future as we continue to empower businesses with cutting-edge financing solutions.
+    </p>
+  </motion.div>
+</section>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
-          {stats.map((stat, index) => (
-            <motion.div 
-              key={index} 
-              className="bg-blue-600 text-white rounded-lg p-8 text-center shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}  
-            >
-              <div className="text-5xl font-bold mb-4">{stat.value}</div>
-              <div className="text-2xl">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Core Values Section */}
-        <motion.h2 
-          className="text-5xl font-bold mb-16 text-center text-blue-300"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Our Core Values
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {coreValues.map((value, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-800 rounded-lg shadow-md p-8 text-center transition duration-300 transform hover:scale-105"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <value.icon className="text-6xl text-blue-400 mb-6 mx-auto" />
-              <h3 className="text-3xl font-semibold mb-4 text-blue-200">{value.name}</h3>
-              <p className="text-lg text-gray-300">{value.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Company Image */}
-      <section className="w-full relative h-96 mb-24">
-        <Image
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          alt="Vista Pacific Capital"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="absolute inset-0 bg-blue-900 bg-opacity-75 flex items-center justify-center">
-          <motion.h2
-            className="text-5xl font-bold text-white text-center"
-            initial={{ opacity: 0, y: 50 }}
+      {/* Core Values */}
+      <section className="bg-gray-800 py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-5xl font-bold mb-16 text-center text-blue-300"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Accelerating Business Growth Since 2003
+            Our Core Values
           </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {coreValues.map((value, index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-700 rounded-lg shadow-md p-8 text-center transition duration-300 transform hover:scale-105"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <value.icon className="text-6xl text-blue-400 mb-6 mx-auto" />
+                <h3 className="text-2xl font-semibold mb-4 text-blue-200">{value.name}</h3>
+                <p className="text-lg text-gray-300">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Members */}
+      <section className="max-w-6xl mx-auto py-24 px-4">
+        <motion.h2 
+          className="text-5xl font-bold mb-16 text-center text-blue-300"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Meet Our Team
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {teamMembers.map((member, index) => (
+            <motion.div 
+              key={index}
+              className="bg-gray-800 rounded-lg shadow-xl overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative h-64">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold mb-2 text-blue-300">{member.name}</h3>
+                <p className="text-lg text-gray-400 mb-4">{member.title}</p>
+                <p className="text-gray-300">{member.bio}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="w-full bg-blue-900 text-white py-24 px-4 relative">
+        <Image
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          alt="Vista Pacific Capital CTA background"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-blue-900 bg-opacity-80" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.h2
             className="text-5xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}

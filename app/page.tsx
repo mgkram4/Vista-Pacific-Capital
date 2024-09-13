@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaBeer, FaCalendarAlt, FaChartLine, FaClock, FaCogs, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
+import { FaArrowRight, FaBeer, FaCalendarAlt, FaChartLine, FaClock, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
 import { GiCheckMark, GiHandSaw, GiMoneyStack, GiReceiveMoney, GiSandsOfTime } from 'react-icons/gi';
 
 
@@ -15,15 +15,43 @@ export default function Home() {
   const [slideDirection, setSlideDirection] = useState(1);
 
   const services = [
-    { name: 'Medical Equipment', icon: FaMedkit, image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/medical' },
-    { name: 'Warehouse Racking', icon: FaWarehouse, image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/warehouse' },
-    { name: 'Industrial Machinery', icon: FaIndustry, image: 'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/industrial' },
-    { name: 'Robotics and Automation', icon: FaCogs, image: 'https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cm9iaXRpY3MlMjBhdXRvbWF0aW9ufGVufDB8fDB8fHww', route: '/robotics' },
-    { name: 'Brewery Equipment', icon: FaBeer, image: 'https://images.unsplash.com/photo-1532634786-c8f8c46a0062?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D', route: '/brewery' },
-    { name: 'Construction and Concrete', icon: FaHardHat, image: 'https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/construction' },
-    { name: 'Titled Vehicle Programs', icon: FaTruck, image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', route: '/vehicle' },
+    { 
+      name: "Medical Equipment", 
+      description: "Cutting-edge financing for healthcare technology",
+      image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1128&q=80",
+      href: "/medical"
+    },
+    {
+      name: "Manufacturing Equipment",
+      description: "Powering industrial growth with flexible financing",
+      image: "https://images.unsplash.com/photo-1469289759076-d1484757abc3?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFudWZhY3R1cmluZ3xlbnwwfHwwfHx8MA%3D%3D",
+      href: "/manufacturing"
+    },
+    {
+      name: "Brewery Equipment",
+      description: "Crafting success in the brewing industry",
+      image: "https://images.unsplash.com/photo-1532634733-cae1395e440f?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJyZXdpbmclMjBiZWVyfGVufDB8fDB8fHww",
+      href: "/brewery"
+    },
+    {
+      name: "Construction Equipment",
+      description: "Building the future with robust financing solutions",
+      image: "https://images.unsplash.com/photo-1621922688758-359fc864071e?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVsbGRvemVyc3xlbnwwfHwwfHx8MA%3D%3D",
+      href: "/construction"
+    },
+    {
+      name: "Vehicle Financing",
+      description: "Driving business forward with tailored vehicle solutions",
+      image: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1142&q=80",
+      href: "/vehicle"
+    },
+    {
+      name: "Warehouse Racking",
+      description: "Optimizing storage with innovative financing options",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      href: "/warehouse"
+    },
   ];
-
   const benefits = [
     { title: "Century of Experience", description: "Unrivaled industry expertise", icon: GiSandsOfTime },
     { title: "$2 Billion+ Funded", description: "Proven financial powerhouse", icon: GiMoneyStack },
@@ -163,74 +191,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Carousel Section */}
-      <section className="w-full py-20 px-4 bg-gray-900 relative" id="services">
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Dominate Your Industry
-          </motion.h2>
-          <div className="relative h-96">
-            <AnimatePresence initial={false} custom={slideDirection}>
-              <motion.div
-                key={currentServiceIndex}
-                custom={slideDirection}
-                variants={{
-                  enter: (direction) => ({ x: direction > 0 ? 300 : -300, opacity: 0 }),
-                  center: { x: 0, opacity: 1 },
-                  exit: (direction) => ({ x: direction < 0 ? 300 : -300, opacity: 0 })
-                }}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0"
-              >
-                <div className="bg-gray-800 bg-opacity-80 rounded-lg shadow-md overflow-hidden h-full">
-                  <div className="relative h-2/3">
-                  <Image
-                      src={services[currentServiceIndex].image}
-                      alt={`${services[currentServiceIndex].name} financing by Vista Pacific Capital`}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    <div className="absolute inset-0 bg-blue-900 bg-opacity-50 flex items-center justify-center">
-                      {/* <services[currentServiceIndex].icon className="text-6xl md:text-7xl text-white" /> */}
-                    </div>
-                  </div>
-                  <div className="p-3 md:p-4 h-1/3">
-                    <h3 className="text-xl md:text-2xl font-semibold  text-blue-200">{services[currentServiceIndex].name}</h3>
-                    <p className="text-sm md:text-base text-gray-400 mb-2">Conquer the {services[currentServiceIndex].name.toLowerCase()} sector with our tailored financing.</p>
-                    <Link href={services[currentServiceIndex].route} className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm md:text-md font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                      Explore {services[currentServiceIndex].name} Financing
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-            <button 
-              onClick={prevService} 
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 md:p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 focus:outline-none"
-              aria-label="Previous service"
-            >
-              <FaArrowLeft className="text-xl md:text-2xl" />
-            </button>
-            <button 
-              onClick={nextService} 
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 md:p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 focus:outline-none"
-              aria-label="Next service"
-            >
-              <FaArrowRight className="text-xl md:text-2xl" />
-            </button>
-          </div>
+          {/* Services Section */}
+          {/* Services Section */}
+<section className="max-w-6xl mx-auto py-24 px-4">
+  <motion.h2 
+    className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  >
+    Our Financing Solutions
+  </motion.h2>
+  <motion.p 
+    className="text-xl md:text-2xl text-gray-400 text-center mb-12"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    viewport={{ once: true }}
+  >
+    Vista Pacific Capital offers comprehensive financing solutions for a wide range of industries, including:
+  </motion.p>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {services.map((service, index) => (
+      <motion.div 
+        key={index} 
+        className="relative overflow-hidden rounded-xl shadow-lg"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="absolute inset-0">
+          <Image 
+            src={service.image}
+            alt={service.name}
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 opacity-40" />
         </div>
-      </section>
+        <div className="relative z-10 p-6 h-full flex flex-col justify-between backdrop-filter  bg-blue-900 bg-opacity-10">
+          <div>
+            <div className="flex items-center mb-4">
+              {service.name === "Medical Equipment" && <FaMedkit className="text-3xl text-blue-300 mr-3" />}
+              {service.name === "Manufacturing Equipment" && <FaIndustry className="text-3xl text-blue-300 mr-3" />}
+              {service.name === "Brewery Equipment" && <FaBeer className="text-3xl text-blue-300 mr-3" />}
+              {service.name === "Construction Equipment" && <FaHardHat className="text-3xl text-blue-300 mr-3" />}
+              {service.name === "Vehicle Financing" && <FaTruck className="text-3xl text-blue-300 mr-3" />}
+              {service.name === "Warehouse Racking" && <FaWarehouse className="text-3xl text-blue-300 mr-3" />}
+              <h3 className="text-2xl font-semibold text-white">{service.name}</h3>
+            </div>
+            <p className="text-gray-200 mb-6">{service.description}</p>
+          </div>
+          <Link 
+            href={service.href}
+            className="inline-flex items-center text-blue-300 hover:text-white transition duration-300"
+          >
+            Learn More
+            <FaArrowRight className="ml-2" />
+          </Link>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
       {/* Features Tabs */}
       <section className="w-full py-20 px-4 bg-gray-800 relative mb-10 rounded-sm">
@@ -303,73 +330,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="w-full py-20 px-4 bg-gray-900 relative mb-10" >
-        <Image
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Vista Pacific Capital testimonials background"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Success Stories
-          </motion.h2>
-          <motion.div 
-            className="bg-gray-800 bg-opacity-80 p-6 md:p-10 rounded-lg shadow-lg"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center">
-              <p className="text-lg md:text-2xl text-gray-300 mb-6">"Vista Pacific Capital's financing solutions were the rocket fuel our company needed. Their lightning-fast approval and flexible terms enabled us to scale our operations and crush our competition."</p>
-              <p className="text-blue-400 font-semibold text-base md:text-xl">- John Doe, CEO of TechTitan Industries</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
 
-      {/* Interactive Finance Calculator */}
-      <section className="w-full py-20 px-4 bg-gray-800 relative mb-10">
-        <Image
-          src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
-          alt="Vista Pacific Capital finance calculator background"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Power Up Your Finances
-          </motion.h2>
-          <motion.div 
-            className="bg-gray-700 bg-opacity-80 p-6 md:p-10 rounded-lg shadow-lg"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {/* Add your finance calculator component here */}
-            <p className="text-center text-gray-300 text-base md:text-xl">Our cutting-edge finance calculator is in development. Stay tuned to crunch your numbers and visualize your financial domination!</p>
-          </motion.div>
-        </div>
-      </section>
+    
 
       {/* CTA Section */}
       <section className="w-full bg-blue-900 text-white py-20 md:py-24 px-4 relative rounded-sm" id="contact">
