@@ -142,7 +142,7 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link href="/contact" className="bg-blue-600 text-white py-3 px-8 sm:py-2 sm:px-6 text-sm md:py-4 md:px-10 md:text-lg lg:text-xl font-semibold hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <Link href="/contact" className="bg-blue-600 text-white py-3 px-8 sm:py-2 sm:px-6 text-sm md:py-4 md:px-10 md:text-lg lg:text-xl font-semibold hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md">
     Get Started with Vista Pacific Capital
 </Link>
 
