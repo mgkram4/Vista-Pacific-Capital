@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { IconType } from 'react-icons';
-import { FaBook, FaBriefcase, FaChevronDown, FaCog, FaEnvelope, FaHome, FaInfoCircle } from 'react-icons/fa';
+import { FaBook, FaBookmark, FaBriefcase, FaChevronDown, FaCog, FaEnvelope, FaHome, FaInfoCircle } from 'react-icons/fa';
 
 interface SubItem {
   name: string;
@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
   {
     name: 'Resources',
     path: '#',
-    icon: FaBook,
+    icon: FaBookmark,
     subItems: [
       { name: 'FAQ', path: '/faq' },
       { name: 'Blog', path: '/resources' },
