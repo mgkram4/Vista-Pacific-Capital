@@ -18,7 +18,7 @@ export default function About() {
     {
       name: "Alan Johnson",
       title: "Senior Account Executive",
-      image: "/images/alan-johnson.jpg",
+      image: "/Images/alan-johnson.jpg",
       bio: "Alan brings over 25 years of invaluable experience in the equipment finance industry. Based in Southern California, Alan's expertise is complemented by his unwavering commitment to delivering bespoke financial solutions. He has managed over 30 sales representatives and consistently drives impressive results with a client retention rate of over 96%.",
     },
     {
@@ -30,7 +30,7 @@ export default function About() {
     {
       name: "Noah Miller",
       title: "Account Executive",
-      image: "/images/noah-miller.jpg",  
+      image: "/Images/noah-miller.jpg",  
       bio: "Noah brings nine years of experience in equipment finance to our team. His background in the restaurant and hospitality sectors complements his financial skills, positioning him as a versatile asset in addressing both operational and financial challenges.",
     },
   ];
