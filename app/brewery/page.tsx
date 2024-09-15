@@ -30,13 +30,13 @@ export default function BreweryDistilleryEquipment() {
       title: 'Quality Control Equipment',
       description: 'Invest in advanced testing and analysis equipment to ensure consistent product quality.',
       icon: FaFlask,
-      image: 'https://images.unsplash.com/photo-1598872542388-98d6722d2cf3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1533646281814-761f53fc5483?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Temperature Control Systems',
       description: 'Finance precise temperature control systems for fermentation, aging, and storage processes.',
       icon: FaThermometerHalf,
-      image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1542835497-a6813df96ed9?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D'
     }
   ];
 

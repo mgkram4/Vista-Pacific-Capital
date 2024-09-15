@@ -30,13 +30,13 @@ export default function WarehouseRacking() {
       title: 'Automated Systems',
       description: 'Invest in cutting-edge robotic picking systems and automated guided vehicles (AGVs) for enhanced efficiency.',
       icon: FaRobot,
-      image: 'https://images.unsplash.com/photo-1565782102792-ebf7338817ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1592085198739-ffcad7f36b54?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXV0b21hdGlvbiUyMHdhcmVob3VzZXxlbnwwfHwwfHx8MA%3D%3D'
     },
     {
       title: 'Inventory Management',
       description: 'Finance advanced inventory tracking systems, including RFID and barcode technologies.',
       icon: FaBarcode,
-      image: 'https://images.unsplash.com/photo-1586528116493-9f21faeb3162?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      image: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGludmVudG9yeSUyMG1hbmFnZW1lbnR8ZW58MHx8MHx8fDA%3D'
     }
   ];
 

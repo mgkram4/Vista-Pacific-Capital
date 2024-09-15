@@ -3,40 +3,40 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaCogs, FaIndustry, FaRobot, FaTruck, FaWarehouse } from 'react-icons/fa';
+import { FaCashRegister, FaCoffee, FaHamburger, FaUtensils, FaWineGlassAlt } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
-export default function ManufacturingEquipment() {
+export default function RestaurantEquipmentFinancing() {
   const equipmentTypes = [
     {
-      title: 'CNC Machinery',
-      description: 'Finance state-of-the-art CNC mills, lathes, and multi-axis machining centers.',
-      icon: FaCogs,
-      image: 'https://images.unsplash.com/photo-1717386255773-a456c611dc4e?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q05DJTIwTWFjaGluZXJ5fGVufDB8fDB8fHww'
+      title: 'Kitchen Equipment',
+      description: 'Finance state-of-the-art ovens, grills, fryers, and refrigeration units to enhance your culinary capabilities.',
+      icon: FaUtensils,
+      image: 'https://images.unsplash.com/photo-1622021142947-da7dedc7c39a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlc3RhdXJhbnQlMjBraXRjaGVufGVufDB8fDB8fHww'
     },
     {
-      title: 'Robotics and Automation',
-      description: 'Lease advanced robotic arms, automated assembly lines, and AGVs.',
-      icon: FaRobot,
-      image: 'https://images.unsplash.com/photo-1717386255773-1e3037c81788?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      title: 'Bar & Beverage',
+      description: 'Equip your bar with top-quality espresso machines, draft systems, and ice makers through flexible financing options.',
+      icon: FaCoffee,
+      image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80' 
     },
     {
-      title: 'Production Line Equipment',
-      description: 'Finance conveyor systems, packaging machines, and quality control equipment.',
-      icon: FaIndustry,
-      image: 'https://images.unsplash.com/photo-1651525670033-279c26cc2347?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbnZleW9yJTIwc3lzdGVtc3xlbnwwfHwwfHx8MA%3D%3D'
+      title: 'Dining Room Essentials',
+      description: 'Create the perfect ambiance with financing for furniture, tableware, and decor that sets your restaurant apart.',
+      icon: FaWineGlassAlt,
+      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
     },
     {
-      title: 'Warehousing Solutions',
-      description: 'Equip your facilities with advanced storage systems and material handling equipment.',
-      icon: FaWarehouse,
-      image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      title: 'POS & Management Systems',
+      description: 'Streamline operations with cutting-edge point-of-sale systems and restaurant management software.',
+      icon: FaCashRegister,
+      image: 'https://images.unsplash.com/photo-1726065235239-b20b88d43eea?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww'
     },
     {
-      title: 'Heavy Machinery',
-      description: 'Finance heavy-duty equipment for large-scale manufacturing operations.',
-      icon: FaTruck,
-      image: 'https://images.unsplash.com/photo-1545262722-9e0d80a0bc01?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGVhdnklMjBtYWNoaW5lcnl8ZW58MHx8MHx8fDA%3D'
+      title: 'Food Prep Equipment',
+      description: 'Maximize efficiency with high-quality food processors, slicers, and mixers designed for the demands of a busy kitchen.',
+      icon: FaHamburger,
+      image: 'https://images.unsplash.com/photo-1475610003943-f778cd2c3a6a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMGVxdWlwbWVudHxlbnwwfHwwfHx8MA%3D%3D'
     }
   ];
 
@@ -46,8 +46,8 @@ export default function ManufacturingEquipment() {
       <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
         <div className="absolute inset-0 z-0 opacity-30">
           <Image 
-            src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Manufacturing background"
+            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" 
+            alt="Restaurant background"
             layout="fill"
             objectFit="cover"
           />
@@ -59,7 +59,7 @@ export default function ManufacturingEquipment() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Manufacturing Equipment Financing
+            Restaurant Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-8 leading-relaxed"
@@ -67,7 +67,7 @@ export default function ManufacturingEquipment() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Empowering manufacturers with cutting-edge equipment financing solutions
+            Equip your culinary vision with flexible financing solutions
           </motion.p>
         </div>
         <motion.div
@@ -87,9 +87,9 @@ export default function ManufacturingEquipment() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          At Vista Pacific Capital, we understand the unique needs of the manufacturing industry. Our equipment financing solutions include:
+          At Vista Pacific Capital, we understand the unique needs of the restaurant industry. Our restaurant equipment financing solutions include:
         </motion.p>
-
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {equipmentTypes.map((type, index) => (
             <motion.div 
@@ -103,7 +103,7 @@ export default function ManufacturingEquipment() {
               <div className="relative h-48">
                 <Image 
                   src={type.image}
-                  alt={`${type.title} manufacturing equipment for financing`}
+                  alt={`${type.title} restaurant equipment for financing`}
                   layout="fill"
                   objectFit="cover"
                 />
@@ -120,11 +120,11 @@ export default function ManufacturingEquipment() {
         </div>
       </section>
 
-      {/* Financing Details Section */}
+     {/* Financing Details Section */}
       <section className="py-24 px-4 relative">
         <div className="absolute inset-0 z-0 opacity-10">
           <Image 
-            src="https://images.unsplash.com/photo-1525974160448-038dacadcc71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            src="https://images.unsplash.com/photo-1520694146360-85079777e456?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
             alt="Finance background"
             layout="fill"
             objectFit="cover"
@@ -150,28 +150,28 @@ export default function ManufacturingEquipment() {
             <ul className="list-none space-y-6 text-gray-200 text-lg">
               <li className="flex items-center">
                 <span className="text-blue-400 mr-4">✓</span>
-                Streamlined application process - minimal documentation required
+                Quick application process - just a credit application and three months of bank statements required
               </li>
               <li className="flex items-center">
                 <span className="text-blue-400 mr-4">✓</span>
-                Financing options for new and used manufacturing equipment
+                Financing available for both new and used restaurant equipment
               </li>
               <li className="flex items-center">
                 <span className="text-blue-400 mr-4">✓</span>
-                Flexible terms up to 84 months to align with your production cycles
+                Flexible terms up to 72 months to suit your cash flow needs
               </li>
               <li className="flex items-center">
                 <span className="text-blue-400 mr-4">✓</span>
-                Competitive rates with rapid approval and funding
+                Competitive rates with same-day qualification available
               </li>
               <li className="flex items-center">
                 <span className="text-blue-400 mr-4">✓</span>
-                Dedicated support from our team of manufacturing finance experts
+                Expert guidance from our team with over 20 years of industry experience
               </li>
             </ul>
           </motion.div>
         </div>
-      </section>
+      </section>   
 
       {/* Benefits Section */}
       <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-blue-900">
@@ -183,7 +183,7 @@ export default function ManufacturingEquipment() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Our Manufacturing Equipment Financing
+            Benefits of Our Restaurant Equipment Financing
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
@@ -193,8 +193,8 @@ export default function ManufacturingEquipment() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Increase Production Capacity</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Acquire advanced machinery that enables you to scale your manufacturing output and meet growing demand without depleting your working capital.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Preserve Working Capital</h3>
+              <p className="text-gray-200 text-lg leading-relaxed">Invest in growth opportunities while maintaining cash flow for day-to-day operations. Allocate funds to other critical areas of your restaurant while acquiring the equipment you need.</p>
             </motion.div>
             <motion.div 
               className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
@@ -203,8 +203,8 @@ export default function ManufacturingEquipment() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Stay Competitive</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Access cutting-edge technology that keeps you ahead of the curve. Upgrade your equipment regularly to maintain a competitive edge in your industry.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Flexible Payment Options</h3>
+              <p className="text-gray-200 text-lg leading-relaxed">Customize your financing to match your restaurant's unique cash flow patterns. We offer tailored payment structures, including seasonal and step-up options, to ensure a seamless fit for your business.</p>
             </motion.div>
             <motion.div 
               className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
@@ -213,8 +213,8 @@ export default function ManufacturingEquipment() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Improve Efficiency</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Finance automation solutions that streamline your production processes, reduce waste, and boost overall productivity and profitability.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Upgrade with Ease</h3>
+              <p className="text-gray-200 text-lg leading-relaxed">Stay current with the latest culinary trends and technology. Our financing solutions allow you to easily upgrade your equipment as your restaurant grows and evolves.</p>
             </motion.div>
             <motion.div 
               className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
@@ -223,8 +223,8 @@ export default function ManufacturingEquipment() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Tax Advantages</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Benefit from potential tax deductions and advantages associated with equipment leasing and financing. Our experts can guide you through the tax implications of your investment.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Tax Benefits</h3>
+              <p className="text-gray-200 text-lg leading-relaxed">Potentially reduce your tax liability through equipment leasing and financing. Our expert team will guide you through potential tax benefits, helping you make the most of your investment.</p>
             </motion.div>
           </div>
         </div>
@@ -234,8 +234,8 @@ export default function ManufacturingEquipment() {
       <section className="py-24 px-4 relative">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1621734275926-6042471be851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Manufacturing plant background"
+            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+            alt="Restaurant kitchen background"
             layout="fill"
             objectFit="cover"
           />
@@ -243,7 +243,7 @@ export default function ManufacturingEquipment() {
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.h2 
             className="text-4xl font-bold mb-12 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y:50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
@@ -257,10 +257,10 @@ export default function ManufacturingEquipment() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-blue-300">Precision Parts Manufacturer Doubles Production Capacity</h3>
-            <p className="text-gray-200 text-lg leading-relaxed mb-4">A growing precision parts manufacturer needed to expand their production capacity to meet increasing demand. Through our flexible financing solution, they were able to acquire two state-of-the-art CNC machines and an automated quality control system.</p>
-            <p className="text-gray-200 text-lg leading-relaxed mb-4">Result: The company doubled their production capacity, reduced error rates by 40%, and secured three new major contracts within six months of implementation.</p>
-            <p className="text-blue-300 text-lg italic">"Vista Pacific Capital's financing enabled us to take a quantum leap in our manufacturing capabilities. Their understanding of our industry made the process smooth and tailored to our needs." - Director of Operations</p>
+            <h3 className="text-2xl font-semibold mb-4 text-blue-300">Michelin-Starred Chef Opens New Venture</h3>
+            <p className="text-gray-200 text-lg leading-relaxed mb-4">An acclaimed chef wanted to open a new restaurant concept but needed to finance a complete kitchen renovation. Through our flexible financing solution, they were able to acquire top-of-the-line equipment without compromising their vision or budget.</p>
+            <p className="text-gray-200 text-lg leading-relaxed mb-4">Result: The restaurant launched to rave reviews, earning a Michelin star within its first year of operation and seeing a 25% increase in revenue compared to projections.</p>
+            <p className="text-blue-300 text-lg italic">"Vista Pacific Capital's financing gave us the freedom to bring our culinary dreams to life without financial constraints." - Executive Chef and Owner</p>
           </motion.div>
         </div>
       </section>
@@ -275,7 +275,7 @@ export default function ManufacturingEquipment() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Upgrade Your Manufacturing Equipment?
+            Ready to Upgrade Your Restaurant?
           </motion.h2>
           <motion.p
             className="text-2xl mb-10 leading-relaxed"
@@ -284,7 +284,7 @@ export default function ManufacturingEquipment() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let's discuss how our tailored financing solutions can help your manufacturing facility thrive.
+            Let's discuss how our tailored financing solutions can help your restaurant thrive.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

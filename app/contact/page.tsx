@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
+
+
 export default function Contact() {
   return (
     <div className="bg-gray-900">
