@@ -3,38 +3,28 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaIndustry, FaHardHat, FaUtensils, FaTruck } from 'react-icons/fa';
+import { FaHardHat, FaIndustry } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
 export default function CaseStudies() {
   const caseStudies = [
     {
-      title: "Manufacturing Expansion Success",
-      description: "How a mid-sized manufacturer upgraded their equipment and increased production capacity by 40%.",
+      title: "Manufacturing Equipment Financing",
+      description: "A leading manufacturer of precision machined parts faced the challenge of expanding its production capabilities to meet increasing demand. The company needed to acquire advanced CNC machines but was concerned about the large upfront capital expenditure required for these high-cost pieces of equipment.",
+      solution: "The manufacturer opted for equipment leasing through our financing program. They secured a lease for the CNC machines with a term of 60 months and a minimal advanced payment. The leasing arrangement provided them with the flexibility to upgrade to newer technology as it became available without being locked into outdated equipment.",
+      results: "The financing solution allowed the manufacturer to acquire the CNC machines promptly, enhancing their production capacity and efficiency. With predictable monthly payments, they managed their cash flow effectively and avoided large capital expenditures. The flexibility to upgrade equipment helped them stay competitive in the market, and the improved production capabilities resulted in a 25% increase in output within the first year.",
       icon: FaIndustry,
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       industry: "Manufacturing"
     },
     {
-      title: "Construction Company Growth",
-      description: "A small construction firm's journey to becoming a regional leader with strategic equipment financing.",
+      title: "Construction Equipment Financing",
+      description: "A prominent construction company was preparing for a series of large-scale projects that required the purchase of several pieces of heavy construction equipment, including excavators and bulldozers. The company needed a financing solution that would accommodate their cash flow constraints and provide the flexibility to manage equipment needs across multiple projects.",
+      solution: "The construction company chose to finance their construction equipment through a lease agreement with terms of 84 months. The lease included an option for minimal advanced payment and covered both new and used equipment. This approach allowed them to acquire the equipment needed for their projects without significant upfront costs.",
+      results: "The leasing arrangement enabled the construction company to efficiently manage their cash flow while equipping their team with the necessary machinery. The predictable monthly payments helped with budgeting and financial planning. Additionally, the ability to choose between new and used equipment provided flexibility and cost savings. The company successfully completed their projects on time and within budget, reporting a 30% increase in project efficiency.",
       icon: FaHardHat,
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       industry: "Construction"
-    },
-    {
-      title: "Restaurant Chain Expansion",
-      description: "How a local restaurant used equipment financing to expand to multiple locations across the state.",
-      icon: FaUtensils,
-      image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-      industry: "Food Service"
-    },
-    {
-      title: "Logistics Company Fleet Upgrade",
-      description: "A logistics company's transformation after financing a full fleet upgrade to more efficient vehicles.",
-      icon: FaTruck,
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      industry: "Transportation"
     }
   ];
 
@@ -70,7 +60,7 @@ export default function CaseStudies() {
 
       {/* Case Studies Section */}
       <section className="max-w-6xl mx-auto py-24 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-16">
           {caseStudies.map((study, index) => (
             <motion.div 
               key={index}
@@ -80,7 +70,7 @@ export default function CaseStudies() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative h-48">
+              <div className="relative h-64">
                 <Image 
                   src={study.image}
                   alt={study.title}
@@ -88,16 +78,26 @@ export default function CaseStudies() {
                   objectFit="cover"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex items-center mb-4">
-                  <study.icon className="text-2xl text-blue-400 mr-2" />
-                  <span className="text-sm text-blue-300">{study.industry}</span>
+                  <study.icon className="text-3xl text-blue-400 mr-2" />
+                  <span className="text-lg text-blue-300">{study.industry}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{study.title}</h3>
-                <p className="text-gray-400 mb-4">{study.description}</p>
-                <Link href="#" className="text-blue-400 hover:text-blue-300 transition duration-300">
-                  Read Full Case Study →
-                </Link>
+                <h3 className="text-2xl font-semibold text-white mb-4">{study.title}</h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Challenge</h4>
+                    <p className="text-gray-400">{study.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Solution</h4>
+                    <p className="text-gray-400">{study.solution}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Results</h4>
+                    <p className="text-gray-400">{study.results}</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

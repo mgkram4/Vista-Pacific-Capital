@@ -10,7 +10,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: "What types of equipment can be financed?",
-      answer: "We finance a wide range of equipment across various industries, including manufacturing, construction, healthcare, transportation, restaurant, and more."
+      answer: "We finance a wide range of equipment across various industries, including manufacturing, construction, healthcare, transportation, restaurant, and more. We handle both new and used equipment, with financing available for amounts ranging from $25,000 to $5 million."
     },
     {
       question: "What are the typical terms for equipment financing?",
@@ -30,7 +30,35 @@ export default function FAQ() {
     },
     {
       question: "What documents are required for the application process?",
-      answer: "Typically, we require a completed credit application and the most recent 3 months of bank statements. Larger transactions may require additional documentation."
+      answer: "Typically, we require a completed credit application and the most recent 3 months of bank statements. Larger transactions may require additional documentation such as financial statements or tax returns."
+    },
+    {
+      question: "Do you require a down payment or advanced payment?",
+      answer: "We collect as little as one advanced payment, sometimes first and last depending on the program. Customers are welcome to put more money down if they would like to reduce the financed amount."
+    },
+    {
+      question: "Are there any early repayment penalties or fees?",
+      answer: "Customers can pay off early if they would like, however, they will be responsible for the sum of the remaining payments."
+    },
+    {
+      question: "What kind of support do you offer during the term of the lease or loan?",
+      answer: "We offer support for any questions regarding the lease related to billing, insurance, payoffs, etc. For questions about the financed equipment, that would be handled with the seller."
+    },
+    {
+      question: "Do you offer financing for startups or new businesses?",
+      answer: "Yes, we offer flexible financing solutions for startups. We understand the unique challenges new businesses face and have programs designed to meet their needs."
+    },
+    {
+      question: "What are the interest rates for equipment financing?",
+      answer: "Our interest rates are competitive and vary based on factors such as credit history, type of equipment, and lease term. We work with many major lenders to offer rates as low as the market is offering."
+    },
+    {
+      question: "Do you offer vendor programs for equipment sellers?",
+      answer: "Yes, we offer comprehensive vendor programs designed to streamline the leasing process for equipment sellers and their clients. These programs provide additional support and benefits to both vendors and customers."
+    },
+    {
+      question: "How does your application-only financing work?",
+      answer: "We offer application-only financing for transactions up to $1 million. This streamlined process typically requires less documentation, making it faster and easier for qualified businesses to secure equipment financing."
     }
   ];
 
