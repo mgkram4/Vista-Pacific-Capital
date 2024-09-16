@@ -71,7 +71,7 @@ export default function BlogResources() {
         For breweries at any stage of development, equipment leasing can be the key to unlocking success and ensuring long-term sustainability in the competitive craft brewing industry.
       `,
       icon: FaIndustry,
-      image: "https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      image: "https://images.unsplash.com/photo-1532634733-cae1395e440f?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJyZXdpbmclMjBiZWVyfGVufDB8fDB8fHww",
       category: "Brewery Industry"
     },
     {
