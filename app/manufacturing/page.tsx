@@ -78,10 +78,63 @@ export default function ManufacturingEquipment() {
         ></motion.div>
       </section>
 
-      {/* Main Content */}
+      {/* Why Vista Pacific Capital Section */}
       <section className="max-w-6xl mx-auto py-24 px-4">
+        <motion.h2 
+          className="text-4xl font-bold mb-8 text-center text-blue-300"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Why Vista Pacific Capital is Your Best Choice for Leasing Manufacturing Equipment
+        </motion.h2>
         <motion.p 
-          className="text-2xl text-gray-300 text-center mb-16 leading-relaxed"
+          className="text-xl text-gray-300 text-center mb-16 leading-relaxed"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Vista Pacific Capital excels in providing manufacturing equipment leasing solutions:
+        </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div
+            className="bg-gray-800 p-6 rounded-lg"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-blue-300">Tailored Leasing Solutions</h3>
+            <p className="text-gray-300">Customized options to meet the unique needs of your manufacturing operation.</p>
+          </motion.div>
+          <motion.div
+            className="bg-gray-800 p-6 rounded-lg"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-blue-300">Industry Expertise</h3>
+            <p className="text-gray-300">Benefit from valuable insights and advice tailored to the manufacturing sector.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Manufacturing Equipment We Finance Section */}
+      <section className="max-w-6xl mx-auto py-24 px-4">
+        <motion.h2 
+          className="text-4xl font-bold mb-8 text-center text-blue-300"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Manufacturing Equipment We Finance
+        </motion.h2>
+        <motion.p 
+          className="text-xl text-gray-300 text-center mb-16 leading-relaxed"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -120,152 +173,7 @@ export default function ManufacturingEquipment() {
         </div>
       </section>
 
-      {/* Financing Details Section */}
-      <section className="py-24 px-4 relative">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <Image 
-            src="https://images.unsplash.com/photo-1525974160448-038dacadcc71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Finance background"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Our Financing Process
-          </motion.h2>
-          <motion.div 
-            className="bg-gray-800 bg-opacity-90 p-8 rounded-2xl shadow-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <ul className="list-none space-y-6 text-gray-200 text-lg">
-              <li className="flex items-center">
-                <span className="text-blue-400 mr-4">✓</span>
-                Streamlined application process - minimal documentation required
-              </li>
-              <li className="flex items-center">
-                <span className="text-blue-400 mr-4">✓</span>
-                Financing options for new and used manufacturing equipment
-              </li>
-              <li className="flex items-center">
-                <span className="text-blue-400 mr-4">✓</span>
-                Flexible terms up to 84 months to align with your production cycles
-              </li>
-              <li className="flex items-center">
-                <span className="text-blue-400 mr-4">✓</span>
-                Competitive rates with rapid approval and funding
-              </li>
-              <li className="flex items-center">
-                <span className="text-blue-400 mr-4">✓</span>
-                Dedicated support from our team of manufacturing finance experts
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-blue-900">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-16 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Benefits of Our Manufacturing Equipment Financing
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div 
-              className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Increase Production Capacity</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Acquire advanced machinery that enables you to scale your manufacturing output and meet growing demand without depleting your working capital.</p>
-            </motion.div>
-            <motion.div 
-              className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Stay Competitive</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Access cutting-edge technology that keeps you ahead of the curve. Upgrade your equipment regularly to maintain a competitive edge in your industry.</p>
-            </motion.div>
-            <motion.div 
-              className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Improve Efficiency</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Finance automation solutions that streamline your production processes, reduce waste, and boost overall productivity and profitability.</p>
-            </motion.div>
-            <motion.div 
-              className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-semibold mb-4 text-blue-300">Tax Advantages</h3>
-              <p className="text-gray-200 text-lg leading-relaxed">Benefit from potential tax deductions and advantages associated with equipment leasing and financing. Our experts can guide you through the tax implications of your investment.</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study Section */}
-      <section className="py-24 px-4 relative">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <Image 
-            src="https://images.unsplash.com/photo-1621734275926-6042471be851?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Manufacturing plant background"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-blue-300"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Success Story
-          </motion.h2>
-          <motion.div 
-            className="bg-gray-800 bg-opacity-90 p-8 rounded-2xl shadow-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-blue-300">Precision Parts Manufacturer Doubles Production Capacity</h3>
-            <p className="text-gray-200 text-lg leading-relaxed mb-4">A growing precision parts manufacturer needed to expand their production capacity to meet increasing demand. Through our flexible financing solution, they were able to acquire two state-of-the-art CNC machines and an automated quality control system.</p>
-            <p className="text-gray-200 text-lg leading-relaxed mb-4">Result: The company doubled their production capacity, reduced error rates by 40%, and secured three new major contracts within six months of implementation.</p>
-            <p className="text-blue-300 text-lg italic">"Vista Pacific Capital's financing enabled us to take a quantum leap in our manufacturing capabilities. Their understanding of our industry made the process smooth and tailored to our needs." - Director of Operations</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* Apply Now Section */}
       <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
@@ -294,7 +202,7 @@ export default function ManufacturingEquipment() {
           >
             <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing Today</span>
+              <span>Apply Now</span>
             </Link>
           </motion.div>
         </div>

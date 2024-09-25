@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
   { name: 'Home', path: '/', icon: FaHome },
   { name: 'About', path: '/about', icon: FaInfoCircle },
   {
-    name: 'Equipment Financing',
+    name: 'Industries Served',
     path: '#',
     icon: FaCog,
     subItems: [
@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
     ],
   },
   { name: 'Services', path: '/services', icon: FaBriefcase },
-  { name: 'Vendor Programs', path: '/vendor', icon: FaBook },
+  { name: 'Partner Solutions', path: '/vendor', icon: FaBook },
   {
     name: 'Resources',
     path: '#',
@@ -47,6 +47,7 @@ const navItems: NavItem[] = [
       { name: 'Blog', path: '/resources' },
       { name: 'Case Studies', path: '/case-studies' },
       { name: 'Testimonials', path: '/testimonials' },
+      {name: "Section 179", path:"/tax"}
     ],
   },
   { name: 'Contact', path: '/contact', icon: FaEnvelope },

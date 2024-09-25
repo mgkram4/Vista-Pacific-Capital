@@ -82,7 +82,7 @@ export default function VendorPrograms() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Vendor Programs
+            Partner Solutions
           </motion.h1>
           <motion.p
             className="text-2xl mb-8 leading-relaxed"
@@ -110,7 +110,7 @@ export default function VendorPrograms() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Benefits of Our Vendor Programs
+          Unlock the Benefits of Our Partner Solutions
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {benefits.map((benefit, index) => (
