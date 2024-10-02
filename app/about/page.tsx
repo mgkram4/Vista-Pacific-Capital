@@ -47,7 +47,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-white">
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
         <Image 
@@ -58,7 +58,7 @@ const About = () => {
           quality={100}
           priority
         />
-        <div className="absolute inset-0 bg-blue-900 bg-opacity-70" />
+        <div className="absolute inset-0 bg-indigo-dye bg-opacity-70" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <motion.h1 
@@ -82,10 +82,10 @@ const About = () => {
       </section>
 
       {/* Vision Statement */}
-      <section className="bg-gray-800 py-20 px-4">
+      <section className="bg-gray-50 py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2 
-            className="text-3xl font-bold mb-6 text-center text-blue-300"
+            className="text-3xl font-bold mb-6 text-center text-indigo-dye"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -94,7 +94,7 @@ const About = () => {
             Our Vision
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-300 text-center"
+            className="text-lg text-gray-700 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -109,10 +109,10 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="bg-gray-900 py-20 px-4">
+      <section className="bg-white py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-blue-300"
+            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -124,15 +124,15 @@ const About = () => {
             {coreValues.map((value, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 rounded-lg shadow-md p-6 text-center transition duration-300 transform hover:scale-105"
+                className="bg-gray-50 rounded-lg shadow-md p-6 text-center transition duration-300 transform hover:scale-105"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <value.icon className="text-5xl text-blue-400 mb-4 mx-auto" />
-                <h3 className="text-xl font-semibold mb-2 text-blue-200">{value.name}</h3>
-                <p className="text-sm text-gray-300">{value.description}</p>
+                <value.icon className="text-5xl text-light-sea-green mb-4 mx-auto" />
+                <h3 className="text-xl font-semibold mb-2 text-indigo-dye">{value.name}</h3>
+                <p className="text-sm text-gray-700">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -140,10 +140,10 @@ const About = () => {
       </section>
 
       {/* Industries We Serve */}
-      <section className="bg-gray-800 py-20 px-4">
+      <section className="bg-gray-50 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-blue-300"
+            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -155,14 +155,14 @@ const About = () => {
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
-                className="text-center bg-gray-700 p-4 rounded-lg shadow-md"
+                className="text-center bg-white p-4 rounded-lg shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <industry.icon className="text-4xl text-blue-400 mb-3 mx-auto" />
-                <h3 className="text-lg font-semibold text-blue-200">{industry.name}</h3>
+                <industry.icon className="text-4xl text-light-sea-green mb-3 mx-auto" />
+                <h3 className="text-lg font-semibold text-indigo-dye">{industry.name}</h3>
               </motion.div>
             ))}
           </div>
@@ -172,7 +172,7 @@ const About = () => {
       {/* Team Members */}
       <section className="max-w-6xl mx-auto py-20 px-4">
         <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-blue-300"
+          className="text-4xl font-bold mb-12 text-center text-indigo-dye"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -184,7 +184,7 @@ const About = () => {
           {teamMembers.map((member, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800 rounded-lg shadow-xl overflow-hidden"
+              className="bg-white rounded-lg shadow-xl overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -199,9 +199,9 @@ const About = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-blue-300">{member.name}</h3>
-                <p className="text-md text-gray-400 mb-4">{member.title}</p>
-                <p className="text-sm text-gray-300">{member.bio}</p>
+                <h3 className="text-xl font-semibold mb-2 text-indigo-dye">{member.name}</h3>
+                <p className="text-md text-light-sea-green mb-4">{member.title}</p>
+                <p className="text-sm text-gray-700">{member.bio}</p>
               </div>
             </motion.div>
           ))}
@@ -209,14 +209,14 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-20 px-4 relative">
+      <section className="w-full bg-light-sea-green text-white py-20 px-4 relative">
         <Image 
           src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
           alt="Vista Pacific Capital CTA background"
           layout="fill"
           objectFit="cover"
         />
-        <div className="absolute inset-0 bg-blue-900 bg-opacity-80" />
+        <div className="absolute inset-0 bg-light-sea-green bg-opacity-80" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.h2
             className="text-4xl font-bold mb-6"
@@ -242,7 +242,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-3 px-8 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-3 px-8 rounded-full text-lg font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-2 text-2xl" /> Contact Us Today
             </Link>
           </motion.div>

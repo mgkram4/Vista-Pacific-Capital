@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-       
-        foreground: "var(--foreground)",
-        primary: '#0077B5',
-        secondary: '#000000',
-        background: '#F3F2EF',
-      },
-    },
+        'indigo-dye': '#113E59',
+        'light-sea-green': '#11B5B2',
+        'indigo-dye-2': '#1E5470',
+        'prussian-blue': '#082F4A',
+        'white': '#FFFFFF',
+      }
+    }
   },
   plugins: [],
 };

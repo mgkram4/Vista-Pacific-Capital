@@ -66,10 +66,10 @@ export default function ConstructionEquipmentFinancing() {
   ];
 
   return (
-    <div className="bg-gray-900 font-sans">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
-        <div className="absolute inset-0 z-0 opacity-30">
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
             alt="Construction site background"
@@ -77,9 +77,9 @@ export default function ConstructionEquipmentFinancing() {
             objectFit="cover"
           />
         </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -87,22 +87,32 @@ export default function ConstructionEquipmentFinancing() {
             Construction Equipment Financing
           </motion.h1>
           <motion.p
-            className="text-2xl mb-8 leading-relaxed"
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Tailored financing solutions for every aspect of the construction industry
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Financing Now</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Financing Types Sections */}
       {financingTypes.map((type, index) => (
-        <section key={index} className={`py-24 px-4 ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-900'}`}>
+        <section key={index} className={`py-24 px-4 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
           <div className="max-w-6xl mx-auto">
             <motion.div 
-              className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-lg overflow-hidden shadow-2xl"
+              className="bg-white rounded-lg overflow-hidden shadow-xl"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -117,23 +127,23 @@ export default function ConstructionEquipmentFinancing() {
                       layout="fill"
                       objectFit="cover"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
                       <type.icon className="text-6xl text-white" />
                     </div>
                   </div>
                 </div>
                 <div className="md:w-2/3 p-6">
-                  <h2 className="text-3xl font-bold text-white mb-4">{type.title}</h2>
-                  <p className="text-gray-300 text-lg mb-6">{type.description}</p>
-                  <h3 className="text-xl font-semibold text-blue-300 mb-3">Equipment We Finance:</h3>
-                  <ul className="grid grid-cols-2 gap-2 text-gray-300 mb-6">
+                  <h2 className="text-3xl font-bold text-indigo-dye mb-4">{type.title}</h2>
+                  <p className="text-gray-700 text-lg mb-6">{type.description}</p>
+                  <h3 className="text-xl font-semibold text-light-sea-green mb-3">Equipment We Finance:</h3>
+                  <ul className="grid grid-cols-2 gap-2 text-gray-700 mb-6">
                     {type.equipment.map((item, i) => (
                       <li key={i} className="flex items-center">
-                        <FaTools className="text-blue-400 mr-2" /> {item}
+                        <FaTools className="text-light-sea-green mr-2" /> {item}
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact" className="bg-white text-blue-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center">
+                  <Link href="/contact" className="bg-light-sea-green text-white py-2 px-6 rounded-full text-lg font-semibold hover:bg-indigo-dye transition duration-300 inline-flex items-center">
                     <GiReceiveMoney className="mr-2" />
                     Get Financing
                   </Link>
@@ -145,7 +155,7 @@ export default function ConstructionEquipmentFinancing() {
       ))}
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-24 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             className="text-5xl font-bold mb-6 leading-tight"
@@ -171,7 +181,7 @@ export default function ConstructionEquipmentFinancing() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Started Now</span>
             </Link>

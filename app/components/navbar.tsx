@@ -1,6 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion, Variants } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
@@ -52,7 +53,6 @@ const navItems: NavItem[] = [
   },
   { name: 'Contact', path: '/contact', icon: FaEnvelope },
 ];
-
 const dropdownVariants: Variants = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0 },
@@ -64,6 +64,7 @@ const AppNavBar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+
 
   const toggleDropdown = (name: string) => {
     setActiveDropdown(activeDropdown === name ? null : name);
@@ -83,7 +84,7 @@ const AppNavBar: React.FC = () => {
         <>
           <button
             onClick={() => toggleDropdown(item.name)}
-            className="px-3 py-2 rounded-md text-sm font-medium text-blue-300 hover:text-blue-100 hover:bg-blue-700 flex items-center"
+            className="px-3 py-2 rounded-md text-sm font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white flex items-center"
           >
             <item.icon className="mr-1" />
             {item.name}
@@ -92,7 +93,7 @@ const AppNavBar: React.FC = () => {
           <AnimatePresence>
             {activeDropdown === item.name && (
               <motion.div
-                className="absolute left-0 mt-1 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                className="absolute left-0 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-indigo-dye ring-opacity-5 focus:outline-none z-50"
                 initial="hidden"
                 animate="visible"
                 exit="exit"
@@ -102,7 +103,7 @@ const AppNavBar: React.FC = () => {
                   <Link
                     key={subItem.name}
                     href={subItem.path}
-                    className="block px-4 py-2 text-sm text-blue-300 hover:text-blue-100 hover:bg-gray-700"
+                    className="block px-4 py-2 text-sm text-indigo-dye hover:text-light-sea-green hover:bg-white"
                     onClick={() => setActiveDropdown(null)}
                   >
                     {subItem.name}
@@ -117,8 +118,8 @@ const AppNavBar: React.FC = () => {
           href={item.path}
           className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${
             pathname === item.path
-              ? 'bg-blue-700 text-white'
-              : 'text-blue-300 hover:text-blue-100 hover:bg-blue-700'
+              ? 'bg-light-sea-green text-white'
+              : 'text-indigo-dye hover:text-light-sea-green hover:bg-white'
           }`}
         >
           <item.icon className="mr-1" />
@@ -134,7 +135,7 @@ const AppNavBar: React.FC = () => {
         <>
           <button
             onClick={() => toggleMobileDropdown(item.name)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-blue-100 hover:bg-blue-700 flex items-center w-full"
+            className=" px-3 py-2 rounded-md text-base font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white flex items-center w-full"
           >
             <item.icon className="mr-1" />
             {item.name}
@@ -153,7 +154,7 @@ const AppNavBar: React.FC = () => {
                   <Link
                     key={subItem.name}
                     href={subItem.path}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-blue-100 hover:bg-gray-700"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white"
                     onClick={toggleMobileMenu}
                   >
                     {subItem.name}
@@ -168,8 +169,8 @@ const AppNavBar: React.FC = () => {
           href={item.path}
           className={`block px-3 py-2 rounded-md text-base font-medium ${
             pathname === item.path
-              ? 'bg-blue-700 text-white'
-              : 'text-blue-300 hover:text-blue-100 hover:bg-blue-700'
+              ? 'bg-light-sea-green text-white'
+              : 'text-indigo-dye hover:text-light-sea-green hover:bg-white'
           }`}
           onClick={toggleMobileMenu}
         >
@@ -181,25 +182,22 @@ const AppNavBar: React.FC = () => {
   );
 
   return (
-    <nav className="bg-gray-900">
+    <nav className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-            <div className="relative flex-shrink-0">
-  <Link href="/" className="flex items-center relative">
-    <img
-      src="https://media.licdn.com/dms/image/v2/D560BAQHRaEiuDGxEwQ/company-logo_200_200/company-logo_200_200/0/1719257546115/providence_capital_funding_inc__logo?e=1734566400&v=beta&t=9xH7vRFM931ooRUriiEqzU247y1Z0k2SjkppmubYKgI"
-      alt="Providence Capital Funding Inc."
-      className="h-16 w-16 mt-4 rounded-md object-cover relative z-10"
-    />
-    <div
-      className="absolute inset-0 bg-blue-900 opacity-30 rounded-md mt-4 z-20"
-    ></div>
-  </Link>
-</div>
-
-
+              <div className="relative flex-shrink-0">
+                <Link href="/" className="flex items-center relative">
+                  <Image 
+                    src="/Images/logo.png"
+                    width={60}
+                    height={60}
+                    alt="Logo"
+                    objectFit="cover"
+                  />
+                </Link>
+              </div>
             </Link>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-4">
@@ -208,7 +206,7 @@ const AppNavBar: React.FC = () => {
           <div className="md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-blue-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-indigo-dye hover:text-light-sea-green hover:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-light-sea-green"
               aria-controls="mobile-menu"
               aria-expanded={isMobileMenuOpen}
               onClick={toggleMobileMenu}
@@ -254,7 +252,7 @@ const AppNavBar: React.FC = () => {
             exit={{ height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
               {navItems.map(renderMobileNavItem)}
             </div>
           </motion.div>
@@ -265,4 +263,3 @@ const AppNavBar: React.FC = () => {
 };
 
 export default AppNavBar;
-

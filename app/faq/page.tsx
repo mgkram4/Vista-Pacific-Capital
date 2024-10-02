@@ -65,12 +65,12 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -78,20 +78,24 @@ export default function FAQ() {
             Frequently Asked Questions
           </motion.h1>
           <motion.p
-            className="text-2xl mb-8"
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Find answers to common questions about our equipment financing solutions
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Personalized Answers</span>
+            </Link>
+          </motion.div>
         </div>
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        ></motion.div>
       </section>
 
       {/* FAQ Section */}
@@ -100,7 +104,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800 rounded-lg overflow-hidden"
+              className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -110,12 +114,12 @@ export default function FAQ() {
                 className="flex justify-between items-center w-full p-6 text-left"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className="text-xl font-semibold text-white">{faq.question}</span>
-                {openIndex === index ? <FaChevronUp className="text-blue-400" /> : <FaChevronDown className="text-blue-400" />}
+                <span className="text-xl font-semibold text-indigo-dye">{faq.question}</span>
+                {openIndex === index ? <FaChevronUp className="text-light-sea-green" /> : <FaChevronDown className="text-light-sea-green" />}
               </button>
               {openIndex === index && (
                 <div className="px-6 pb-6">
-                  <p className="text-gray-300">{faq.answer}</p>
+                  <p className="text-gray-700">{faq.answer}</p>
                 </div>
               )}
             </motion.div>
@@ -124,7 +128,7 @@ export default function FAQ() {
       </section>
       
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-24 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             className="text-4xl font-bold mb-6"
@@ -150,7 +154,7 @@ export default function FAQ() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Contact Us Today</span>
             </Link>

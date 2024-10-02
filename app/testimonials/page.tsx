@@ -46,12 +46,12 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials(): JSX.Element {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -59,20 +59,24 @@ export default function Testimonials(): JSX.Element {
             Client Success Stories
           </motion.h1>
           <motion.p
-            className="text-2xl mb-8"
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Discover how our financing solutions drive business growth
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Start Your Success Story</span>
+            </Link>
+          </motion.div>
         </div>
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        ></motion.div>
       </section>
 
       {/* Testimonials Section */}
@@ -81,7 +85,7 @@ export default function Testimonials(): JSX.Element {
           {testimonials.map((testimonial, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -91,38 +95,38 @@ export default function Testimonials(): JSX.Element {
                 <div className="flex items-center mb-4">
                   <div className="relative w-16 h-16 mr-4">
                     {testimonial.industry === "Manufacturing" ? (
-                      <FaIndustry className="w-16 h-16 text-blue-400" />
+                      <FaIndustry className="w-16 h-16 text-light-sea-green" />
                     ) : (
-                      <FaHardHat className="w-16 h-16 text-yellow-400" />
+                      <FaHardHat className="w-16 h-16 text-light-sea-green" />
                     )}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">{testimonial.name}</h3>
-                    <p className="text-blue-300">{testimonial.company}</p>
+                    <h3 className="text-xl font-semibold text-indigo-dye">{testimonial.name}</h3>
+                    <p className="text-light-sea-green">{testimonial.company}</p>
                   </div>
                 </div>
-                <FaQuoteLeft className="text-3xl text-blue-400 mb-4" />
-                <div className="text-gray-300 mb-4">
-                  <h4 className="font-semibold text-lg mb-2">Challenge:</h4>
+                <FaQuoteLeft className="text-3xl text-light-sea-green mb-4" />
+                <div className="text-gray-700 mb-4">
+                  <h4 className="font-semibold text-lg mb-2 text-indigo-dye">Challenge:</h4>
                   <p>{testimonial.challenge}</p>
-                  <h4 className="font-semibold text-lg mt-4 mb-2">Solution:</h4>
+                  <h4 className="font-semibold text-lg mt-4 mb-2 text-indigo-dye">Solution:</h4>
                   <p>{testimonial.solution}</p>
-                  <h4 className="font-semibold text-lg mt-4 mb-2">Results:</h4>
+                  <h4 className="font-semibold text-lg mt-4 mb-2 text-indigo-dye">Results:</h4>
                   <p>{testimonial.results}</p>
                 </div>
                 <div className="mt-6">
-                  <h4 className="font-semibold text-lg text-white mb-2">Performance Improvement:</h4>
+                  <h4 className="font-semibold text-lg text-indigo-dye mb-2">Performance Improvement:</h4>
                   <ResponsiveContainer width="100%" height={200}>
                     <LineChart data={chartData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
                       <Tooltip />
-                      <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+                      <Line type="monotone" dataKey="value" stroke="#11B5B2" strokeWidth={2} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
-                <span className="text-sm text-blue-400 mt-4 inline-block">{testimonial.industry}</span>
+                <span className="text-sm text-light-sea-green mt-4 inline-block">{testimonial.industry}</span>
               </div>
             </motion.div>
           ))}
@@ -130,7 +134,7 @@ export default function Testimonials(): JSX.Element {
       </section>
       
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-24 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             className="text-4xl font-bold mb-6"
@@ -156,7 +160,7 @@ export default function Testimonials(): JSX.Element {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Your Financing Solution</span>
             </Link>

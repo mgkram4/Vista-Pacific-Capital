@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-900 text-white">
+      <body className=" text-white">
         <div className="min-h-screen flex flex-col">
           <AppNavBar />
           <main className="flex-grow container mx-auto px-4 py-8 ">

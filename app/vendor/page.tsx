@@ -64,10 +64,10 @@ export default function VendorPrograms() {
   ];
 
   return (
-    <div className="bg-gray-900 font-sans">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
-        <div className="absolute inset-0 z-0 opacity-30">
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
           <Image
             src="https://images.unsplash.com/photo-1556155092-490a1ba16284?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsZXN8ZW58MHx8MHx8fDA%3D"
             alt="Vendor programs background"
@@ -75,9 +75,9 @@ export default function VendorPrograms() {
             objectFit="cover"
           />
         </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -85,26 +85,30 @@ export default function VendorPrograms() {
             Partner Solutions
           </motion.h1>
           <motion.p
-            className="text-2xl mb-8 leading-relaxed"
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Empower your sales with our flexible financing solutions
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Become a Partner</span>
+            </Link>
+          </motion.div>
         </div>
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        ></motion.div>
       </section>
 
       {/* Benefits Section */}
       <section className="max-w-6xl mx-auto py-24 px-4">
         <motion.h2
-          className="text-4xl font-bold mb-16 text-center text-blue-300"
+          className="text-4xl font-bold mb-16 text-center text-indigo-dye"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -116,10 +120,10 @@ export default function VendorPrograms() {
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl hover:scale-105"
+              className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <div className="relative h-56">
@@ -129,13 +133,13 @@ export default function VendorPrograms() {
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
                   <benefit.icon className="text-6xl text-white" />
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-3">{benefit.title}</h3>
-                <p className="text-gray-200 text-lg leading-relaxed">{benefit.description}</p>
+                <h3 className="text-2xl font-bold text-indigo-dye mb-3">{benefit.title}</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">{benefit.description}</p>
               </div>
             </motion.div>
           ))}
@@ -143,18 +147,10 @@ export default function VendorPrograms() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-24 px-4 relative">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="How it works background"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-4xl font-bold mb-16 text-center text-blue-300"
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -166,13 +162,13 @@ export default function VendorPrograms() {
             {['Sign up for our Vendor Program', 'Submit customer applications through our online portal', 'Receive quick credit decisions', 'Deliver the equipment to your customer', 'Get paid promptly after equipment delivery'].map((step, index) => (
               <motion.div
                 key={index}
-                className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg text-center transition-all duration-300 hover:shadow-3xl hover:scale-105"
+                className="bg-white p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:shadow-2xl hover:scale-105"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <p className="text-white font-bold text-xl">{`${index + 1}. ${step}`}</p>
+                <p className="text-indigo-dye font-bold text-xl">{`${index + 1}. ${step}`}</p>
               </motion.div>
             ))}
           </div>
@@ -180,10 +176,10 @@ export default function VendorPrograms() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-blue-900">
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-4xl font-bold mb-16 text-center text-blue-300"
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -195,14 +191,14 @@ export default function VendorPrograms() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white bg-opacity-10 p-8 rounded-2xl shadow-2xl backdrop-filter backdrop-blur-lg"
+                className="bg-gray-50 p-8 rounded-2xl shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-semibold mb-4 text-blue-300">{faq.question}</h3>
-                <p className="text-gray-200 text-lg leading-relaxed">{faq.answer}</p>
+                <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">{faq.question}</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">{faq.answer}</p>
               </motion.div>
             ))}
           </div>
@@ -210,7 +206,7 @@ export default function VendorPrograms() {
       </section>
       
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-24 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             className="text-5xl font-bold mb-6 leading-tight"
@@ -236,7 +232,7 @@ export default function VendorPrograms() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Sign Up Now</span>
             </Link>

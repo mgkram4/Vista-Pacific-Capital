@@ -29,12 +29,20 @@ export default function CaseStudies() {
   ];
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 text-white py-32 px-4 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image 
+            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+            alt="Case studies background"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -42,7 +50,7 @@ export default function CaseStudies() {
             Case Studies
           </motion.h1>
           <motion.p
-            className="text-2xl mb-8"
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -50,12 +58,6 @@ export default function CaseStudies() {
             Real stories of businesses thriving with our equipment financing solutions
           </motion.p>
         </div>
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        ></motion.div>
       </section>
 
       {/* Case Studies Section */}
@@ -64,7 +66,7 @@ export default function CaseStudies() {
           {caseStudies.map((study, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -80,22 +82,22 @@ export default function CaseStudies() {
               </div>
               <div className="p-8">
                 <div className="flex items-center mb-4">
-                  <study.icon className="text-3xl text-blue-400 mr-2" />
-                  <span className="text-lg text-blue-300">{study.industry}</span>
+                  <study.icon className="text-4xl text-indigo-dye mr-2" />
+                  <span className="text-xl text-gray-700 font-semibold">{study.industry}</span>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">{study.title}</h3>
-                <div className="space-y-4">
+                <h3 className="text-3xl font-bold text-indigo-dye mb-4">{study.title}</h3>
+                <div className="space-y-6">
                   <div>
-                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Challenge</h4>
-                    <p className="text-gray-400">{study.description}</p>
+                    <h4 className="text-2xl font-semibold text-gray-700 mb-2">Challenge</h4>
+                    <p className="text-gray-600 text-lg leading-relaxed">{study.description}</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Solution</h4>
-                    <p className="text-gray-400">{study.solution}</p>
+                    <h4 className="text-2xl font-semibold text-gray-700 mb-2">Solution</h4>
+                    <p className="text-gray-600 text-lg leading-relaxed">{study.solution}</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-blue-300 mb-2">Results</h4>
-                    <p className="text-gray-400">{study.results}</p>
+                    <h4 className="text-2xl font-semibold text-gray-700 mb-2">Results</h4>
+                    <p className="text-gray-600 text-lg leading-relaxed">{study.results}</p>
                   </div>
                 </div>
               </div>
@@ -105,10 +107,10 @@ export default function CaseStudies() {
       </section>
       
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-24 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
-            className="text-4xl font-bold mb-6"
+            className="text-5xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -117,7 +119,7 @@ export default function CaseStudies() {
             Ready to Write Your Success Story?
           </motion.h2>
           <motion.p
-            className="text-xl mb-10"
+            className="text-2xl mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -131,7 +133,7 @@ export default function CaseStudies() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-4 px-10 rounded-full text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Start Your Success Story</span>
             </Link>

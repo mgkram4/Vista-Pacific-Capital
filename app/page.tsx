@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { FaArrowRight, FaBeer, FaCalendarAlt, FaChartLine, FaClock, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
 import { GiCheckMark, GiHandSaw, GiMoneyStack, GiReceiveMoney, GiSandsOfTime } from 'react-icons/gi';
 
-
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -97,7 +96,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center bg-gray-900 text-white">
+    <div className="flex flex-col items-center bg-white text-indigo-dye">
       {/* Hero Section */}
       <section className="w-full h-screen relative overflow-hidden rounded-sm" id="home">
         <AnimatePresence initial={false}>
@@ -116,7 +115,7 @@ export default function Home() {
               objectFit="cover"
               quality={100}
             />
-            <div className="absolute inset-0 bg-blue-900 bg-opacity-50" />
+            <div className="absolute inset-0 bg-prussian-blue bg-opacity-30" />
           </motion.div>
         </AnimatePresence>
         <div className="relative z-10 h-full flex items-center justify-center text-white">
@@ -142,17 +141,16 @@ export default function Home() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link href="/contact" className="bg-blue-600 text-white py-3 px-8 sm:py-2 sm:px-6 text-sm md:py-4 md:px-10 md:text-lg lg:text-xl font-semibold hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md">
-    Get Started with Vista Pacific Capital
-</Link>
-
+              <Link href="/contact" className="bg-light-sea-green text-white py-3 px-8 sm:py-2 sm:px-6 text-sm md:py-4 md:px-10 md:text-lg lg:text-xl font-semibold hover:opacity-80 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md">
+                Get Started with Vista Pacific Capital
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Key Benefits Section */}
-      <section className="w-full py-20 px-4 bg-gray-800 relative mt-20 rounded-sm" id="about">
+      <section className="w-full py-20 px-4 bg-white relative mt-20 rounded-sm shadow" id="about">
         <Image
           src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
           alt="Vista Pacific Capital benefits background"
@@ -161,10 +159,10 @@ export default function Home() {
           quality={100}
           className='rounded-sm'
         />
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
+        <div className="absolute inset-0 bg-prussian-blue bg-opacity-30" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
+            className="text-4xl md:text-5xl font-bold mb-16 text-center text-white"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -176,92 +174,92 @@ export default function Home() {
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 bg-opacity-80 p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center transform hover:scale-105"
+                className="bg-white bg-opacity-80 p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center transform hover:scale-105"
                 whileHover={{ y: -10 }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <benefit.icon className="text-5xl md:text-6xl mb-6 text-blue-400 mx-auto" aria-hidden="true" />
-                <h3 className="text-xl md:text-2xl font-semibold mb-3 text-blue-200">{benefit.title}</h3>
-                <p className="text-sm md:text-base text-gray-300">{benefit.description}</p>
+                <benefit.icon className="text-5xl md:text-6xl mb-6 text-light-sea-green mx-auto" aria-hidden="true" />
+                <h3 className="text-xl md:text-2xl font-semibold mb-3 text-indigo-dye">{benefit.title}</h3>
+                <p className="text-sm md:text-base text-indigo-dye">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-          {/* Services Section */}
-          {/* Services Section */}
-<section className="max-w-6xl mx-auto py-24 px-4">
-  <motion.h2 
-    className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-  >
-    Our Financing Solutions
-  </motion.h2>
-  <motion.p 
-    className="text-xl md:text-2xl text-gray-400 text-center mb-12"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    viewport={{ once: true }}
-  >
-    Vista Pacific Capital offers comprehensive financing solutions for a wide range of industries, including:
-  </motion.p>
+      {/* Services Section */}
+      <section className="max-w-6xl mx-auto py-24 px-4">
+        <motion.h2 
+          className="text-4xl md:text-5xl font-bold mb-16 text-center text-indigo-dye"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Our Financing Solutions
+        </motion.h2>
+        <motion.p 
+          className="text-xl md:text-2xl text-indigo-dye text-center mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          Vista Pacific Capital offers comprehensive financing solutions for a wide range of industries, including:
+        </motion.p>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {services.map((service, index) => (
-      <motion.div 
-        key={index} 
-        className="relative overflow-hidden rounded-xl shadow-lg"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.05 }}
-      >
-        <div className="absolute inset-0">
-          <Image 
-            src={service.image}
-            alt={service.name}
-            layout="fill"
-            objectFit="cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 opacity-40" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div 
+              key={index} 
+              className="relative overflow-hidden rounded-xl shadow-lg"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="absolute inset-0">
+                <Image 
+                  src={service.image}
+                  alt={service.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-light-sea-green to-indigo-dye opacity-0" />
+              </div>
+              <div className="relative z-10 p-6 h-full flex flex-col justify-between backdrop-filter bg-white bg-opacity-10">
+                <div>
+                  <div className="flex items-center mb-4">
+                    {service.name === "Medical Equipment" && <FaMedkit className="text-3xl text-light-sea-green mr-3" />}
+                    {service.name === "Manufacturing Equipment" && <FaIndustry className="text-3xl text-light-sea-green mr-3" />}
+                    {service.name === "Brewery Equipment" && <FaBeer className="text-3xl text-light-sea-green mr-3" />}
+                    {service.name === "Construction Equipment" && <FaHardHat className="text-3xl text-light-sea-green mr-3" />}
+                    {service.name === "Vehicle Financing" && <FaTruck className="text-3xl text-light-sea-green mr-3" />}
+                    {service.name === "Warehouse Racking" && <FaWarehouse className="text-3xl text-light-sea-green mr-3" />
+                    }
+                    <h3 className="text-2xl font-semibold text-white">{service.name}</h3>
+                  </div>
+                  <p className="text-gray-200 mb-6">{service.description}</p>
+                </div>
+                <Link 
+                  href={service.href}
+                  className="inline-flex items-center text-light-sea-green hover:text-white transition duration-300"
+                >
+                  Learn More
+                  <FaArrowRight className="ml-2" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
         </div>
-        <div className="relative z-10 p-6 h-full flex flex-col justify-between backdrop-filter  bg-blue-900 bg-opacity-10">
-          <div>
-            <div className="flex items-center mb-4">
-              {service.name === "Medical Equipment" && <FaMedkit className="text-3xl text-blue-300 mr-3" />}
-              {service.name === "Manufacturing Equipment" && <FaIndustry className="text-3xl text-blue-300 mr-3" />}
-              {service.name === "Brewery Equipment" && <FaBeer className="text-3xl text-blue-300 mr-3" />}
-              {service.name === "Construction Equipment" && <FaHardHat className="text-3xl text-blue-300 mr-3" />}
-              {service.name === "Vehicle Financing" && <FaTruck className="text-3xl text-blue-300 mr-3" />}
-              {service.name === "Warehouse Racking" && <FaWarehouse className="text-3xl text-blue-300 mr-3" />}
-              <h3 className="text-2xl font-semibold text-white">{service.name}</h3>
-            </div>
-            <p className="text-gray-200 mb-6">{service.description}</p>
-          </div>
-          <Link 
-            href={service.href}
-            className="inline-flex items-center text-blue-300 hover:text-white transition duration-300"
-          >
-            Learn More
-            <FaArrowRight className="ml-2" />
-          </Link>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</section>
+      </section>
 
       {/* Features Tabs */}
-      <section className="w-full py-20 px-4 bg-gray-800 relative mb-10 rounded-sm">
+      <section className="w-full py-20 px-4 relative mb-10 rounded-sm shadow">
         <Image
           src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
           alt="Vista Pacific Capital features background"
@@ -269,10 +267,10 @@ export default function Home() {
           objectFit="cover"
           quality={100}
         />
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-80" />
+        <div className="absolute inset-0 bg-white bg-opacity-20" />
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-300"
+            className="text-4xl md:text-5xl font-bold mb-16 text-center text-white"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 3.0 }}
@@ -284,7 +282,7 @@ export default function Home() {
             {['Lightning Speed', 'Ultimate Flexibility', 'Expert Guidance'].map((tab, index) => (
               <motion.button
                 key={index}
-                className={`px-6 py-3 m-2 rounded-full text-base md:text-lg ${activeTab === index ? 'bg-blue-600 text-white' : 'bg-gray-700 text-blue-300'}`}
+                className={`px-6 py-3 m-2 rounded-full text-base md:text-lg ${activeTab === index ? 'bg-light-sea-green text-white' : 'bg-gray-100 text-indigo-dye hover:text-light-sea-green hover:bg-gray-100'}`}
                 onClick={() => setActiveTab(index)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -294,7 +292,7 @@ export default function Home() {
             ))}
           </div>
           <motion.div
-            className="bg-gray-700 bg-opacity-80 p-6 md:p-10 rounded-lg shadow-lg "
+            className="bg-white bg-opacity-80 p-6 md:p-10 rounded-lg shadow-lg"
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -302,28 +300,28 @@ export default function Home() {
           >
             {activeTab === 0 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaClock className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
+                <FaClock className="text-5xl md:text-7xl text-light-sea-green mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">24-48 Hour Approvals</h3>
-                  <p className="text-base md:text-xl text-gray-300">Seize opportunities at breakneck speed with our rapid approval process.</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-indigo-dye">24-48 Hour Approvals</h3>
+                  <p className="text-base md:text-xl text-indigo-dye">Seize opportunities at breakneck speed with our rapid approval process.</p>
                 </div>
               </div>
             )}
             {activeTab === 1 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaCalendarAlt className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
+                <FaCalendarAlt className="text-5xl md:text-7xl text-light-sea-green mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">Flexible Terms 12-72 Months</h3>
-                  <p className="text-base md:text-xl text-gray-300">Customize your financing to dominate your market on your terms.</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-indigo-dye">Flexible Terms 12-72 Months</h3>
+                  <p className="text-base md:text-xl text-indigo-dye">Customize your financing to dominate your market on your terms.</p>
                 </div>
               </div>
             )}
             {activeTab === 2 && (
               <div className="flex flex-col md:flex-row items-center">
-                <FaChartLine className="text-5xl md:text-7xl text-blue-400 mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
+                <FaChartLine className="text-5xl md:text-7xl text-light-sea-green mb-4 md:mb-0 md:mr-8" aria-hidden="true" />
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-blue-200">A-D Credit Financing</h3>
-                  <p className="text-base md:text-xl text-gray-300">Our financial wizards craft optimal solutions across the credit spectrum.</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-indigo-dye">A-D Credit Financing</h3>
+                  <p className="text-base md:text-xl text-indigo-dye">Our financial wizards craft optimal solutions across the credit spectrum.</p>
                 </div>
               </div>
             )}
@@ -331,21 +329,16 @@ export default function Home() {
         </div>
       </section>
 
-      
-
-    
-
       {/* CTA Section */}
-      <section className="w-full bg-blue-900 text-white py-20 md:py-24 px-4 relative rounded-sm" id="contact">
+      <section className="w-full bg-indigo-dye text-white py-20 md:py-24 px-4 relative rounded-sm" id="contact">
         <Image
           src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Vista Pacific Capital CTA background"
-          layout="fill"
+          alt="Vista Pacific Capital CTA background"layout="fill"
           objectFit="cover"
           quality={100}
           className='rounded-sm'
         />
-        <div className="absolute inset-0 bg-blue-900 bg-opacity-80" />
+        <div className="absolute inset-0 bg-teal bg-opacity-80" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-6"
@@ -371,7 +364,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-900 py-3 px-8 md:py-4 md:px-10 rounded-full text-lg md:text-xl font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-indigo-dye py-3 px-8 md:py-4 md:px-10 rounded-full text-lg md:text-xl font-semibold hover:bg-light-sea-green hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-2xl md:text-3xl" aria-hidden="true" /> Start Your Financing Journey
             </Link>
           </motion.div>
