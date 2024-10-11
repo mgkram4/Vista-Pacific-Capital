@@ -100,10 +100,11 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            At Vista Pacific Capital, based in Orange County, California, we provide capital lease options to
-            businesses of all sizes, from startups to Fortune 500 companies. Our vision is to empower
-            businesses by offering innovative, flexible, and accessible equipment financing solutions that
-            drive growth and success across a wide range of industries.
+            At Vista Pacific Capital, based in Orange County, California, we provide capital lease options to businesses of all sizes, from startups to Fortune 500 companies. Our vision is to empower businesses by offering innovative, flexible, and accessible equipment financing solutions that drive growth and success. We specialize in industries such as construction, manufacturing, and technology, helping organizations acquire essential equipment through structured payments that lead to ownership.
+
+Our leasing solutions allow businesses to spread the cost of equipment over time, improving cash flow management and reducing the need for large upfront investments. Additionally, we offer vendor programs that assist equipment suppliers in providing financing options to their customers, supporting a wide range of business needs across various sectors
+
+ 
           </motion.p>
         </div>
       </section>

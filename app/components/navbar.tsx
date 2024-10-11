@@ -23,98 +23,105 @@ interface NavItem {
 const industriesData = [
   {
     name: 'Medical Equipment Financing',
+    path: '/medical',
     content: [
-      { title: 'Why Equipment Leasing is Essential for Medical Equipment Financing?', link: '/medical-leasing-importance' },
-      { title: 'Medical Equipment We Finance', link: '/medical-equipment-list' },
-      { title: 'Apply now', link: '/apply-medical' },
+      { title: 'Why Equipment Leasing is Essential for Medical Equipment Financing?', link: '/medical' },
+      { title: 'Medical Equipment We Finance', link: '/medical' },
+      { title: 'Apply now', link: '/contact' },
+
     ],
   },
   {
     name: 'Manufacturing Equipment Financing',
+    path: '/manufacturing',
     content: [
-      { title: 'Why Vista Pacific Capital is your Best Choice for Leasing Manufacturing Equipment', link: '/manufacturing-leasing-benefits' },
-      { title: 'Manufacturing Equipment We Finance', link: '/manufacturing-equipment-list' },
-      { title: 'Apply Now', link: '/apply-manufacturing' },
+      { title: 'Why Vista Pacific Capital is your Best Choice for Leasing Manufacturing Equipment', link: '/manufacturing' },
+      { title: 'Manufacturing Equipment We Finance', link: '/manufacturing' },
+      { title: 'Apply Now', link: '/contact' },
     ],
   },
   {
     name: 'Construction Equipment Financing',
+    path: '/construction',
     content: [
       {
         title: 'Forestry, Landscaping, Excavation and Agriculture Financing',
-        link: '/forestry-landscaping-financing',
+        link: '/construction',
         subItems: [
-          { title: 'Equipment We Finance', link: '/forestry-equipment-list' },
+          { title: 'Equipment We Finance', link: '/construction' },
         ],
       },
       {
         title: 'Concrete and Paving Equipment Financing',
-        link: '/concrete-paving-financing',
+        link: '/construction',
         subItems: [
-          { title: 'Equipment We Finance', link: '/concrete-paving-equipment-list' },
+          { title: 'Equipment We Finance', link: '/construction' },
         ],
       },
       {
         title: 'Building Construction Equipment Financing',
-        link: '/building-construction-financing',
+        link: '/construction',
         subItems: [
-          { title: 'Equipment We Finance', link: '/building-equipment-list' },
-          { title: 'HVAC', link: '/hvac-financing' },
-          { title: 'Plumbing', link: '/plumbing-financing' },
-          { title: 'Site Prep', link: '/site-prep-financing' },
-          { title: 'Electrical', link: '/electrical-financing' },
+          { title: 'Equipment We Finance', link: '/construction' },
+          { title: 'HVAC', link: '/construction' },
+          { title: 'Plumbing', link: '/construction' },
+          { title: 'Site Prep', link: '/construction' },
+          { title: 'Electrical', link: '/construction' },
         ],
       },
       {
         title: 'Environment Construction Equipment Financing',
-        link: '/environment-construction-financing',
+        link: '/construction',
         subItems: [
-          { title: 'Waste Management Equipment Financing', link: '/waste-management-financing' },
-          { title: 'Landfill Equipment Financing', link: '/landfill-equipment-financing' },
+          { title: 'Waste Management Equipment Financing', link: '/construction' },
+          { title: 'Landfill Equipment Financing', link: '/construction' },
         ],
       },
       {
         title: 'Highway Construction Equipment Financing',
-        link: '/highway-construction-financing',
+        link: '/construction',
         subItems: [
-          { title: 'Traffic Control Equipment', link: '/traffic-control-equipment' },
-          { title: 'Signage, etc.', link: '/construction-signage' },
+          { title: 'Traffic Control Equipment', link: '/construction' },
+          { title: 'Signage, etc.', link: '/construction' },
         ],
       },
+      { title: 'Apply Now', link: '/contact' },
     ],
   },
   {
     name: 'Material Handling Equipment and Racking Financing',
+    path: '/warehouse',
     content: [
-      { title: 'Why Equipment Leasing is a Game Changer for Warehouse Racking Purchases', link: '/warehouse-racking-leasing-benefits' },
-      { title: 'Q&A with Founder about Financing for Racking', link: '/racking-financing-qa' },
-      { title: 'Apply Now', link: '/apply-material-handling' },
-      { title: 'Forklift Financing', link: '/forklift-financing' },
+      { title: 'Why Equipment Leasing is a Game Changer for Warehouse Racking Purchases', link: '/warehouse' },
+      { title: 'Q&A with Founder about Financing for Racking', link: '/warehouse' },
+
+      { title: 'Forklift Financing', link: '/warehouse' },
+      { title: 'Apply Now', link: '/warehouse' },
     ],
   },
   {
     name: 'Restaurants',
+    path: '/restaurant',
     content: [
-      { title: 'Restaurant Equipment Financing', link: '/restaurant-equipment-financing' },
+      { title: 'Restaurant Equipment Financing', link: '/restaurant' },
+      { title: 'Contact Now', link: '/contact' },
     ],
   },
   {
     name: 'Brewery and Distilling Equipment',
+    path: '/brewery',
     content: [
-      { title: 'Brewery Equipment Financing', link: '/brewery-equipment-financing' },
-      { title: 'Distilling Equipment Financing', link: '/distilling-equipment-financing' },
+      { title: 'Brewery Equipment Financing', link: '/brewery' },
+      { title: 'Distilling Equipment Financing', link: '/brewery' },
+      { title: 'Contact Now', link: '/contact' },
     ],
   },
   {
     name: 'Title Vehicles',
+    path: '/vehicle',
     content: [
-      { title: 'Commercial Vehicle Financing', link: '/commercial-vehicle-financing' },
-    ],
-  },
-  {
-    name: 'Traffic Equipment',
-    content: [
-      { title: 'Traffic Control Equipment Financing', link: '/traffic-equipment-financing' },
+      { title: 'Commercial Vehicle Financing', link: '/vehicle' },
+      { title: 'Contact Now', link: '/contact' },
     ],
   },
 ];
@@ -154,8 +161,9 @@ const IndustriesServed: React.FC = () => {
         <div className="flex">
           <div className="w-64 py-2">
             {industriesData.map((industry) => (
-              <button
+              <Link
                 key={industry.name}
+                href={industry.path}
                 onMouseEnter={() => setActiveIndustry(industry.name)}
                 className={`block w-full text-left px-4 py-2 text-sm ${
                   activeIndustry === industry.name
@@ -164,7 +172,7 @@ const IndustriesServed: React.FC = () => {
                 }`}
               >
                 {industry.name}
-              </button>
+              </Link>
             ))}
           </div>
           {activeIndustry && (
@@ -172,13 +180,13 @@ const IndustriesServed: React.FC = () => {
               {industriesData
                 .find((industry) => industry.name === activeIndustry)
                 ?.content.map((item) => (
-                  <a
+                  <Link
                     key={item.title}
                     href={item.link}
                     className="block px-4 py-2 text-sm text-indigo-dye hover:bg-gray-100"
                   >
                     {item.title}
-                  </a>
+                  </Link>
                 ))}
             </div>
           )}
@@ -295,7 +303,7 @@ const AppNavBar: React.FC = () => {
     <nav className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 lg:block hidden">
             <Link href="/" className="flex items-center">
               <div className="relative flex-shrink-0">
                 <Image 
@@ -308,11 +316,25 @@ const AppNavBar: React.FC = () => {
               </div>
             </Link>
           </div>
-          <div className="hidden md:flex md:items-center md:space-x-4">
+          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+            {renderNavItem(navItems[0])} {/* Home */}
             <IndustriesServed />
-            {navItems.map(renderNavItem)}
+            {navItems.slice(1).map(renderNavItem)}
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden flex items-center justify-center flex-grow">
+            <Link href="/" className="flex items-center">
+              <div className="relative flex-shrink-0">
+                <Image 
+                  src="/Images/logo.png"
+                  width={60}
+                  height={60}
+                  alt="Logo"
+                  objectFit="cover"
+                />
+              </div>
+            </Link>
+          </div>
+          <div className="lg:hidden">
             <button
               type="button"
               className="inline-flex items-center justify-center p-2 rounded-md text-indigo-dye hover:text-light-sea-green hover:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-light-sea-green"
@@ -354,7 +376,7 @@ const AppNavBar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden"
+            className="lg:hidden"
             id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -362,8 +384,11 @@ const AppNavBar: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
-              <IndustriesServed />
-              {navItems.map(renderMobileNavItem)}
+              {renderMobileNavItem(navItems[0])} {/* Home */}
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <IndustriesServed />
+              </div>
+              {navItems.slice(1).map(renderMobileNavItem)}
             </div>
           </motion.div>
         )}
