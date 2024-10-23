@@ -7,111 +7,149 @@ import { GiReceiveMoney } from 'react-icons/gi';
 
 export default function Contact() {
   return (
-    <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
+    <div className="bg-gradient-to-br from-[#113E59]/10 to-[#082F4A]/10 min-h-screen font-sans">
+      {/* Hero Section with Contract Signing Image */}
+      <section className="w-full relative overflow-hidden">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 h-[40vh] md:h-[30vh]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#082F4A]/80 to-[#113E59]/50 z-10" />
           <Image 
-            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
-            alt="Contact us background"
-            layout="fill"
-            objectFit="cover"
-            
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80"
+            alt="Contract signing"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Contact Us
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            We are here to answer your questions and help your business grow
-          </motion.p>
+
+        {/* Hero Content */}
+        <div className="relative z-20 h-[40vh] md:h-[40vh] flex items-center">
+          <div className="max-w-6xl mx-auto px-4 w-full">
+            <motion.div
+              className="max-w-3xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Let's Get Started
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90">
+                Ready to secure financing for your equipment? Our team is here to help you every step of the way.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-24 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-8 text-indigo-dye">Get in Touch</h2>
-            <p className="mb-8 text-gray-600 text-lg leading-relaxed">We are here to answer any questions you may have about our equipment financing solutions. Reach out to us using the information below:</p>
-            
-            <div className="bg-gray-50 p-8 rounded-2xl shadow-xl mb-8">
-              <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Vista Pacific Capital</h3>
-              <div className="flex items-center mb-4">
-                <FaPhone className="text-light-sea-green mr-4 text-2xl" />
-                <p className="text-gray-700">(714) 985-6207</p>
-              </div>
-              <div className="flex items-center">
-                <FaEnvelope className="text-light-sea-green mr-4 text-2xl" />
-                <p className="text-gray-700">info@vistapacificcapital.com</p>
-              </div>
-            </div>
-
-            {/* Additional Information */}
-            <motion.div 
-              className="bg-indigo-dye p-8 rounded-2xl shadow-xl text-white"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+      <div className="max-w-7xl mx-auto px-4 -mt-24 relative z-30 pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {/* Contact Form - Sticky on desktop, normal on mobile */}
+          <div className="lg:order-2 lg:sticky lg:top-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
             >
-              <h3 className="text-2xl font-semibold mb-4">Why Choose Us?</h3>
-              <ul className="list-disc list-inside space-y-2">
-                <li>Fast approvals within 24-48 hours</li>
-                <li>Flexible terms from 12 to 72 months</li>
-                <li>High approval rate of 94.6%</li>
-                <li>Financing for both new and used equipment</li>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#113E59]">Send Us a Message</h2>
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
+                    placeholder="(123) 456-7890"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
+                    placeholder="How can we help you?"
+                  />
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
+                >
+                  <GiReceiveMoney className="text-xl" />
+                  <span>Get Equipment Financing</span>
+                </motion.button>
+              </form>
+            </motion.div>
+          </div>
+
+          {/* Contact Information */}
+          <div className="lg:order-1 space-y-6 md:space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
+            >
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#113E59]">Get in Touch</h2>
+              <div className="space-y-4">
+                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg hover:bg-[#11B5B2]/20 transition-colors">
+                  <FaPhone className="text-[#1E5470] text-xl" />
+                  <p className="ml-4 text-gray-700 font-medium">(714) 985-6207</p>
+                </div>
+                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg hover:bg-[#11B5B2]/20 transition-colors">
+                  <FaEnvelope className="text-[#1E5470] text-xl" />
+                  <p className="ml-4 text-gray-700 font-medium">info@vistapacificcapital.com</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
+            >
+              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <ul className="space-y-4">
+                {[
+                  'Fast approvals within 24-48 hours',
+                  'Flexible terms from 12 to 72 months',
+                  'High approval rate of 94.6%',
+                  'Financing for both new and used equipment'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
               </ul>
             </motion.div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-8 text-indigo-dye">Send Us a Message</h2>
-            <form className="bg-gray-50 p-8 rounded-2xl shadow-xl">
-              <div className="mb-6">
-                <label htmlFor="name" className="block mb-2 font-semibold text-gray-700">Name</label>
-                <input type="text" id="name" name="name" className="w-full p-3 bg-white border border-gray-300 rounded focus:border-indigo-dye focus:ring focus:ring-indigo-dye focus:ring-opacity-50 text-gray-900" required />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="email" className="block mb-2 font-semibold text-gray-700">Email</label>
-                <input type="email" id="email" name="email" className="w-full p-3 bg-white border border-gray-300 rounded focus:border-indigo-dye focus:ring focus:ring-indigo-dye focus:ring-opacity-50 text-gray-900" required />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="phone" className="block mb-2 font-semibold text-gray-700">Phone</label>
-                <input type="tel" id="phone" name="phone" className="w-full p-3 bg-white border border-gray-300 rounded focus:border-indigo-dye focus:ring focus:ring-indigo-dye focus:ring-opacity-50 text-gray-900" />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="message" className="block mb-2 font-semibold text-gray-700">Message</label>
-                <textarea id="message" name="message" rows={4} className="w-full p-3 bg-white border border-gray-300 rounded focus:border-indigo-dye focus:ring focus:ring-indigo-dye focus:ring-opacity-50 text-gray-900" required></textarea>
-              </div>
-              <button type="submit" className="bg-light-sea-green text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-light-sea-green transition duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105">
-                <GiReceiveMoney className="mr-2 text-2xl" /> Send Message
-              </button>
-            </form>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

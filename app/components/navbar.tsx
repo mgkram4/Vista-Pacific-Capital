@@ -1,399 +1,364 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
-import { IconType } from 'react-icons';
-import { FaBook, FaBookmark, FaBriefcase, FaChevronDown, FaChevronRight, FaCog, FaEnvelope, FaHome, FaInfoCircle } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
-interface SubItem {
+// Type definitions
+interface StructuredDataWebPage {
+  "@type": "WebPage";
   name: string;
-  path: string;
+  url: string;
 }
 
-interface NavItem {
+interface StructuredData {
+  "@context": "https://schema.org";
+  "@type": "SiteNavigationElement";
   name: string;
-  path: string;
-  icon: IconType;
-  subItems?: SubItem[];
+  description: string;
+  hasPart: StructuredDataWebPage[];
 }
 
-const industriesData = [
-  {
-    name: 'Medical Equipment Financing',
-    path: '/medical',
-    content: [
-      { title: 'Why Equipment Leasing is Essential for Medical Equipment Financing?', link: '/medical' },
-      { title: 'Medical Equipment We Finance', link: '/medical' },
-      { title: 'Apply now', link: '/contact' },
+interface EquipmentLink {
+  topText: string;
+  bottomText: string;
+  path: string;
+  description: string;
+}
 
-    ],
-  },
+interface NavLinkProps {
+  link: EquipmentLink;
+  isActive: boolean;
+  onClick?: () => void;
+}
+
+// Structured data for SEO
+const structuredData: StructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Vista Pacific Capital Navigation",
+  "description": "Navigation menu for Vista Pacific Capital's equipment financing options",
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "Construction Equipment",
+      "url": "/construction"
+    }
+  ]
+};
+
+const equipmentLinks: EquipmentLink[] = [
   {
-    name: 'Manufacturing Equipment Financing',
-    path: '/manufacturing',
-    content: [
-      { title: 'Why Vista Pacific Capital is your Best Choice for Leasing Manufacturing Equipment', link: '/manufacturing' },
-      { title: 'Manufacturing Equipment We Finance', link: '/manufacturing' },
-      { title: 'Apply Now', link: '/contact' },
-    ],
-  },
-  {
-    name: 'Construction Equipment Financing',
+    topText: 'Construction',
+    bottomText: 'Equipment',
     path: '/construction',
-    content: [
-      {
-        title: 'Forestry, Landscaping, Excavation and Agriculture Financing',
-        link: '/construction',
-        subItems: [
-          { title: 'Equipment We Finance', link: '/construction' },
-        ],
-      },
-      {
-        title: 'Concrete and Paving Equipment Financing',
-        link: '/construction',
-        subItems: [
-          { title: 'Equipment We Finance', link: '/construction' },
-        ],
-      },
-      {
-        title: 'Building Construction Equipment Financing',
-        link: '/construction',
-        subItems: [
-          { title: 'Equipment We Finance', link: '/construction' },
-          { title: 'HVAC', link: '/construction' },
-          { title: 'Plumbing', link: '/construction' },
-          { title: 'Site Prep', link: '/construction' },
-          { title: 'Electrical', link: '/construction' },
-        ],
-      },
-      {
-        title: 'Environment Construction Equipment Financing',
-        link: '/construction',
-        subItems: [
-          { title: 'Waste Management Equipment Financing', link: '/construction' },
-          { title: 'Landfill Equipment Financing', link: '/construction' },
-        ],
-      },
-      {
-        title: 'Highway Construction Equipment Financing',
-        link: '/construction',
-        subItems: [
-          { title: 'Traffic Control Equipment', link: '/construction' },
-          { title: 'Signage, etc.', link: '/construction' },
-        ],
-      },
-      { title: 'Apply Now', link: '/contact' },
-    ],
+    description: 'Finance construction equipment'
   },
   {
-    name: 'Material Handling Equipment and Racking Financing',
-    path: '/warehouse',
-    content: [
-      { title: 'Why Equipment Leasing is a Game Changer for Warehouse Racking Purchases', link: '/warehouse' },
-      { title: 'Q&A with Founder about Financing for Racking', link: '/warehouse' },
-
-      { title: 'Forklift Financing', link: '/warehouse' },
-      { title: 'Apply Now', link: '/warehouse' },
-    ],
+    topText: 'Medical',
+    bottomText: 'Equipment',
+    path: '/medical',
+    description: 'Healthcare equipment financing'
   },
   {
-    name: 'Restaurants',
+    topText: 'Restaurant',
+    bottomText: 'Equipment',
     path: '/restaurant',
-    content: [
-      { title: 'Restaurant Equipment Financing', link: '/restaurant' },
-      { title: 'Contact Now', link: '/contact' },
-    ],
+    description: 'Restaurant equipment loans'
   },
   {
-    name: 'Brewery and Distilling Equipment',
+    topText: 'Used',
+    bottomText: 'Equipment',
+    path: '/used',
+    description: 'Used equipment financing'
+  },
+  {
+    topText: 'Brewery',
+    bottomText: 'Equipment',
     path: '/brewery',
-    content: [
-      { title: 'Brewery Equipment Financing', link: '/brewery' },
-      { title: 'Distilling Equipment Financing', link: '/brewery' },
-      { title: 'Contact Now', link: '/contact' },
-    ],
+    description: 'Brewery equipment funding'
   },
   {
-    name: 'Title Vehicles',
-    path: '/vehicle',
-    content: [
-      { title: 'Commercial Vehicle Financing', link: '/vehicle' },
-      { title: 'Contact Now', link: '/contact' },
-    ],
+    topText: 'Crane',
+    bottomText: 'Financing',
+    path: '/crane',
+    description: 'Crane financing solutions'
   },
-];
-
-const navItems: NavItem[] = [
-  { name: 'Home', path: '/', icon: FaHome },
-  { name: 'About', path: '/about', icon: FaInfoCircle },
-  { name: 'Services', path: '/services', icon: FaBriefcase },
-  { name: 'Partner Solutions', path: '/vendor', icon: FaBook },
   {
-    name: 'Resources',
-    path: '#',
-    icon: FaBookmark,
-    subItems: [
-      { name: 'FAQ', path: '/faq' },
-      { name: 'Blog', path: '/resources' },
-      { name: 'Case Studies', path: '/case-studies' },
-      { name: 'Testimonials', path: '/testimonials' },
-      { name: "Section 179", path:"/tax" }
-    ],
+    topText: 'Dental',
+    bottomText: 'Equipment',
+    path: '/dental',
+    description: 'Dental practice equipment'
   },
-  { name: 'Contact', path: '/contact', icon: FaEnvelope },
+  {
+    topText: 'Excavator',
+    bottomText: 'Financing',
+    path: '/excavator',
+    description: 'Excavator financing options'
+  },
+  {
+    topText: 'Dump Truck',
+    bottomText: 'Financing',
+    path: '/dump-truck',
+    description: 'Dump truck financing'
+  },
+  {
+    topText: 'Box Truck',
+    bottomText: 'Financing',
+    path: '/box-truck',
+    description: 'Box truck financing'
+  },
+  {
+    topText: 'CNC Machine',
+    bottomText: 'Financing',
+    path: '/cnc',
+    description: 'CNC machine financing'
+  }
 ];
 
-const IndustriesServed: React.FC = () => {
-  const [activeIndustry, setActiveIndustry] = useState<string | null>(null);
-
+const NavLink: React.FC<NavLinkProps> = ({ link, isActive, onClick }) => {
   return (
-    <div className="relative group">
-      <button className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white">
-        <FaCog className="mr-1" />
-        Industries Served
-        <FaChevronRight className="ml-1" />
-      </button>
-
-      <div className="absolute left-0 mt-0 bg-white rounded-md shadow-lg ring-1 ring-indigo-dye ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-        <div className="flex">
-          <div className="w-64 py-2">
-            {industriesData.map((industry) => (
-              <Link
-                key={industry.name}
-                href={industry.path}
-                onMouseEnter={() => setActiveIndustry(industry.name)}
-                className={`block w-full text-left px-4 py-2 text-sm ${
-                  activeIndustry === industry.name
-                    ? 'bg-light-sea-green text-white'
-                    : 'text-indigo-dye hover:bg-gray-100'
-                }`}
-              >
-                {industry.name}
-              </Link>
-            ))}
-          </div>
-          {activeIndustry && (
-            <div className="w-64 bg-white py-2 border-l border-gray-200">
-              {industriesData
-                .find((industry) => industry.name === activeIndustry)
-                ?.content.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.link}
-                    className="block px-4 py-2 text-sm text-indigo-dye hover:bg-gray-100"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-            </div>
-          )}
-        </div>
+    <Link
+      href={link.path}
+      onClick={onClick}
+      className={`group relative p-2 transition-all duration-300 ${
+        isActive ? 'text-[#5BB5B0]' : 'text-[#1B365D]'
+      }`}
+      aria-label={`${link.topText} ${link.bottomText}`}
+      title={link.description}
+    >
+      <div className="flex flex-col items-center">
+        <span className="text-xs xl:text-sm font-medium whitespace-nowrap">
+          {link.topText}
+        </span>
+        <span className="text-xs xl:text-sm font-medium whitespace-nowrap">
+          {link.bottomText}
+        </span>
+        {/* Modern hover effect */}
+        <motion.div
+          className={`absolute bottom-0 left-0 h-0.5 bg-[#5BB5B0] w-0 group-hover:w-full transition-all duration-300 ${
+            isActive ? 'w-full' : ''
+          }`}
+        />
       </div>
-    </div>
+    </Link>
   );
 };
 
 const AppNavBar: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const pathname = usePathname();
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  useEffect(() => {
+    // Add structured data to head
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
 
-  const toggleMobileDropdown = (name: string) => {
-    setActiveMobileDropdown(activeMobileDropdown === name ? null : name);
-  };
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
-  const renderNavItem = (item: NavItem): JSX.Element => (
-    <div key={item.name} className="relative group">
-      {item.subItems ? (
-        <>
-          <button
-            className="px-3 py-2 rounded-md text-sm font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white flex items-center"
-          >
-            <item.icon className="mr-1" />
-            {item.name}
-            <FaChevronDown className="ml-1" />
-          </button>
-          <div className="absolute left-0 mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-indigo-dye ring-opacity-5 focus:outline-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-            {item.subItems?.map((subItem) => (
-              <Link
-                key={subItem.name}
-                href={subItem.path}
-                className="block px-4 py-2 text-sm text-indigo-dye hover:text-light-sea-green hover:bg-white"
-              >
-                {subItem.name}
-              </Link>
-            ))}
-          </div>
-        </>
-      ) : (
-        <Link
-          href={item.path}
-          className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${
-            pathname === item.path
-              ? 'bg-light-sea-green text-white'
-              : 'text-indigo-dye hover:text-light-sea-green hover:bg-white'
-          }`}
-        >
-          <item.icon className="mr-1" />
-          {item.name}
-        </Link>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    const handleScroll = (): void => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const renderMobileNavItem = (item: NavItem): JSX.Element => (
-    <div key={item.name} className="px-2 pt-2 pb-3 space-y-1">
-      {item.subItems ? (
-        <>
-          <button
-            onClick={() => toggleMobileDropdown(item.name)}
-            className="px-3 py-2 rounded-md text-base font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white flex items-center w-full"
-          >
-            <item.icon className="mr-1" />
-            {item.name}
-            <FaChevronDown className={`ml-auto transform transition-transform duration-200 ${activeMobileDropdown === item.name ? 'rotate-180' : ''}`} />
-          </button>
-          <AnimatePresence>
-            {activeMobileDropdown === item.name && (
-              <motion.div
-                className="space-y-1 pl-6"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-              >
-                {item.subItems?.map((subItem) => (
-                  <Link
-                    key={subItem.name}
-                    href={subItem.path}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-indigo-dye hover:text-light-sea-green hover:bg-white"
-                    onClick={toggleMobileMenu}
-                  >
-                    {subItem.name}
-                  </Link>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </>
-      ) : (
-        <Link
-          href={item.path}
-          className={`block px-3 py-2 rounded-md text-base font-medium ${
-            pathname === item.path
-              ? 'bg-light-sea-green text-white'
-              : 'text-indigo-dye hover:text-light-sea-green hover:bg-white'
-          }`}
-          onClick={toggleMobileMenu}
-        >
-          <item.icon className="mr-1" />
-          {item.name}
-        </Link>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    const handleResize = (): void => {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent): void => {
+      const target = event.target as HTMLElement;
+      if (isMobileMenuOpen && !target.closest('nav')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
 
   return (
-    <nav className="bg-white shadow">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 lg:block hidden">
-            <Link href="/" className="flex items-center">
-              <div className="relative flex-shrink-0">
-                <Image 
-                  src="/Images/logo.png"
-                  width={60}
-                  height={60}
-                  alt="Logo"
-                  objectFit="cover"
-                />
+    <header className="relative z-50" role="banner">
+      <nav 
+        className={`w-full bg-white backdrop-blur-md bg-opacity-90 transition-all duration-300 ${
+          isScrolled ? 'shadow-lg' : ''
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+      
+        <div className="max-w-[1400px] mx-auto px-4">
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'
+          }`}>
+            {/* Mobile layout container */}
+            <div className="w-full flex items-center justify-between lg:justify-start relative">
+              {/* Hamburger menu - left on mobile */}
+              <div className="lg:hidden order-1">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMobileMenuOpen(!isMobileMenuOpen);
+                  }}
+                  className="p-2 mt-6 text-[#1B365D] hover:text-[#5BB5B0] transition-colors focus:outline-none"
+                  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isMobileMenuOpen}
+                >
+                  <motion.div
+                    initial={false}
+                    animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {isMobileMenuOpen ? (
+                      <X className="w-12 h-12" />
+                    ) : (
+                      <Menu className="w-12 h-12" />
+                    )}
+                  </motion.div>
+                </button>
               </div>
-            </Link>
-          </div>
-          <div className="hidden lg:flex lg:items-center lg:space-x-4">
-            {renderNavItem(navItems[0])} {/* Home */}
-            <IndustriesServed />
-            {navItems.slice(1).map(renderNavItem)}
-          </div>
-          <div className="lg:hidden flex items-center justify-center flex-grow">
-            <Link href="/" className="flex items-center">
-              <div className="relative flex-shrink-0">
-                <Image 
-                  src="/Images/logo.png"
-                  width={60}
-                  height={60}
-                  alt="Logo"
-                  objectFit="cover"
-                />
+
+              {/* Logo - centered on mobile */}
+              <div className="flex-shrink-0 mt-4 absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-0 lg:transform-none order-2">
+                <Link href="/" aria-label="Vista Pacific Capital Home">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Image 
+                      src="/Images/logo.png"
+                      width={600}
+                      height={600}
+                      alt="Vista Pacific Capital"
+                      className={`transition-all duration-300 w-auto ${
+                        isScrolled ? 'h-32 md:h-32' : 'h-32 md:h-32'
+                      }`}
+                      priority
+                    />
+                  </motion.div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          <div className="lg:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-indigo-dye hover:text-light-sea-green hover:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-light-sea-green"
-              aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen}
-              onClick={toggleMobileMenu}
+
+              {/* Quote Button - right on mobile */}
+              <div className="lg:hidden order-3">
+                <Link
+                  href="/contact"
+                  className="px-6 py-6 bg-gradient-to-r from-orange-500 to-orange-600 
+                    text-white text-xs font-medium rounded-lg shadow-md 
+                    hover:shadow-lg transition-all duration-200"
+                  aria-label="Request a quote"
+                >
+                  QUOTE
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex lg:items-center lg:space-x-1 xl:space-x-2 flex-grow justify-center">
+              {equipmentLinks.map((link) => (
+                <NavLink
+                  key={link.path}
+                  link={link}
+                  isActive={pathname === link.path}
+                />
+              ))}
+            </div>
+
+            {/* Desktop Quote Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden lg:block"
             >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
+              <Link
+                href="/contact"
+                className="ml-4 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 
+                  text-white text-sm font-bold rounded-lg shadow-lg hover:shadow-xl 
+                  transition-all duration-300 whitespace-nowrap transform hover:-translate-y-0.5"
+                aria-label="Request a quote"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg
-                className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                GET QUOTE
+              </Link>
+            </motion.div>
           </div>
         </div>
-      </div>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="lg:hidden"
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
-              {renderMobileNavItem(navItems[0])} {/* Home */}
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                <IndustriesServed />
-              </div>
-              {navItems.slice(1).map(renderMobileNavItem)}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden border-t border-gray-100 bg-white shadow-lg"
+            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-4"
+              >
+                {equipmentLinks.map((link, index) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="mb-2"
+                  >
+                    <div className="bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                      <NavLink
+                        link={link}
+                        isActive={pathname === link.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Mobile menu CTA */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: equipmentLinks.length * 0.1 }}
+                  className="mt-6 text-center"
+                >
+                  <Link
+                    href="/contact"
+                    className="inline-block w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 
+                      text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg 
+                      transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    GET YOUR QUOTE NOW
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </header>
   );
 };
 

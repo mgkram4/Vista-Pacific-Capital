@@ -99,7 +99,10 @@ export default function ConstructionEquipmentFinancing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Financing Now</span>
             </Link>
