@@ -46,7 +46,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 -mt-24 relative z-30 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {/* Contact Form - Sticky on desktop, normal on mobile */}
-          <div className="lg:order-2 lg:sticky lg:top-8">
+          <div className="lg:order-2 lg:sticky lg:top-8 mt-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Information */}
-          <div className="lg:order-1 space-y-6 md:space-y-8">
+          <div className="lg:order-1 space-y-6 md:space-y-8 mt-10">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}

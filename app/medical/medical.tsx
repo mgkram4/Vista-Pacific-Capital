@@ -1,4 +1,4 @@
-// app/construction/construction-content.tsx
+// app/medical/medical-content.tsx
 "use client"
 
 
@@ -6,71 +6,63 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaHardHat,
-  FaIndustry,
-  FaTools, FaTruck,
-  FaWarehouse
+    FaHeartbeat, FaHospital, FaMedkit,
+    FaMicroscope, FaProcedures, FaUserMd
 } from 'react-icons/fa';
-import { GiCrane, GiMineTruck, GiReceiveMoney } from 'react-icons/gi';
-import { constructionMetadata } from '../lib/metadata';
+import { GiReceiveMoney } from 'react-icons/gi';
+import { medicalMetadata } from '../lib/metadata';
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Earthmoving Equipment',
-    description: constructionMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e'
+    title: 'Diagnostic Imaging',
+    description: medicalMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaMedkit,
+    image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907'
   },
   {
-    title: 'Lifting Equipment',
-    description: constructionMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: GiCrane,
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd'
+    title: 'Surgical Equipment',
+    description: medicalMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: FaProcedures,
+    image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f'
   },
   {
-    title: 'Road Construction',
-    description: constructionMetadata.equipment[2].types.join(', ') + ' and more.',
-    icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f'
+    title: 'Patient Care Equipment',
+    description: 'Advanced monitoring systems and patient care devices.',
+    icon: FaUserMd,
+    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde'
   },
   {
-    title: 'Material Handling',
-    description: 'Forklifts, telehandlers, and specialized handling equipment.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0'
+    title: 'Laboratory Equipment',
+    description: 'Cutting-edge lab and research equipment.',
+    icon: FaMicroscope,
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd'
   },
   {
-    title: 'Demolition Equipment',
-    description: 'Breakers, crushers, and demolition attachments.',
-    icon: FaHardHat,
-    image: 'https://images.unsplash.com/photo-1574486941178-456e3fe0e69d'
-  },
-  {
-    title: 'Mining Equipment',
-    description: 'Heavy-duty mining and quarry equipment.',
-    icon: GiMineTruck,
-    image: 'https://images.unsplash.com/photo-1578324927389-6ef3d9c85921'
+    title: 'Digital Health Solutions',
+    description: 'Telemedicine and healthcare IT infrastructure.',
+    icon: FaHeartbeat,
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef'
   }
 ];
 
 // Statistics display data
 const stats = [
-  { value: '$10M+', label: 'Maximum Financing', icon: FaHardHat },
-  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
-  { value: '4.99%', label: 'Starting Rates', icon: GiCrane },
-  { value: '24hrs', label: 'Quick Approval', icon: FaTruck }
+  { value: '$5M+', label: 'Maximum Financing', icon: FaHospital },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
+  { value: '4.99%', label: 'Starting Rates', icon: FaHeartbeat },
+  { value: '24hrs', label: 'Quick Approval', icon: FaMedkit }
 ];
 
-export default function ConstructionFinancingContent() {
+export default function MedicalFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
-            alt="Construction equipment background"
+            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d"
+            alt="Medical equipment background"
             layout="fill"
             objectFit="cover"
             priority
@@ -83,7 +75,7 @@ export default function ConstructionFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {constructionMetadata.title}
+            {medicalMetadata.title}
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -91,7 +83,7 @@ export default function ConstructionFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {constructionMetadata.description}
+            {medicalMetadata.description}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -103,7 +95,7 @@ export default function ConstructionFinancingContent() {
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Equipment Financing</span>
+              <span>Get Financing Now</span>
             </Link>
           </motion.div>
         </div>
@@ -141,7 +133,7 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Construction Equipment We Finance
+            Medical Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -189,7 +181,7 @@ export default function ConstructionFinancingContent() {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {constructionMetadata.features.map((feature, index) => (
+            {medicalMetadata.features.map((feature, index) => (
               <motion.div
                 key={index}
                 className="bg-white p-6 rounded-lg shadow-md"
@@ -218,11 +210,11 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Construction Equipment Financing
+            Benefits of Medical Equipment Financing
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {constructionMetadata.benefits.map((benefit, index) => (
+            {medicalMetadata.benefits.map((benefit, index) => (
               <motion.div
                 key={index}
                 className="bg-gray-50 p-6 rounded-lg shadow-md"
@@ -231,35 +223,11 @@ export default function ConstructionFinancingContent() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <FaTools className="text-3xl text-light-sea-green mb-4" />
+                <FaHeartbeat className="text-3xl text-light-sea-green mb-4" />
                 <h3 className="text-xl font-semibold text-indigo-dye mb-2">{benefit}</h3>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Case Study or Success Story Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Construction Company Expands Fleet</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              A growing construction company needed to expand their equipment fleet to take on larger projects. Through our flexible financing solution, they were able to acquire multiple pieces of heavy equipment including excavators, bulldozers, and cranes.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Result: The company increased their project capacity by 60% and successfully expanded into new construction sectors within the first year.
-            </p>
-            <p className="text-light-sea-green text-lg italic">
-              "Vista Pacific Capital's construction equipment financing allowed us to scale our operations without compromising our cash flow. Their understanding of the construction industry made the process smooth and tailored to our specific needs."
-            </p>
-          </motion.div>
         </div>
       </section>
 
@@ -273,7 +241,7 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Finance Your Construction Equipment?
+            Ready to Upgrade Your Medical Equipment?
           </motion.h2>
           <motion.p
             className="text-2xl mb-10 leading-relaxed"
@@ -282,7 +250,7 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let's discuss how our construction equipment financing solutions can help your business grow.
+            Let's discuss how our tailored financing solutions can help your healthcare facility thrive.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
