@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { equipmentLinks } from '../lib/metadata/navbar';
 import { NavLink } from './navlinks';
 
-// Animation variants
+// Animation variants remain the same
 const menuVariants = {
   closed: {
     opacity: 0,
@@ -70,12 +70,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               className={`flex items-center p-4 transition-all ${
                 pathname === '/' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-900'
+                  : 'hover:bg-gray-50 text-gray-700'
               }`}
             >
-              <Home className="w-5 h-5 mr-3" />
+              <Home className="w-5 h-5 mr-3 text-gray-500" />
               <span className="font-medium">Home</span>
-              <ChevronRight className="w-5 h-5 ml-auto" />
+              <ChevronRight className="w-5 h-5 ml-auto text-gray-400" />
             </Link>
             <Link
               href="/about"
@@ -83,12 +83,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               className={`flex items-center p-4 transition-all ${
                 pathname === '/about' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-900'
+                  : 'hover:bg-gray-50 text-gray-700'
               }`}
             >
-              <Info className="w-5 h-5 mr-3" />
+              <Info className="w-5 h-5 mr-3 text-gray-500" />
               <span className="font-medium">About Us</span>
-              <ChevronRight className="w-5 h-5 ml-auto" />
+              <ChevronRight className="w-5 h-5 ml-auto text-gray-400" />
             </Link>
             <Link
               href="/contact"
@@ -96,12 +96,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               className={`flex items-center p-4 transition-all ${
                 pathname === '/contact' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-900'
+                  : 'hover:bg-gray-50 text-gray-700'
               }`}
             >
-              <Phone className="w-5 h-5 mr-3" />
+              <Phone className="w-5 h-5 mr-3 text-gray-500" />
               <span className="font-medium">Contact</span>
-              <ChevronRight className="w-5 h-5 ml-auto" />
+              <ChevronRight className="w-5 h-5 ml-auto text-gray-400" />
             </Link>
           </div>
         </motion.div>

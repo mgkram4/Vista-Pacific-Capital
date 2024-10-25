@@ -23,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className=" text-white">
         <div className="min-h-screen flex flex-col">
-          <AppNavBar />
+          <div className=" mb-20 md:mb-24">
+          <AppNavBar  />
+          </div>
           <main className="flex-grow container mx-auto px-4 py-8 ">
             {children}
           </main>
