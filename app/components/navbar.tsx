@@ -174,7 +174,7 @@ const NavLink: React.FC<{
         className={`
           ${link.style?.background} 
           ${link.style?.text}
-          ${isMobile ? 'w-full text-center py-4 text-lg' : 'px-6 py-2.5'}
+          ${isMobile ? 'w-full text-center py-4 text-lg' : 'px-4 py-2.5'}
           rounded-lg
           shadow-sm
           transition-all 
@@ -326,14 +326,14 @@ const AppNavBar: React.FC = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1400px] mx-auto px-6">
+        <div className="max-w-[1400px] mx-auto px-2">
           <div className={`
             flex 
             items-center 
             justify-between 
             transition-all 
             duration-300 
-            ${isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'}
+            ${isScrolled ? 'h-16 md:h-30' : 'h-20 md:h-44'}
           `}>
             {/* Mobile Menu Button */}
             <div className="lg:hidden z-20">
@@ -429,17 +429,18 @@ const AppNavBar: React.FC = () => {
                   >
                     <Image 
                       src="/Images/logo2.png"
-                      width={250}
-                      height={75}
+                      width={800}
+                      height={300}
                       alt="Vista Pacific Capital - Equipment Financing Solutions"
                       className={`
-                        md:mr-20
+                        md:mr-32
+                        p-3
                         w-auto
                         transition-all
                         duration-300
                         ${isScrolled 
                           ? 'h-[40px] md:h-[50px]' 
-                          : 'h-[50px] md:h-[60px]'
+                          : 'h-[50px] md:h-[140px]'
                         }
                         lg:block hidden
                       `}
