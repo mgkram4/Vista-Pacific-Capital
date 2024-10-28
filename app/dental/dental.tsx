@@ -1,108 +1,301 @@
-// File: src/pages/services.tsx
-import { FaBeer, FaCogs, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
+// app/dental/dental-financing.tsx
+"use client"
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  FaCog,
+  FaDesktop,
+  FaMicroscope,
+  FaSyringe,
+  FaTools,
+  FaTooth
+} from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
+import { dentalMetadata } from '../lib/metadata';
 
-export default function Services() {
-  const services = [
-    {
-      title: 'Medical Equipment Financing',
-      description: 'Tailored solutions for hospitals, clinics, and healthcare providers.',
-      icon: FaMedkit
-    },
-    {
-      title: 'Warehouse Racking Equipment',
-      description: 'Flexible financing options for optimizing your storage and logistics.',
-      icon: FaWarehouse
-    },
-    {
-      title: 'Manufacturing Equipment',
-      description: 'Customized leasing programs for industrial machinery and production lines.',
-      icon: FaIndustry
-    },
-    {
-      title: 'CNC and Machining Equipment',
-      description: 'Innovative financing for precision engineering and metalworking tools.',
-      icon: FaCogs
-    },
-    {
-      title: 'Brewery Equipment',
-      description: 'Specialized leasing solutions for craft breweries and large-scale operations.',
-      icon: FaBeer
-    },
-    {
-      title: 'Construction and Concrete Equipment',
-      description: 'Robust financing options for heavy machinery and construction tools.',
-      icon: FaHardHat
-    },
-    {
-      title: 'Titled Vehicle Programs',
-      description: 'Comprehensive leasing solutions for commercial vehicles and fleets.',
-      icon: FaTruck
-    }
-  ];
+// Define equipment types with their details
+const equipmentTypes = [
+  {
+    title: 'Digital Imaging Systems',
+    description: dentalMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaDesktop,
+    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe'
+  },
+  {
+    title: 'Treatment Room Equipment',
+    description: dentalMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: FaTooth,
+    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787'
+  },
+  {
+    title: 'Diagnostic Equipment',
+    description: dentalMetadata.equipment[2].types.join(', ') + ' and more.',
+    icon: FaMicroscope,
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
+  },
+  {
+    title: 'CAD/CAM Systems',
+    description: 'Digital impression systems and milling units for same-day restorations.',
+    icon: FaCog,
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d'
+  },
+  {
+    title: 'Sterilization Systems',
+    description: 'Modern sterilization and infection control equipment.',
+    icon: FaTools,
+    image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8'
+  },
+  {
+    title: 'Specialty Equipment',
+    description: 'Dental lasers, surgical instruments, and specialized tools.',
+    icon: FaSyringe,
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5'
+  }
+];
 
+// Statistics display data
+const stats = [
+  { value: '$1M+', label: 'Maximum Financing', icon: FaTooth },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
+  { value: '4.99%', label: 'Starting Rates', icon: FaCog },
+  { value: '24hrs', label: 'Quick Approval', icon: FaDesktop }
+];
+
+export default function DentalFinancingContent() {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl mb-8">Tailored equipment financing solutions across various industries</p>
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image 
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
+            alt="Dental equipment background"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {dentalMetadata.title}
+          </motion.h1>
+          <motion.p
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {dentalMetadata.description}
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Equipment Financing</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-16 px-4">
-        <div className="text-center mb-12">
-          <p className="text-xl text-gray-700">
-            At Vista Pacific Capital, we specialize in providing tailored equipment financing solutions across various industries. Our expertise includes:
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <service.icon className="text-5xl text-blue-600 mb-4" />
-              <h2 className="text-xl font-semibold mb-2">{service.title}</h2>
-              <p className="text-gray-600">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="bg-blue-50 py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Fast Approval Process</h3>
-              <p>Get your equipment financing approved within 24-48 hours, allowing you to seize opportunities quickly.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Flexible Terms</h3>
-              <p>Choose from lease terms ranging from 12 to 72 months, tailored to fit your business cash flow.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">High Approval Rate</h3>
-              <p>Benefit from our industry-leading 94.6% approval ratio, making financing accessible to more businesses.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Expert Guidance</h3>
-              <p>Work with our team of industry experts to find the best financing solution for your specific needs.</p>
-            </div>
+      {/* Stats Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <stat.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{stat.value}</h3>
+                <p className="text-gray-600">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Equipment Types Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Dental Equipment We Finance
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {equipmentTypes.map((type, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={type.image}
+                    alt={type.title}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                    <type.icon className="text-6xl text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
+                  <p className="text-gray-600">{type.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Financing Features
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {dentalMetadata.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-light-sea-green rounded-full mr-3" />
+                  <p className="text-gray-700">{feature}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Benefits of Dental Equipment Financing
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {dentalMetadata.benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-50 p-6 rounded-lg shadow-md"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <FaTooth className="text-3xl text-light-sea-green mb-4" />
+                <h3 className="text-xl font-semibold text-indigo-dye mb-2">{benefit}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Section */}
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <motion.div 
+            className="bg-white p-8 rounded-2xl shadow-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Dental Practice Modernization Success</h3>
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              A growing dental practice needed to upgrade their imaging systems and treatment rooms. Through our flexible financing solution, they were able to acquire digital X-ray systems, CAD/CAM technology, and modern operatory equipment.
+            </p>
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              Result: The practice increased patient satisfaction by 45% and reduced treatment times by 30% within the first six months of implementation.
+            </p>
+            <p className="text-light-sea-green text-lg italic">
+              "Vista Pacific Capital's dental equipment financing allowed us to modernize our practice without compromising our cash flow. Their understanding of dental technology made the process smooth and tailored to our specific needs."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Finance Your Equipment?</h2>
-          <p className="text-xl mb-8">Lets discuss how our tailored financing solutions can help your business grow.</p>
-          <a href="/contact" className="bg-white text-blue-600 py-3 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl">
-            <GiReceiveMoney className="mr-2 text-2xl" /> Get Started Today
-          </a>
+          <motion.h2
+            className="text-5xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready to Finance Your Dental Equipment?
+          </motion.h2>
+          <motion.p
+            className="text-2xl mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Let's discuss how our dental equipment financing solutions can help your practice grow.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Started Today</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

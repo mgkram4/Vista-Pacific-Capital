@@ -337,72 +337,126 @@ const AppNavBar: React.FC = () => {
           `}>
             {/* Mobile Menu Button */}
             <div className="lg:hidden z-20">
-  <button
-    onClick={(e) => {
-      e.stopPropagation();
-      setIsMobileMenuOpen(!isMobileMenuOpen);
-    }}
-    className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-    aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-    aria-expanded={isMobileMenuOpen}
-  >
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={isMobileMenuOpen ? "close" : "menu"}
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        exit={{ rotate: 90, opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        {isMobileMenuOpen ? (
-          <X className="w-6 h-6 text-gray-600" />
-        ) : (
-          <Menu className="w-6 h-6 text-gray-600" />
-        )}
-      </motion.div>
-    </AnimatePresence>
-  </button>
-</div>
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link 
-                href="/" 
-                aria-label="Vista Pacific Capital - Equipment Financing Solutions"
-                className="block"
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                }}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
               >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative"
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={isMobileMenuOpen ? "close" : "menu"}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {isMobileMenuOpen ? (
+                      <X className="w-6 h-6 text-gray-600" />
+                    ) : (
+                      <Menu className="w-6 h-6 text-gray-600" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+            </div>
+{/* Logo Section with Company Name */}
+<div className="flex-1 flex items-center justify-between lg:justify-start relative">
+  {/* Empty div for left spacing on mobile */}
+  <div className="w-8 lg:hidden"></div>
+
+  {/* Mobile Company Name - Centered */}
+  <div className="absolute left-1/2 transform -translate-x-1/2 w-full text-center lg:hidden pointer-events-none">
+    <h1 className="text-[#1B365D] font-bold text-lg mr-12">
+      VISTA PACIFIC CAPITAL
+    </h1>
+  </div>
+
+  {/* Logo - Right aligned on mobile, normal on desktop */}
+  <div className="flex-shrink-0 relative z-10 ml-auto lg:ml-0">
+    <Link 
+      href="/" 
+      aria-label="Vista Pacific Capital - Equipment Financing Solutions"
+      className="block"
+    >
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="relative"
+      >
+        <Image 
+          src="/Images/logo3.png"
+          width={250}
+          height={75}
+          alt="Vista Pacific Capital - Equipment Financing Solutions"
+          className={`
+            md:hidden
+            w-auto
+            transition-all
+            duration-300
+            ${isScrolled 
+              ? 'h-[30px] md:h-[40px] lg:h-[50px]' 
+              : 'h-[35px] md:h-[45px] lg:h-[60px]'
+            }
+          `}
+          priority
+          quality={95}
+          style={{ 
+            objectFit: 'contain',
+            objectPosition: 'center',
+          }}
+          sizes="(max-width: 768px) 150px, (max-width: 1024px) 200px, 250px"
+        />
+      </motion.div>
+    </Link>
+  </div>
+
+              
+              {/* Logo - Left aligned on desktop, shifted left on mobile */}
+              <div className="flex-shrink-0 relative z-10">
+                <Link 
+                  href="/" 
+                  aria-label="Vista Pacific Capital - Equipment Financing Solutions"
+                  className="block lg:relative lg:left-0"
                 >
-                  <Image 
-                    src="/Images/logo2.png"
-                    width={250}
-                    height={75}
-                    alt="Vista Pacific Capital - Equipment Financing Solutions"
-                    className={`
-                      w-auto
-                      transition-all
-                      duration-300
-                      ${isScrolled 
-                        ? 'h-[40px] md:h-[50px]' 
-                        : 'h-[50px] md:h-[60px]'
-                      }
-                    `}
-                    priority
-                    quality={95}
-                    style={{ 
-                      objectFit: 'contain',
-                      objectPosition: 'center',
-                    }}
-                    sizes="(max-width: 768px) 200px, 250px"
-                  />
-                </motion.div>
-              </Link>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="relative"
+                  >
+                    <Image 
+                      src="/Images/logo2.png"
+                      width={250}
+                      height={75}
+                      alt="Vista Pacific Capital - Equipment Financing Solutions"
+                      className={`
+                        w-auto
+                        transition-all
+                        duration-300
+                        ${isScrolled 
+                          ? 'h-[40px] md:h-[50px]' 
+                          : 'h-[50px] md:h-[60px]'
+                        }
+                        lg:block hidden
+                      `}
+                      priority
+                      quality={95}
+                      style={{ 
+                        objectFit: 'contain',
+                        objectPosition: 'center',
+                      }}
+                      sizes="(max-width: 768px) 200px, 250px"
+                    />
+                  </motion.div>
+                </Link>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center ">
+            <div className="hidden lg:flex items-center">
               <div className="relative flex items-center">
                 {/* Decorative line before nav items */}
                 <div className="absolute -left-8 top-1/2 w-6 h-px bg-gradient-to-r from-transparent to-gray-200" />
@@ -433,7 +487,7 @@ const AppNavBar: React.FC = () => {
 
               <motion.div 
                 className="ml-6"
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0,scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
@@ -457,7 +511,7 @@ const AppNavBar: React.FC = () => {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="lg:hidden border-t border-gray-300 bg-white shadow-lg"
             >
-             <div className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-6">
+              <div className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-6">
                 <div className="space-y-2">
                   {equipmentLinks.map((link, index) => (
                     <motion.div

@@ -1,16 +1,14 @@
-// app/restaurant/page.tsx
+// app/crane/page.tsx
 
 import { Metadata } from 'next';
-import { restaurantMetadata } from '../lib/metadata';
+import { craneMetadata } from '../lib/metadata';
 import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
-import RestaurantFinancingContent from '../restaurant/resturant';
-
-
+import CraneFinancingContent from './crane';
 
 // Generate metadata at the page level (server component)
-export const metadata: Metadata = generateEnhancedMetadata(restaurantMetadata);
+export const metadata: Metadata = generateEnhancedMetadata(craneMetadata);
 
 // Server Component
-export default function RestaurantFinancingPage() {
-  return <RestaurantFinancingContent />;
+export default function CraneFinancingPage() {
+  return <CraneFinancingContent />;
 }

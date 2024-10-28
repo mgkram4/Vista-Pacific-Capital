@@ -21,9 +21,9 @@ import { GiCheckMark } from 'react-icons/gi';
 
 // Refined SEO metadata with more targeted keywords
 const SEO = {
-  title: "Equipment Financing & Leasing Solutions | Vista Pacific Capital",
-  description: "Get fast equipment financing approval with competitive rates and flexible terms. Specialized solutions for construction, medical, restaurant, manufacturing & more. Apply now and get funded in 24-48 hours.",
-  keywords: "equipment financing, equipment leasing, business equipment loans, construction equipment financing, medical equipment financing, commercial equipment financing",
+  title: "Vista Pacific Capital - Equipment Financing & Leasing Solutions",
+  description: "Get fast equipment financing approval with competitive rates and flexible terms from Vista Pacific Capital. Specialized solutions for construction, medical, restaurant, manufacturing & more. Apply now and get funded in 24-48 hours.",
+  keywords: "Vista Pacific Capital, equipment financing, equipment leasing, business equipment loans, construction equipment financing, medical equipment financing, commercial equipment financing",
 };
 
 
@@ -34,7 +34,7 @@ const services = [
   {
     title: "Construction Equipment",
     name: "Construction Equipment",
-    description: "Fast funding for bulldozers, cranes, excavators & heavy machinery. Get competitive rates and 84-month terms.",
+    description: "Fast funding for bulldozers, cranes, excavators & heavy machinery from Vista Pacific Capital. Get competitive rates and 84-month terms.",
     features: [
       "Same-day approval available",
       "Rates from 4.99%",
@@ -48,7 +48,7 @@ const services = [
   {
     title: "Medical Equipment",
     name: "Medical Equipment",
-    description: "Finance imaging systems, surgical equipment & medical technology. Specialized healthcare funding solutions.",
+    description: "Finance imaging systems, surgical equipment & medical technology with Vista Pacific Capital's specialized healthcare funding solutions.",
     features: [
       "Deferred payment options",
       "Equipment-specific expertise",
@@ -62,7 +62,7 @@ const services = [
   {
     title: "Manufacturing Equipment",
     name: "Manufacturing Equipment",
-    description: "Fund CNC machines, production lines & industrial equipment. Custom manufacturing financing programs.",
+    description: "Fund CNC machines, production lines & industrial equipment with Vista Pacific Capital's custom manufacturing financing programs.",
     features: [
       "High-value equipment expertise",
       "Upgrade programs available",
@@ -76,7 +76,7 @@ const services = [
   {
     title: "Restaurant Equipment",
     name: "Restaurant Equipment",
-    description: "Finance commercial kitchens, refrigeration & food service equipment. Restaurant-specific payment terms.",
+    description: "Finance commercial kitchens, refrigeration & food service equipment with Vista Pacific Capital's restaurant-specific payment terms.",
     features: [
       "Seasonal payment structures",
       "Start-up friendly programs",
@@ -90,7 +90,7 @@ const services = [
   {
     title: "Transportation Equipment",
     name: "Transportation Equipment",
-    description: "Finance trucks, trailers & delivery vehicles. Fleet-focused funding with competitive rates.",
+    description: "Finance trucks, trailers & delivery vehicles with Vista Pacific Capital's fleet-focused funding and competitive rates.",
     features: [
       "Fleet program expertise",
       "New & used vehicles",
@@ -104,7 +104,7 @@ const services = [
   {
     title: "Brewery Equipment",
     name: "Brewery Equipment",
-    description: "Fund brewing systems, tanks & packaging lines. Specialized craft brewery financing solutions.",
+    description: "Fund brewing systems, tanks & packaging lines with Vista Pacific Capital's specialized craft brewery financing solutions.",
     features: [
       "Industry expertise",
       "Growth-focused options",
@@ -122,22 +122,22 @@ const stats = [
   {
     value: "$10M+",
     label: "Maximum Financing",
-    description: "Fund major equipment purchases"
+    description: "Fund major equipment purchases with Vista Pacific Capital"
   },
   {
     value: "24-84",
     label: "Month Terms",
-    description: "Flexible payment schedules"
+    description: "Flexible payment schedules from Vista Pacific Capital"
   },
   {
     value: "4.99%",
     label: "Starting Rates",
-    description: "Competitive financing options"
+    description: "Competitive financing options from Vista Pacific Capital"
   },
   {
     value: "24hrs",
     label: "Quick Approval",
-    description: "Fast funding when you need it"
+    description: "Fast funding when you need it from Vista Pacific Capital"
   }
 ];
 
@@ -145,7 +145,7 @@ const stats = [
 const features = [
   {
     title: "Fast Approval Process",
-    description: "Get approved in as little as 24 hours with minimal documentation",
+    description: "Get approved in as little as 24 hours with minimal documentation through Vista Pacific Capital",
     icon: FaClock,
     details: [
       "Simple online application",
@@ -156,7 +156,7 @@ const features = [
   },
   {
     title: "Flexible Payment Options",
-    description: "Customize your financing to match your business needs",
+    description: "Customize your financing to match your business needs with Vista Pacific Capital",
     icon: FaHandshake,
     details: [
       "Seasonal payment plans",
@@ -167,7 +167,7 @@ const features = [
   },
   {
     title: "Industry-Leading Rates",
-    description: "Access competitive rates across all equipment types",
+    description: "Access competitive rates across all equipment types with Vista Pacific Capital",
     icon: FaDollarSign,
     details: [
       "Rate match guarantee",
@@ -207,19 +207,19 @@ const structuredData = {
 const slides = [
   {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
-    title: "Fast Equipment Financing Solutions",
+    title: "Fast Equipment Financing Solutions from Vista Pacific Capital",
     subtitle: "Get Funded in 24-48 Hours",
     description: "Competitive rates starting at 4.99% with flexible terms up to 84 months."
   },
   {
     image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7",
-    title: "Construction & Medical Equipment",
+    title: "Construction & Medical Equipment Financing from Vista Pacific Capital",
     subtitle: "$25K to $10M Financing Available",
     description: "Specialized funding for heavy equipment, medical devices & more."
   },
   {
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-    title: "Restaurant & Manufacturing Equipment",
+    title: "Restaurant & Manufacturing Equipment Financing from Vista Pacific Capital",
     subtitle: "100% Equipment Financing",
     description: "Custom payment plans aligned with your business cash flow."
   }
@@ -322,7 +322,7 @@ export default function Home() {
                       transition-all duration-300"
                   >
                     <span className="flex items-center">
-                      Get Instant Quote
+                      Get Instant Quote from Vista Pacific Capital
                       <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Link>
@@ -335,7 +335,7 @@ export default function Home() {
                       transition-all duration-300"
                   >
                     <span className="flex items-center">
-                      See How It Works
+                      See How Vista Pacific Capital Works
                       <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Link>
@@ -371,7 +371,7 @@ export default function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl font-bold text-indigo-dye mb-4">
-                Equipment Financing Solutions
+                Equipment Financing Solutions from Vista Pacific Capital
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Fast approvals and flexible terms for all types of business equipment
@@ -395,7 +395,6 @@ export default function Home() {
                         className="transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                      
                       <motion.div 
                         variants={textVariants}
                         initial="hidden"
@@ -437,7 +436,7 @@ export default function Home() {
                   bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-lg hover:-translate-y-1
                   transition-all duration-300"
               >
-                View All Financing Solutions
+                View All Financing Solutions from Vista Pacific Capital
                 <FaArrowRight className="ml-2" />
               </Link>
             </div>
@@ -454,9 +453,9 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold">Ready to Get Started?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold">Ready to Get Started with Vista Pacific Capital?</h2>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-                Get pre-qualified in minutes with no impact to your credit score
+                Get pre-qualified in minutes with no impact to your credit score through Vista Pacific Capital
               </p>
               
               <Link
@@ -466,7 +465,7 @@ export default function Home() {
                   hover:-translate-y-1 transition-all duration-300"
               >
                 <span className="flex items-center">
-                  Apply Now - It's Free
+                  Apply Now with Vista Pacific Capital - It's Free
                   <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>

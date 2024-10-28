@@ -1,108 +1,225 @@
-// File: src/pages/services.tsx
-import { FaBeer, FaCogs, FaHardHat, FaIndustry, FaMedkit, FaTruck, FaWarehouse } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
+"use client"
 
-export default function Services() {
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaBuilding, FaChartLine, FaIndustry, FaSearch, FaShip, FaTools, FaTruck } from 'react-icons/fa';
+import { GiCrane, GiReceiveMoney } from 'react-icons/gi';
+
+export default function CraneServices() {
   const services = [
     {
-      title: 'Medical Equipment Financing',
-      description: 'Tailored solutions for hospitals, clinics, and healthcare providers.',
-      icon: FaMedkit
+      title: 'Mobile Crane Financing',
+      description: 'Flexible financing solutions for all-terrain cranes, rough terrain cranes, and truck mounted cranes.',
+      icon: GiCrane,
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd'
     },
     {
-      title: 'Warehouse Racking Equipment',
-      description: 'Flexible financing options for optimizing your storage and logistics.',
-      icon: FaWarehouse
+      title: 'Tower Crane Financing',
+      description: 'Comprehensive financing for fixed tower cranes, self-erecting cranes, and climbing cranes.',
+      icon: FaBuilding,
+      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f'
     },
     {
-      title: 'Manufacturing Equipment',
-      description: 'Customized leasing programs for industrial machinery and production lines.',
-      icon: FaIndustry
+      title: 'Port & Marine Cranes',
+      description: 'Specialized funding solutions for port cranes, container cranes, and marine lifting equipment.',
+      icon: FaShip,
+      image: 'https://images.unsplash.com/photo-1519074069444-1ba4fff66d16'
     },
     {
-      title: 'CNC and Machining Equipment',
-      description: 'Innovative financing for precision engineering and metalworking tools.',
-      icon: FaCogs
+      title: 'Industrial Cranes',
+      description: 'Financing options for overhead cranes, gantry cranes, and industrial lifting systems.',
+      icon: FaIndustry,
+      image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0'
     },
     {
-      title: 'Brewery Equipment',
-      description: 'Specialized leasing solutions for craft breweries and large-scale operations.',
-      icon: FaBeer
+      title: 'Specialized Lifting Equipment',
+      description: 'Custom financing programs for specialized lifting equipment and attachments.',
+      icon: FaTools,
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758'
     },
     {
-      title: 'Construction and Concrete Equipment',
-      description: 'Robust financing options for heavy machinery and construction tools.',
-      icon: FaHardHat
-    },
-    {
-      title: 'Titled Vehicle Programs',
-      description: 'Comprehensive leasing solutions for commercial vehicles and fleets.',
-      icon: FaTruck
+      title: 'Transport & Installation',
+      description: 'Additional financing options covering transport and installation costs.',
+      icon: FaTruck,
+      image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
     }
   ];
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl mb-8">Tailored equipment financing solutions across various industries</p>
+      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image 
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
+            alt="Crane financing"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Crane Financing Solutions
+          </motion.h1>
+          <motion.p
+            className="text-2xl mb-12 leading-relaxed max-w-3xl"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Specialized financing solutions for all types of cranes and lifting equipment
+          </motion.p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-16 px-4">
-        <div className="text-center mb-12">
-          <p className="text-xl text-gray-700">
-            At Vista Pacific Capital, we specialize in providing tailored equipment financing solutions across various industries. Our expertise includes:
+      <section className="max-w-6xl mx-auto py-24 px-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold mb-6 text-indigo-dye">Our Crane Financing Services</h2>
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+            At Vista Pacific Capital, we specialize in providing tailored crane financing solutions with competitive rates and flexible terms. Our expertise covers:
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <service.icon className="text-5xl text-blue-600 mb-4" />
-              <h2 className="text-xl font-semibold mb-2">{service.title}</h2>
-              <p className="text-gray-600">{service.description}</p>
-            </div>
+            <motion.div 
+              key={index} 
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative h-48">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                  <service.icon className="text-6xl text-white" />
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-indigo-dye mb-3">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="bg-blue-50 py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Our Services</h2>
+      <section className="py-24 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Why Choose Our Crane Financing
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Fast Approval Process</h3>
-              <p>Get your equipment financing approved within 24-48 hours, allowing you to seize opportunities quickly.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Flexible Terms</h3>
-              <p>Choose from lease terms ranging from 12 to 72 months, tailored to fit your business cash flow.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">High Approval Rate</h3>
-              <p>Benefit from our industry-leading 94.6% approval ratio, making financing accessible to more businesses.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Expert Guidance</h3>
-              <p>Work with our team of industry experts to find the best financing solution for your specific needs.</p>
-            </div>
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-lg"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <FaSearch className="text-4xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold mb-4">Expert Equipment Evaluation</h3>
+              <p className="text-gray-700">Our team provides thorough equipment evaluations to ensure you get the best value for your investment.</p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-lg"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <FaChartLine className="text-4xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold mb-4">Flexible Payment Structures</h3>
+              <p className="text-gray-700">Customize your payment schedule to match your business's cash flow and project timelines.</p>
+            </motion.div>
+
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-lg"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <GiCrane className="text-4xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold mb-4">Industry Expertise</h3>
+              <p className="text-gray-700">Benefit from our deep understanding of crane equipment and industry requirements.</p>
+            </motion.div>
+
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-lg"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <GiReceiveMoney className="text-4xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold mb-4">Competitive Rates</h3>
+              <p className="text-gray-700">Access industry-leading rates and terms tailored to your specific needs.</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 px-4">
+      <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Finance Your Equipment?</h2>
-          <p className="text-xl mb-8">Lets discuss how our tailored financing solutions can help your business grow.</p>
-          <a href="/contact" className="bg-white text-blue-600 py-3 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl">
-            <GiReceiveMoney className="mr-2 text-2xl" /> Get Started Today
-          </a>
+          <motion.h2
+            className="text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready to Finance Your Crane Equipment?
+          </motion.h2>
+          <motion.p
+            className="text-xl mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Let's discuss how our specialized crane financing solutions can help your business grow.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Started Today</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

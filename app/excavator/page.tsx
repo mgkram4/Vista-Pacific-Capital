@@ -1,16 +1,14 @@
-// app/restaurant/page.tsx
+// app/excavator/page.tsx
 
 import { Metadata } from 'next';
-import { restaurantMetadata } from '../lib/metadata';
+import { excavatorMetadata } from '../lib/metadata';
 import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
-import RestaurantFinancingContent from '../restaurant/resturant';
-
-
+import ExcavatorFinancingContent from './excavator';
 
 // Generate metadata at the page level (server component)
-export const metadata: Metadata = generateEnhancedMetadata(restaurantMetadata);
+export const metadata: Metadata = generateEnhancedMetadata(excavatorMetadata);
 
 // Server Component
-export default function RestaurantFinancingPage() {
-  return <RestaurantFinancingContent />;
+export default function ExcavatorFinancingPage() {
+  return <ExcavatorFinancingContent />;
 }
