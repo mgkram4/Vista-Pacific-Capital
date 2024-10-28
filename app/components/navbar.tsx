@@ -433,6 +433,7 @@ const AppNavBar: React.FC = () => {
                       height={75}
                       alt="Vista Pacific Capital - Equipment Financing Solutions"
                       className={`
+                        md:mr-20
                         w-auto
                         transition-all
                         duration-300
