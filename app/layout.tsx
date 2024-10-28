@@ -3,7 +3,7 @@ import AppNavBar from './components/navbar';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.vistapacificcapital.com'), 
+  metadataBase: new URL('https://www.vistapacificcapital.com'),
   title: 'Vista Pacific Capital - Equipment Financing Solutions',
   description: 'Vista Pacific Capital offers cutting-edge financing solutions for businesses across various industries. Unleash your business potential with our expert guidance and flexible terms.',
   robots: 'index, follow',
@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     languages: {
       'en-US': 'https://www.vistapacificcapital.com',
     },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
   },
 };
 
@@ -25,7 +29,7 @@ export default function RootLayout({
       <body className=" text-white">
         <div className="min-h-screen flex flex-col">
           <div className=" mb-20 md:mb-24">
-          <AppNavBar  />
+            <AppNavBar />
           </div>
           <main className="flex-grow container mx-auto px-4 py-8 ">
             {children}
