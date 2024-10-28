@@ -3,6 +3,7 @@ import AppNavBar from './components/navbar';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.vistapacificcapital.com'), 
   title: 'Vista Pacific Capital - Equipment Financing Solutions',
   description: 'Vista Pacific Capital offers cutting-edge financing solutions for businesses across various industries. Unleash your business potential with our expert guidance and flexible terms.',
   robots: 'index, follow',
