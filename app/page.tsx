@@ -14,11 +14,10 @@ import {
   FaHandshake,
   FaHardHat,
   FaMedkit,
-  FaShieldAlt,
   FaTruck,
   FaUtensils
 } from 'react-icons/fa';
-import { GiCheckMark, GiHandSaw, GiMoneyStack, GiSandsOfTime } from 'react-icons/gi';
+import { GiCheckMark } from 'react-icons/gi';
 
 // Refined SEO metadata with more targeted keywords
 const SEO = {
@@ -360,32 +359,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Trust Indicators Section */}
-        <section className="w-full py-12 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {[
-                { value: "100+", label: "Years Experience", icon: GiSandsOfTime },
-                { value: "$2B+", label: "Equipment Funded", icon: GiMoneyStack },
-                { value: "20k+", label: "Clients Served", icon: GiHandSaw },
-                { value: "A+", label: "BBB Rating", icon: FaShieldAlt }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={textVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center"
-                >
-                  <stat.icon className="text-4xl text-light-sea-green mb-2" />
-                  <div className="text-3xl font-bold text-indigo-dye">{stat.value}</div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Services Grid - Just showing a few key methods */}
         <section className="py-24 px-4 w-full bg-gray-50">
