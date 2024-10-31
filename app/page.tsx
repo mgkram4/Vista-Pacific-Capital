@@ -37,7 +37,7 @@ const services = [
       "No down payment options"
     ],
     icon: Building2,
-    href: "/construction-equipment-financing"
+    href: "/construction"
   },
   {
     title: "Medical Equipment Financing",
@@ -49,7 +49,7 @@ const services = [
       "Equipment-specific programs"
     ],
     icon: Stethoscope,
-    href: "/medical-equipment-financing"
+    href: "/medical"
   },
   {
     title: "Manufacturing Equipment",
@@ -61,7 +61,7 @@ const services = [
       "Equipment lines of credit"
     ],
     icon: Factory,
-    href: "/manufacturing-equipment-financing"
+    href: "/manufacturing"
   },
   {
     title: "Restaurant Equipment",
@@ -73,7 +73,7 @@ const services = [
       "Software included options"
     ],
     icon: UtensilsCrossed,
-    href: "/restaurant-equipment-financing"
+    href: "/restaurant"
   },
   {
     title: "Transportation Equipment",
@@ -85,7 +85,7 @@ const services = [
       "Maintenance included"
     ],
     icon: Truck,
-    href: "/transportation-equipment-financing"
+    href: "/dump-truck"
   },
   {
     title: "Brewery Equipment",
@@ -97,7 +97,7 @@ const services = [
       "Expansion programs"
     ],
     icon: Beer,
-    href: "/brewery-equipment-financing"
+    href: "/brewery-equipment"
   }
 ];
 
@@ -323,7 +323,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={() => setIsFormVisible(true)}
-            className="group relative px-8 py-4 rounded-xl bg-[#FF6B35] 
+            className="group relative px-8 py-4 rounded-xl bg-[#ff652d] 
               text-white font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20
               transform hover:-translate-y-1 transition-all duration-300"
           >
@@ -660,27 +660,7 @@ const QuickQuoteForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Equipment Type
-          </label>
-          <select
-            value={formData.equipmentType}
-            onChange={(e) => setFormData({...formData, equipmentType: e.target.value})}
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]"
-            required
-          >
-            <option value="">Select Equipment Type</option>
-            <option value="construction">Construction Equipment</option>
-            <option value="medical">Medical Equipment</option>
-            <option value="manufacturing">Manufacturing Equipment</option>
-            <option value="restaurant">Restaurant Equipment</option>
-            <option value="transportation">Transportation Equipment</option>
-            <option value="other">Other Equipment</option>
-          </select>
-        </div>
-
+      
         <div>
           <label className="block text-sm font-medium text-white mb-1">
             Equipment Cost
@@ -715,24 +695,7 @@ const QuickQuoteForm = () => {
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Time in Business
-          </label>
-          <select
-            value={formData.timeInBusiness}
-            onChange={(e) => setFormData({...formData, timeInBusiness: e.target.value})}
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-             text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]"
-            required
-          >
-            <option value="">Select Time in Business</option>
-            <option value="startup">Startup</option>
-            <option value="1-2">1-2 years</option>
-            <option value="3-5">3-5 years</option>
-            <option value="5+">5+ years</option>
-          </select>
-        </div>
+       
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
