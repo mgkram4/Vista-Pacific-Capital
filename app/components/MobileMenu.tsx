@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { equipmentLinks } from '../lib/metadata/navbar';
 import { NavLink } from './navlinks';
 
-// Animation variants remain the same
 const menuVariants = {
   closed: {
     opacity: 0,
@@ -67,10 +66,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             <Link
               href="/"
               onClick={onClose}
-              className={`flex items-center p-4 transition-all ${
+              className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-700'
+                  : 'text-gray-700'
               }`}
             >
               <Home className="w-5 h-5 mr-3 text-gray-500" />
@@ -80,10 +79,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             <Link
               href="/about"
               onClick={onClose}
-              className={`flex items-center p-4 transition-all ${
+              className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/about' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-700'
+                  : 'text-gray-700'
               }`}
             >
               <Info className="w-5 h-5 mr-3 text-gray-500" />
@@ -93,10 +92,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             <Link
               href="/contact"
               onClick={onClose}
-              className={`flex items-center p-4 transition-all ${
+              className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/contact' 
                   ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
-                  : 'hover:bg-gray-50 text-gray-700'
+                  : 'text-gray-700'
               }`}
             >
               <Phone className="w-5 h-5 mr-3 text-gray-500" />
@@ -115,10 +114,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             {equipmentLinks.map((link) => (
               <motion.div
                 key={link.path}
-                className="rounded-xl overflow-hidden hover:bg-gray-100 transition-colors"
+                className="rounded-xl overflow-hidden"
                 variants={itemVariants}
               >
-                <div className="p-4">
+                <div className="p-4 active:bg-gray-100 transition-colors">
                   <NavLink
                     link={link}
                     isActive={pathname === link.path}
@@ -139,8 +138,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             href="/contact"
             onClick={onClose}
             className="block w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 
-              text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl
-              transition-all duration-300 text-center"
+              text-white text-lg font-bold rounded-xl shadow-lg active:shadow-md
+              transition-all duration-150 text-center active:transform active:scale-[0.98]"
           >
             Get Your Quote Now
           </Link>

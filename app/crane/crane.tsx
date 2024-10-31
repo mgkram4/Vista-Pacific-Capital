@@ -76,6 +76,19 @@ export default function CraneServices() {
           >
             Specialized financing solutions for all types of cranes and lifting equipment
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Crane Financing</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -118,8 +131,10 @@ export default function CraneServices() {
               <div className="p-6">
                 <h3 className="text-xl font-bold text-indigo-dye mb-3">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
+                
               </div>
             </motion.div>
+            
           ))}
         </div>
       </section>

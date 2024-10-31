@@ -1,17 +1,14 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-
 interface StructuredDataWebPage {
   "@type": "WebPage";
   name: string;
   url: string;
   description: string;
+  mainEntityOfPage: {
+    "@type": "WebPage";
+    "@id": string;
+  };
 }
 
 interface StructuredData {
@@ -48,19 +45,31 @@ export const navigationSchema: StructuredData = {
       "@type": "WebPage",
       "name": "About Vista Pacific Capital",
       "url": `${BASE_URL}/about`,
-      "description": "Learn about our equipment financing expertise"
+      "description": "Learn about our equipment financing expertise",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/about`
+      }
     },
     {
       "@type": "WebPage",
       "name": "Construction Equipment Financing",
       "url": `${BASE_URL}/construction`,
-      "description": "Specialized financing for construction equipment"
+      "description": "Specialized financing for construction equipment",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/construction`
+      }
     },
     {
       "@type": "WebPage",
       "name": "Medical Equipment Financing",
       "url": `${BASE_URL}/medical`,
-      "description": "Healthcare equipment financing solutions"
+      "description": "Healthcare equipment financing solutions",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/medical`
+      }
     }
   ]
 };
@@ -147,9 +156,9 @@ export const quoteLink: EquipmentLink = {
   description: 'Get a customized equipment financing quote',
   isCallToAction: true,
   style: {
-    background: 'bg-gradient-to-r from-orange-500 to-orange-600',
+    background: 'bg-[#5BB5B0]',
     text: 'text-white font-medium',
-    hover: 'hover:shadow-lg hover:scale-[1.02]'
+    hover: 'hover:bg-[#4a9e99]'
   }
 };
 
@@ -158,13 +167,17 @@ const NavLink: React.FC<{
   isActive: boolean; 
   isQuote?: boolean;
   isMobile?: boolean;
-  onClick?: () => void 
+  onClick?: () => void;
+  isDropdownTrigger?: boolean;
+  isDropdownOpen?: boolean;
 }> = ({ 
   link, 
   isActive, 
   isQuote = false,
   isMobile = false,
-  onClick 
+  onClick,
+  isDropdownTrigger = false,
+  isDropdownOpen = false
 }) => {
   if (isQuote) {
     return (
@@ -172,26 +185,59 @@ const NavLink: React.FC<{
         href={link.path}
         onClick={onClick}
         className={`
-          ${link.style?.background} 
+          bg-[#FF6B35] 
           ${link.style?.text}
-          ${isMobile ? 'w-full text-center py-4 text-lg' : 'px-4 py-2.5'}
+          ${link.style?.hover}
+          ${isMobile ? 'w-full text-center py-3 text-base' : 'px-4 py-2'}
           rounded-lg
           shadow-sm
-          transition-all 
-          duration-300
           flex
           items-center
           justify-center
-          ${link.style?.hover}
           relative
           text-sm
+          transition-all
+          duration-300
+          transform
+          hover:scale-105
+          active:scale-95
         `}
         aria-label="Get your equipment financing quote"
         title={link.description}
       >
-        GET QUOTE
+        <span className="relative z-10">GET QUOTE</span>
         <div className="absolute inset-x-0 h-px bottom-0 bg-white/20" />
       </Link>
+    );
+  }
+
+  if (isDropdownTrigger) {
+    return (
+      <button
+        onClick={onClick}
+        className={`
+          relative 
+          px-3
+          py-2
+          flex
+          items-center
+          transition-colors
+          duration-200
+          ${isActive ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
+        `}
+        aria-expanded={isDropdownOpen}
+        aria-haspopup="true"
+      >
+        <div className="flex flex-col items-center">
+          <span className="font-medium whitespace-nowrap text-xs">
+            Equipment
+          </span>
+          <span className="font-medium whitespace-nowrap text-xs">
+            Financing
+          </span>
+        </div>
+        <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+      </button>
     );
   }
 
@@ -200,14 +246,13 @@ const NavLink: React.FC<{
       href={link.path}
       onClick={onClick}
       className={`
-        group 
         relative 
         px-3
         py-2
-        transition-all 
-        duration-300
-        ${isMobile ? 'w-full text-center py-4 hover:bg-gray-100' : ''}
-        ${isActive ? 'text-[#5BB5B0]' : 'text-[#1B365D]'}
+        transition-colors
+        duration-200
+        ${isMobile ? 'w-full text-center py-3' : ''}
+        ${isActive ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
       `}
       aria-label={`${link.topText} ${link.bottomText}`}
       title={link.description}
@@ -216,48 +261,41 @@ const NavLink: React.FC<{
         <span className={`
           font-medium 
           whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs xl:text-sm'}
-          transition-transform
-          duration-300
-          group-hover:-translate-y-0.5
+          ${isMobile ? 'text-base' : 'text-xs'}
         `}>
           {link.topText}
         </span>
         <span className={`
           font-medium 
           whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs xl:text-sm'}
-          transition-transform
-          duration-300
-          group-hover:translate-y-0.5
+          ${isMobile ? 'text-base' : 'text-xs'}
         `}>
           {link.bottomText}
         </span>
-        <motion.div
-          className={`
-            absolute 
-            -bottom-1
-            left-0 
-            h-0.5 
-            bg-[#5BB5B0]
-            w-0 
-            group-hover:w-full 
-            transition-all 
-            duration-300 
-            ${isActive ? 'w-full' : ''}
-            ${isMobile ? 'hidden' : ''}
-          `}
-          layoutId="underline"
-        />
       </div>
     </Link>
   );
 };
 
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+
 const AppNavBar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isEquipmentDropdownOpen, setIsEquipmentDropdownOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const lastScrollTop = useRef(0);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -270,27 +308,49 @@ const AppNavBar: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollTop = window.scrollY;
+      
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(scrollTop > 20);
+          lastScrollTop.current = scrollTop;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
+    let resizeTimer: NodeJS.Timeout;
+    
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsMobileMenuOpen(false);
-      }
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth >= 1024) {
+          setIsMobileMenuOpen(false);
+        }
+      }, 100);
     };
+
     window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
+    };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isMobileMenuOpen && !target.closest('nav')) {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
+        setIsEquipmentDropdownOpen(false);
+      }
+      if (isMobileMenuOpen && !(event.target as Element).closest('nav')) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -298,20 +358,41 @@ const AppNavBar: React.FC = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsEquipmentDropdownOpen(false);
+        setIsMobileMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  const mainLinks = equipmentLinks.filter(link => link.path === '/about');
+  const equipmentFinancingLinks = equipmentLinks.filter(link => link.path !== '/about');
+
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <header className={`
-      fixed 
-      top-0 
-      left-0 
-      right-0 
-      z-50
-      transition-all
-      duration-300
-      ${isScrolled ? 'translate-y-0' : 'translate-y-6'}
-    `} 
-    role="banner"
+    <header 
+      className={`
+        fixed 
+        top-0 
+        left-0 
+        right-0 
+        z-50
+        transition-transform
+        duration-300
+        ${isScrolled ? 'translate-y-0' : 'translate-y-0'}
+      `} 
+      role="banner"
     >
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5BB5B0] via-white to-[#1B365D] opacity-20" />
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5BB5B0] to-[#1B365D] opacity-20" />
+      
       <nav 
         className={`
           w-full 
@@ -319,21 +400,21 @@ const AppNavBar: React.FC = () => {
           duration-500
           relative
           ${isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-md' 
-            : 'bg-white/50 backdrop-blur-sm'
+            ? 'bg-white shadow-md' 
+            : 'bg-white'
           }
         `}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1400px] mx-auto px-2">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`
             flex 
             items-center 
             justify-between 
             transition-all 
             duration-300 
-            ${isScrolled ? 'h-16 md:h-30' : 'h-20 md:h-44'}
+            ${isScrolled ? 'h-14 md:h-16' : 'h-16 md:h-20'}
           `}>
             {/* Mobile Menu Button */}
             <div className="lg:hidden z-20">
@@ -342,9 +423,10 @@ const AppNavBar: React.FC = () => {
                   e.stopPropagation();
                   setIsMobileMenuOpen(!isMobileMenuOpen);
                 }}
-                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -355,94 +437,47 @@ const AppNavBar: React.FC = () => {
                     transition={{ duration: 0.2 }}
                   >
                     {isMobileMenuOpen ? (
-                      <X className="w-6 h-6 text-gray-600" />
+                      <X className="w-6 h-6 text-[#1B365D]" />
                     ) : (
-                      <Menu className="w-6 h-6 text-gray-600" />
+                      <Menu className="w-6 h-6 text-[#1B365D]" />
                     )}
                   </motion.div>
                 </AnimatePresence>
               </button>
             </div>
-{/* Logo Section with Company Name */}
-<div className="flex-1 flex items-center justify-between lg:justify-start relative">
-  {/* Empty div for left spacing on mobile */}
-  <div className="w-8 lg:hidden"></div>
 
-  {/* Mobile Company Name - Centered */}
-  <div className="absolute left-1/2 transform -translate-x-1/2 w-full text-center lg:hidden pointer-events-none">
-    <h1 className="text-[#1B365D] font-bold text-lg mr-12">
-      VISTA PACIFIC CAPITAL
-    </h1>
-  </div>
+            {/* Logo and Company Name */}
+            <div className="flex-1 flex items-center justify-between lg:justify-start relative">
+              <div className="w-8 lg:hidden"></div>
 
-  {/* Logo - Right aligned on mobile, normal on desktop */}
-  <div className="flex-shrink-0 relative z-10 ml-auto lg:ml-0">
-    <Link 
-      href="/" 
-      aria-label="Vista Pacific Capital - Equipment Financing Solutions"
-      className="block"
-    >
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className="relative"
-      >
-        <Image 
-          src="/Images/logo3.png"
-          width={250}
-          height={75}
-          alt="Vista Pacific Capital - Equipment Financing Solutions"
-          className={`
-            md:hidden
-            w-auto
-            transition-all
-            duration-300
-            ${isScrolled 
-              ? 'h-[30px] md:h-[40px] lg:h-[50px]' 
-              : 'h-[35px] md:h-[45px] lg:h-[60px]'
-            }
-          `}
-          priority
-          quality={95}
-          style={{ 
-            objectFit: 'contain',
-            objectPosition: 'center',
-          }}
-          sizes="(max-width: 768px) 150px, (max-width: 1024px) 200px, 250px"
-        />
-      </motion.div>
-    </Link>
-  </div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-full text-center lg:hidden pointer-events-none">
+                <h1 className="text-[#1B365D] font-semibold text-base mr-12">
+                  VISTA PACIFIC CAPITAL
+                </h1>
+              </div>
 
-              
-              {/* Logo - Left aligned on desktop, shifted left on mobile */}
-              <div className="flex-shrink-0 relative z-10">
+              {/* Mobile Logo */}
+              <div className="flex-shrink-0 relative z-10 ml-auto lg:ml-0">
                 <Link 
                   href="/" 
                   aria-label="Vista Pacific Capital - Equipment Financing Solutions"
-                  className="block lg:relative lg:left-0"
+                  className="block"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="relative"
-                  >
+                  <div className="relative">
                     <Image 
-                      src="/Images/logo2.png"
-                      width={800}
-                      height={300}
+                      src="/Images/logo3.png"
+                      width={200}
+                      height={60}
                       alt="Vista Pacific Capital - Equipment Financing Solutions"
                       className={`
-                        md:mr-32
-                        p-3
+                        md:hidden
                         w-auto
                         transition-all
                         duration-300
                         ${isScrolled 
-                          ? 'h-[40px] md:h-[50px]' 
-                          : 'h-[50px] md:h-[140px]'
+                          ? 'h-[25px] md:h-[30px]' 
+                          : 'h-[30px] md:h-[35px]'
                         }
-                        lg:block hidden
                       `}
                       priority
                       quality={95}
@@ -450,9 +485,63 @@ const AppNavBar: React.FC = () => {
                         objectFit: 'contain',
                         objectPosition: 'center',
                       }}
-                      sizes="(max-width: 768px) 200px, 250px"
+                      sizes="(max-width: 768px) 150px, 200px"
                     />
-                  </motion.div>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Desktop Logo with Company Name */}
+              <div className="flex-shrink-0 relative z-10">
+                <Link
+                  href="/"
+                  aria-label="Vista Pacific Capital - Equipment Financing Solutions"
+                  className="flex items-center gap-3 lg:relative lg:left-0"
+                >
+                  <div className="relative md:mt-1">
+                    <Image
+                      src="/Images/logo3.png"
+                      width={300}
+                      height={120}
+                      alt="Vista Pacific Capital - Equipment Financing Solutions"
+                      className={`
+                        md:mr-3
+                        w-auto
+                        transition-all
+                        duration-300
+                        ${isScrolled
+                          ? 'h-[30px] md:h-[35px]'
+                          : 'h-[35px] md:h-[45px]'
+                        }
+                        lg:block hidden
+                      `}
+                      priority
+                      quality={95}
+                      style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center',
+                      }}
+                      sizes="(max-width: 768px) 160px, 200px"
+                    />
+                  </div>
+                  <div className={`
+                    hidden lg:block
+                    font-semibold
+                    transition-all
+                    duration-300
+                    ${isScrolled ? 'text-lg' : 'text-xl'}
+                  `}>
+                    <h1 className="text-[#1B365D]">Vista Pacific Capital</h1>
+                    <p className={`
+                      font-normal
+                      text-[#5BB5B0]
+                      transition-all
+                      duration-300
+                      ${isScrolled ? 'text-xs' : 'text-sm'}
+                    `}>
+                      Equipment Financing Solutions
+                    </p>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -460,36 +549,76 @@ const AppNavBar: React.FC = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center">
               <div className="relative flex items-center">
-                {/* Decorative line before nav items */}
-                <div className="absolute -left-8 top-1/2 w-6 h-px bg-gradient-to-r from-transparent to-gray-200" />
+                <div className="absolute -left-6 top-1/2 w-4 h-px bg-gradient-to-r from-transparent to-[#5BB5B0]/20" />
                 
                 <motion.div 
-                  className="flex items-center space-x-1 p-2 rounded-xl relative"
+                  className="flex items-center space-x-1 p-2 rounded-lg relative"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  {/* Decorative elements */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-50 rounded-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-50 rounded-lg" />
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5BB5B0]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1B365D]/20 to-transparent" />
                   
-                  {equipmentLinks.map((link) => (
+                  {/* About Link */}
+                  {mainLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       link={link}
                       isActive={pathname === link.path}
                     />
                   ))}
+
+                  {/* Equipment Dropdown */}
+                  <div ref={dropdownRef} className="relative">
+                    <NavLink
+                      link={{ topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment financing options' }}
+                      isActive={equipmentFinancingLinks.some(link => pathname === link.path)}
+                      isDropdownTrigger={true}
+                      isDropdownOpen={isEquipmentDropdownOpen}
+                      onClick={() => setIsEquipmentDropdownOpen(!isEquipmentDropdownOpen)}
+                    />
+
+                    <AnimatePresence>
+                      {isEquipmentDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg py-1 z-50"
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="equipment-financing-menu"
+                        >
+                          {equipmentFinancingLinks.map((link) => (
+                            <Link
+                              key={link.path}
+                              href={link.path}
+                              className={`
+                                block px-3 py-2 text-sm
+                                ${pathname === link.path ? 'text-[#5BB5B0] bg-gray-50' : 'text-[#1B365D]'}
+                                hover:bg-gray-50 transition-colors duration-200
+                              `}
+                              onClick={() => setIsEquipmentDropdownOpen(false)}
+                              role="menuitem"
+                            >
+                              {link.topText} {link.bottomText}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.div>
 
-                {/* Decorative line after nav items */}
-                <div className="absolute -right-8 top-1/2 w-6 h-px bg-gradient-to-r from-gray-200 to-transparent" />
+                <div className="absolute -right-6 top-1/2 w-4 h-px bg-gradient-to-r from-[#5BB5B0]/20 to-transparent" />
               </div>
 
               <motion.div 
-                className="ml-6"
-                initial={{ opacity: 0,scale: 0.9 }}
+                className="ml-4"
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
@@ -511,19 +640,23 @@ const AppNavBar: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden border-t border-gray-300 bg-white shadow-lg"
+              className="lg:hidden border-t border-gray-200 bg-white shadow-lg"
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
-              <div className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-6">
-                <div className="space-y-2">
+              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4">
+                <div className="space-y-1">
                   {equipmentLinks.map((link, index) => (
                     <motion.div
                       key={link.path}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="mb-2"
+                      className="mb-1"
                     >
-                      <div className="rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
+                      <div className="rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                         <NavLink
                           link={link}
                           isActive={pathname === link.path}
@@ -539,7 +672,7 @@ const AppNavBar: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: equipmentLinks.length * 0.1 }}
-                  className="mt-6 px-2"
+                  className="mt-4 px-1"
                 >
                   <NavLink
                     link={quoteLink}
