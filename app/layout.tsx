@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from 'next';
 import AppNavBar from './components/navbar';
 import './globals.css';
@@ -40,6 +41,7 @@ export default function RootLayout({
           </div>
           <main className="flex-grow container mx-auto px-4 py-8 ">
             {children}
+            <Analytics/>
           </main>
           <footer className="bg-secondary text-white py-4">
             <div className="container mx-auto px-4 text-center">
