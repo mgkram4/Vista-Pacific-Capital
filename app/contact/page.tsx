@@ -115,7 +115,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg hover:bg-[#11B5B2]/20 transition-colors">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">info@vistapacificcapital.com</p>
+                  <p className="ml-4 text-gray-700 font-medium">Alanj@vistapacificapital.com</p>
                 </div>
               </div>
             </motion.div>
