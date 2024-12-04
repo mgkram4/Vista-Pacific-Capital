@@ -9,6 +9,7 @@ import {
   Clock,
   DollarSign,
   Factory,
+  Play,
   Stethoscope,
   Truck,
   UtensilsCrossed
@@ -17,6 +18,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import QuickQuoteForm from './components/form';
 
 // Enhanced SEO metadata with long-tail keywords
 const SEO = {
@@ -243,124 +245,131 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-      <section className="relative min-h-screen overflow-hidden">
-  {/* Modern Gradient Background */}
-  <div className="absolute inset-0">
-    <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D] via-[#234578] to-[#48B0B0]">
-      {/* Abstract Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_0%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.05)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05)_75%,transparent_75%,transparent)] bg-[length:64px_64px]" />
-      </div>
-      
-      {/* Animated Gradient Accent */}
+      <section className="relative min-h-screen w-full overflow-hidden">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <div className="absolute -top-48 -left-48 w-96 h-96 bg-[#48B0B0] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
-        <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#1B365D] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute top-48 left-48 w-96 h-96 bg-[#FF6B35] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
+        <img 
+          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80"
+          alt="Background" 
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/90 via-blue-900/85 to-cyan-900/80" />
       </div>
-    </div>
-  </div>
 
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        animate="visible"
-        className="text-white space-y-8"
-      >
-        <div className="inline-flex items-center space-x-2 bg-[#48B0B0]/20 backdrop-blur-md 
-          px-4 py-2 rounded-full border border-[#48B0B0]/40">
-          <span className="animate-pulse relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5ED3D3] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#48B0B0]"></span>
-          </span>
-          <span className="text-sm font-medium">Live Rates Available Now</span>
-        </div>
+      {/* Glassmorphism Cards Container */}
+      <div className="relative w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column - Hero Content */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              className="text-white space-y-8"
+            >
+              {/* Live Badge */}
+              <div className="inline-flex items-center space-x-2 bg-cyan-500/10 backdrop-blur-md 
+                px-4 py-2 rounded-full border border-cyan-500/20">
+                <span className="animate-pulse relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                </span>
+                <span className="text-sm font-medium">Live Rates Available Now</span>
+              </div>
 
-        <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-          Get Equipment
-          <br />
-          Financing in
-          <br />
-          <span className="text-[#FF6B35]">24 Hours</span>
-        </h1>
+              {/* Hero Title */}
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
+                Get Equipment
+                <br />
+                Financing in
+                <br />
+                <span className="text-orange-500">24 Hours</span>
+              </h1>
 
-        <div className="space-y-6">
-          <div className="flex items-center space-x-4 text-xl lg:text-2xl text-gray-200">
-            <span className="flex-shrink-0 w-1 h-8 bg-[#48B0B0] rounded-full" />
-            <p>Rates from 4.99% | $10M+ Available</p>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              ["Same-Day Approval", "bg-[#48B0B0]/10 border-[#48B0B0]/20"],
-              ["Minimal Documentation", "bg-[#1B365D]/10 border-[#1B365D]/20"],
-              ["Flexible Terms", "bg-[#2C4C7C]/10 border-[#2C4C7C]/20"],
-              ["Rate Match Guarantee", "bg-[#FF6B35]/10 border-[#FF6B35]/20"]
-            ].map(([item, bgColor], index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0,
-                    transition: { delay: index * 0.1 }
-                  }
-                }}
-                className={`flex items-center space-x-2 p-3 rounded-lg border ${bgColor}
-                  backdrop-blur-md hover:bg-white/5 transition-colors duration-300`}
+              {/* Features Section */}
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4 text-lg md:text-xl lg:text-2xl text-gray-200">
+                  <span className="flex-shrink-0 w-1 h-8 bg-cyan-500 rounded-full" />
+                  <p>Rates from 4.99% | $10M+ Available</p>
+                </div>
+                
+                {/* Feature Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    ["Same-Day Approval", "bg-cyan-500/10 border-cyan-500/20"],
+                    ["Minimal Documentation", "bg-blue-900/10 border-blue-900/20"],
+                    ["Flexible Terms", "bg-blue-800/10 border-blue-800/20"],
+                    ["Rate Match Guarantee", "bg-orange-500/10 border-orange-500/20"]
+                  ].map(([item, bgColor], index) => (
+                    <motion.div
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { 
+                          opacity: 1, 
+                          y: 0,
+                          transition: { delay: index * 0.1 }
+                        }
+                      }}
+                      className={`flex items-center space-x-2 p-3 rounded-lg border ${bgColor}
+                        backdrop-blur-md hover:bg-white/5 transition-colors duration-300`}
+                    >
+                      <CheckCircle2 className="text-cyan-500 h-5 w-5 flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                
+              <Link
+                href="/contact"
+                className="bg-[#FF6B35] hover:bg-[#ff825c] text-white px-8 py-4 rounded-xl
+                  font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20 
+                  transform hover:-translate-y-1 transition-all duration-300 "
               >
-                <CheckCircle2 className="text-[#48B0B0] h-5 w-5 flex-shrink-0" />
-                <span className="text-sm font-medium">{item}</span>
-              </motion.div>
-            ))}
+                Get Your Equipment Financing Quote <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+
+                <Link
+                 href="/about"
+                  className="group px-6 py-3 rounded-xl border border-cyan-500/30 text-white
+                    font-semibold text-lg hover:bg-cyan-500/10 backdrop-blur-md
+                    transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
+                >
+
+                  <Play className="mr-2 h-5 w-5" />
+                  Watch How It Works
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Form */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              className="backdrop-blur-xl bg-white/10 p-6 md:p-8 rounded-2xl border border-cyan-500/20
+                shadow-2xl shadow-black/20"
+            >
+              {/* QuickQuoteForm would go here */}
+              <div className="text-white text-center p-4">
+              <QuickQuoteForm/>
+              </div>
+            </motion.div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={() => setIsFormVisible(true)}
-            className="group relative px-8 py-4 rounded-xl bg-[#ff652d] 
-              text-white font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20
-              transform hover:-translate-y-1 transition-all duration-300"
-          >
-            <span className="relative z-10 flex items-center justify-center">
-              Get Your Rate - It Takes 2 Minutes
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </button>
 
-          <button
-            className="group px-8 py-4 rounded-xl border border-[#48B0B0]/30 text-white
-              font-semibold text-lg hover:bg-[#48B0B0]/10 backdrop-blur-md
-              transform hover:-translate-y-1 transition-all duration-300"
-          >
-            <span className="flex items-center justify-center">
-              Watch How It Works
-            </span>
-          </button>
-        </div>
-      </motion.div>
 
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        animate="visible"
-        className="backdrop-blur-lg bg-white/20 p-8 rounded-2xl border border-[#48B0B0]/20
-          shadow-2xl shadow-black/20"
-      >
-        <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">Get Your Rate</h2>
-          <p className="text-[#a5e3e3] font-medium">Free quote • No obligations • 2 minutes</p>
-        </div>
-        <QuickQuoteForm />
-      </motion.div>
-    </div>
-  </div>
-</section>
+
         {/* Services Section */}
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -638,144 +647,4 @@ export default function Home() {
     </>
   );
 }
-
-// QuickQuoteForm Component
-const QuickQuoteForm = () => {
-  const [formData, setFormData] = useState({
-    equipmentType: '',
-    equipmentCost: '',
-    businessType: '',
-    timeInBusiness: '',
-    creditScore: '',
-    name: '',
-    email: '',
-    phone: ''
-  });
-
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    // Handle form submission
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-4">
-      
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Equipment Cost
-          </label>
-          <input
-            type="text"
-            value={formData.equipmentCost}
-            onChange={(e) => setFormData({...formData, equipmentCost: e.target.value})}
-            placeholder="Estimated Cost"
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-              placeholder-gray-400"
-            required
-          />
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Business Type
-          </label>
-          <input
-            type="text"
-            value={formData.businessType}
-            onChange={(e) => setFormData({...formData, businessType: e.target.value})}
-            placeholder="Type of Business"
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-              placeholder-gray-400"
-            required
-          />
-        </div>
-
-       
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Name
-          </label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({...formData, name: e.target.value})}
-            placeholder="Full Name"
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-              placeholder-gray-400"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Email
-          </label>
-          <input
-            type="email"
-            value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
-            placeholder="Email Address"
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-              placeholder-gray-400"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-white mb-1">
-            Phone
-          </label>
-          <input
-            type="tel"
-            value={formData.phone}
-            onChange={(e) => setFormData({...formData, phone: e.target.value})}
-            placeholder="Phone Number"
-            className="w-full rounded-sm border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-              text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-              placeholder-gray-400"
-            required
-          />
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        className="w-full bg-[#FF6B35] hover:bg-[#ff825c] text-white px-6 py-3 rounded-sm
-          font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20 
-          transform hover:-translate-y-1 transition-all duration-300"
-      >
-        Get Your Quote Now
-      </button>
-
-      <p className="text-sm text-gray-300 text-center">
-        Your information is secure and will never be shared. By submitting,
-        you agree to our Privacy Policy and Terms of Service.
-      </p>
-    </form>
-  );
-};
-
-// CSS constants for consistent styling
-const styles = {
-  input: `w-full rounded-lg border-[#48B0B0]/20 bg-white/10 backdrop-blur-md
-    text-white focus:border-[#48B0B0] focus:ring-[#48B0B0]
-    placeholder-gray-400`,
-  label: `block text-sm font-medium text-white mb-1`,
-  button: `w-full bg-[#FF6B35] hover:bg-[#ff825c] text-white px-6 py-3 rounded-lg
-    font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20 
-    transform hover:-translate-y-1 transition-all duration-300`,
-  gradientBg: `bg-gradient-to-br from-[#1B365D] to-[#48B0B0]`,
-  cardHover: `hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`,
-  glassEffect: `backdrop-blur-md bg-white/10 border border-[#48B0B0]/20`,
-};
 
