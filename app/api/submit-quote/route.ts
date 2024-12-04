@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     // Email to customer
     const customerEmail = {
       to: email,
-      from: 'mark.garcia4@laverne.edu', // Make sure this email is verified in SendGrid
+      from: 'alan.johnson@providencecapitalfunding.com', // Make sure this email is verified in SendGrid
       subject: 'Your Equipment Quote Request',
       html: `
         <h1>Thank you for your quote request, ${name}!</h1>
@@ -49,8 +49,8 @@ export async function POST(request: Request) {
 
     // Email to your team
     const teamEmail = {
-      to: 'mark.garcia4@laverne.edu', // Make sure this is the correct team email
-      from: 'mark.garcia4@laverne.edu', // Must be verified in SendGrid
+      to: 'alan.johnson@providencecapitalfunding.com', // Make sure this is the correct team email
+      from: 'alan.johnson@providencecapitalfunding.com', // Must be verified in SendGrid
       subject: 'New Equipment Quote Request',
       html: `
         <h1>New Quote Request</h1>

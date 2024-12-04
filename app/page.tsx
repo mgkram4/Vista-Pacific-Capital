@@ -15,7 +15,6 @@ import {
   UtensilsCrossed
 } from 'lucide-react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import QuickQuoteForm from './components/form';
@@ -480,84 +479,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <div className="flex justify-center space-x-4 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-8 h-8 text-[#FF6B35]" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <h2 className="text-4xl font-bold text-[#1B365D] mb-4">
-                Trusted by 10,000+ Businesses
-              </h2>
-              <p className="text-xl text-[#2C4C7C]">
-                4.9/5 average rating from verified customers
-              </p>
-            </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-3 gap-8"
-            >
-              {[
-                {
-                  quote: "Same-day approval and incredible rates. Vista Pacific made expanding our construction fleet easy.",
-                  author: "John D.",
-                  role: "Construction Company Owner",
-                  image: "/testimonial1.jpg"
-                },
-                {
-                  quote: "The medical equipment financing program helped us upgrade our entire imaging department.",
-                  author: "Dr. Sarah M.",
-                  role: "Medical Practice Director",
-                  image: "/testimonial2.jpg"
-                },
-                {
-                  quote: "Their restaurant equipment program got us the kitchen upgrades we needed with flexible payments.",
-                  author: "Michael R.",
-                  role: "Restaurant Owner",
-                  image: "/testimonial3.jpg"
-                }
-              ].map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-white rounded-xl shadow-lg p-6 border border-[#48B0B0]/10
-                    hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden relative mr-4">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.author}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-[#1B365D]">{testimonial.author}</div>
-                      <div className="text-[#2C4C7C] text-sm">{testimonial.role}</div>
-                    </div>
-                  </div>
-                  <p className="text-[#2C4C7C] italic">"{testimonial.quote}"</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section className="py-20 bg-gray-50">
