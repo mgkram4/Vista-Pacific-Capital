@@ -30,9 +30,9 @@ const QuickQuoteForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
+  const [focused, setFocused] = useState<string>('');
 
   const validateForm = (): boolean => {
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus({
@@ -42,7 +42,6 @@ const QuickQuoteForm = () => {
       return false;
     }
 
-    // Phone validation (basic US format)
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
       setSubmitStatus({
@@ -52,7 +51,6 @@ const QuickQuoteForm = () => {
       return false;
     }
 
-    // Equipment cost validation
     const cost = parseFloat(formData.equipmentCost.replace(/[^0-9.]/g, ''));
     if (isNaN(cost) || cost <= 0) {
       setSubmitStatus({
@@ -142,22 +140,30 @@ const QuickQuoteForm = () => {
     setFormData({ ...formData, equipmentCost: formattedCost });
   };
 
-  const inputClasses = "w-full h-12 px-4 rounded-lg border border-[#48B0B0]/20 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-[#48B0B0] focus:ring-2 focus:ring-[#48B0B0] focus:ring-opacity-50 transition-all duration-200";
+  const inputClasses = `
+    w-full px-4 py-3 rounded-lg
+    border border-cyan-500/30
+    bg-white/20 text-white placeholder-gray-300
+    focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent
+    hover:bg-white/25 transition-all duration-200
+    text-base leading-relaxed
+  `;
+
   const labelClasses = "block text-sm font-medium text-gray-200 mb-2";
 
   return (
-    <div className="w-full bg-white/10 backdrop-blur-lg border border-[#48B0B0]/20 rounded-xl shadow-xl p-6">
-      <div className="mb-6 text-center">
+    <div className="w-full backdrop-blur-xl bg-white/10 border border-cyan-500/20 rounded-xl p-6 md:p-8">
+      <div className="mb-8 text-center">
         <h2 className="text-2xl font-bold text-white mb-2">Get Your Rate</h2>
-        <p className="text-[#a5e3e3] font-medium">Free quote • No obligations • 2 minutes</p>
+        <p className="text-cyan-200 font-medium">Free quote • No obligations • 2 minutes</p>
       </div>
 
       {submitStatus.message && (
         <div
-          className={`mb-4 p-4 rounded-lg ${
+          className={`mb-6 p-4 rounded-lg ${
             submitStatus.success
-              ? 'bg-green-500/20 text-green-100'
-              : 'bg-red-500/20 text-red-100'
+              ? 'bg-green-500/20 border border-green-500/30 text-green-100'
+              : 'bg-red-500/20 border border-red-500/30 text-red-100'
           }`}
         >
           {submitStatus.message}
@@ -174,8 +180,10 @@ const QuickQuoteForm = () => {
               type="text"
               value={formData.equipmentCost}
               onChange={handleCostChange}
+              onFocus={() => setFocused('cost')}
+              onBlur={() => setFocused('')}
               placeholder="Estimated Cost"
-              className={inputClasses}
+              className={`${inputClasses} ${focused === 'cost' ? 'ring-2 ring-cyan-500' : ''}`}
               required
             />
           </div>
@@ -188,8 +196,10 @@ const QuickQuoteForm = () => {
               type="text"
               value={formData.businessType}
               onChange={(e) => setFormData({...formData, businessType: e.target.value})}
+              onFocus={() => setFocused('business')}
+              onBlur={() => setFocused('')}
               placeholder="Type of Business"
-              className={inputClasses}
+              className={`${inputClasses} ${focused === 'business' ? 'ring-2 ring-cyan-500' : ''}`}
               required
             />
           </div>
@@ -204,8 +214,10 @@ const QuickQuoteForm = () => {
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onFocus={() => setFocused('name')}
+              onBlur={() => setFocused('')}
               placeholder="Full Name"
-              className={inputClasses}
+              className={`${inputClasses} ${focused === 'name' ? 'ring-2 ring-cyan-500' : ''}`}
               required
             />
           </div>
@@ -218,8 +230,10 @@ const QuickQuoteForm = () => {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
+              onFocus={() => setFocused('email')}
+              onBlur={() => setFocused('')}
               placeholder="Email Address"
-              className={inputClasses}
+              className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-cyan-500' : ''}`}
               required
             />
           </div>
@@ -232,8 +246,10 @@ const QuickQuoteForm = () => {
               type="tel"
               value={formData.phone}
               onChange={handlePhoneChange}
+              onFocus={() => setFocused('phone')}
+              onBlur={() => setFocused('')}
               placeholder="(555) 555-5555"
-              className={inputClasses}
+              className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-cyan-500' : ''}`}
               required
             />
           </div>
@@ -242,12 +258,16 @@ const QuickQuoteForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`w-full h-14 ${
-            loading
+          className={`
+            w-full px-6 py-4 rounded-xl font-semibold text-lg
+            ${loading
               ? 'bg-gray-500 cursor-not-allowed'
               : 'bg-[#FF6B35] hover:bg-[#ff825c] hover:-translate-y-1'
-          } text-white rounded-lg font-semibold text-lg shadow-lg
-          transform transition-all duration-300`}
+            }
+            text-white shadow-lg hover:shadow-[#FF6B35]/20
+            transform transition-all duration-300
+            flex items-center justify-center space-x-2
+          `}
         >
           {loading ? 'Sending...' : 'Get Your Quote Now'}
         </button>

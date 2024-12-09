@@ -244,6 +244,7 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
+        {/* HERO SECTION */}
       <section className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
