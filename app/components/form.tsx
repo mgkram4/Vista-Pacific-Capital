@@ -141,7 +141,7 @@ const QuickQuoteForm = () => {
   };
 
   const inputClasses = `
-    w-full px-4 py-3 rounded-lg
+    w-full px-3 py-2 rounded-lg
     border border-cyan-500/30
     bg-white/20 text-white placeholder-gray-300
     focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent
@@ -149,18 +149,18 @@ const QuickQuoteForm = () => {
     text-base leading-relaxed
   `;
 
-  const labelClasses = "block text-sm font-medium text-gray-200 mb-2";
+  const labelClasses = "block text-sm font-medium text-gray-200 mb-1";
 
   return (
-    <div className="w-full backdrop-blur-xl bg-white/10 border border-cyan-500/20 rounded-xl p-6 md:p-8">
-      <div className="mb-8 text-center">
-        <h2 className="text-2xl font-bold text-white mb-2">Get Your Rate</h2>
-        <p className="text-cyan-200 font-medium">Free quote • No obligations • 2 minutes</p>
+    <div className="w-full backdrop-blur-xl bg-white/10 border border-cyan-500/20 rounded-xl p-4 md:p-6">
+      <div className="mb-4 text-center">
+        <h2 className="text-xl font-bold text-white mb-1">Get Your Rate</h2>
+        <p className="text-cyan-200 text-sm font-medium">Free quote • No obligations • 2 minutes</p>
       </div>
 
       {submitStatus.message && (
         <div
-          className={`mb-6 p-4 rounded-lg ${
+          className={`mb-4 p-3 rounded-lg ${
             submitStatus.success
               ? 'bg-green-500/20 border border-green-500/30 text-green-100'
               : 'bg-red-500/20 border border-red-500/30 text-red-100'
@@ -170,8 +170,8 @@ const QuickQuoteForm = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-4">
           <div>
             <label className={labelClasses}>
               Equipment Cost
@@ -203,9 +203,7 @@ const QuickQuoteForm = () => {
               required
             />
           </div>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
           <div>
             <label className={labelClasses}>
               Name
@@ -259,7 +257,7 @@ const QuickQuoteForm = () => {
           type="submit"
           disabled={loading}
           className={`
-            w-full px-6 py-4 rounded-xl font-semibold text-lg
+            w-full px-4 py-3 rounded-xl font-semibold text-base
             ${loading
               ? 'bg-gray-500 cursor-not-allowed'
               : 'bg-[#FF6B35] hover:bg-[#ff825c] hover:-translate-y-1'
@@ -272,7 +270,7 @@ const QuickQuoteForm = () => {
           {loading ? 'Sending...' : 'Get Your Quote Now'}
         </button>
 
-        <p className="text-sm text-gray-300 text-center">
+        <p className="text-xs text-gray-300 text-center">
           Your information is secure and will never be shared. By submitting,
           you agree to our Privacy Policy and Terms of Service.
         </p>
