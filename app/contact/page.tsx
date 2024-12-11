@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
+import QuickQuoteForm from '../components/form';
 
 export default function Contact() {
   return (
@@ -45,57 +45,14 @@ export default function Contact() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 -mt-24 relative z-30 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {/* Contact Form - Sticky on desktop, normal on mobile */}
+          {/* Quick Quote Form - Sticky on desktop, normal on mobile */}
           <div className="lg:order-2 lg:sticky lg:top-8 mt-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl shadow-xl p-6 md:p-8"
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#113E59]">Send Us a Message</h2>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input
-                    type="tel"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
-                    placeholder="(123) 456-7890"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#11B5B2] focus:border-transparent transition-all"
-                    placeholder="How can we help you?"
-                  />
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
-                >
-                  <GiReceiveMoney className="text-xl" />
-                  <span>Get Equipment Financing</span>
-                </motion.button>
-              </form>
+              <QuickQuoteForm />
             </motion.div>
           </div>
 

@@ -69,7 +69,7 @@ export default function ConstructionFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
+            src="/Images/constructionH.png"
             alt="Construction equipment background"
             layout="fill"
             objectFit="cover"

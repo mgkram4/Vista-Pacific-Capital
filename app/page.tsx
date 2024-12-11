@@ -19,7 +19,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import QuickQuoteForm from './components/form';
 
-// Enhanced SEO metadata with long-tail keywords
 const SEO = {
   title: "Equipment Financing & Leasing | Same-Day Approval | Vista Pacific Capital",
   description: "Get equipment financing in 24 hours with rates from 4.99%. Specialized funding for construction, medical, manufacturing & more. $10M+ available. Apply now for instant quote.",
@@ -244,8 +243,7 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-        {/* HERO SECTION */}
-      <section className="relative min-h-screen w-full overflow-hidden">
+      <section className="relative min-full w-full overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img 
@@ -323,26 +321,23 @@ export default function Home() {
               </div>
 
               {/* CTA Buttons */}
-              
               <div className="flex flex-col sm:flex-row gap-4">
-                
-              <Link
-                href="/contact"
-                className="bg-[#FF6B35] hover:bg-[#ff825c] text-white px-8 py-4 rounded-xl
-                  font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20 
-                  transform hover:-translate-y-1 transition-all duration-300 "
-              >
-                Get Your Equipment Financing Quote <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
+                <Link
+                  href="/contact"
+                  className="bg-[#FF6B35] hover:bg-[#ff825c] text-white px-8 py-4 rounded-xl
+                    font-semibold text-lg shadow-lg hover:shadow-[#FF6B35]/20 
+                    transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center"
+                >
+                  Get Your Equipment Financing Quote 
+                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
 
                 <Link
-                 href="/about"
+                  href="/about"
                   className="group px-6 py-3 rounded-xl border border-cyan-500/30 text-white
                     font-semibold text-lg hover:bg-cyan-500/10 backdrop-blur-md
                     transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
                 >
-
                   <Play className="mr-2 h-5 w-5" />
                   Watch How It Works
                 </Link>
@@ -354,19 +349,18 @@ export default function Home() {
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="backdrop-blur-xl bg-white/10 p-6 md:p-8 rounded-2xl border border-cyan-500/20
-                shadow-2xl shadow-black/20"
+              className="relative z-10"
             >
-              {/* QuickQuoteForm would go here */}
-              <div className="text-white text-center p-4">
-              <QuickQuoteForm/>
+              <div className="backdrop-blur-xl bg-white/10 rounded-2xl border border-cyan-500/20
+                shadow-2xl shadow-black/20"
+              >
+                <QuickQuoteForm />
               </div>
             </motion.div>
           </div>
         </div>
       </div>
     </section>
-
 
 
 

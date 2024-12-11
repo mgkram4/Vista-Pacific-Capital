@@ -142,28 +142,28 @@ const QuickQuoteForm = () => {
 
   const inputClasses = `
     w-full px-3 py-2 rounded-lg
-    border border-cyan-500/30
-    bg-white/20 text-white placeholder-gray-300
-    focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent
-    hover:bg-white/25 transition-all duration-200
+    border border-gray-300
+    bg-white text-gray-900 placeholder-gray-500
+    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+    hover:bg-gray-50 transition-all duration-200
     text-base leading-relaxed
   `;
 
-  const labelClasses = "block text-sm font-medium text-gray-200 mb-1";
+  const labelClasses = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
-    <div className="w-full backdrop-blur-xl bg-white/10 border border-cyan-500/20 rounded-xl p-4 md:p-6">
+    <div className="w-full bg-white shadow-lg rounded-xl p-4 md:p-6">
       <div className="mb-4 text-center">
-        <h2 className="text-xl font-bold text-white mb-1">Get Your Rate</h2>
-        <p className="text-cyan-200 text-sm font-medium">Free quote • No obligations • 2 minutes</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-1">Get Your Rate</h2>
+        <p className="text-blue-600 text-sm font-medium">Free quote • No obligations • 2 minutes</p>
       </div>
 
       {submitStatus.message && (
         <div
           className={`mb-4 p-3 rounded-lg ${
             submitStatus.success
-              ? 'bg-green-500/20 border border-green-500/30 text-green-100'
-              : 'bg-red-500/20 border border-red-500/30 text-red-100'
+              ? 'bg-green-100 border border-green-500 text-green-700'
+              : 'bg-red-100 border border-red-500 text-red-700'
           }`}
         >
           {submitStatus.message}
@@ -183,7 +183,7 @@ const QuickQuoteForm = () => {
               onFocus={() => setFocused('cost')}
               onBlur={() => setFocused('')}
               placeholder="Estimated Cost"
-              className={`${inputClasses} ${focused === 'cost' ? 'ring-2 ring-cyan-500' : ''}`}
+              className={`${inputClasses} ${focused === 'cost' ? 'ring-2 ring-blue-500' : ''}`}
               required
             />
           </div>
@@ -199,7 +199,7 @@ const QuickQuoteForm = () => {
               onFocus={() => setFocused('business')}
               onBlur={() => setFocused('')}
               placeholder="Type of Business"
-              className={`${inputClasses} ${focused === 'business' ? 'ring-2 ring-cyan-500' : ''}`}
+              className={`${inputClasses} ${focused === 'business' ? 'ring-2 ring-blue-500' : ''}`}
               required
             />
           </div>
@@ -215,7 +215,7 @@ const QuickQuoteForm = () => {
               onFocus={() => setFocused('name')}
               onBlur={() => setFocused('')}
               placeholder="Full Name"
-              className={`${inputClasses} ${focused === 'name' ? 'ring-2 ring-cyan-500' : ''}`}
+              className={`${inputClasses} ${focused === 'name' ? 'ring-2 ring-blue-500' : ''}`}
               required
             />
           </div>
@@ -231,7 +231,7 @@ const QuickQuoteForm = () => {
               onFocus={() => setFocused('email')}
               onBlur={() => setFocused('')}
               placeholder="Email Address"
-              className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-cyan-500' : ''}`}
+              className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-blue-500' : ''}`}
               required
             />
           </div>
@@ -247,7 +247,7 @@ const QuickQuoteForm = () => {
               onFocus={() => setFocused('phone')}
               onBlur={() => setFocused('')}
               placeholder="(555) 555-5555"
-              className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-cyan-500' : ''}`}
+              className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-blue-500' : ''}`}
               required
             />
           </div>
@@ -259,7 +259,7 @@ const QuickQuoteForm = () => {
           className={`
             w-full px-4 py-3 rounded-xl font-semibold text-base
             ${loading
-              ? 'bg-gray-500 cursor-not-allowed'
+              ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-[#FF6B35] hover:bg-[#ff825c] hover:-translate-y-1'
             }
             text-white shadow-lg hover:shadow-[#FF6B35]/20
@@ -270,7 +270,7 @@ const QuickQuoteForm = () => {
           {loading ? 'Sending...' : 'Get Your Quote Now'}
         </button>
 
-        <p className="text-xs text-gray-300 text-center">
+        <p className="text-xs text-gray-600 text-center">
           Your information is secure and will never be shared. By submitting,
           you agree to our Privacy Policy and Terms of Service.
         </p>

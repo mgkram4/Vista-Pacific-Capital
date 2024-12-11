@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaHeartbeat, FaHospital, FaMedkit,
-    FaMicroscope, FaProcedures, FaUserMd
+  FaHeartbeat, FaHospital, FaMedkit,
+  FaMicroscope, FaProcedures, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { medicalMetadata } from '../lib/metadata';
@@ -61,7 +61,7 @@ export default function MedicalFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d"
+            src="/Images/MedH.png"
             alt="Medical equipment background"
             layout="fill"
             objectFit="cover"
