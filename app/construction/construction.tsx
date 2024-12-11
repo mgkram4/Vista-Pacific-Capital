@@ -65,49 +65,61 @@ const stats = [
 export default function ConstructionFinancingContent() {
   return (
     <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <Image 
-            src="/Images/constructionH.png"
-            alt="Construction equipment background"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {constructionMetadata.title}
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {constructionMetadata.description}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Equipment Financing</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+ {/* Hero Section */}
+<section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+  {/* Preload the hero image */}
+  <link
+    rel="preload"
+    href="/Images/constructionH.png"
+    as="image"
+    type="image/png"
+  />
+  
+  <div className="absolute inset-0 z-0 opacity-20">
+    <Image 
+      src="/Images/constructionH.png"
+      alt="Construction equipment background"
+      fill
+      sizes="100vw"
+      quality={75}
+      placeholder="blur"
+      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0aGhocHxkYHBwYGRgcIiEcHh4cISEhHBwcJCQlHCwvMTExLzkqOio5LzkxMTn/2wBDARUXFx0ZHTgcHDg5LiEuOTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTn/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+      priority
+    />
+  </div>
+  
+  <div className="max-w-6xl mx-auto relative z-10">
+    <motion.h1 
+      className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      {constructionMetadata.title}
+    </motion.h1>
+    <motion.p
+      className="text-2xl mb-12 leading-relaxed max-w-3xl"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      {constructionMetadata.description}
+    </motion.p>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                    bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                    rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                    group relative overflow-hidden">
+        <GiReceiveMoney className="mr-3 text-3xl" />
+        <span>Get Equipment Financing</span>
+      </Link>
+    </motion.div>
+  </div>
+</section>
 
       {/* Stats Section */}
       <section className="py-16 bg-gray-50">
