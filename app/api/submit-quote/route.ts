@@ -1,5 +1,4 @@
 // app/api/submit-quote/route.ts
-
 import sgMail from '@sendgrid/mail';
 import { NextResponse } from 'next/server';
 
@@ -23,15 +22,15 @@ export async function POST(request: Request) {
       creditScore,
       name,
       email,
-      phone
+      phone,
     } = body;
 
-    console.log('Preparing to send emails to:', email);
+    console.log('Preparing to send emails');
 
     // Email to customer
     const customerEmail = {
       to: email,
-      from: 'alanj@vistapacificcapital.com', // Make sure this email is verified in SendGrid
+      from: 'alanj@vistapacificcapital.com',
       subject: 'Your Equipment Quote Request',
       html: `
         <h1>Thank you for your quote request, ${name}!</h1>
@@ -47,38 +46,78 @@ export async function POST(request: Request) {
       `
     };
 
-    // Email to your team
-    const teamEmail = {
-      to: 'alanj@vistapacificcapital.com', // Make sure this is the correct team email
-      from: 'alanj@vistapacificcapital.com', // Must be verified in SendGrid
-      subject: 'New Equipment Quote Request',
-      html: `
-        <h1>New Quote Request</h1>
-        <ul>
-          <li>Name: ${name}</li>
-          <li>Email: ${email}</li>
-          <li>Phone: ${phone}</li>
-          ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
-          <li>Equipment Cost: ${equipmentCost}</li>
-          <li>Business Type: ${businessType}</li>
-          ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-          ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
-        </ul>
-      `
-    };
+    // Emails to team members (two recipients)
+    const teamEmails = [
+      {
+        to: 'alanj@vistapacificcapital.com', // First recipient
+        from: 'alanj@vistapacificcapital.com',
+        subject: 'New Equipment Quote Request',
+        html: `
+          <h1>New Quote Request</h1>
+          <ul>
+            <li>Name: ${name}</li>
+            <li>Email: ${email}</li>
+            <li>Phone: ${phone}</li>
+            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
+            <li>Equipment Cost: ${equipmentCost}</li>
+            <li>Business Type: ${businessType}</li>
+            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
+            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+          </ul>
+        `
+      },
+      {
+        to: 'cynthiaj@vistapacificcapital.com', // Second recipient (replace with actual email)
+        from: 'alanj@vistapacificcapital.com',
+        subject: 'New Equipment Quote Request',
+        html: `
+          <h1>New Quote Request</h1>
+          <ul>
+            <li>Name: ${name}</li>
+            <li>Email: ${email}</li>
+            <li>Phone: ${phone}</li>
+            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
+            <li>Equipment Cost: ${equipmentCost}</li>
+            <li>Business Type: ${businessType}</li>
+            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
+            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+          </ul>
+        `
+      },
+      {
+        to: 'danielm@vistapacificcapital.com', // Second recipient (replace with actual email)
+        from: 'alanj@vistapacificcapital.com',
+        subject: 'New Equipment Quote Request',
+        html: `
+          <h1>New Quote Request</h1>
+          <ul>
+            <li>Name: ${name}</li>
+            <li>Email: ${email}</li>
+            <li>Phone: ${phone}</li>
+            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
+            <li>Equipment Cost: ${equipmentCost}</li>
+            <li>Business Type: ${businessType}</li>
+            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
+            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+          </ul>
+        `
+      }
+    ];
 
     console.log('Attempting to send emails...');
 
     try {
-      // Send emails one at a time to better identify which one might fail
+      // Send customer confirmation email
       console.log('Sending customer email...');
       await sgMail.send(customerEmail);
       console.log('Customer email sent successfully');
 
-      console.log('Sending team email...');
-      await sgMail.send(teamEmail);
-      console.log('Team email sent successfully');
-
+      // Send team emails
+      console.log('Sending team emails...');
+      for (const teamEmail of teamEmails) {
+        await sgMail.send(teamEmail);
+        console.log(`Team email sent successfully to ${teamEmail.to}`);
+      }
     } catch (emailError: any) {
       console.error('SendGrid Error:', {
         message: emailError.message,
@@ -89,7 +128,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { 
+      {
         success: true,
         message: 'Quote request submitted successfully'
       },
@@ -100,10 +139,10 @@ export async function POST(request: Request) {
       message: error.message,
       stack: error.stack,
     });
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         message: 'Error processing your request. Please try again later.',
         error: error.message
       },

@@ -6,13 +6,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCashRegister,
-    FaChartLine,
-    FaClock,
-    FaCoffee,
-    FaDollarSign,
-    FaHamburger,
-    FaUtensils, FaWineGlassAlt
+  FaCashRegister,
+  FaChartLine,
+  FaClock,
+  FaCoffee,
+  FaDollarSign,
+  FaHamburger,
+  FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { restaurantMetadata } from '../lib/metadata';
@@ -73,7 +73,7 @@ export default function RestaurantFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" 
+            src="Images/resth.png" 
             alt="Restaurant background"
             layout="fill"
             objectFit="cover"

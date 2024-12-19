@@ -61,7 +61,7 @@ export default function MedicalFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="/Images/MedH.png"
+            src="/Images/medH.png"
             alt="Medical equipment background"
             layout="fill"
             objectFit="cover"
