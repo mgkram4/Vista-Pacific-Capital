@@ -73,7 +73,7 @@ export default function RestaurantFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="Images/resth.png" 
+            src="https://images.unsplash.com/photo-1735599051587-6c13bb858214?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             alt="Restaurant background"
             layout="fill"
             objectFit="cover"

@@ -20,13 +20,13 @@ const equipmentTypes = [
     title: 'Mini Excavators',
     description: excavatorMetadata.equipment[0].types.join(', ') + ' and more.',
     icon: FaTractor,
-    image: 'https://images.unsplash.com/photo-1580245146707-75f30b550fe7'
+    image: 'https://images.unsplash.com/photo-1724927033407-bd028a470cec?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Standard Excavators',
     description: excavatorMetadata.equipment[1].types.join(', ') + ' and more.',
     icon: GiCrane,
-    image: 'https://images.unsplash.com/photo-1597645587165-1e238a06e486'
+    image: 'https://images.unsplash.com/photo-1667841680566-3007c4f1ca51?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Large Excavators',
@@ -50,7 +50,7 @@ const equipmentTypes = [
     title: 'Transportation Equipment',
     description: 'Trailers and transport solutions for excavators.',
     icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1595514736566-3ca87d7a3330'
+    image: 'https://images.unsplash.com/photo-1597974380476-fbf652dfe188?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 
@@ -69,7 +69,7 @@ export default function ExcavatorFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1597645587165-1e238a06e486"
+            src="https://images.unsplash.com/photo-1523848309072-c199db53f137?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Excavator equipment background"
             layout="fill"
             objectFit="cover"

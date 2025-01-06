@@ -20,25 +20,25 @@ const equipmentTypes = [
     title: 'Standard Dump Trucks',
     description: dumpTruckMetadata.equipment[0].types.join(', ') + ' and more.',
     icon: GiTruck,
-    image: 'https://images.unsplash.com/photo-1501700493788-fa1a4f8029ef'
+    image: 'https://images.unsplash.com/photo-1646927509523-3885bbf172b0?q=80&w=1056&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Mining Dump Trucks',
     description: dumpTruckMetadata.equipment[1].types.join(', ') + ' and more.',
     icon: GiMining,
-    image: 'https://images.unsplash.com/photo-1563185525-73f4776934ea'
+    image: 'https://images.unsplash.com/photo-1622645916455-aa13b87438ec?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWluaW5nJTIwdHJ1Y2t8ZW58MHx8MHx8fDA%3D'
   },
   {
     title: 'Transfer Dump Trucks',
     description: 'Advanced transfer and multi-body dump truck systems.',
     icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1580745089072-007c637a1caf'
+    image: 'https://images.unsplash.com/photo-1629807472592-2649bfa09f9c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Demolition Trucks',
     description: 'Specialized demolition and debris hauling equipment.',
     icon: FaRecycle,
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758'
+    image: 'https://images.unsplash.com/photo-1651473239598-5544ec456e35?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRlbW9saXRpb24lMjB0cnVja3xlbnwwfHwwfHx8MA%3D%3D'
   },
   {
     title: 'Road Construction',
@@ -50,7 +50,7 @@ const equipmentTypes = [
     title: 'Material Handling',
     description: 'Material transport and aggregate handling solutions.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1635338640255-58ac3bba8c86'
+    image: 'https://images.unsplash.com/photo-1590079105886-f0f884bf4437?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fG1hdGlyZWFsJTIwdHJ1Y2t8ZW58MHx8MHx8fDA%3D'
   }
 ];
 
@@ -68,13 +68,13 @@ export default function DumpTruckFinancingContent() {
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
-          <Image 
-            src="https://images.unsplash.com/photo-1501700493788-fa1a4f8029ef"
-            alt="Dump truck equipment background"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
+        <Image 
+  src="https://images.unsplash.com/photo-1686945127946-e6e9627c66ae?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGR1bXAlMjB0cnVja3xlbnwwfHwwfHx8MA%3D%3D"
+  alt="Dump truck equipment background"
+  layout="fill"
+  objectFit="cover"  
+  priority
+/>
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 

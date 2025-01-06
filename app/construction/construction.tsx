@@ -44,13 +44,13 @@ const equipmentTypes = [
     title: 'Demolition Equipment',
     description: 'Breakers, crushers, and demolition attachments.',
     icon: FaHardHat,
-    image: 'https://images.unsplash.com/photo-1574486941178-456e3fe0e69d'
+    image: 'https://images.unsplash.com/photo-1552879890-3a06dd3a06c2?q=80&w=954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Mining Equipment',
     description: 'Heavy-duty mining and quarry equipment.',
     icon: GiMineTruck,
-    image: 'https://images.unsplash.com/photo-1578324927389-6ef3d9c85921'
+    image: 'https://images.unsplash.com/photo-1586161148512-64a1b3dac527?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 

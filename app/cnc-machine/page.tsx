@@ -21,31 +21,31 @@ const equipmentTypes = [
     title: 'CNC Mills',
     description: 'Advanced vertical machining centers, horizontal machining centers, and 5-axis CNC mills.',
     icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1565361849269-f462ef49d218'
+    image: 'https://images.unsplash.com/photo-1674453450405-b2d71e482e80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
   },
   {
     title: 'CNC Lathes',
     description: 'High-precision turning centers and multi-axis CNC lathes for complex parts.',
     icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1669703437226-eb4d9571bf19'
+    image: 'https://images.unsplash.com/photo-1563520240344-52b067aa5f84?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
   },
   {
     title: 'Automation Systems',
     description: 'Robotic automation solutions and material handling systems for CNC operations.',
     icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b'
+    image: 'https://images.unsplash.com/photo-1563520240533-66480a3916fe?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
   },
   {
     title: 'Control Systems',
     description: 'Advanced CNC controls, software, and programming solutions.',
     icon: FaLaptop,
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158'
+    image: 'https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
   },
   {
     title: 'Tool Systems',
     description: 'Automated tool changers, tool management systems, and cutting tools.',
     icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122'
+    image: 'https://images.unsplash.com/photo-1666634157070-6fd830fb5672?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
   }
 ];
 
@@ -72,7 +72,7 @@ export default function CNCFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1565361849269-f462ef49d218"
+            src="https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
             alt="CNC Machine background"
             layout="fill"
             objectFit="cover"

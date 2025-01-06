@@ -23,31 +23,31 @@ const equipmentTypes = [
     title: 'Construction Equipment',
     description: 'Quality used construction machinery including excavators, bulldozers, and cranes at competitive rates.',
     icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60'
+    image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e'
   },
   {
     title: 'Manufacturing Equipment',
     description: 'Pre-owned manufacturing equipment including CNC machines, production lines, and industrial machinery.',
     icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1570151579868-df1945396549?w=1200&auto=format&fit=crop&q=60'
+    image: 'https://images.unsplash.com/photo-1589792923962-537704632910'
   },
   {
     title: 'Medical Equipment',
     description: 'Certified pre-owned medical and healthcare equipment with warranty options.',
     icon: FaMedkit,
-    image: 'https://images.unsplash.com/photo-1583912267550-d776e4aa6916?w=1200&auto=format&fit=crop&q=60'
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
   },
   {
     title: 'Transportation Equipment',
     description: 'Used trucks, vans, and commercial vehicles with comprehensive inspection reports.',
     icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&auto=format&fit=crop&q=60'
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
   },
   {
     title: 'Warehouse Equipment',
     description: 'Pre-owned forklifts, pallet jacks, and material handling equipment for logistics operations.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&auto=format&fit=crop&q=60'
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
   }
 ];
 
