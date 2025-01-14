@@ -109,6 +109,47 @@ Our leasing solutions allow businesses to spread the cost of equipment over time
         </div>
       </section>
 
+      {/* Team Members */}
+      <section className="max-w-6xl mx-auto py-20 px-4">
+        <motion.h2 
+          className="text-4xl font-bold mb-12 text-center text-indigo-dye"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Meet Our Team
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {teamMembers.map((member, index) => (
+            <motion.div 
+              key={index}
+              className="bg-white rounded-lg shadow-xl overflow-hidden h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full h-[600px]">
+                <Image 
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-indigo-dye">{member.name}</h3>
+                <p className="text-md text-light-sea-green mb-4">{member.title}</p>
+                <p className="text-sm text-gray-700">{member.bio}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* Core Values */}
       <section className="bg-white py-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -167,45 +208,6 @@ Our leasing solutions allow businesses to spread the cost of equipment over time
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Team Members */}
-      <section className="max-w-6xl mx-auto py-20 px-4">
-        <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-indigo-dye"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Meet Our Team
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {teamMembers.map((member, index) => (
-            <motion.div 
-              key={index}
-              className="bg-white rounded-lg shadow-xl overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-56 w-full">
-                <Image 
-                  src={member.image}
-                  alt={member.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-indigo-dye">{member.name}</h3>
-                <p className="text-md text-light-sea-green mb-4">{member.title}</p>
-                <p className="text-sm text-gray-700">{member.bio}</p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </section>
 
