@@ -1,21 +1,18 @@
-// app/restaurant/restaurant-content.tsx
 "use client"
-
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaCashRegister,
-  FaChartLine,
-  FaClock,
-  FaCoffee,
-  FaDollarSign,
-  FaHamburger,
-  FaUtensils, FaWineGlassAlt
+    FaCashRegister,
+    FaChartLine,
+    FaClock,
+    FaCoffee,
+    FaDollarSign,
+    FaHamburger,
+    FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
-import { restaurantMetadata } from '../lib/metadata';
 
 const equipmentTypes = [
   {
@@ -50,20 +47,11 @@ const equipmentTypes = [
   }
 ];
 
-// Statistics display data
 const stats = [
-  { value: `$${restaurantMetadata.financingTerms.maxAmount.toLocaleString()}`, label: 'Maximum Financing', icon: FaDollarSign },
-  { value: `${restaurantMetadata.financingTerms.minTerm}-${restaurantMetadata.financingTerms.maxTerm}`, label: 'Term Length (Months)', icon: FaClock },
-  { value: `${restaurantMetadata.financingTerms.interestRange.min}%`, label: 'Starting Rate', icon: FaChartLine },
+  { value: '$20M+', label: 'Maximum Financing', icon: FaDollarSign },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
+  { value: 'A-C', label: 'Credit Types', icon: FaChartLine },
   { value: '24hrs', label: 'Quick Approval', icon: FaUtensils }
-];
-
-const processSteps = [
-  'Quick application process - just a credit application and three months of bank statements required',
-  'Financing available for both new and used restaurant equipment',
-  'Flexible terms up to 72 months to suit your cash flow needs',
-  'Competitive rates with same-day qualification available',
-  'Expert guidance from our team with over 20 years of industry experience'
 ];
 
 export default function RestaurantFinancingContent() {
@@ -86,7 +74,7 @@ export default function RestaurantFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {restaurantMetadata.title}
+            Get Equipment Financing Terms In 24 Hours
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -94,7 +82,7 @@ export default function RestaurantFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {restaurantMetadata.description}
+            Running a successful restaurant requires the right equipment, whether you need new ovens, refrigerators, or a complete kitchen overhaul. With quick approvals and tailored terms, we make it easy for you to get the equipment you need.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -106,7 +94,7 @@ export default function RestaurantFinancingContent() {
                           rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                           group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing Now</span>
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
@@ -134,112 +122,60 @@ export default function RestaurantFinancingContent() {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-24 px-4">
-        <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-indigo-dye"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Restaurant Equipment We Finance
-        </motion.h2>
-        <motion.p 
-          className="text-xl text-gray-700 text-center mb-16 leading-relaxed max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          At Vista Pacific Capital, we understand the unique needs of the restaurant industry. Our restaurant equipment financing solutions include:
-        </motion.p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {equipmentTypes.map((type, index) => (
-            <motion.div 
-              key={index} 
-              className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-48">
-                <Image 
-                  src={type.image}
-                  alt={`${type.title} restaurant equipment for financing`}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
-                  <type.icon className="text-6xl text-white" />
-                </div>
-              </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-bold text-indigo-dye mb-3">{type.title}</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">{type.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
- {/* Financing Details Section */}
- <section className="py-24 px-4 bg-gray-50">
+      {/* Equipment Types Section */}
+      <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-12 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Our Financing Process
+            Restaurant Equipment We Finance
           </motion.h2>
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <ul className="list-none space-y-6 text-gray-700 text-lg">
-              <li className="flex items-center">
-                <span className="text-light-sea-green mr-4">✓</span>
-                Quick application process - just a credit application and three months of bank statements required
-              </li>
-              <li className="flex items-center">
-                <span className="text-light-sea-green mr-4">✓</span>
-                Financing available for both new and used restaurant equipment
-              </li>
-              <li className="flex items-center">
-                <span className="text-light-sea-green mr-4">✓</span>
-                Flexible terms up to 72 months to suit your cash flow needs
-              </li>
-              <li className="flex items-center">
-                <span className="text-light-sea-green mr-4">✓</span>
-                Competitive rates with same-day qualification available
-              </li>
-              <li className="flex items-center">
-                <span className="text-light-sea-green mr-4">✓</span>
-                Expert guidance from our team with over 20 years of industry experience
-              </li>
-            </ul>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {equipmentTypes.map((type, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={type.image}
+                    alt={type.title}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                    <type.icon className="text-6xl text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
+                  <p className="text-gray-600">{type.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </section>   
+      </section>
 
       {/* Benefits Section */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Our Restaurant Equipment Financing
+            Benefits of Restaurant Equipment Financing
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
@@ -286,32 +222,6 @@ export default function RestaurantFinancingContent() {
         </div>
       </section>
 
-      {/* Case Study Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
-            initial={{ opacity: 0, y:50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Success Story
-          </motion.h2>
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Michelin-Starred Chef Opens New Venture</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">An acclaimed chef wanted to open a new restaurant concept but needed to finance a complete kitchen renovation. Through our flexible financing solution, they were able to acquire top-of-the-line equipment without compromising their vision or budget.</p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">Result: The restaurant launched to rave reviews, earning a Michelin star within its first year of operation and seeing a 25% increase in revenue compared to projections.</p>
-            <p className="text-light-sea-green text-lg italic">"Vista Pacific Capital's financing gave us the freedom to bring our culinary dreams to life without financial constraints." - Executive Chef and Owner</p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -322,7 +232,7 @@ export default function RestaurantFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Upgrade Your Restaurant?
+            Ready to Upgrade Your Restaurant Equipment?
           </motion.h2>
           <motion.p
             className="text-2xl mb-10 leading-relaxed"
@@ -331,7 +241,7 @@ export default function RestaurantFinancingContent() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let's discuss how our tailored financing solutions can help your restaurant thrive.
+            Let's discuss how our restaurant equipment financing solutions can help your business thrive.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -339,16 +249,16 @@ export default function RestaurantFinancingContent() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-           <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing Today</span>
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
       </section>
     </div>
   );
-}
+} 

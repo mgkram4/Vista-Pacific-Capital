@@ -3,7 +3,7 @@
 import { Metadata } from 'next';
 import { boxTruckMetadata } from '../lib/metadata';
 import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
-import BoxTruckFinancingContent from './dump-truck';
+import BoxTruckFinancingContent from './box-truck';
 
 
 // Generate metadata at the page level (server component)

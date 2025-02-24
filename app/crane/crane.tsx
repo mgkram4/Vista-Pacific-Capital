@@ -3,11 +3,18 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBuilding, FaChartLine, FaIndustry, FaSearch, FaShip, FaTools, FaTruck } from 'react-icons/fa';
+import { FaBuilding, FaCalendarAlt, FaClock, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
 import { GiCrane, GiReceiveMoney } from 'react-icons/gi';
 
 export default function CraneServices() {
-  const services = [
+  const keyFeatures = [
+    { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
+    { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
+    { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
+    { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+  ];
+
+  const equipmentTypes = [
     {
       title: 'Mobile Crane Financing',
       description: 'Flexible financing solutions for all-terrain cranes, rough terrain cranes, and truck mounted cranes.',
@@ -47,12 +54,18 @@ export default function CraneServices() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <link
+          rel="preload"
+          href="/Images/craneH.png"
+          as="image"
+          type="image/png"
+        />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
+            src="/Images/craneH.png"
             alt="Crane financing"
             layout="fill"
             objectFit="cover"
@@ -66,7 +79,7 @@ export default function CraneServices() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Crane Financing Solutions
+            Crane Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -74,73 +87,85 @@ export default function CraneServices() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Specialized financing solutions for all types of cranes and lifting equipment
+            Crane equipment is essential to getting the job done, we make it easier for you to get the cranes you need to lift your business to new heights. Our crane financing options offer flexible terms and quick approvals, ensuring that you can secure the right equipment without compromising your budget.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+          <motion.div>
+            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Crane Financing</span>
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="max-w-6xl mx-auto py-24 px-4">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-6 text-indigo-dye">Our Crane Financing Services</h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto">
-            At Vista Pacific Capital, we specialize in providing tailored crane financing solutions with competitive rates and flexible terms. Our expertise covers:
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div 
-              key={index} 
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-48">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
-                  <service.icon className="text-6xl text-white" />
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-indigo-dye mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-                
-              </div>
-            </motion.div>
-            
-          ))}
+      {/* Stats Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {keyFeatures.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <stat.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{stat.value}</h3>
+                <p className="text-gray-600">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 px-4 bg-gray-50">
+      {/* Equipment Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Crane Equipment We Finance
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {equipmentTypes.map((type, index) => (
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={type.image}
+                    alt={type.title}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                    <type.icon className="text-6xl text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
+                  <p className="text-gray-600">{type.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center text-indigo-dye"
@@ -149,55 +174,48 @@ export default function CraneServices() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Why Choose Our Crane Financing
+            Benefits of Our Equipment Financing
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-lg"
-              initial={{ opacity: 0, x: -20 }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <FaSearch className="text-4xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Expert Equipment Evaluation</h3>
-              <p className="text-gray-700">Our team provides thorough equipment evaluations to ensure you get the best value for your investment.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Expert Equipment Evaluation</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Our team provides thorough equipment evaluations to ensure you get the best value for your investment.</p>
             </motion.div>
-            
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-lg"
-              initial={{ opacity: 0, x: 20 }}
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <FaChartLine className="text-4xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Flexible Payment Structures</h3>
-              <p className="text-gray-700">Customize your payment schedule to match your business's cash flow and project timelines.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Payment Structures</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Customize your payment schedule to match your business's cash flow and project timelines.</p>
             </motion.div>
-
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-lg"
-              initial={{ opacity: 0, x: -20 }}
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <GiCrane className="text-4xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Industry Expertise</h3>
-              <p className="text-gray-700">Benefit from our deep understanding of crane equipment and industry requirements.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Industry Expertise</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Benefit from our deep understanding of crane equipment and industry requirements.</p>
             </motion.div>
-
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-lg"
-              initial={{ opacity: 0, x: 20 }}
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <GiReceiveMoney className="text-4xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Competitive Rates</h3>
-              <p className="text-gray-700">Access industry-leading rates and terms tailored to your specific needs.</p>
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Competitive Rates</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Access industry-leading rates and terms tailored to your specific needs.</p>
             </motion.div>
           </div>
         </div>
@@ -207,7 +225,7 @@ export default function CraneServices() {
       <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
-            className="text-4xl font-bold mb-6"
+            className="text-5xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -216,21 +234,16 @@ export default function CraneServices() {
             Ready to Finance Your Crane Equipment?
           </motion.h2>
           <motion.p
-            className="text-xl mb-10"
+            className="text-2xl mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let's discuss how our specialized crane financing solutions can help your business grow.
+            Let's discuss how our crane equipment financing solutions can help your business grow.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+          <motion.div>
+            <Link href="/apply" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Started Today</span>
             </Link>

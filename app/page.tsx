@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import {
   Beer,
   Building2,
+  Calculator,
   CheckCircle2,
   ChevronRight,
   Clock,
   DollarSign,
   Factory,
   LucideIcon,
-  Play,
   Stethoscope,
   Truck,
   UtensilsCrossed
@@ -55,65 +55,65 @@ interface FAQ {
 
 const SEO: SEOProps = {
   title: "Equipment Financing & Leasing | Same-Day Approval | Vista Pacific Capital",
-  description: "Get equipment financing in 24 hours with rates from 4.99%. Specialized funding for construction, medical, manufacturing & more. $10M+ available. Apply now for instant quote.",
+  description: "Get equipment financing in 24 hours. Specialized funding for construction, medical, manufacturing & more. Financing from $20,000 to $20 million available. Apply now for instant quote.",
   keywords: "equipment financing, business equipment loans, construction equipment financing, medical equipment leasing, manufacturing equipment loans, restaurant equipment financing, same day equipment financing",
 };
 
 const services: Service[] = [
   {
     title: "Construction Equipment Financing",
-    description: "New & used equipment funding up to $10M. Same-day approval for excavators, cranes & heavy machinery.",
-    features: ["Same-day funding available", "Rates from 4.99%", "Up to 84-month terms", "No down payment options"],
+    description: "Quick approvals for forklifts, bulldozers, and more with flexible terms that fit your budget.",
+    features: ["Same-day funding", "Starting at $20,000", "Up to 84-month terms", "No down payment options"],
     icon: Building2,
     href: "/construction"
   },
   {
     title: "Medical Equipment Financing",
-    description: "Specialized healthcare funding for imaging systems, surgical equipment & medical technology.", 
-    features: ["100% equipment financing", "Tax-advantage options", "Deferred payments available", "Equipment-specific programs"],
+    description: "Fund imaging systems, surgical tools, and more for practice upgrades or expansions with budget-friendly options.",
+    features: ["100% equipment financing", "Tax-advantage options", "Deferred payments", "Equipment-specific programs"],
     icon: Stethoscope,
     href: "/medical"
   },
   {
     title: "Manufacturing Equipment",
-    description: "Custom financing for CNC machines, production lines & industrial equipment.",
-    features: ["Step payment options", "Sale-leaseback available", "Working capital included", "Equipment lines of credit"],
+    description: "Finance CNC machines and precision tools to improve efficiency and production quality.",
+    features: ["Step payment options", "Sale-leaseback available", "Working capital included", "Equipment credit lines"],
     icon: Factory,
     href: "/manufacturing"
   },
   {
     title: "Restaurant Equipment",
-    description: "Flexible financing for commercial kitchen equipment, refrigeration & food service.",
-    features: ["90-day deferred payments", "Seasonal payment structures", "Start-up programs", "Software included options"],
+    description: "Quick approvals for ovens, refrigerators, and complete kitchen systems with tailored terms.",
+    features: ["90-day deferred payments", "Seasonal payment options", "Start-up programs", "Software included"],
     icon: UtensilsCrossed,
     href: "/restaurant"
   },
   {
-    title: "Transportation Equipment", 
-    description: "Competitive rates for trucks, trailers & fleet vehicles with maintenance programs.",
+    title: "Transportation Equipment",
+    description: "Finance dump trucks and fleet vehicles with payments that work for your business.",
     features: ["TRAC lease options", "Fleet management tools", "Fuel card programs", "Maintenance included"],
     icon: Truck,
     href: "/dump-truck"
   },
   {
     title: "Brewery Equipment",
-    description: "Specialized funding for brewing systems, tanks & packaging equipment.",
+    description: "Fund kegging equipment and brewhouses with new and used options for your craft brewery.",
     features: ["Revenue-based payments", "Equipment-specific terms", "Working capital included", "Expansion programs"],
     icon: Beer,
     href: "/brewery-equipment"
   }
- ];
- 
- const stats: Stat[] = [
+];
+
+const stats: Stat[] = [
   {
-    value: "$10M+",
+    value: "$20M",
     label: "Maximum Funding",
-    description: "Largest equipment financing available"
+    description: "Financing from $20,000 to $20 million"
   },
   {
-    value: "4.99%",
-    label: "Starting Rate", 
-    description: "Industry-leading financing rates"
+    value: "A-C",
+    label: "Credit Types",
+    description: "A through C Credit accepted"
   },
   {
     value: "24hrs",
@@ -121,13 +121,13 @@ const services: Service[] = [
     description: "Get funded next business day"
   },
   {
-    value: "95%",
-    label: "Approval Rate",
-    description: "Highest approval success rate"
+    value: "100%",
+    label: "Equipment Types",
+    description: "New and used equipment available"
   }
- ];
- 
- const benefits: Benefit[] = [
+];
+
+const benefits: Benefit[] = [
   {
     title: "Same-Day Approvals",
     description: "Get approved in hours, not days. Simple online process with minimal documentation.",
@@ -141,31 +141,31 @@ const services: Service[] = [
     points: ["Seasonal payments", "90-day deferred start", "Step payment programs", "Skip payment options"]
   },
   {
-    title: "Competitive Rates",
-    description: "Industry-leading rates with our Rate Match Guarantee program.",
+    title: "Financing Solutions",
+    description: "Industry-leading solutions with our comprehensive funding programs.",
     icon: DollarSign,
-    points: ["Rates from 4.99%", "Terms up to 84 months", "No prepayment penalties", "Tax advantage options"]
+    points: ["Starting at $20,000", "Terms up to 84 months", "No prepayment penalties", "Tax advantage options"]
   }
- ];
- 
- const faqs: FAQ[] = [
+];
+
+const faqs: FAQ[] = [
   {
     q: "How fast can I get approved?",
     a: "Most applications receive same-day approval. Funding typically occurs within 24-48 hours of document completion."
   },
   {
     q: "What credit score do I need?",
-    a: "We work with all credit profiles and have programs starting from 600+ FICO. Lower scores may require additional documentation."
+    a: "We work with all credit profiles from A through C. Lower scores may require additional documentation."
   },
   {
     q: "What documentation is required?",
     a: "For requests under $400,000, we typically only need a one-page application. Larger amounts may require basic financial statements."
   },
   {
-    q: "Do you offer seasonal payments?",
-    a: "Yes, we can structure payments around your business's cash flow with seasonal, step, and deferred payment options."
+    q: "What are the financing amounts available?",
+    a: "We offer equipment financing from $20,000 up to $20 million, with flexible terms and payment options to match your business needs."
   }
- ];
+];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -230,23 +230,13 @@ export default function Home() {
                   animate="visible"
                   className="text-white space-y-8"
                 >
-                  {/* Live Badge */}
-                  <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-md 
-                    px-4 py-2 rounded-full border border-cyan-400/30 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20 transition-all duration-300">
-                    <span className="animate-pulse relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-                    </span>
-                    <span className="text-sm font-medium">Live Rates Available Now</span>
-                  </div>
-
                   {/* Hero Title */}
                   <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-300">
                     Get Equipment
                     <br />
-                    Financing in
+                    Financing Terms
                     <br />
-                    <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">24 Hours</span>
+                    <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">In 24 Hours</span>
                   </h1>
 
                   {/* Features Section */}
@@ -254,7 +244,7 @@ export default function Home() {
                     <div className="flex items-center space-x-4 text-lg md:text-xl lg:text-2xl">
                       <span className="flex-shrink-0 w-1 h-8 bg-gradient-to-b from-cyan-400 to-cyan-500 rounded-full" />
                       <p className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-300">
-                        Rates from 4.99% | $10M+ Available
+                        Financing from $20,000 to $20 million
                       </p>
                     </div>
                     
@@ -262,10 +252,10 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
                         ["Same-Day Approval", "bg-gradient-to-r from-cyan-500/20 to-cyan-400/10 border-cyan-500/20"],
-                        ["Minimal Documentation", "bg-gradient-to-r from-blue-500/20 to-blue-400/10 border-blue-500/20"],
+                        ["New and Used Equipment", "bg-gradient-to-r from-blue-500/20 to-blue-400/10 border-blue-500/20"],
                         ["Flexible Terms", "bg-gradient-to-r from-blue-400/20 to-cyan-500/10 border-blue-400/20"],
-                        ["Rate Match Guarantee", "bg-gradient-to-r from-orange-500/20 to-orange-400/10 border-orange-500/20"]
-                      ].map(([item, bgColor], index) => (
+                        ["A through C Credit", "bg-gradient-to-r from-orange-500/20 to-orange-400/10 border-orange-500/20"]
+                      ].map((item, index) => (
                         <motion.div
                           key={index}
                           variants={{
@@ -276,11 +266,11 @@ export default function Home() {
                               transition: { delay: index * 0.1 }
                             }
                           }}
-                          className={`flex items-center space-x-2 p-3 rounded-lg border ${bgColor}
+                          className={`flex items-center space-x-2 p-3 rounded-lg border ${item[1]}
                             backdrop-blur-md hover:bg-white/5 transition-all duration-300 shadow-lg hover:shadow-xl`}
                         >
                           <CheckCircle2 className="text-cyan-400 h-5 w-5 flex-shrink-0" />
-                          <span className="text-sm font-medium text-gray-100">{item}</span>
+                          <span className="text-sm font-medium text-gray-100">{item[0]}</span>
                         </motion.div>
                       ))}
                     </div>
@@ -294,19 +284,19 @@ export default function Home() {
                         font-semibold text-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
                         transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center backdrop-blur-sm"
                     >
-                      Get Your Equipment Financing Quote 
+                      Apply Now
                       <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
 
                     <Link
-                      href="/about"
+                      href="/calculator"
                       className="group px-6 py-3 rounded-xl border border-cyan-400/30 text-white
                         font-semibold text-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20
                         backdrop-blur-md transform hover:-translate-y-1 transition-all duration-300 
                         flex items-center justify-center shadow-lg hover:shadow-cyan-500/20"
                     >
-                      <Play className="mr-2 h-5 w-5" />
-                      Watch How It Works
+                      <Calculator className="mr-2 h-5 w-5" />
+                      Payment Calculator
                     </Link>
                   </div>
                 </motion.div>
@@ -321,7 +311,7 @@ export default function Home() {
                   <div className="backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-cyan-500/20
                     shadow-2xl shadow-black/20 hover:shadow-cyan-500/10 transition-all duration-500"
                   >
-                    <QuickQuoteForm />
+                    <QuickQuoteForm title="Apply NOW" />
                   </div>
                 </motion.div>
               </div>
@@ -338,7 +328,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="text-sm font-semibold text-cyan-600 mb-2 block">TAILORED SOLUTIONS</span>
+              <span className="text-sm font-semibold text-cyan-600 mb-2 block">INDUSTRY SOLUTIONS</span>
               <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1B365D] to-[#2C4C7C] bg-clip-text text-transparent mb-4">
                 Equipment Financing Solutions
               </h2>
@@ -409,7 +399,7 @@ export default function Home() {
                 Why Choose Vista Pacific Capital
               </h2>
               <p className="text-xl text-cyan-400">
-                Industry-leading solutions with unmatched service
+                Fast approvals with flexible terms for your business needs
               </p>
             </motion.div>
 
@@ -531,12 +521,15 @@ export default function Home() {
                   shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >
-                Get Your Equipment Financing Quote
+                Apply Now
                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
           </div>
         </section>
+
+       
+       
       </main>
     </>
   );

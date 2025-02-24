@@ -1,14 +1,23 @@
 // app/used/page.tsx
 
-import { Metadata } from 'next';
-import { usedEquipmentMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
-import UsedEquipmentContent from './used';
+"use client"
 
-// Generate metadata at the page level (server component)
-export const metadata: Metadata = generateEnhancedMetadata(usedEquipmentMetadata);
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-// Server Component
-export default function UsedEquipmentPage() {
-  return <UsedEquipmentContent />;
+export default function UsedRedirect() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.replace('/used-equipment');
+  }, [router]);
+  
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-2">Redirecting...</h1>
+        <p>Please wait while we redirect you to our used equipment financing page.</p>
+      </div>
+    </div>
+  );
 }

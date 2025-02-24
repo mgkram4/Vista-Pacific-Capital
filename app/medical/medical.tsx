@@ -1,13 +1,12 @@
 // app/medical/medical-content.tsx
 "use client"
 
-
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaHeartbeat, FaHospital, FaMedkit,
-  FaMicroscope, FaProcedures, FaUserMd
+    FaHeartbeat, FaHospital, FaMedkit,
+    FaMicroscope, FaProcedures, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { medicalMetadata } from '../lib/metadata';
@@ -37,20 +36,14 @@ const equipmentTypes = [
     description: 'Cutting-edge lab and research equipment.',
     icon: FaMicroscope,
     image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd'
-  },
-  {
-    title: 'Digital Health Solutions',
-    description: 'Telemedicine and healthcare IT infrastructure.',
-    icon: FaHeartbeat,
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef'
   }
 ];
 
 // Statistics display data
 const stats = [
-  { value: '$5M+', label: 'Maximum Financing', icon: FaHospital },
+  { value: '$20M+', label: 'Maximum Financing', icon: FaHospital },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
-  { value: '4.99%', label: 'Starting Rates', icon: FaHeartbeat },
+  { value: 'A-C', label: 'Credit Types', icon: FaHeartbeat },
   { value: '24hrs', label: 'Quick Approval', icon: FaMedkit }
 ];
 
@@ -75,7 +68,7 @@ export default function MedicalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {medicalMetadata.title}
+            Get Equipment Financing Terms In 24 Hours
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -83,7 +76,7 @@ export default function MedicalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {medicalMetadata.description}
+            Specialized medical equipment from imaging systems to surgical equipment, for delivering exceptional patient care. Whether you're upgrading existing equipment, expanding your practice, or opening a new facility, our financing options provide you with the resources to meet your needs without compromising your budget.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -95,7 +88,7 @@ export default function MedicalFinancingContent() {
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing Now</span>
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
@@ -167,39 +160,6 @@ export default function MedicalFinancingContent() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Financing Features
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {medicalMetadata.features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-light-sea-green rounded-full mr-3" />
-                  <p className="text-gray-700">{feature}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Benefits Section */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
@@ -260,7 +220,7 @@ export default function MedicalFinancingContent() {
           >
             <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Started Today</span>
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>

@@ -4,12 +4,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaBox,
-  FaChartLine,
-  FaShippingFast,
-  FaStore,
-  FaTruck,
-  FaTruckMoving
+    FaBox,
+    FaCalendarAlt,
+    FaClock,
+    FaShippingFast,
+    FaStore,
+    FaTools,
+    FaTruck,
+    FaTruckMoving
 } from 'react-icons/fa';
 import { GiDeliveryDrone, GiReceiveMoney } from 'react-icons/gi';
 import { boxTruckMetadata } from '../lib/metadata';
@@ -54,12 +56,12 @@ const equipmentTypes = [
   }
 ];
 
-// Statistics display data
-const stats = [
-  { value: '$500K+', label: 'Maximum Financing', icon: FaTruckMoving },
-  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTruck },
-  { value: '4.99%', label: 'Starting Rates', icon: FaChartLine },
-  { value: '24hrs', label: 'Quick Approval', icon: FaShippingFast }
+// Update keyFeatures to match standard format
+const keyFeatures = [
+  { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
+  { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
+  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
 ];
 
 export default function BoxTruckFinancingContent() {
@@ -67,10 +69,16 @@ export default function BoxTruckFinancingContent() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <link
+          rel="preload"
+          href="/Images/boxTruckH.png"
+          as="image"
+          type="image/png"
+        />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
-            alt="Box truck equipment background"
+            src="/Images/boxTruckH.png"
+            alt="Box truck equipment financing"
             layout="fill"
             objectFit="cover"
             priority
@@ -93,27 +101,21 @@ export default function BoxTruckFinancingContent() {
           >
             {boxTruckMetadata.description}
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+          <motion.div>
+            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Equipment Financing</span>
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Key Features Section - Replace Stats Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {keyFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 className="text-center"
@@ -122,9 +124,9 @@ export default function BoxTruckFinancingContent() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <stat.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{stat.value}</h3>
-                <p className="text-gray-600">{stat.label}</p>
+                <feature.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
+                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{feature.value}</h3>
+                <p className="text-gray-600">{feature.label}</p>
               </motion.div>
             ))}
           </div>
@@ -175,8 +177,8 @@ export default function BoxTruckFinancingContent() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 px-4 bg-gray-50">
+      {/* Update Benefits Section to 2-column layout */}
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center text-indigo-dye"
@@ -185,85 +187,34 @@ export default function BoxTruckFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Financing Features
+            Benefits of Our Equipment Financing
           </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {boxTruckMetadata.features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-light-sea-green rounded-full mr-3" />
-                  <p className="text-gray-700">{feature}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Solutions</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Customizable financing options to match your business needs and cash flow requirements.</p>
+            </motion.div>
+            <motion.div 
+              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Quick Approvals</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">Fast approval process to get your equipment on the road when you need it.</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Benefits of Box Truck Financing
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {boxTruckMetadata.benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <FaTruckMoving className="text-3xl text-light-sea-green mb-4" />
-                <h3 className="text-xl font-semibold text-indigo-dye mb-2">{benefit}</h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Delivery Company Expands Fleet</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              A growing delivery company needed to expand their box truck fleet to meet increasing e-commerce demand. Through our flexible financing solution, they were able to acquire multiple box trucks and cargo vans for their expanding operations.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Result: The company increased their delivery capacity by 65% and successfully expanded their service area within six months.
-            </p>
-            <p className="text-light-sea-green text-lg italic">
-              "Vista Pacific Capital's box truck financing allowed us to scale our delivery fleet without compromising our cash flow. Their understanding of the logistics industry made the process smooth and tailored to our specific needs."
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* Update CTA Section links */}
       <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
@@ -284,13 +235,8 @@ export default function BoxTruckFinancingContent() {
           >
             Let's discuss how our box truck financing solutions can help your business grow.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+          <motion.div>
+            <Link href="/apply" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Started Today</span>
             </Link>

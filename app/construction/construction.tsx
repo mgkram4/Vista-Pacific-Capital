@@ -115,7 +115,7 @@ export default function ConstructionFinancingContent() {
                     rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                     group relative overflow-hidden">
         <GiReceiveMoney className="mr-3 text-3xl" />
-        <span>Get Equipment Financing</span>
+        <span>Apply NOW</span>
       </Link>
     </motion.div>
   </div>
@@ -248,30 +248,6 @@ export default function ConstructionFinancingContent() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Case Study or Success Story Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Construction Company Expands Fleet</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              A growing construction company needed to expand their equipment fleet to take on larger projects. Through our flexible financing solution, they were able to acquire multiple pieces of heavy equipment including excavators, bulldozers, and cranes.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Result: The company increased their project capacity by 60% and successfully expanded into new construction sectors within the first year.
-            </p>
-            <p className="text-light-sea-green text-lg italic">
-              "Vista Pacific Capital's construction equipment financing allowed us to scale our operations without compromising our cash flow. Their understanding of the construction industry made the process smooth and tailored to our specific needs."
-            </p>
-          </motion.div>
         </div>
       </section>
 

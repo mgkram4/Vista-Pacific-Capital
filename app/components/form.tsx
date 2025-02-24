@@ -16,7 +16,11 @@ interface SubmitStatus {
   message?: string;
 }
 
-const QuickQuoteForm = () => {
+interface QuickQuoteFormProps {
+  title?: string;
+}
+
+const QuickQuoteForm = ({ title = "Get Your Rate" }: QuickQuoteFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     equipmentType: '',
     equipmentCost: '',
@@ -154,7 +158,7 @@ const QuickQuoteForm = () => {
   return (
     <div className="w-full bg-white shadow-lg rounded-xl p-4 md:p-6">
       <div className="mb-4 text-center">
-        <h2 className="text-xl font-bold text-gray-900 mb-1">Get Your Rate</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-1">{title}</h2>
         <p className="text-blue-600 text-sm font-medium">Free quote • No obligations • 2 minutes</p>
       </div>
 

@@ -70,6 +70,16 @@ export const navigationSchema: StructuredData = {
         "@type": "WebPage",
         "@id": `${BASE_URL}/medical`
       }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Payment Calculator",
+      "url": `${BASE_URL}/calculator`,
+      "description": "Calculate equipment financing payments",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/calculator`
+      }
     }
   ]
 };
@@ -80,6 +90,17 @@ export const equipmentLinks: EquipmentLink[] = [
     bottomText: 'Us',
     path: '/about',
     description: 'Learn about our company and commitment to equipment financing'
+  },
+  {
+    topText: 'Payment',
+    bottomText: 'Calculator',
+    path: '/calculator',
+    description: 'Calculate your equipment financing payments',
+    style: {
+      background: 'bg-[#1B365D]',
+      text: 'text-white',
+      hover: 'hover:bg-[#152a4a]'
+    }
   },
   {
     topText: 'Construction',
@@ -217,8 +238,8 @@ const NavLink: React.FC<{
         onClick={onClick}
         className={`
           relative 
-          px-3
-          py-2
+          px-4
+          py-2.5
           flex
           items-center
           transition-colors
@@ -228,14 +249,7 @@ const NavLink: React.FC<{
         aria-expanded={isDropdownOpen}
         aria-haspopup="true"
       >
-        <div className="flex flex-col items-center">
-          <span className="font-medium whitespace-nowrap text-xs">
-            Equipment
-          </span>
-          <span className="font-medium whitespace-nowrap text-xs">
-            Financing
-          </span>
-        </div>
+        <span className="font-medium text-xs">Equipment Financing</span>
         <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
       </button>
     );
@@ -247,8 +261,8 @@ const NavLink: React.FC<{
       onClick={onClick}
       className={`
         relative 
-        px-3
-        py-2
+        px-4
+        py-2.5
         transition-colors
         duration-200
         ${isMobile ? 'w-full text-center py-3' : ''}
@@ -257,22 +271,12 @@ const NavLink: React.FC<{
       aria-label={`${link.topText} ${link.bottomText}`}
       title={link.description}
     >
-      <div className="flex flex-col items-center">
-        <span className={`
-          font-medium 
-          whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs'}
-        `}>
-          {link.topText}
-        </span>
-        <span className={`
-          font-medium 
-          whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs'}
-        `}>
-          {link.bottomText}
-        </span>
-      </div>
+      <span className={`
+        font-medium 
+        ${isMobile ? 'text-base' : 'text-xs'}
+      `}>
+        {`${link.topText} ${link.bottomText}`}
+      </span>
     </Link>
   );
 };
@@ -640,48 +644,56 @@ const AppNavBar: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden border-t border-gray-200 bg-white shadow-lg"
+              className="lg:hidden fixed inset-x-0 top-[64px] bg-white shadow-lg z-40"
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
-              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4">
-                <div className="space-y-1">
-                  {equipmentLinks.map((link, index) => (
-                    <motion.div
-                      key={link.path}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="mb-1"
-                    >
-                      <div className="rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                        <NavLink
-                          link={link}
-                          isActive={pathname === link.path}
-                          isMobile={true}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: equipmentLinks.length * 0.1 }}
-                  className="mt-4 px-1"
-                >
-                  <NavLink
-                    link={quoteLink}
-                    isActive={pathname === quoteLink.path}
-                    isQuote={true}
-                    isMobile={true}
+              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-6">
+                {/* All Links Container */}
+                <div className="py-6 space-y-6">
+                  {/* Main Links */}
+                  <Link
+                    href="/about"
                     onClick={() => setIsMobileMenuOpen(false)}
-                  />
-                </motion.div>
+                    className="block py-3 text-[#1B365D] text-lg"
+                  >
+                    About Us
+                  </Link>
+
+                  {/* Calculator Link */}
+                  <Link
+                    href="/calculator"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#5BB5B0] text-lg"
+                  >
+                    Payment Calculator
+                  </Link>
+
+                  {/* Equipment Links */}
+                  {equipmentFinancingLinks
+                    .filter(link => link.path !== '/calculator')
+                    .map((link) => (
+                      <Link
+                        key={link.path}
+                        href={link.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-3 text-[#1B365D] text-lg"
+                      >
+                        {`${link.topText} ${link.bottomText}`}
+                      </Link>
+                    ))}
+
+                  {/* Quote Button */}
+                  <Link
+                    href={quoteLink.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full py-4 bg-[#FF6B35] text-white text-center text-lg font-medium rounded-lg mt-6"
+                  >
+                    GET QUOTE
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
