@@ -62,7 +62,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
           <h2 className="text-sm font-semibold text-gray-500 px-4 uppercase tracking-wider">
             Main Menu
           </h2>
-          <div className="space-y-2 rounded-xl overflow-hidden">
+          <div className="space-y-2 rounded-lg overflow-hidden">
             <Link
               href="/"
               onClick={onClose}
@@ -114,7 +114,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             {equipmentLinks.map((link) => (
               <motion.div
                 key={link.path}
-                className="rounded-xl overflow-hidden"
+                className="rounded-lg overflow-hidden"
                 variants={itemVariants}
               >
                 <div className="p-4 active:bg-gray-100 transition-colors">
@@ -138,7 +138,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
             href="/contact"
             onClick={onClose}
             className="block w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 
-              text-white text-lg font-bold rounded-xl shadow-lg active:shadow-md
+              text-white text-lg font-bold rounded-lg shadow-lg active:shadow-md
               transition-all duration-150 text-center active:transform active:scale-[0.98]"
           >
             Get Your Quote Now

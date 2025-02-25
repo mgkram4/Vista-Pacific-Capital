@@ -231,7 +231,7 @@ export default function Home() {
                   className="text-white space-y-8"
                 >
                   {/* Hero Title */}
-                  <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-300">
+                  <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-300 rounded-lg overflow-hidden p-1">
                     Get Equipment
                     <br />
                     Financing Terms
@@ -280,7 +280,7 @@ export default function Home() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href="/contact"
-                      className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] text-white px-8 py-4 rounded-xl
+                      className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] text-white px-8 py-4 rounded-lg
                         font-semibold text-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
                         transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center backdrop-blur-sm"
                     >
@@ -290,7 +290,7 @@ export default function Home() {
 
                     <Link
                       href="/calculator"
-                      className="group px-6 py-3 rounded-xl border border-cyan-400/30 text-white
+                      className="group px-6 py-3 rounded-lg border border-cyan-400/30 text-white
                         font-semibold text-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20
                         backdrop-blur-md transform hover:-translate-y-1 transition-all duration-300 
                         flex items-center justify-center shadow-lg hover:shadow-cyan-500/20"
@@ -308,7 +308,7 @@ export default function Home() {
                   animate="visible"
                   className="relative z-10"
                 >
-                  <div className="backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-cyan-500/20
+                  <div className="backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 rounded-lg border border-cyan-500/20
                     shadow-2xl shadow-black/20 hover:shadow-cyan-500/10 transition-all duration-500"
                   >
                     <QuickQuoteForm title="Apply NOW" />
@@ -348,7 +348,7 @@ export default function Home() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="group bg-white rounded-xl p-6
+                  className="group bg-white rounded-lg p-6
                     transition-all duration-500 transform hover:-translate-y-2
                     border border-cyan-500/10 hover:border-cyan-500/30
                     shadow-lg hover:shadow-xl hover:shadow-cyan-500/10"
@@ -414,7 +414,7 @@ export default function Home() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-xl p-6 
+                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-lg p-6 
                     border border-cyan-500/20 hover:border-cyan-400/30
                     hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-500
                     transform hover:-translate-y-2"
@@ -471,7 +471,7 @@ export default function Home() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="group bg-white rounded-xl p-6
+                  className="group bg-white rounded-lg p-6
                     transition-all duration-500 transform hover:-translate-y-1
                     border border-cyan-500/10 hover:border-cyan-500/30
                     shadow-lg hover:shadow-xl hover:shadow-cyan-500/10"
@@ -517,7 +517,7 @@ export default function Home() {
               <Link
                 href="/contact"
                 className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-xl font-semibold text-lg 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
                   shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >

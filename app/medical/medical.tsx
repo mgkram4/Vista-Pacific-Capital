@@ -2,11 +2,12 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaHeartbeat, FaHospital, FaMedkit,
-    FaMicroscope, FaProcedures, FaUserMd
+  FaHeartbeat, FaHospital, FaMedkit,
+  FaMicroscope, FaProcedures, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { medicalMetadata } from '../lib/metadata';
@@ -39,11 +40,11 @@ const equipmentTypes = [
   }
 ];
 
-// Statistics display data
+// Statistics display data - updated according to requirements
 const stats = [
   { value: '$20M+', label: 'Maximum Financing', icon: FaHospital },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
-  { value: 'A-C', label: 'Credit Types', icon: FaHeartbeat },
+  { value: 'New & Used', label: 'Equipment Options', icon: FaHeartbeat },
   { value: '24hrs', label: 'Quick Approval', icon: FaMedkit }
 ];
 
@@ -68,7 +69,7 @@ export default function MedicalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Get Equipment Financing Terms In 24 Hours
+            Medical Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -88,13 +89,13 @@ export default function MedicalFinancingContent() {
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
+              <span>Get Financing</span>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Key Features Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -126,7 +127,7 @@ export default function MedicalFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Medical Equipment We Finance
+            Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -192,39 +193,45 @@ export default function MedicalFinancingContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-5xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready to Upgrade Your Medical Equipment?
-          </motion.h2>
-          <motion.p
-            className="text-2xl mb-10 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let's discuss how our tailored financing solutions can help your healthcare facility thrive.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image 
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+              alt="Modern office background"
+              fill
+              className="object-cover"
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                Ready to Get Started?
+              </h2>
+              <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+                Get pre-qualified in minutes with no impact to your credit score
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Get Started Today
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
     </div>
   );
 }

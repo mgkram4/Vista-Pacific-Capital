@@ -1,16 +1,17 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCashRegister,
-    FaChartLine,
-    FaClock,
-    FaCoffee,
-    FaDollarSign,
-    FaHamburger,
-    FaUtensils, FaWineGlassAlt
+  FaCashRegister,
+  FaChartLine,
+  FaClock,
+  FaCoffee,
+  FaDollarSign,
+  FaHamburger,
+  FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -50,7 +51,7 @@ const equipmentTypes = [
 const stats = [
   { value: '$20M+', label: 'Maximum Financing', icon: FaDollarSign },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
-  { value: 'A-C', label: 'Credit Types', icon: FaChartLine },
+  { value: 'New & Used', label: 'Equipment Options', icon: FaChartLine },
   { value: '24hrs', label: 'Quick Approval', icon: FaUtensils }
 ];
 
@@ -74,7 +75,7 @@ export default function RestaurantFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Get Equipment Financing Terms In 24 Hours
+            Restaurant Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -94,13 +95,13 @@ export default function RestaurantFinancingContent() {
                           rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                           group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
+              <span>Get Financing</span>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Key Features Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -132,7 +133,7 @@ export default function RestaurantFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Restaurant Equipment We Finance
+            Equipment We Finance
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {equipmentTypes.map((type, index) => (
@@ -166,7 +167,7 @@ export default function RestaurantFinancingContent() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-4 bg-white">
+      <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center text-indigo-dye"
@@ -177,88 +178,117 @@ export default function RestaurantFinancingContent() {
           >
             Benefits of Restaurant Equipment Financing
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Preserve Working Capital</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Invest in growth opportunities while maintaining cash flow for day-to-day operations. Allocate funds to other critical areas of your restaurant while acquiring the equipment you need.</p>
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Preserve Working Capital</h3>
             </motion.div>
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Payment Options</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Customize your financing to match your restaurant's unique cash flow patterns. We offer tailored payment structures, including seasonal and step-up options, to ensure a seamless fit for your business.</p>
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Flexible Payment Options</h3>
             </motion.div>
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Upgrade with Ease</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Stay current with the latest culinary trends and technology. Our financing solutions allow you to easily upgrade your equipment as your restaurant grows and evolves.</p>
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Upgrade with Ease</h3>
             </motion.div>
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Tax Benefits</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Potentially reduce your tax liability through equipment leasing and financing. Our expert team will guide you through potential tax benefits, helping you make the most of your investment.</p>
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Tax Benefits</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Fast Approval Process</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <FaUtensils className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Dedicated Support Team</h3>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-5xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready to Upgrade Your Restaurant Equipment?
-          </motion.h2>
-          <motion.p
-            className="text-2xl mb-10 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let's discuss how our restaurant equipment financing solutions can help your business thrive.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image 
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+              alt="Modern office background"
+              fill
+              className="object-cover"
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                Ready to Get Started?
+              </h2>
+              <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+                Get pre-qualified in minutes with no impact to your credit score
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Get Started Today
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
     </div>
   );
 } 

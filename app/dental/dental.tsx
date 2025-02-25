@@ -2,17 +2,18 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCalendarAlt,
-    FaClock,
-    FaCog,
-    FaDesktop,
-    FaMicroscope,
-    FaSyringe,
-    FaTools,
-    FaTooth
+  FaCalendarAlt,
+  FaClock,
+  FaCog,
+  FaDesktop,
+  FaMicroscope,
+  FaSyringe,
+  FaTools,
+  FaTooth
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { dentalMetadata } from '../lib/metadata';
@@ -72,13 +73,13 @@ export default function DentalFinancingContent() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <link
           rel="preload"
-          href="/Images/dentalH.png"
+          href="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
           as="image"
           type="image/png"
         />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="/Images/dentalH.png"
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
             alt="Dental equipment financing"
             layout="fill"
             objectFit="cover"
@@ -100,13 +101,19 @@ export default function DentalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Having the right dental equipment is key to providing top-notch care for your patients. Weather you need chairs or a new X-Ray machine, our quick approvals and flexible terms take make the process seamless.
+            Having the right dental equipment is key to providing top-notch care for your patients. Whether you need chairs or a new X-Ray machine, our quick approvals and flexible terms make the process seamless.
           </motion.p>
-          <motion.div>
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
-              <span>Apply NOW</span>
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
+              <GiReceiveMoney className="mr-3 text-3xl" />
+              <span>Get Financing</span>
             </Link>
           </motion.div>
         </div>
@@ -144,7 +151,7 @@ export default function DentalFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Dental Equipment We Finance
+            Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -178,8 +185,8 @@ export default function DentalFinancingContent() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-24 px-4 bg-white">
+      {/* Benefits Section - Updated to match other pages */}
+      <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             className="text-4xl font-bold mb-16 text-center text-indigo-dye"
@@ -188,58 +195,115 @@ export default function DentalFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Our Equipment Financing
+            Benefits of Dental Equipment Financing
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Modern Practice Solutions</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Access the latest dental technology and equipment to provide superior patient care and improve practice efficiency.</p>
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Modern Practice Solutions</h3>
             </motion.div>
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Payment Options</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">Customize your payment schedule to match your practice's cash flow and growth plans.</p>
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Flexible Payment Options</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Enhanced Patient Experience</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Improved Practice Efficiency</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Quick Approval Process</h3>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gray-50 p-6 rounded-lg shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <FaTooth className="text-3xl text-light-sea-green mb-4" />
+              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Preserve Working Capital</h3>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-5xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+      {/* CTA Section - Updated to match other pages */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+            alt="Modern office background"
+            fill
+            className="object-cover"
+            quality={100}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            className="space-y-8"
           >
-            Ready to Finance Your Dental Equipment?
-          </motion.h2>
-          <motion.p
-            className="text-2xl mb-10 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let's discuss how our dental equipment financing solutions can help your practice grow.
-          </motion.p>
-          <motion.div>
-            <Link href="/apply" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Started Today</span>
+            <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+              Get pre-qualified in minutes with no impact to your credit score
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                transform hover:-translate-y-1 transition-all duration-300"
+            >
+              Get Started Today
+              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>

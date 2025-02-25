@@ -21,7 +21,7 @@ export default function PaymentCalculator() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden
+    <div className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden
       border border-gray-200 shadow-lg">
       {/* Calculator Header */}
       <div className="bg-[#1B365D] p-8">

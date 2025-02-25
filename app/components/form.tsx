@@ -156,7 +156,7 @@ const QuickQuoteForm = ({ title = "Get Your Rate" }: QuickQuoteFormProps) => {
   const labelClasses = "block text-sm font-medium text-gray-700 mb-1";
 
   return (
-    <div className="w-full bg-white shadow-lg rounded-xl p-4 md:p-6">
+    <div className="w-full bg-white shadow-lg rounded-lg p-4 md:p-6">
       <div className="mb-4 text-center">
         <h2 className="text-xl font-bold text-gray-900 mb-1">{title}</h2>
         <p className="text-blue-600 text-sm font-medium">Free quote • No obligations • 2 minutes</p>
@@ -261,7 +261,7 @@ const QuickQuoteForm = ({ title = "Get Your Rate" }: QuickQuoteFormProps) => {
           type="submit"
           disabled={loading}
           className={`
-            w-full px-4 py-3 rounded-xl font-semibold text-base
+            w-full px-4 py-3 rounded-lg font-semibold text-base
             ${loading
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-[#FF6B35] hover:bg-[#ff825c] hover:-translate-y-1'

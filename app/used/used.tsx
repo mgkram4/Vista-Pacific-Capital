@@ -1,20 +1,22 @@
+// app/used/used-equipment.tsx
 "use client"
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaBarcode,
-    FaCheckCircle,
-    FaCogs,
-    FaIndustry,
-    FaMedkit,
-    FaSearchDollar,
-    FaTools,
-    FaTruck,
-    FaWarehouse
+  FaBarcode,
+  FaCheckCircle,
+  FaCogs,
+  FaIndustry,
+  FaMedkit,
+  FaSearchDollar,
+  FaTools,
+  FaTruck,
+  FaWarehouse
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
+import { usedEquipmentMetadata } from '../lib/metadata';
 
 const equipmentTypes = [
   {
@@ -51,9 +53,9 @@ const equipmentTypes = [
 
 // Statistics display data
 const stats = [
-  { value: '$20M+', label: 'Maximum Financing', icon: FaSearchDollar },
-  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaBarcode },
-  { value: 'A-C', label: 'Credit Types', icon: FaCogs },
+  { value: '$5M+', label: 'Maximum Financing', icon: FaSearchDollar },
+  { value: '24-72', label: 'Flexible Terms (Months)', icon: FaBarcode },
+  { value: '5.99%', label: 'Starting Rates', icon: FaCogs },
   { value: '24hrs', label: 'Quick Approval', icon: FaCheckCircle }
 ];
 
@@ -87,7 +89,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Get Equipment Financing Terms In 24 Hours
+            {usedEquipmentMetadata.title}
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -95,7 +97,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            For a more affordable and economical route, used equipment may be the right direction for you. With excellent quality equipment and machinery, get your company rolling with our quick approvals and tailored terms.
+            {usedEquipmentMetadata.description}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -107,7 +109,7 @@ export default function UsedEquipmentContent() {
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
+              <span>Get Equipment Financing</span>
             </Link>
           </motion.div>
         </div>
@@ -210,6 +212,39 @@ export default function UsedEquipmentContent() {
         </div>
       </section>
 
+      {/* Features Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Our Used Equipment Financing Process
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {usedEquipmentMetadata.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="bg-gray-50 p-6 rounded-lg shadow-md"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-light-sea-green rounded-full mr-3" />
+                  <p className="text-gray-700">{feature}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="w-full bg-light-sea-green text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -237,12 +272,9 @@ export default function UsedEquipmentContent() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
+            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-lg text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
+              <span>Get Started Today</span>
             </Link>
           </motion.div>
         </div>

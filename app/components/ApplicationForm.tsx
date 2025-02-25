@@ -1,4 +1,3 @@
-
 export default function ApplicationForm() {
   const industries = [
     'Construction Equipment',
@@ -23,7 +22,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Full Name</label>
           <input
             type="text"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
           />
         </div>
 
@@ -31,7 +30,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Business Name</label>
           <input
             type="text"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
           />
         </div>
 
@@ -40,7 +39,7 @@ export default function ApplicationForm() {
           <input
             type="email"
             required
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
           />
         </div>
 
@@ -48,7 +47,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Phone</label>
           <input
             type="tel"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
           />
         </div>
 
@@ -56,7 +55,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Equipment Cost</label>
           <input
             type="number"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
             min="20000"
             step="1000"
           />
@@ -64,7 +63,7 @@ export default function ApplicationForm() {
 
         <div>
           <label className="block mb-1">Industry</label>
-          <select className="w-full p-2 border rounded">
+          <select className="w-full p-2 border rounded-lg">
             <option value="">Select Industry</option>
             {industries.map(industry => (
               <option key={industry} value={industry}>
@@ -78,7 +77,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Years in Business</label>
           <input
             type="number"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
             min="0"
             step="1"
           />
@@ -88,7 +87,7 @@ export default function ApplicationForm() {
           <label className="block mb-1">Annual Revenue</label>
           <input
             type="number"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-lg"
             min="0"
             step="1000"
           />
