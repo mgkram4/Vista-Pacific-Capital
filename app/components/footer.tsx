@@ -19,7 +19,7 @@ export default function Footer() {
       { name: 'Dental Equipment', path: '/dental' },
       { name: 'Dump Truck Financing', path: '/dump-truck' },
       { name: 'CNC Machine Financing', path: '/cnc-machine' },
-      { name: 'Manufacturing Equipment', path: '/manufacturing' },
+
     ]
   ];
 
