@@ -13,6 +13,7 @@ export default function PaymentCalculator() {
       36: 0.0334, // Factor for calculation
       48: 0.0263, // Factor for calculation
       60: 0.022,  // Factor for calculation
+      72: 0.0188,  // Factor for calculation
     };
     
     const rate = rates[months];
@@ -55,14 +56,14 @@ export default function PaymentCalculator() {
         </div>
 
         {/* Payment Table */}
-        <div className="overflow-x-auto">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="bg-gray-50">
                 <th className="text-left px-6 py-3 text-[#1B365D] font-medium text-sm">
                   Terms
                 </th>
-                {[24, 36, 48, 60].map(months => (
+                {[24, 36, 48, 60, 72].map(months => (
                   <th key={months} className="px-6 py-3 text-[#1B365D] font-medium text-sm text-center">
                     {months} months
                   </th>
@@ -72,7 +73,7 @@ export default function PaymentCalculator() {
             <tbody>
               <tr>
                 <td className="px-6 py-4 text-[#2C4C7C] font-medium">Monthly Payment</td>
-                {[24, 36, 48, 60].map(months => (
+                {[24, 36, 48, 60, 72].map(months => (
                   <td key={months} className="px-6 py-4 text-center">
                     <span className="text-[#1B365D] font-semibold bg-blue-50 px-4 py-2 rounded-lg">
                       ${calculatePayment(months).toLocaleString()}
@@ -82,6 +83,23 @@ export default function PaymentCalculator() {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile-friendly Payment Options */}
+        <div className="md:hidden mt-6 space-y-4">
+          <h3 className="text-[#1B365D] font-medium text-lg">Monthly Payments</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {[24, 36, 48, 60, 72].map(months => (
+              <div key={months} className="bg-gray-50 p-4 rounded-lg">
+                <div className="text-[#1B365D] font-medium text-sm mb-2">
+                  {months} months
+                </div>
+                <div className="text-[#1B365D] font-semibold bg-blue-50 px-3 py-2 rounded-lg text-center">
+                  ${calculatePayment(months).toLocaleString()}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Features Grid */}
