@@ -53,22 +53,32 @@ export const navigationSchema: StructuredData = {
     },
     {
       "@type": "WebPage",
+      "name": "All Equipment Financing Options",
+      "url": `${BASE_URL}/equipment`,
+      "description": "Explore all equipment financing options",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/equipment`
+      }
+    },
+    {
+      "@type": "WebPage",
       "name": "Construction Equipment Financing",
-      "url": `${BASE_URL}/construction`,
+      "url": `${BASE_URL}/equipment/construction`,
       "description": "Specialized financing for construction equipment",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/construction`
+        "@id": `${BASE_URL}/equipment/construction`
       }
     },
     {
       "@type": "WebPage",
       "name": "Medical Equipment Financing",
-      "url": `${BASE_URL}/medical`,
+      "url": `${BASE_URL}/equipment/medical`,
       "description": "Healthcare equipment financing solutions",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/medical`
+        "@id": `${BASE_URL}/equipment/medical`
       }
     },
     {
@@ -103,69 +113,75 @@ export const equipmentLinks: EquipmentLink[] = [
     }
   },
   {
+    topText: 'All',
+    bottomText: 'Equipment',
+    path: '/equipment',
+    description: 'Explore all equipment financing options'
+  },
+  {
     topText: 'Construction',
     bottomText: 'Equipment',
-    path: '/construction',
+    path: '/equipment/construction',
     description: 'Finance construction equipment with competitive rates and flexible terms'
   },
   {
     topText: 'Medical',
     bottomText: 'Equipment',
-    path: '/medical',
+    path: '/equipment/medical',
     description: 'Healthcare equipment financing solutions'
   },
   {
     topText: 'Restaurant',
     bottomText: 'Equipment',
-    path: '/restaurant',
+    path: '/equipment/restaurant',
     description: 'Restaurant equipment financing solutions'
   },
   {
     topText: 'Used',
     bottomText: 'Equipment',
-    path: '/used',
+    path: '/equipment/used',
     description: 'Used equipment financing options'
   },
   {
     topText: 'Brewery',
     bottomText: 'Equipment',
-    path: '/brewery',
+    path: '/equipment/brewery',
     description: 'Brewery equipment funding solutions'
   },
   {
     topText: 'Crane',
     bottomText: 'Financing',
-    path: '/crane',
+    path: '/equipment/crane',
     description: 'Crane financing solutions'
   },
   {
     topText: 'Dental',
     bottomText: 'Equipment',
-    path: '/dental',
+    path: '/equipment/dental',
     description: 'Dental practice equipment solutions'
   },
   {
     topText: 'Excavator',
     bottomText: 'Financing',
-    path: '/excavator',
+    path: '/equipment/excavator',
     description: 'Excavator financing options'
   },
   {
     topText: 'Dump Truck',
     bottomText: 'Financing',
-    path: '/dump-truck',
+    path: '/equipment/dump-truck',
     description: 'Dump truck financing'
   },
   {
     topText: 'Box Truck',
     bottomText: 'Financing',
-    path: '/box-truck',
+    path: '/equipment/box-truck',
     description: 'Box truck financing'
   },
   {
     topText: 'CNC Machine',
     bottomText: 'Financing',
-    path: '/cnc-machine',
+    path: '/equipment/cnc-machine',
     description: 'CNC machine financing'
   }
 ];
@@ -623,7 +639,7 @@ const AppNavBar: React.FC = () => {
                         transition-colors
                         duration-200
                         cursor-pointer
-                        ${equipmentFinancingLinks.some(link => pathname === link.path) ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
+                        ${(pathname === '/equipment' || equipmentFinancingLinks.some(link => pathname === link.path)) ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
                       `}
                       aria-expanded={isEquipmentDropdownOpen}
                       aria-haspopup="true"
@@ -719,9 +735,18 @@ const AppNavBar: React.FC = () => {
                     Payment Calculator
                   </Link>
 
+                  {/* All Equipment Link */}
+                  <Link
+                    href="/equipment"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#1B365D] text-lg"
+                  >
+                    All Equipment
+                  </Link>
+
                   {/* Equipment Links */}
                   {equipmentFinancingLinks
-                    .filter(link => link.path !== '/calculator')
+                    .filter(link => link.path !== '/calculator' && link.path !== '/equipment')
                     .map((link) => (
                       <Link
                         key={link.path}

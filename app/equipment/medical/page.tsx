@@ -1,9 +1,9 @@
 // app/medical/page.tsx
 
 
+import { medicalMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
-import { medicalMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
 import MedicalFinancingContent from './medical';
 
 

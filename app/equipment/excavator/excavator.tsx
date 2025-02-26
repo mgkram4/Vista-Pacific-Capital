@@ -1,64 +1,72 @@
-// app/dental/dental-financing.tsx
 "use client"
 
+import { excavatorMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCalendarAlt,
-    FaClock,
-    FaCog,
-    FaDesktop,
-    FaMicroscope,
-    FaSyringe,
-    FaTools,
-    FaTooth
+  FaCalendarAlt,
+  FaChartLine,
+  FaClock,
+  FaIndustry,
+  FaTools,
+  FaTractor,
+  FaTruck,
+  FaWarehouse
 } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
-import { dentalMetadata } from '../lib/metadata';
+import { GiCrane, GiEarthAmerica, GiReceiveMoney } from 'react-icons/gi';
+
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Digital Imaging Systems',
-    description: dentalMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaDesktop,
-    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe'
+    title: 'Mini Excavators',
+    description: excavatorMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaTractor,
+    image: 'https://images.unsplash.com/photo-1724927033407-bd028a470cec?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    title: 'Treatment Room Equipment',
-    description: dentalMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaTooth,
-    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787'
+    title: 'Standard Excavators',
+    description: excavatorMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: GiCrane,
+    image: 'https://images.unsplash.com/photo-1667841680566-3007c4f1ca51?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    title: 'Diagnostic Equipment',
-    description: dentalMetadata.equipment[2].types.join(', ') + ' and more.',
-    icon: FaMicroscope,
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
+    title: 'Large Excavators',
+    description: excavatorMetadata.equipment[2].types.join(', ') + ' and more.',
+    icon: GiEarthAmerica,
+    image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e'
   },
   {
-    title: 'CAD/CAM Systems',
-    description: 'Digital impression systems and milling units for same-day restorations.',
-    icon: FaCog,
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d'
-  },
-  {
-    title: 'Sterilization Systems',
-    description: 'Modern sterilization and infection control equipment.',
+    title: 'Specialty Attachments',
+    description: 'Complete range of excavator attachments and accessories.',
     icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8'
+    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0'
   },
   {
-    title: 'Specialty Equipment',
-    description: 'Dental lasers, surgical instruments, and specialized tools.',
-    icon: FaSyringe,
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5'
+    title: 'Material Handling',
+    description: 'Material handling and sorting attachments.',
+    icon: FaWarehouse,
+    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5'
+  },
+  {
+    title: 'Transportation Equipment',
+    description: 'Trailers and transport solutions for excavators.',
+    icon: FaTruck,
+    image: 'https://images.unsplash.com/photo-1597974380476-fbf652dfe188?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 
 // Statistics display data
+const stats = [
+  { value: '$5M+', label: 'Maximum Financing', icon: GiCrane },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
+  { value: '4.99%', label: 'Starting Rates', icon: FaChartLine },
+  { value: '24hrs', label: 'Quick Approval', icon: FaIndustry }
+];
+
+// Update keyFeatures to match standard format
 const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
@@ -66,21 +74,21 @@ const keyFeatures = [
   { value: '24hrs', label: 'Quick Approval', icon: FaClock }
 ];
 
-export default function DentalFinancingContent() {
+export default function ExcavatorFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <link
           rel="preload"
-          href="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
+          href="https://images.unsplash.com/photo-1523848309072-c199db53f137?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           as="image"
           type="image/png"
         />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
-            alt="Dental equipment financing"
+            src="https://images.unsplash.com/photo-1523848309072-c199db53f137?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Excavator equipment financing"
             layout="fill"
             objectFit="cover"
             priority
@@ -93,7 +101,7 @@ export default function DentalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Dental Equipment Financing
+            Excavator Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -101,7 +109,7 @@ export default function DentalFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Having the right dental equipment is key to providing top-notch care for your patients. Whether you need chairs or a new X-Ray machine, our quick approvals and flexible terms make the process seamless.
+            Whether you're expanding your fleet or replacing an older model, our flexible excavator financing solutions make it easier to get the equipment you need to tackle any job. With competitive rates and fast approvals to get your project up and running with minimal hassle.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -212,8 +220,8 @@ export default function DentalFinancingContent() {
                   'Flexible terms from 24 to 84 months',
                   'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
-                  'Dedicated dental equipment specialists',
-                  'Competitive rates for modern dental technology'
+                  'Dedicated excavator equipment specialists',
+                  'Competitive rates for earthmoving machinery'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -238,12 +246,12 @@ export default function DentalFinancingContent() {
               <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
               <ul className="space-y-4">
                 {[
-                  'Modern practice solutions for enhanced patient care',
-                  'Preserve working capital for other practice needs',
-                  'Potential tax advantages for your dental business',
+                  'Flexible solutions tailored to your excavation business',
+                  'Preserve working capital for other business operations',
+                  'Potential tax advantages for your business',
                   'Simplified application process with minimal paperwork',
-                  'Flexible payment options tailored to your practice',
-                  'Improved practice efficiency with up-to-date equipment'
+                  'Tailored payment plans that match your cash flow',
+                  'Industry expertise in heavy construction equipment'
                 ].map((item, index) => (
                   <motion.li
                     key={index}

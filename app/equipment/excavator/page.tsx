@@ -1,8 +1,8 @@
 // app/excavator/page.tsx
 
+import { excavatorMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
-import { excavatorMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
 import ExcavatorFinancingContent from './excavator';
 
 // Generate metadata at the page level (server component)

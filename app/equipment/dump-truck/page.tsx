@@ -1,8 +1,9 @@
 // app/dump-truck/page.tsx
 
 import { Metadata } from 'next';
-import { dumpTruckMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
+
+import { dumpTruckMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import DumpTruckFinancingContent from './dump-truck';
 
 // Generate metadata at the page level (server component)

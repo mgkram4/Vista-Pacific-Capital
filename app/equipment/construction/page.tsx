@@ -1,7 +1,7 @@
 // app/construction/page.tsx
+import { constructionMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
-import { constructionMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
 import ConstructionFinancingContent from './construction';
 
 // Generate metadata at the page level (server component)

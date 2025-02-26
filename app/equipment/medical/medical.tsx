@@ -1,94 +1,68 @@
-// app/construction/construction-content.tsx
+// app/medical/medical-content.tsx
 "use client"
 
-
+import { medicalMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaHardHat,
-  FaIndustry,
-  FaTools, FaTruck,
-  FaWarehouse
+  FaHeartbeat, FaHospital, FaMedkit,
+  FaMicroscope, FaProcedures, FaUserMd
 } from 'react-icons/fa';
-import { GiCrane, GiMineTruck, GiReceiveMoney } from 'react-icons/gi';
-import { constructionMetadata } from '../lib/metadata';
+import { GiReceiveMoney } from 'react-icons/gi';
+
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Earthmoving Equipment',
-    description: constructionMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e'
+    title: 'Diagnostic Imaging',
+    description: medicalMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaMedkit,
+    image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907'
   },
   {
-    title: 'Lifting Equipment',
-    description: constructionMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: GiCrane,
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd'
+    title: 'Surgical Equipment',
+    description: medicalMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: FaProcedures,
+    image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f'
   },
   {
-    title: 'Road Construction',
-    description: constructionMetadata.equipment[2].types.join(', ') + ' and more.',
-    icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f'
+    title: 'Patient Care Equipment',
+    description: 'Advanced monitoring systems and patient care devices.',
+    icon: FaUserMd,
+    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde'
   },
   {
-    title: 'Material Handling',
-    description: 'Forklifts, telehandlers, and specialized handling equipment.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0'
-  },
-  {
-    title: 'Demolition Equipment',
-    description: 'Breakers, crushers, and demolition attachments.',
-    icon: FaHardHat,
-    image: 'https://images.unsplash.com/photo-1552879890-3a06dd3a06c2?q=80&w=954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  },
-  {
-    title: 'Mining Equipment',
-    description: 'Heavy-duty mining and quarry equipment.',
-    icon: GiMineTruck,
-    image: 'https://images.unsplash.com/photo-1586161148512-64a1b3dac527?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    title: 'Laboratory Equipment',
+    description: 'Cutting-edge lab and research equipment.',
+    icon: FaMicroscope,
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd'
   }
 ];
 
 // Statistics display data - updated according to requirements
 const stats = [
-  { value: '$20M', label: 'Maximum Financing', icon: FaHardHat },
-  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
-  { value: 'New & Used', label: 'Equipment Options', icon: GiCrane },
-  { value: '24hrs', label: 'Quick Approval', icon: FaTruck }
+  { value: '$20M', label: 'Maximum Financing', icon: FaHospital },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
+  { value: 'New & Used', label: 'Equipment Options', icon: FaHeartbeat },
+  { value: '24hrs', label: 'Quick Approval', icon: FaMedkit }
 ];
 
-export default function ConstructionFinancingContent() {
+export default function MedicalFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        {/* Preload the hero image */}
-        <link
-          rel="preload"
-          href="/Images/constructionH.png"
-          as="image"
-          type="image/png"
-        />
-        
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="/Images/constructionH.png"
-            alt="Construction equipment background"
-            fill
-            sizes="100vw"
-            quality={75}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0aGhocHxkYHBwYGRgcIiEcHh4cISEhHBwcJCQlHCwvMTExLzkqOio5LzkxMTn/2wBDARUXFx0ZHTgcHDg5LiEuOTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTn/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            src="/Images/medH.png"
+            alt="Medical equipment background"
+            layout="fill"
+            objectFit="cover"
             priority
           />
         </div>
-        
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
@@ -96,7 +70,7 @@ export default function ConstructionFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Construction Equipment Financing
+            Medical Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -104,7 +78,7 @@ export default function ConstructionFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            When it comes to construction projects, having the right equipment can make all the difference. With flexible financing options, from forklifts to bulldozers, our quick approvals and flexible terms ensure you get the equipment you need without breaking your budget.
+            Specialized medical equipment from imaging systems to surgical equipment, for delivering exceptional patient care. Whether you're upgrading existing equipment, expanding your practice, or opening a new facility, our financing options provide you with the resources to meet your needs without compromising your budget.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -112,9 +86,9 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                          bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                          rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                          group relative overflow-hidden">
+                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Financing</span>
             </Link>
@@ -215,8 +189,8 @@ export default function ConstructionFinancingContent() {
                   'Flexible terms from 24 to 84 months',
                   'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
-                  'Dedicated construction equipment specialists',
-                  'Competitive rates starting at 4.99%'
+                  'Dedicated healthcare equipment specialists',
+                  'Competitive rates for medical practices'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -241,8 +215,8 @@ export default function ConstructionFinancingContent() {
               <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
               <ul className="space-y-4">
                 {[
-                  'Preserve your working capital for other business needs',
-                  'Potential tax advantages for your business',
+                  'Preserve your working capital for patient care',
+                  'Potential tax advantages for your practice',
                   'Simplified application process with minimal paperwork',
                   'Dedicated support team throughout the financing process',
                   'Flexible payment options tailored to your cash flow',
@@ -267,44 +241,44 @@ export default function ConstructionFinancingContent() {
 
       {/* CTA Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
-            alt="Modern office background"
-            fill
-            className="object-cover"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
-              Get pre-qualified in minutes with no impact to your credit score
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
-                transform hover:-translate-y-1 transition-all duration-300"
+          <div className="absolute inset-0">
+            <Image 
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+              alt="Modern office background"
+              fill
+              className="object-cover"
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-8"
             >
-              Get Started Today
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+              <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                Ready to Get Started?
+              </h2>
+              <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+                Get pre-qualified in minutes with no impact to your credit score
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Get Started Today
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
     </div>
   );
 }

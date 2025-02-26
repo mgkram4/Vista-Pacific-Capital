@@ -1,88 +1,86 @@
-// app/cnc/cnc-financing.tsx
 "use client"
 
+import { boxTruckMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaChartLine,
+  FaBox,
+  FaCalendarAlt,
   FaClock,
-  FaCogs,
-  FaIndustry,
-  FaLaptop,
-  FaMicrochip,
-  FaTools
+  FaShippingFast,
+  FaStore,
+  FaTools,
+  FaTruck,
+  FaTruckMoving
 } from 'react-icons/fa';
-import { GiGears, GiReceiveMoney } from 'react-icons/gi';
-import { cncMetadata } from '../lib/metadata';
+import { GiDeliveryDrone, GiReceiveMoney } from 'react-icons/gi';
 
+
+// Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'CNC Mills',
-    description: 'Advanced vertical machining centers, horizontal machining centers, and 5-axis CNC mills.',
-    icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1674453450405-b2d71e482e80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    title: 'Delivery Box Trucks',
+    description: boxTruckMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaTruckMoving,
+    image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e'
   },
   {
-    title: 'CNC Lathes',
-    description: 'High-precision turning centers and multi-axis CNC lathes for complex parts.',
-    icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1563520240344-52b067aa5f84?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
+    title: 'Commercial Vans',
+    description: boxTruckMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: FaShippingFast,
+    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e'
   },
   {
-    title: 'Automation Systems',
-    description: 'Robotic automation solutions and material handling systems for CNC operations.',
-    icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1563520240533-66480a3916fe?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
+    title: 'Last Mile Delivery',
+    description: 'Specialized vehicles for urban and residential delivery.',
+    icon: GiDeliveryDrone,
+    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
   },
   {
-    title: 'Control Systems',
-    description: 'Advanced CNC controls, software, and programming solutions.',
-    icon: FaLaptop,
-    image: 'https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    title: 'Retail Delivery Trucks',
+    description: 'Custom solutions for retail and furniture delivery.',
+    icon: FaStore,
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
   },
   {
-    title: 'Tool Systems',
-    description: 'Automated tool changers, tool management systems, and cutting tools.',
-    icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1666634157070-6fd830fb5672?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    title: 'Express Cargo Vans',
+    description: 'Efficient cargo vans for express delivery services.',
+    icon: FaBox,
+    image: 'https://images.unsplash.com/photo-1543465077-db45d34b88a5'
+  },
+  {
+    title: 'Fleet Solutions',
+    description: 'Comprehensive fleet financing options.',
+    icon: FaTruck,
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
   }
 ];
 
-// Statistics display data
-const stats = [
-  { value: `$${cncMetadata.financingTerms.maxAmount.toLocaleString()}`, label: 'Maximum Financing', icon: FaMicrochip },
-  { value: `${cncMetadata.financingTerms.minTerm}-${cncMetadata.financingTerms.maxTerm}`, label: 'Term Length (Months)', icon: FaClock },
-  { value: `${cncMetadata.financingTerms.interestRange.min}%`, label: 'Starting Rate', icon: FaChartLine },
-  { value: '24hrs', label: 'Quick Approval', icon: GiGears }
+// Update keyFeatures to match standard format
+const keyFeatures = [
+  { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
+  { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
+  { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
+  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
 ];
 
-const processSteps = [
-  'Simplified application process with minimal documentation required',
-  'Financing for both new and used CNC machines',
-  'Flexible terms up to 84 months to match your production cycles',
-  'Competitive rates with rapid approval times',
-  'Expert guidance from machine tool financing specialists'
-];
-
-export default function CNCFinancingContent() {
-  // Define keyFeatures to match standard format
-  const keyFeatures = [
-    { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
-    { value: '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
-    { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-    { value: '24hrs', label: 'Quick Approval', icon: GiGears }
-  ];
-
+export default function BoxTruckFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <link
+          rel="preload"
+          href="/Images/boxTruckH.png"
+          as="image"
+          type="image/png"
+        />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
-            alt="CNC Machine background"
+            src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
+            alt="Box truck equipment financing"
             layout="fill"
             objectFit="cover"
             priority
@@ -95,7 +93,7 @@ export default function CNCFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            CNC Machine Equipment Financing
+            {boxTruckMetadata.title}
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -103,7 +101,7 @@ export default function CNCFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {cncMetadata.description}
+            {boxTruckMetadata.description}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -111,9 +109,9 @@ export default function CNCFinancingContent() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                          bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                          rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                          group relative overflow-hidden">
+                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
+                        group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Financing</span>
             </Link>
@@ -155,21 +153,21 @@ export default function CNCFinancingContent() {
           >
             Equipment We Finance
           </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {equipmentTypes.map((type, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-                initial={{ opacity: 0, y: 50 }}
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <div className="relative h-48">
-                  <Image 
+                  <Image
                     src={type.image}
-                    alt={`${type.title} CNC equipment for financing`}
+                    alt={type.title}
                     layout="fill"
                     objectFit="cover"
                   />
@@ -178,14 +176,15 @@ export default function CNCFinancingContent() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h2 className="text-2xl font-bold text-indigo-dye mb-3">{type.title}</h2>
-                  <p className="text-gray-700 text-lg leading-relaxed">{type.description}</p>
+                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
+                  <p className="text-gray-600">{type.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
       {/* Benefits Section - Updated to match other pages */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
@@ -213,8 +212,8 @@ export default function CNCFinancingContent() {
                   'Flexible terms from 24 to 84 months',
                   'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
-                  'Dedicated CNC machine specialists',
-                  'Competitive rates for precision manufacturing equipment'
+                  'Dedicated delivery vehicle specialists',
+                  'Competitive rates for delivery fleets'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -239,12 +238,12 @@ export default function CNCFinancingContent() {
               <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
               <ul className="space-y-4">
                 {[
-                  'Flexible solutions tailored to your manufacturing business',
+                  'Flexible solutions tailored to your delivery business',
                   'Preserve working capital for other business operations',
                   'Potential tax advantages for your business',
                   'Simplified application process with minimal paperwork',
-                  'Tailored payment plans that match your production cycles',
-                  'Industry expertise in precision manufacturing equipment'
+                  'Tailored payment plans that match your cash flow',
+                  'Industry expertise in delivery and logistics equipment'
                 ].map((item, index) => (
                   <motion.li
                     key={index}

@@ -1,9 +1,9 @@
 // app/restaurant/page.tsx
 
+import { restaurantMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
 import RestaurantFinancingContent from './resturant';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
-import { restaurantMetadata } from '../lib/metadata';
 
 
 // Generate metadata at the page level (server component)

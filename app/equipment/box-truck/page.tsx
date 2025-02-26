@@ -1,8 +1,9 @@
 // app/box-truck/page.tsx
 
 import { Metadata } from 'next';
-import { boxTruckMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
+
+import { boxTruckMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import BoxTruckFinancingContent from './box-truck';
 
 

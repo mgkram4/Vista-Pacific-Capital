@@ -1,63 +1,65 @@
+// app/dental/dental-financing.tsx
 "use client"
 
+import { dentalMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaBox,
   FaCalendarAlt,
   FaClock,
-  FaShippingFast,
-  FaStore,
+  FaCog,
+  FaDesktop,
+  FaMicroscope,
+  FaSyringe,
   FaTools,
-  FaTruck,
-  FaTruckMoving
+  FaTooth
 } from 'react-icons/fa';
-import { GiDeliveryDrone, GiReceiveMoney } from 'react-icons/gi';
-import { boxTruckMetadata } from '../lib/metadata';
+import { GiReceiveMoney } from 'react-icons/gi';
+
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Delivery Box Trucks',
-    description: boxTruckMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaTruckMoving,
-    image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e'
+    title: 'Digital Imaging Systems',
+    description: dentalMetadata.equipment[0].types.join(', ') + ' and more.',
+    icon: FaDesktop,
+    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe'
   },
   {
-    title: 'Commercial Vans',
-    description: boxTruckMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaShippingFast,
-    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e'
+    title: 'Treatment Room Equipment',
+    description: dentalMetadata.equipment[1].types.join(', ') + ' and more.',
+    icon: FaTooth,
+    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787'
   },
   {
-    title: 'Last Mile Delivery',
-    description: 'Specialized vehicles for urban and residential delivery.',
-    icon: GiDeliveryDrone,
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
+    title: 'Diagnostic Equipment',
+    description: dentalMetadata.equipment[2].types.join(', ') + ' and more.',
+    icon: FaMicroscope,
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
   },
   {
-    title: 'Retail Delivery Trucks',
-    description: 'Custom solutions for retail and furniture delivery.',
-    icon: FaStore,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    title: 'CAD/CAM Systems',
+    description: 'Digital impression systems and milling units for same-day restorations.',
+    icon: FaCog,
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d'
   },
   {
-    title: 'Express Cargo Vans',
-    description: 'Efficient cargo vans for express delivery services.',
-    icon: FaBox,
-    image: 'https://images.unsplash.com/photo-1543465077-db45d34b88a5'
+    title: 'Sterilization Systems',
+    description: 'Modern sterilization and infection control equipment.',
+    icon: FaTools,
+    image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8'
   },
   {
-    title: 'Fleet Solutions',
-    description: 'Comprehensive fleet financing options.',
-    icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
+    title: 'Specialty Equipment',
+    description: 'Dental lasers, surgical instruments, and specialized tools.',
+    icon: FaSyringe,
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5'
   }
 ];
 
-// Update keyFeatures to match standard format
+// Statistics display data
 const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
@@ -65,21 +67,21 @@ const keyFeatures = [
   { value: '24hrs', label: 'Quick Approval', icon: FaClock }
 ];
 
-export default function BoxTruckFinancingContent() {
+export default function DentalFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <link
           rel="preload"
-          href="/Images/boxTruckH.png"
+          href="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
           as="image"
           type="image/png"
         />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
-            alt="Box truck equipment financing"
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
+            alt="Dental equipment financing"
             layout="fill"
             objectFit="cover"
             priority
@@ -92,7 +94,7 @@ export default function BoxTruckFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {boxTruckMetadata.title}
+            Dental Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -100,7 +102,7 @@ export default function BoxTruckFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {boxTruckMetadata.description}
+            Having the right dental equipment is key to providing top-notch care for your patients. Whether you need chairs or a new X-Ray machine, our quick approvals and flexible terms make the process seamless.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -211,8 +213,8 @@ export default function BoxTruckFinancingContent() {
                   'Flexible terms from 24 to 84 months',
                   'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
-                  'Dedicated delivery vehicle specialists',
-                  'Competitive rates for delivery fleets'
+                  'Dedicated dental equipment specialists',
+                  'Competitive rates for modern dental technology'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -237,12 +239,12 @@ export default function BoxTruckFinancingContent() {
               <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
               <ul className="space-y-4">
                 {[
-                  'Flexible solutions tailored to your delivery business',
-                  'Preserve working capital for other business operations',
-                  'Potential tax advantages for your business',
+                  'Modern practice solutions for enhanced patient care',
+                  'Preserve working capital for other practice needs',
+                  'Potential tax advantages for your dental business',
                   'Simplified application process with minimal paperwork',
-                  'Tailored payment plans that match your cash flow',
-                  'Industry expertise in delivery and logistics equipment'
+                  'Flexible payment options tailored to your practice',
+                  'Improved practice efficiency with up-to-date equipment'
                 ].map((item, index) => (
                   <motion.li
                     key={index}

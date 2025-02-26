@@ -1,8 +1,9 @@
 // app/dental/page.tsx
 
 import { Metadata } from 'next';
-import { dentalMetadata } from '../lib/metadata';
-import { generateEnhancedMetadata } from '../lib/metadata/enhanced-config';
+
+import { dentalMetadata } from '@/app/lib/metadata';
+import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import DentalServicesContent from './dental';
 
 // Generate metadata at the page level (server component)
