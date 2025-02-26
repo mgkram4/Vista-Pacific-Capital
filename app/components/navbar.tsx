@@ -296,6 +296,7 @@ const AppNavBar: React.FC = () => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef(0);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -374,8 +375,38 @@ const AppNavBar: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const mainLinks = equipmentLinks.filter(link => link.path === '/about');
-  const equipmentFinancingLinks = equipmentLinks.filter(link => link.path !== '/about');
+  // Add this function to handle mouse enter
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setIsEquipmentDropdownOpen(true);
+  };
+
+  // Add this function to handle mouse leave
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsEquipmentDropdownOpen(false);
+    }, 200); // Small delay to prevent accidental closing
+  };
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const mainLinks = equipmentLinks.filter(link => 
+    link.path === '/about' || link.path === '/calculator'
+  );
+  
+  const equipmentFinancingLinks = equipmentLinks.filter(link => 
+    link.path !== '/about' && link.path !== '/calculator'
+  );
 
   if (!isClient) {
     return null;
@@ -411,7 +442,7 @@ const AppNavBar: React.FC = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className={`
             flex 
             items-center 
@@ -565,7 +596,7 @@ const AppNavBar: React.FC = () => {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5BB5B0]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1B365D]/20 to-transparent" />
                   
-                  {/* About Link */}
+                  {/* About Link and Payment Calculator */}
                   {mainLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -574,15 +605,32 @@ const AppNavBar: React.FC = () => {
                     />
                   ))}
 
-                  {/* Equipment Dropdown */}
-                  <div ref={dropdownRef} className="relative">
-                    <NavLink
-                      link={{ topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment financing options' }}
-                      isActive={equipmentFinancingLinks.some(link => pathname === link.path)}
-                      isDropdownTrigger={true}
-                      isDropdownOpen={isEquipmentDropdownOpen}
-                      onClick={() => setIsEquipmentDropdownOpen(!isEquipmentDropdownOpen)}
-                    />
+                  {/* Equipment Dropdown - Modified for hover */}
+                  <div 
+                    ref={dropdownRef} 
+                    className="relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {/* Modified to use a div instead of button for better hover behavior */}
+                    <div
+                      className={`
+                        relative 
+                        px-4
+                        py-2.5
+                        flex
+                        items-center
+                        transition-colors
+                        duration-200
+                        cursor-pointer
+                        ${equipmentFinancingLinks.some(link => pathname === link.path) ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
+                      `}
+                      aria-expanded={isEquipmentDropdownOpen}
+                      aria-haspopup="true"
+                    >
+                      <span className="font-medium text-xs">Equipment Financing</span>
+                      <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isEquipmentDropdownOpen ? 'rotate-180' : ''}`} />
+                    </div>
 
                     <AnimatePresence>
                       {isEquipmentDropdownOpen && (

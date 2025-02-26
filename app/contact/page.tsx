@@ -66,11 +66,11 @@ export default function Contact() {
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#113E59]">Get in Touch</h2>
               <div className="space-y-4">
-                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg hover:bg-[#11B5B2]/20 transition-colors">
+                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaPhone className="text-[#1E5470] text-xl" />
                   <p className="ml-4 text-gray-700 font-medium">(714) 985-6207</p>
                 </div>
-                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg hover:bg-[#11B5B2]/20 transition-colors">
+                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
                   <p className="ml-4 text-gray-700 font-medium">alanj@vistapacificcapital.com</p>
                 </div>

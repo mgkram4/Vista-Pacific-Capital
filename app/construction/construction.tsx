@@ -198,23 +198,69 @@ export default function ConstructionFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Construction Equipment Financing
+            Why Go With Us
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {constructionMetadata.benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <FaTools className="text-3xl text-light-sea-green mb-4" />
-                <h3 className="text-xl font-semibold text-indigo-dye mb-2">{benefit}</h3>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
+            >
+              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <ul className="space-y-4">
+                {[
+                  'Fast approvals within 24-48 hours',
+                  'Flexible terms from 24 to 84 months',
+                  'High approval rate of 94.6%',
+                  'Financing for both new and used equipment',
+                  'Dedicated construction equipment specialists',
+                  'Competitive rates starting at 4.99%'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
+              <ul className="space-y-4">
+                {[
+                  'Preserve your working capital for other business needs',
+                  'Potential tax advantages for your business',
+                  'Simplified application process with minimal paperwork',
+                  'Dedicated support team throughout the financing process',
+                  'Flexible payment options tailored to your cash flow',
+                  'No hidden fees or prepayment penalties'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center text-gray-700"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-light-sea-green rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>

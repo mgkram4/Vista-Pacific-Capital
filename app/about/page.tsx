@@ -1,10 +1,11 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBeer, FaHandshake, FaIndustry, FaLightbulb, FaMedkit, FaTruck, FaUserTie, FaUtensils, FaWarehouse } from 'react-icons/fa';
-import { GiCrane, GiForklift, GiGears, GiReceiveMoney } from 'react-icons/gi';
+import { GiCrane, GiForklift, GiGears } from 'react-icons/gi';
 
 const About = () => {
   const coreValues = [
@@ -53,8 +54,8 @@ const About = () => {
         <Image 
           src="/Images/contactH.png"
           alt="Vista Pacific Capital Hero"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           quality={100}
           priority
         />
@@ -212,41 +213,42 @@ Our leasing solutions allow businesses to spread the cost of equipment over time
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-20 px-4 relative">
-        <Image 
-          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Vista Pacific Capital CTA background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="absolute inset-0 bg-light-sea-green bg-opacity-80" />
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.h2
-            className="text-4xl font-bold mb-6"
+      <section className="relative py-20 overflow-hidden w-full">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+            alt="Modern office background"
+            fill
+            className="object-cover"
+            quality={100}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-8"
           >
-            Ready to Grow Your Business?
-          </motion.h2>
-          <motion.p
-            className="text-xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let's discuss how our innovative financing solutions can help you achieve your goals.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="bg-white text-light-sea-green py-3 px-8 rounded-full text-lg font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-2 text-2xl" /> Contact Us Today
+            <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+              Get pre-qualified in minutes with no impact to your credit score
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                transform hover:-translate-y-1 transition-all duration-300 group"
+            >
+              Apply Now
+              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>

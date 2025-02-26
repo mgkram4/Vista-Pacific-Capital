@@ -180,74 +180,68 @@ export default function CraneServices() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Crane Equipment Financing
+            Why Go With Us
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
             >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Expert Equipment Evaluation</h3>
+              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <ul className="space-y-4">
+                {[
+                  'Fast approvals within 24-48 hours',
+                  'Flexible terms from 24 to 84 months',
+                  'High approval rate of 94.6%',
+                  'Financing for both new and used equipment',
+                  'Dedicated crane equipment specialists',
+                  'Competitive rates for lifting equipment'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
             
             <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
             >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Flexible Payment Structures</h3>
-            </motion.div>
-            
-            <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Industry Expertise</h3>
-            </motion.div>
-            
-            <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Competitive Rates</h3>
-            </motion.div>
-            
-            <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Quick Approval Process</h3>
-            </motion.div>
-            
-            <motion.div
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <GiCrane className="text-3xl text-light-sea-green mb-4" />
-              <h3 className="text-xl font-semibold text-indigo-dye mb-2">Preserve Working Capital</h3>
+              <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
+              <ul className="space-y-4">
+                {[
+                  'Expert equipment evaluation for your specific needs',
+                  'Preserve working capital for other business operations',
+                  'Potential tax advantages for your business',
+                  'Simplified application process with minimal paperwork',
+                  'Flexible payment structures tailored to your cash flow',
+                  'Industry expertise in heavy lifting equipment'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center text-gray-700"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-light-sea-green rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </div>

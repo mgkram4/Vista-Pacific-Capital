@@ -36,12 +36,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className=" text-white">
+      <body className="text-white">
         <div className="min-h-screen flex flex-col">
-          <div className=" mb-10 md:mb-14">
+          <div>
             <AppNavBar />
           </div>
-          <main className="flex-grow container mx-auto px-4 py-8 ">
+          <main className="flex-grow">
             {children}
             <Analytics/>
           </main>

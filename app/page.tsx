@@ -205,23 +205,23 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-        <section className="relative min-h-screen  overflow-hidden">
+        <section className="relative min-h-screen w-full overflow-hidden pt-16 md:pt-20">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
           <Image 
-  src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  alt="Modern cityscape background"
-  fill
-  priority
-  className=""
-  quality={100}
-/>
+            src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Modern cityscape background"
+            fill
+            priority
+            className="object-cover"
+            quality={100}
+          />
             <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-blue-900/90 to-cyan-900/85 " />
           </div>
 
           {/* Hero Content */}
           <div className="relative w-full min-h-screen flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Left Column - Hero Content */}
                 <motion.div
@@ -318,8 +318,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20"></div>
+        
         {/* Services Section */}
-        <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-gray-50">
+        <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-gray-50 w-full">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               variants={fadeInUp}
@@ -381,9 +385,12 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20"></div>
+        
         {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-br from-[#1B365D] via-[#1B365D] to-[#1B365D]/95 relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-[#1B365D] via-[#1B365D] to-[#1B365D]/95 relative overflow-hidden w-full">
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(72,176,176,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -440,8 +447,12 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20"></div>
+        
         {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden w-full">
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -485,9 +496,12 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20"></div>
+        
         {/* Final CTA */}
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative py-20 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
               src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
@@ -527,9 +541,6 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-
-       
-       
       </main>
     </>
   );

@@ -50,11 +50,11 @@ const equipmentTypes = [
   }
 ];
 
-// Statistics display data - updated according to requirements
+// Statistics display data
 const stats = [
   { value: '$20M+', label: 'Maximum Financing', icon: FaSearchDollar },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaBarcode },
-  { value: 'New & Used', label: 'Equipment Options', icon: FaCogs },
+  { value: 'A-C', label: 'Credit Types', icon: FaCogs },
   { value: '24hrs', label: 'Quick Approval', icon: FaCheckCircle }
 ];
 
@@ -88,7 +88,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Used Equipment Financing
+            Get Equipment Financing Terms In 24 Hours
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -108,13 +108,13 @@ export default function UsedEquipmentContent() {
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
               <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
+              <span>Apply NOW</span>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Key Features Section */}
+      {/* Stats Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -146,7 +146,7 @@ export default function UsedEquipmentContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+            Used Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -190,28 +190,74 @@ export default function UsedEquipmentContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Benefits of Used Equipment Financing
+            Why Go With Us
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <FaTools className="text-3xl text-light-sea-green mb-4" />
-                <h3 className="text-xl font-semibold text-indigo-dye mb-2">{benefit}</h3>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
+            >
+              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <ul className="space-y-4">
+                {[
+                  'Fast approvals within 24-48 hours',
+                  'Flexible terms from 24 to 84 months',
+                  'High approval rate of 94.6%',
+                  'Financing for all types of used equipment',
+                  'Dedicated used equipment specialists',
+                  'Competitive rates for quality pre-owned machinery'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
+              <ul className="space-y-4">
+                {[
+                  'Lower initial investment costs compared to new equipment',
+                  'Immediate availability without long lead times',
+                  'Proven performance history and reliability',
+                  'Comprehensive inspection and certification process',
+                  'Extended warranty options available',
+                  'Expert guidance on equipment valuation'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center text-gray-700"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <div className="h-2 w-2 bg-light-sea-green rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Updated to match medical.tsx */}
       <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0">
             <Image 
@@ -245,7 +291,7 @@ export default function UsedEquipmentContent() {
                   shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >
-                Get Started Today
+                Apply Now
                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
