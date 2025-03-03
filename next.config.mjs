@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: '5ycd9odhqw.ufs.sh',
+        pathname: '**',
+      },
     ],
   },
 };

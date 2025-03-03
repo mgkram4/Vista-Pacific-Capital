@@ -16,10 +16,10 @@ import {
   UtensilsCrossed
 } from 'lucide-react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import QuickQuoteForm from './components/form';
+import UploadThingImage from './components/UploadThingImage';
 
 interface SEOProps {
   title: string;
@@ -208,7 +208,7 @@ export default function Home() {
         <section className="relative min-h-screen w-full overflow-hidden pt-16 md:pt-20">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
-          <Image 
+          <UploadThingImage 
             src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Modern cityscape background"
             fill
@@ -267,7 +267,7 @@ export default function Home() {
                             }
                           }}
                           className={`flex items-center space-x-2 p-3 rounded-lg border ${item[1]}
-                            backdrop-blur-md hover:bg-white/5 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                            backdrop-blur-md hover:bg-white/5 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/10`}
                         >
                           <CheckCircle2 className="text-cyan-400 h-5 w-5 flex-shrink-0" />
                           <span className="text-sm font-medium text-gray-100">{item[0]}</span>
@@ -503,42 +503,44 @@ export default function Home() {
         {/* Final CTA */}
         <section className="relative py-20 overflow-hidden w-full">
           <div className="absolute inset-0">
-            <Image 
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
-              alt="Modern office background"
-              fill
-              className="object-cover"
-              quality={100}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-                Ready to Get Started?
-              </h2>
-              <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
-                Get pre-qualified in minutes with no impact to your credit score
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
-                  transform hover:-translate-y-1 transition-all duration-300"
-              >
-                Apply Now
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+            <div className="mt-8 flex flex-col md:flex-row items-center gap-8">
+              <div className="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                <UploadThingImage
+                  src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+                  alt="Business financing approval"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="w-full md:w-1/2">
+                <motion.div
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="space-y-8"
+                >
+                  <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
+                  <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                    Ready to Get Started?
+                  </h2>
+                  <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+                    Get pre-qualified in minutes with no impact to your credit score
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                      text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                      shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                      transform hover:-translate-y-1 transition-all duration-300"
+                  >
+                    Apply Now
+                    <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
       </main>

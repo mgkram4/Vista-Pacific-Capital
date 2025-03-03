@@ -69,16 +69,10 @@ export default function ConstructionFinancingContent() {
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         {/* Preload the hero image */}
-        <link
-          rel="preload"
-          href="/Images/constructionH.png"
-          as="image"
-          type="image/png"
-        />
-        
+
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
-            src="/Images/constructionH.png"
+            src="https://5ycd9odhqw.ufs.sh/f/7JQdB1yagFle5yqq6OwWivOgUaMDFJpuPze7rjHXN4YZo01w"
             alt="Construction equipment background"
             fill
             sizes="100vw"

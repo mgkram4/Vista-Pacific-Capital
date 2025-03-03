@@ -52,7 +52,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
         <Image 
-          src="/Images/contactH.png"
+          src="https://5ycd9odhqw.ufs.sh/f/7JQdB1yagFle1CKBLbWFPlAD0i3xdR1NYFqthZ4mXIVyQTJG"
           alt="Vista Pacific Capital Hero"
           fill
           className="object-cover"
