@@ -6,13 +6,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaChartLine,
-  FaClock,
-  FaCogs,
-  FaIndustry,
-  FaLaptop,
-  FaMicrochip,
-  FaTools
+    FaChartLine,
+    FaClock,
+    FaCogs,
+    FaIndustry,
+    FaLaptop,
+    FaMicrochip,
+    FaTools
 } from 'react-icons/fa';
 import { GiGears, GiReceiveMoney } from 'react-icons/gi';
 
@@ -119,18 +119,37 @@ export default function CNCFinancingContent() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
-                <stat.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{stat.value}</h3>
-                <p className="text-gray-600">{stat.label}</p>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <stat.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
+                </motion.div>
+                <motion.h3 
+                  className="text-3xl font-bold text-indigo-dye mb-2"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {stat.value}
+                </motion.h3>
+                <motion.p 
+                  className="text-gray-600"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 + 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {stat.label}
+                </motion.p>
+              </div>
             ))}
           </div>
         </div>
@@ -159,13 +178,9 @@ export default function CNCFinancingContent() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {equipmentTypes.map((type, index) => (
-            <motion.div 
+            <div 
               key={index} 
               className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
             >
               <div className="relative h-48">
                 <Image 
@@ -174,15 +189,37 @@ export default function CNCFinancingContent() {
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                <motion.div 
+                  className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
                   <type.icon className="text-6xl text-white" />
-                </div>
+                </motion.div>
               </div>
               <div className="p-6">
-                <h2 className="text-2xl font-bold text-indigo-dye mb-3">{type.title}</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">{type.description}</p>
+                <motion.h2 
+                  className="text-2xl font-bold text-indigo-dye mb-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  {type.title}
+                </motion.h2>
+                <motion.p 
+                  className="text-gray-700 text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {type.description}
+                </motion.p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -199,22 +236,31 @@ export default function CNCFinancingContent() {
           >
             Our Financing Process
           </motion.h2>
-          <motion.div 
+          <div 
             className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
           >
-            <ul className="list-none space-y-6 text-gray-700 text-lg">
+            <motion.ul 
+              className="list-none space-y-6 text-gray-700 text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               {processSteps.map((step, index) => (
-                <li key={index} className="flex items-center">
+                <motion.li 
+                  key={index} 
+                  className="flex items-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
                   <span className="text-light-sea-green mr-4">✓</span>
                   {step}
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </motion.div>
+            </motion.ul>
+          </div>
         </div>
       </section>
 
@@ -232,17 +278,20 @@ export default function CNCFinancingContent() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {cncMetadata.benefits.map((benefit, index) => (
-              <motion.div 
+              <div 
                 key={index}
                 className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
               >
-                <GiGears className="text-4xl text-light-sea-green mb-4" />
-                <h3 className="text-2xl font-semibold text-indigo-dye mb-4">{benefit}</h3>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <GiGears className="text-4xl text-light-sea-green mb-4" />
+                  <h3 className="text-2xl font-semibold text-indigo-dye mb-4">{benefit}</h3>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -260,24 +309,45 @@ export default function CNCFinancingContent() {
           >
             Success Story
           </motion.h2>
-          <motion.div 
+          <div 
             className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Precision Manufacturing Company Expands Capabilities</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Precision Manufacturing Company Expands Capabilities</h3>
+            </motion.div>
+            <motion.p 
+              className="text-gray-700 text-lg leading-relaxed mb-4"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               A growing precision manufacturing company needed to upgrade their machining capabilities with advanced 5-axis CNC equipment. Through our flexible financing solution, they were able to acquire state-of-the-art CNC machines and automation systems.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            </motion.p>
+            <motion.p 
+              className="text-gray-700 text-lg leading-relaxed mb-4"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Result: The company increased their production capacity by 200% and reduced setup times by 60%, leading to a significant boost in profitability within the first year.
-            </p>
-            <p className="text-light-sea-green text-lg italic">
+            </motion.p>
+            <motion.p 
+              className="text-light-sea-green text-lg italic"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               "Vista Pacific Capital's CNC machine financing enabled us to revolutionize our manufacturing capabilities without impacting our working capital. Their deep understanding of machining technology made the process seamless."
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -333,57 +403,69 @@ export default function CNCFinancingContent() {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div 
+            <div 
               className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Technical Expertise</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Our team understands CNC technology and can help you make informed decisions about equipment financing that aligns with your manufacturing goals.
-              </p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Technical Expertise</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Our team understands CNC technology and can help you make informed decisions about equipment financing that aligns with your manufacturing goals.
+                </p>
+              </motion.div>
+            </div>
 
-            <motion.div 
+            <div 
               className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Solutions</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Customize your financing terms to match your production cycles and cash flow patterns with options for deferred payments or step-up structures.
-              </p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Flexible Solutions</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Customize your financing terms to match your production cycles and cash flow patterns with options for deferred payments or step-up structures.
+                </p>
+              </motion.div>
+            </div>
 
-            <motion.div 
+            <div 
               className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Fast Approvals</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Quick decision-making process helps you seize opportunities and meet tight production deadlines with rapid equipment acquisition.
-              </p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Fast Approvals</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Quick decision-making process helps you seize opportunities and meet tight production deadlines with rapid equipment acquisition.
+                </p>
+              </motion.div>
+            </div>
 
-            <motion.div 
+            <div 
               className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Comprehensive Coverage</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Finance complete CNC systems including tooling, automation, and software to create a fully integrated manufacturing solution.
-              </p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-3xl font-semibold mb-4 text-indigo-dye">Comprehensive Coverage</h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  Finance complete CNC systems including tooling, automation, and software to create a fully integrated manufacturing solution.
+                </p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -401,47 +483,67 @@ export default function CNCFinancingContent() {
             Available Financing Options
           </motion.h2>
 
-          <motion.div 
+          <div 
             className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
           >
             <div className="space-y-6">
-              <div className="flex items-center">
+              <motion.div 
+                className="flex items-center"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
                 <span className="text-light-sea-green mr-4">✓</span>
                 <div>
                   <h3 className="text-xl font-semibold text-indigo-dye">Capital Leases</h3>
                   <p className="text-gray-700 mt-2">Equipment ownership options with potential tax benefits</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center">
+              <motion.div 
+                className="flex items-center"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
                 <span className="text-light-sea-green mr-4">✓</span>
                 <div>
                   <h3 className="text-xl font-semibold text-indigo-dye">Operating Leases</h3>
                   <p className="text-gray-700 mt-2">Lower monthly payments with equipment upgrade flexibility</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center">
+              <motion.div 
+                className="flex items-center"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 <span className="text-light-sea-green mr-4">✓</span>
                 <div>
                   <h3 className="text-xl font-semibold text-indigo-dye">Equipment Finance Agreements</h3>
                   <p className="text-gray-700 mt-2">Traditional financing with competitive rates</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center">
+              <motion.div 
+                className="flex items-center"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 <span className="text-light-sea-green mr-4">✓</span>
                 <div>
                   <h3 className="text-xl font-semibold text-indigo-dye">Sale-Leaseback Options</h3>
                   <p className="text-gray-700 mt-2">Convert existing equipment equity into working capital</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

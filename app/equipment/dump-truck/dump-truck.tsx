@@ -6,13 +6,13 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaCalendarAlt,
-  FaClock,
-  FaRecycle,
-  FaRoad,
-  FaTools,
-  FaTruck,
-  FaWarehouse
+    FaCalendarAlt,
+    FaClock,
+    FaRecycle,
+    FaRoad,
+    FaTools,
+    FaTruck,
+    FaWarehouse
 } from 'react-icons/fa';
 import { GiMining, GiReceiveMoney, GiTruck } from 'react-icons/gi';
 
@@ -126,18 +126,37 @@ export default function DumpTruckFinancingContent() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {keyFeatures.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
-                <feature.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-indigo-dye mb-2">{feature.value}</h3>
-                <p className="text-gray-600">{feature.label}</p>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <feature.icon className="text-4xl text-light-sea-green mx-auto mb-4" />
+                </motion.div>
+                <motion.h3 
+                  className="text-3xl font-bold text-indigo-dye mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {feature.value}
+                </motion.h3>
+                <motion.p 
+                  className="text-gray-600"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {feature.label}
+                </motion.p>
+              </div>
             ))}
           </div>
         </div>
@@ -158,13 +177,9 @@ export default function DumpTruckFinancingContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {equipmentTypes.map((type, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <div className="relative h-48">
                   <Image
@@ -173,15 +188,37 @@ export default function DumpTruckFinancingContent() {
                     layout="fill"
                     objectFit="cover"
                   />
-                  <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                  <motion.div 
+                    className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
                     <type.icon className="text-6xl text-white" />
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
-                  <p className="text-gray-600">{type.description}</p>
+                  <motion.h3 
+                    className="text-xl font-bold text-indigo-dye mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    {type.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-600"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {type.description}
+                  </motion.p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -201,13 +238,18 @@ export default function DumpTruckFinancingContent() {
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
             >
-              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <motion.h3 
+                className="text-2xl font-bold mb-6"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Why Choose Us?
+              </motion.h3>
               <ul className="space-y-4">
                 {[
                   'Fast approvals within 24-48 hours',
@@ -221,23 +263,29 @@ export default function DumpTruckFinancingContent() {
                     key={index}
                     className="flex items-center"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    viewport={{ once: true }}
                   >
                     <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
                     {item}
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            <div
               className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
             >
-              <h3 className="text-2xl font-bold mb-6 text-indigo-dye">Our Advantages</h3>
+              <motion.h3 
+                className="text-2xl font-bold mb-6 text-indigo-dye"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                Our Advantages
+              </motion.h3>
               <ul className="space-y-4">
                 {[
                   'Flexible solutions tailored to your hauling business',
@@ -251,15 +299,16 @@ export default function DumpTruckFinancingContent() {
                     key={index}
                     className="flex items-center text-gray-700"
                     initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                    viewport={{ once: true }}
                   >
                     <div className="h-2 w-2 bg-light-sea-green rounded-full mr-3" />
                     {item}
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -278,30 +327,52 @@ export default function DumpTruckFinancingContent() {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
-              Get pre-qualified in minutes with no impact to your credit score
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
-                transform hover:-translate-y-1 transition-all duration-300"
+          <div className="space-y-8">
+            <motion.span 
+              className="text-sm font-semibold text-cyan-400 mb-2 block"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
             >
-              Get Started Today
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+              GET STARTED TODAY
+            </motion.span>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              Ready to Get Started?
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Get pre-qualified in minutes with no impact to your credit score
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Get Started Today
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>

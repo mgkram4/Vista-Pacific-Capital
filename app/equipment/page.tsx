@@ -112,23 +112,26 @@ export default function EquipmentFinancingPage() {
           <motion.h1 
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
             Equipment Financing Solutions
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
           >
             Whether you're in construction, medical, restaurant, or manufacturing, we offer flexible financing options for all your equipment needs. With quick approvals and competitive rates, we ensure you get the equipment you need to grow your business.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
           >
             <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                           bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
@@ -156,13 +159,9 @@ export default function EquipmentFinancingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {equipmentCategories.map((category, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
               >
                 <Link href={category.link}>
                   <div className="relative h-48">
@@ -172,20 +171,48 @@ export default function EquipmentFinancingPage() {
                       fill
                       style={{objectFit: "cover"}}
                     />
-                    <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                    <motion.div 
+                      className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                    >
                       <category.icon className="text-6xl text-white" />
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-indigo-dye mb-3">{category.title}</h3>
-                    <p className="text-gray-600">{category.description}</p>
-                    <div className="mt-4 flex items-center text-light-sea-green font-medium">
+                    <motion.h3 
+                      className="text-xl font-bold text-indigo-dye mb-3"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      {category.title}
+                    </motion.h3>
+                    <motion.p 
+                      className="text-gray-600"
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 + 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      {category.description}
+                    </motion.p>
+                    <motion.div 
+                      className="mt-4 flex items-center text-light-sea-green font-medium"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 + 0.3 }}
+                      viewport={{ once: true }}
+                    >
                       <span>Learn more</span>
                       <ChevronRight className="ml-1 w-5 h-5" />
-                    </div>
+                    </motion.div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -205,30 +232,52 @@ export default function EquipmentFinancingPage() {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-              Ready to Finance Your Equipment?
-            </h2>
-            <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
-              Get pre-qualified in minutes with no impact to your credit score
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
-                transform hover:-translate-y-1 transition-all duration-300"
+          <div className="space-y-8">
+            <motion.span 
+              className="text-sm font-semibold text-cyan-400 mb-2 block"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
             >
-              Apply Now
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+              GET STARTED TODAY
+            </motion.span>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              Ready to Finance Your Equipment?
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Get pre-qualified in minutes with no impact to your credit score
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                Apply Now
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>
