@@ -54,13 +54,23 @@ export default function MedicalFinancingContent() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+        <link
+          rel="preload"
+          href="/Images/medH.png"
+          as="image"
+          type="image/png"
+          fetchPriority="high"
+        />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="/Images/medH.png"
             alt="Medical equipment background"
-            layout="fill"
-            objectFit="cover"
-            priority
+            fill
+            className="object-cover"
+            quality={100}
+            priority={true}
+            loading="eager"
+            sizes="100vw"
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -297,6 +307,9 @@ export default function MedicalFinancingContent() {
               fill
               className="object-cover"
               quality={100}
+              priority={false}
+              loading="lazy"
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
           </div>

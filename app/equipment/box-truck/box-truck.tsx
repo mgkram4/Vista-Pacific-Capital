@@ -6,14 +6,14 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaBox,
-    FaCalendarAlt,
-    FaClock,
-    FaShippingFast,
-    FaStore,
-    FaTools,
-    FaTruck,
-    FaTruckMoving
+  FaBox,
+  FaCalendarAlt,
+  FaClock,
+  FaShippingFast,
+  FaStore,
+  FaTools,
+  FaTruck,
+  FaTruckMoving
 } from 'react-icons/fa';
 import { GiDeliveryDrone, GiReceiveMoney } from 'react-icons/gi';
 
@@ -76,14 +76,18 @@ export default function BoxTruckFinancingContent() {
           href="/Images/boxTruckH.png"
           as="image"
           type="image/png"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
             alt="Box truck equipment financing"
-            layout="fill"
-            objectFit="cover"
-            priority
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority={true}
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">

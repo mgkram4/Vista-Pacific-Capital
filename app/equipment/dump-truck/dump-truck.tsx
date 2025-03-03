@@ -78,14 +78,19 @@ export default function DumpTruckFinancingContent() {
           href="/Images/dumpTruckH.png"
           as="image"
           type="image/png"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Dump truck equipment financing"
-            layout="fill"
-            objectFit="cover"
-            priority
+            fill
+            className="object-cover"
+            quality={100}
+            priority={true}
+            loading="eager"
+            fetchPriority="high"
+            sizes="100vw"
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -322,6 +327,9 @@ export default function DumpTruckFinancingContent() {
             fill
             className="object-cover"
             quality={100}
+            priority={false}
+            loading="lazy"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
         </div>

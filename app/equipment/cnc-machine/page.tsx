@@ -76,9 +76,13 @@ export default function CNCFinancingContent() {
           <Image 
             src="https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
             alt="CNC Machine background"
-            layout="fill"
-            objectFit="cover"
-            priority
+            fill
+            className="object-cover"
+            quality={100}
+            priority={true}
+            loading="eager"
+            fetchPriority="high"
+            sizes="100vw"
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
