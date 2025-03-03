@@ -36,6 +36,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href="https://5ycd9odhqw.ufs.sh/f/7JQdB1yagFle1CKBLbWFPlAD0i3xdR1NYFqthZ4mXIVyQTJG"
+          as="image"
+          fetchPriority="high"
+        />
+      </head>
       <body className="text-white">
         <div className="min-h-screen flex flex-col">
           <div>
