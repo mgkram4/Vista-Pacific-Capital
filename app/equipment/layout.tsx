@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import ImagePreloader from './ImagePreloader';
+
 
 export const metadata: Metadata = {
   title: {
@@ -15,6 +17,8 @@ export default function EquipmentLayout({
 }) {
   return (
     <div className="equipment-layout">
+      {/* Client component to preload images */}
+      <ImagePreloader />
       <div className="equipment-content">
         {children}
       </div>
