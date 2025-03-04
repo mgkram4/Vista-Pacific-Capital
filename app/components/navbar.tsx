@@ -43,16 +43,6 @@ export const navigationSchema: StructuredData = {
   "hasPart": [
     {
       "@type": "WebPage",
-      "name": "About Vista Pacific Capital",
-      "url": `${BASE_URL}/about`,
-      "description": "Learn about our equipment financing expertise",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `${BASE_URL}/about`
-      }
-    },
-    {
-      "@type": "WebPage",
       "name": "All Equipment Financing Options",
       "url": `${BASE_URL}/equipment`,
       "description": "Explore all equipment financing options",
@@ -95,12 +85,6 @@ export const navigationSchema: StructuredData = {
 };
 
 export const equipmentLinks: EquipmentLink[] = [
-  {
-    topText: 'About',
-    bottomText: 'Us',
-    path: '/about',
-    description: 'Learn about our company and commitment to equipment financing'
-  },
   {
     topText: 'Payment',
     bottomText: 'Calculator',
@@ -417,11 +401,11 @@ const AppNavBar: React.FC = () => {
   }, []);
 
   const mainLinks = equipmentLinks.filter(link => 
-    link.path === '/about' || link.path === '/calculator'
+    link.path === '/calculator'
   );
   
   const equipmentFinancingLinks = equipmentLinks.filter(link => 
-    link.path !== '/about' && link.path !== '/calculator'
+    link.path !== '/calculator'
   );
 
   if (!isClient) {
@@ -717,15 +701,6 @@ const AppNavBar: React.FC = () => {
               <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-6">
                 {/* All Links Container */}
                 <div className="py-6 space-y-6">
-                  {/* Main Links */}
-                  <Link
-                    href="/about"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#1B365D] text-lg"
-                  >
-                    About Us
-                  </Link>
-
                   {/* Calculator Link */}
                   <Link
                     href="/calculator"
