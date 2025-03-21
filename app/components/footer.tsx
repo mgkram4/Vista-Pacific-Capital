@@ -5,29 +5,30 @@ export default function Footer() {
   const equipmentCategories = [
     // Left column
     [
-      { name: 'Construction Equipment', path: '/construction' },
-      { name: 'Restaurant Equipment', path: '/restaurant' },
-      { name: 'Crane Financing', path: '/crane' },
-      { name: 'Excavator Financing', path: '/excavator' },
-      { name: 'Box Truck Financing', path: '/box-truck' },
-      { name: 'Used Equipment', path: '/used-equipment' },
+      { name: 'Construction Equipment', path: '/equipment/construction' },
+      { name: 'Restaurant Equipment', path: '/equipment/restaurant' },
+      { name: 'Crane Financing', path: '/equipment/crane' },
+      { name: 'Excavator Financing', path: '/equipment/excavator' },
+      { name: 'Box Truck Financing', path: '/equipment/box-truck' },
+      { name: 'Used Equipment', path: '/equipment/used' },
     ],
     // Right column
     [
-      { name: 'Medical Equipment', path: '/medical' },
-      { name: 'Brewery Equipment', path: '/brewery-equipment' },
-      { name: 'Dental Equipment', path: '/dental' },
-      { name: 'Dump Truck Financing', path: '/dump-truck' },
-      { name: 'CNC Machine Financing', path: '/cnc-machine' },
+      { name: 'Medical Equipment', path: '/equipment/medical' },
+      { name: 'Brewery Equipment', path: '/equipment/brewery' },
+      { name: 'Dental Equipment', path: '/equipment/dental' },
+      { name: 'Dump Truck Financing', path: '/equipment/dump-truck' },
+      { name: 'CNC Machine Financing', path: '/equipment/cnc-machine' },
     ]
   ];
 
   const specialPages = [
-    { name: 'About Us', path: '/about' },
     { name: 'Payment Calculator', path: '/calculator' },
   ];
 
   return (
+
+    
     <footer className="bg-[#1B365D] text-white py-12" role="contentinfo">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Main footer content - Three distinct sections with improved spacing */}
@@ -54,7 +55,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start w-full mb-8">
               <p className="text-gray-300">Connect with us:</p>
               <a 
-                href="https://www.linkedin.com/company/providence-capital-funding-inc-/" 
+                href="https://www.linkedin.com/company/vista-pacific-capital/?viewAsMember=true" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Follow us on LinkedIn"

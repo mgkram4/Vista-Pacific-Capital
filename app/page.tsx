@@ -65,42 +65,42 @@ const services: Service[] = [
     description: "Quick approvals for forklifts, bulldozers, and more with flexible terms that fit your budget.",
     features: ["Same-day funding", "Starting at $20,000", "Up to 84-month terms", "No down payment options"],
     icon: Building2,
-    href: "/construction"
+    href: "/equipment/construction"
   },
   {
     title: "Medical Equipment Financing",
     description: "Fund imaging systems, surgical tools, and more for practice upgrades or expansions with budget-friendly options.",
     features: ["100% equipment financing", "Tax-advantage options", "Deferred payments", "Equipment-specific programs"],
     icon: Stethoscope,
-    href: "/medical"
+    href: "/equipment/medical"
   },
   {
     title: "Manufacturing Equipment",
     description: "Finance CNC machines and precision tools to improve efficiency and production quality.",
     features: ["Step payment options", "Sale-leaseback available", "Working capital included", "Equipment credit lines"],
     icon: Factory,
-    href: "/manufacturing"
+    href: "/equipment/manufacturing"
   },
   {
     title: "Restaurant Equipment",
     description: "Quick approvals for ovens, refrigerators, and complete kitchen systems with tailored terms.",
     features: ["90-day deferred payments", "Seasonal payment options", "Start-up programs", "Software included"],
     icon: UtensilsCrossed,
-    href: "/restaurant"
+    href: "/equipment/restaurant"
   },
   {
     title: "Transportation Equipment",
     description: "Finance dump trucks and fleet vehicles with payments that work for your business.",
     features: ["TRAC lease options", "Fleet management tools", "Fuel card programs", "Maintenance included"],
     icon: Truck,
-    href: "/dump-truck"
+    href: "/equipment/dump-truck"
   },
   {
     title: "Brewery Equipment",
     description: "Fund kegging equipment and brewhouses with new and used options for your craft brewery.",
     features: ["Revenue-based payments", "Equipment-specific terms", "Working capital included", "Expansion programs"],
     icon: Beer,
-    href: "/brewery-equipment"
+    href: "/equipment/brewery"
   }
 ];
 
@@ -496,6 +496,7 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+        
         
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20"></div>
