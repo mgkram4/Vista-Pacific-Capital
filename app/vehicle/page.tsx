@@ -241,33 +241,6 @@ export default function VehicleFinancing() {
         </div>
       </section>
 
-      {/* Case Study Section */}
-      <section className="py-24 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-        <motion.h2 
-            className="text-4xl font-bold mb-12 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Success Story
-          </motion.h2>
-          <motion.div 
-            className="bg-white p-8 rounded-2xl shadow-xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">Logistics Company Expands Fleet and Market Reach</h3>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">A growing logistics company needed to expand its fleet to meet increasing demand and enter new markets. Through our flexible financing solution, they were able to acquire a mix of 20 new semi-trucks and delivery vans, fitted with the latest GPS and efficiency tracking technology.</p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">Result: The company increased its delivery capacity by 40%, reduced fuel costs by 15% due to newer, more efficient vehicles, and successfully expanded into two new state markets within the first year of implementation.</p>
-            <p className="text-light-sea-green text-lg italic">"Vista Pacific Capital's vehicle financing allowed us to scale our fleet without compromising our cash flow. Their understanding of the logistics industry's unique challenges made the process smooth and tailored to our specific needs." - COO, Expanding Logistics Firm</p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Additional Info Section */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">

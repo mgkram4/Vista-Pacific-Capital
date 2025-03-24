@@ -205,5 +205,3 @@ This codebase is the exclusive property of Vista Pacific Capital. All rights res
 This repository contains sensitive business logic and proprietary algorithms. Access should be strictly limited to authorized personnel only.
 
 ---
-
-For technical support or inquiries, please contact the Vista Pacific Capital IT department directly.

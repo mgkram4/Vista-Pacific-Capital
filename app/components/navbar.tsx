@@ -43,32 +43,42 @@ export const navigationSchema: StructuredData = {
   "hasPart": [
     {
       "@type": "WebPage",
-      "name": "About Vista Pacific Capital",
-      "url": `${BASE_URL}/about`,
-      "description": "Learn about our equipment financing expertise",
+      "name": "All Equipment Financing Options",
+      "url": `${BASE_URL}/equipment`,
+      "description": "Explore all equipment financing options",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/about`
+        "@id": `${BASE_URL}/equipment`
       }
     },
     {
       "@type": "WebPage",
       "name": "Construction Equipment Financing",
-      "url": `${BASE_URL}/construction`,
+      "url": `${BASE_URL}/equipment/construction`,
       "description": "Specialized financing for construction equipment",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/construction`
+        "@id": `${BASE_URL}/equipment/construction`
       }
     },
     {
       "@type": "WebPage",
       "name": "Medical Equipment Financing",
-      "url": `${BASE_URL}/medical`,
+      "url": `${BASE_URL}/equipment/medical`,
       "description": "Healthcare equipment financing solutions",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${BASE_URL}/medical`
+        "@id": `${BASE_URL}/equipment/medical`
+      }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Payment Calculator",
+      "url": `${BASE_URL}/calculator`,
+      "description": "Calculate equipment financing payments",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/calculator`
       }
     }
   ]
@@ -76,75 +86,86 @@ export const navigationSchema: StructuredData = {
 
 export const equipmentLinks: EquipmentLink[] = [
   {
-    topText: 'About',
-    bottomText: 'Us',
-    path: '/about',
-    description: 'Learn about our company and commitment to equipment financing'
+    topText: 'Payment',
+    bottomText: 'Calculator',
+    path: '/calculator',
+    description: 'Calculate your equipment financing payments',
+    style: {
+      background: 'bg-[#1B365D]',
+      text: 'text-white',
+      hover: 'hover:bg-[#152a4a]'
+    }
+  },
+  {
+    topText: 'All',
+    bottomText: 'Equipment',
+    path: '/equipment',
+    description: 'Explore all equipment financing options'
   },
   {
     topText: 'Construction',
     bottomText: 'Equipment',
-    path: '/construction',
+    path: '/equipment/construction',
     description: 'Finance construction equipment with competitive rates and flexible terms'
   },
   {
     topText: 'Medical',
     bottomText: 'Equipment',
-    path: '/medical',
+    path: '/equipment/medical',
     description: 'Healthcare equipment financing solutions'
   },
   {
     topText: 'Restaurant',
     bottomText: 'Equipment',
-    path: '/restaurant',
+    path: '/equipment/restaurant',
     description: 'Restaurant equipment financing solutions'
   },
   {
     topText: 'Used',
     bottomText: 'Equipment',
-    path: '/used',
+    path: '/equipment/used',
     description: 'Used equipment financing options'
   },
   {
     topText: 'Brewery',
     bottomText: 'Equipment',
-    path: '/brewery',
+    path: '/equipment/brewery',
     description: 'Brewery equipment funding solutions'
   },
   {
     topText: 'Crane',
     bottomText: 'Financing',
-    path: '/crane',
+    path: '/equipment/crane',
     description: 'Crane financing solutions'
   },
   {
     topText: 'Dental',
     bottomText: 'Equipment',
-    path: '/dental',
+    path: '/equipment/dental',
     description: 'Dental practice equipment solutions'
   },
   {
     topText: 'Excavator',
     bottomText: 'Financing',
-    path: '/excavator',
+    path: '/equipment/excavator',
     description: 'Excavator financing options'
   },
   {
     topText: 'Dump Truck',
     bottomText: 'Financing',
-    path: '/dump-truck',
+    path: '/equipment/dump-truck',
     description: 'Dump truck financing'
   },
   {
     topText: 'Box Truck',
     bottomText: 'Financing',
-    path: '/box-truck',
+    path: '/equipment/box-truck',
     description: 'Box truck financing'
   },
   {
     topText: 'CNC Machine',
     bottomText: 'Financing',
-    path: '/cnc-machine',
+    path: '/equipment/cnc-machine',
     description: 'CNC machine financing'
   }
 ];
@@ -217,8 +238,8 @@ const NavLink: React.FC<{
         onClick={onClick}
         className={`
           relative 
-          px-3
-          py-2
+          px-4
+          py-2.5
           flex
           items-center
           transition-colors
@@ -228,14 +249,7 @@ const NavLink: React.FC<{
         aria-expanded={isDropdownOpen}
         aria-haspopup="true"
       >
-        <div className="flex flex-col items-center">
-          <span className="font-medium whitespace-nowrap text-xs">
-            Equipment
-          </span>
-          <span className="font-medium whitespace-nowrap text-xs">
-            Financing
-          </span>
-        </div>
+        <span className="font-medium text-xs">Equipment Financing</span>
         <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
       </button>
     );
@@ -247,8 +261,8 @@ const NavLink: React.FC<{
       onClick={onClick}
       className={`
         relative 
-        px-3
-        py-2
+        px-4
+        py-2.5
         transition-colors
         duration-200
         ${isMobile ? 'w-full text-center py-3' : ''}
@@ -257,22 +271,12 @@ const NavLink: React.FC<{
       aria-label={`${link.topText} ${link.bottomText}`}
       title={link.description}
     >
-      <div className="flex flex-col items-center">
-        <span className={`
-          font-medium 
-          whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs'}
-        `}>
-          {link.topText}
-        </span>
-        <span className={`
-          font-medium 
-          whitespace-nowrap
-          ${isMobile ? 'text-base' : 'text-xs'}
-        `}>
-          {link.bottomText}
-        </span>
-      </div>
+      <span className={`
+        font-medium 
+        ${isMobile ? 'text-base' : 'text-xs'}
+      `}>
+        {`${link.topText} ${link.bottomText}`}
+      </span>
     </Link>
   );
 };
@@ -292,6 +296,7 @@ const AppNavBar: React.FC = () => {
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef(0);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -370,8 +375,38 @@ const AppNavBar: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const mainLinks = equipmentLinks.filter(link => link.path === '/about');
-  const equipmentFinancingLinks = equipmentLinks.filter(link => link.path !== '/about');
+  // Add this function to handle mouse enter
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setIsEquipmentDropdownOpen(true);
+  };
+
+  // Add this function to handle mouse leave
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsEquipmentDropdownOpen(false);
+    }, 200); // Small delay to prevent accidental closing
+  };
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const mainLinks = equipmentLinks.filter(link => 
+    link.path === '/calculator'
+  );
+  
+  const equipmentFinancingLinks = equipmentLinks.filter(link => 
+    link.path !== '/calculator'
+  );
 
   if (!isClient) {
     return null;
@@ -407,7 +442,7 @@ const AppNavBar: React.FC = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className={`
             flex 
             items-center 
@@ -561,7 +596,7 @@ const AppNavBar: React.FC = () => {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5BB5B0]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1B365D]/20 to-transparent" />
                   
-                  {/* About Link */}
+                  {/* About Link and Payment Calculator */}
                   {mainLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -570,15 +605,32 @@ const AppNavBar: React.FC = () => {
                     />
                   ))}
 
-                  {/* Equipment Dropdown */}
-                  <div ref={dropdownRef} className="relative">
-                    <NavLink
-                      link={{ topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment financing options' }}
-                      isActive={equipmentFinancingLinks.some(link => pathname === link.path)}
-                      isDropdownTrigger={true}
-                      isDropdownOpen={isEquipmentDropdownOpen}
-                      onClick={() => setIsEquipmentDropdownOpen(!isEquipmentDropdownOpen)}
-                    />
+                  {/* Equipment Dropdown - Modified for hover */}
+                  <div 
+                    ref={dropdownRef} 
+                    className="relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {/* Modified to use a div instead of button for better hover behavior */}
+                    <div
+                      className={`
+                        relative 
+                        px-4
+                        py-2.5
+                        flex
+                        items-center
+                        transition-colors
+                        duration-200
+                        cursor-pointer
+                        ${(pathname === '/equipment' || equipmentFinancingLinks.some(link => pathname === link.path)) ? 'text-[#5BB5B0]' : 'text-[#1B365D] hover:text-[#5BB5B0]'}
+                      `}
+                      aria-expanded={isEquipmentDropdownOpen}
+                      aria-haspopup="true"
+                    >
+                      <span className="font-medium text-xs">Equipment Financing</span>
+                      <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isEquipmentDropdownOpen ? 'rotate-180' : ''}`} />
+                    </div>
 
                     <AnimatePresence>
                       {isEquipmentDropdownOpen && (
@@ -640,48 +692,56 @@ const AppNavBar: React.FC = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden border-t border-gray-200 bg-white shadow-lg"
+              className="lg:hidden fixed inset-x-0 top-[64px] bg-white shadow-lg z-40"
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
-              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4">
-                <div className="space-y-1">
-                  {equipmentLinks.map((link, index) => (
-                    <motion.div
-                      key={link.path}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="mb-1"
-                    >
-                      <div className="rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                        <NavLink
-                          link={link}
-                          isActive={pathname === link.path}
-                          isMobile={true}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: equipmentLinks.length * 0.1 }}
-                  className="mt-4 px-1"
-                >
-                  <NavLink
-                    link={quoteLink}
-                    isActive={pathname === quoteLink.path}
-                    isQuote={true}
-                    isMobile={true}
+              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-6">
+                {/* All Links Container */}
+                <div className="py-6 space-y-6">
+                  {/* Calculator Link */}
+                  <Link
+                    href="/calculator"
                     onClick={() => setIsMobileMenuOpen(false)}
-                  />
-                </motion.div>
+                    className="block py-3 text-[#5BB5B0] text-lg"
+                  >
+                    Payment Calculator
+                  </Link>
+
+                  {/* All Equipment Link */}
+                  <Link
+                    href="/equipment"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#1B365D] text-lg"
+                  >
+                    All Equipment
+                  </Link>
+
+                  {/* Equipment Links */}
+                  {equipmentFinancingLinks
+                    .filter(link => link.path !== '/calculator' && link.path !== '/equipment')
+                    .map((link) => (
+                      <Link
+                        key={link.path}
+                        href={link.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-3 text-[#1B365D] text-lg"
+                      >
+                        {`${link.topText} ${link.bottomText}`}
+                      </Link>
+                    ))}
+
+                  {/* Quote Button */}
+                  <Link
+                    href={quoteLink.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full py-4 bg-[#FF6B35] text-white text-center text-lg font-medium rounded-lg mt-6"
+                  >
+                    GET QUOTE
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
