@@ -1,5 +1,6 @@
 "use client"
 
+import PDFForm from '@/app/pdf-form/page';
 import { motion } from 'framer-motion';
 import {
   Beer,
@@ -19,7 +20,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import QuickQuoteForm from './components/form';
 
 interface SEOProps {
   title: string;
@@ -79,7 +79,7 @@ const services: Service[] = [
     description: "Finance CNC machines and precision tools to improve efficiency and production quality.",
     features: ["Step payment options", "Sale-leaseback available", "Working capital included", "Equipment credit lines"],
     icon: Factory,
-    href: "/equipment/manufacturing"
+    href: "/equipment/cnc-machine"
   },
   {
     title: "Restaurant Equipment",
@@ -205,56 +205,56 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-        <section className="relative min-h-screen w-full overflow-hidden pt-16 md:pt-20">
+        <section className="relative w-full overflow-hidden pt-0">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Modern cityscape background"
-            fill
-            priority
-            className="object-cover"
-            quality={100}
-          />
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-950/95 via-blue-900/90 to-cyan-900/85 " />
+            <Image 
+              src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Modern cityscape background"
+              fill
+              priority
+              className="object-cover"
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
           </div>
 
           {/* Hero Content */}
-          <div className="relative w-full min-h-screen flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="relative w-full flex items-center">
+            <div className="max-w-7xl mx-auto px-2 py-2 w-full">
+              <div className="grid lg:grid-cols-2 gap-2 items-center">
                 {/* Left Column - Hero Content */}
                 <motion.div
                   variants={fadeInUp}
                   initial="hidden"
                   animate="visible"
-                  className="text-white space-y-8"
+                  className="text-white space-y-4"
                 >
                   {/* Hero Title */}
-                  <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-300 rounded-lg overflow-hidden p-1">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] rounded-lg overflow-hidden">
                     Get Equipment
                     <br />
                     Financing Terms
                     <br />
-                    <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">In 24 Hours</span>
+                    <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">In 24 Hours</span>
                   </h1>
 
                   {/* Features Section */}
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-4 text-lg md:text-xl lg:text-2xl">
-                      <span className="flex-shrink-0 w-1 h-8 bg-gradient-to-b from-cyan-400 to-cyan-500 rounded-full" />
-                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-300">
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2 text-lg md:text-xl">
+                      <span className="flex-shrink-0 w-1 h-6 bg-gradient-to-b from-[#0EB5B2] to-[#0EB5B2] rounded-full" />
+                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#F2F2F2] to-[#B3B3B3]">
                         Financing from $20,000 to $20 million
                       </p>
                     </div>
                     
                     {/* Feature Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {[
-                        ["Same-Day Approval", "bg-gradient-to-r from-cyan-500/20 to-cyan-400/10 border-cyan-500/20"],
-                        ["New and Used Equipment", "bg-gradient-to-r from-blue-500/20 to-blue-400/10 border-blue-500/20"],
-                        ["Flexible Terms", "bg-gradient-to-r from-blue-400/20 to-cyan-500/10 border-blue-400/20"],
-                        ["A through C Credit", "bg-gradient-to-r from-orange-500/20 to-orange-400/10 border-orange-500/20"]
+                        ["Same-Day Approval", "bg-gradient-to-r from-[#0EB5B2]/20 to-[#0EB5B2]/10 border-[#0EB5B2]/20"],
+                        ["New and Used Equipment", "bg-gradient-to-r from-[#0D3853]/20 to-[#0D3853]/10 border-[#0D3853]/20"],
+                        ["Flexible Terms", "bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/10 border-[#0D3853]/20"],
+                        ["A through C Credit", "bg-gradient-to-r from-[#FF6B35]/20 to-[#FF6B35]/10 border-[#FF6B35]/20"]
                       ].map((item, index) => (
                         <motion.div
                           key={index}
@@ -269,19 +269,19 @@ export default function Home() {
                           className={`flex items-center space-x-2 p-3 rounded-lg border ${item[1]}
                             backdrop-blur-md hover:bg-white/5 transition-all duration-300 shadow-lg hover:shadow-xl`}
                         >
-                          <CheckCircle2 className="text-cyan-400 h-5 w-5 flex-shrink-0" />
-                          <span className="text-sm font-medium text-gray-100">{item[0]}</span>
+                          <CheckCircle2 className="text-[#0EB5B2] h-5 w-5 flex-shrink-0" />
+                          <span className="text-sm font-medium text-[#F2F2F2]">{item[0]}</span>
                         </motion.div>
                       ))}
                     </div>
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <Link
-                      href="/contact"
-                      className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] text-white px-8 py-4 rounded-lg
-                        font-semibold text-lg shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                      href="/pdf-form"
+                      className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] text-white px-6 py-3 rounded-lg
+                        font-semibold text-lg shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                         transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center backdrop-blur-sm"
                     >
                       Apply Now
@@ -290,10 +290,10 @@ export default function Home() {
 
                     <Link
                       href="/calculator"
-                      className="group px-6 py-3 rounded-lg border border-cyan-400/30 text-white
-                        font-semibold text-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20
+                      className="group px-4 py-2 rounded-lg border border-[#0EB5B2]/30 text-white
+                        font-semibold text-lg bg-gradient-to-r from-[#0EB5B2]/10 to-[#0D3853]/10 hover:from-[#0EB5B2]/20 hover:to-[#0D3853]/20
                         backdrop-blur-md transform hover:-translate-y-1 transition-all duration-300 
-                        flex items-center justify-center shadow-lg hover:shadow-cyan-500/20"
+                        flex items-center justify-center shadow-lg hover:shadow-[#0EB5B2]/20"
                     >
                       <Calculator className="mr-2 h-5 w-5" />
                       Payment Calculator
@@ -306,13 +306,9 @@ export default function Home() {
                   variants={fadeInUp}
                   initial="hidden"
                   animate="visible"
-                  className="relative z-10"
+                  className="relative"
                 >
-                  <div className="backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 rounded-lg border border-cyan-500/20
-                    shadow-2xl shadow-black/20 hover:shadow-cyan-500/10 transition-all duration-500"
-                  >
-                    <QuickQuoteForm title="Apply NOW" />
-                  </div>
+                  <PDFForm />
                 </motion.div>
               </div>
             </div>
@@ -320,23 +316,23 @@ export default function Home() {
         </section>
         
         {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Services Section */}
-        <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-gray-50 w-full">
+        {/* Services Section - adjust spacing here */}
+        <section className="py-10 bg-gradient-to-b from-white via-[#F2F2F2]/50 to-[#F2F2F2] w-full">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-8"
             >
-              <span className="text-sm font-semibold text-cyan-600 mb-2 block">INDUSTRY SOLUTIONS</span>
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1B365D] to-[#2C4C7C] bg-clip-text text-transparent mb-4">
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">INDUSTRY SOLUTIONS</span>
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-4">
                 Equipment Financing Solutions
               </h2>
-              <p className="text-xl text-[#2C4C7C]/80">
+              <p className="text-xl text-[#0D3853]/80">
                 Specialized funding programs for every industry
               </p>
             </motion.div>
@@ -346,7 +342,7 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {services.map((service, index) => (
                 <motion.div
@@ -354,29 +350,29 @@ export default function Home() {
                   variants={fadeInUp}
                   className="group bg-white rounded-lg p-6
                     transition-all duration-500 transform hover:-translate-y-2
-                    border border-cyan-500/10 hover:border-cyan-500/30
-                    shadow-lg hover:shadow-xl hover:shadow-cyan-500/10"
+                    border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30
+                    shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
                 >
-                  <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/5 rounded-lg p-3 w-fit
+                  <div className="bg-gradient-to-br from-[#0EB5B2]/10 to-[#0D3853]/5 rounded-lg p-3 w-fit
                     group-hover:scale-110 transition-transform duration-500">
-                    <service.icon className="h-12 w-12 text-cyan-600" />
+                    <service.icon className="h-12 w-12 text-[#0EB5B2]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#1B365D] mt-4 mb-2">
+                  <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-[#2C4C7C]/80 mb-4">{service.description}</p>
+                  <p className="text-[#0D3853]/80 mb-4">{service.description}</p>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-[#2C4C7C]/80">
-                        <CheckCircle2 className="h-5 w-5 text-cyan-500" />
+                      <li key={idx} className="flex items-center space-x-2 text-[#0D3853]/80">
+                        <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Link
                     href={service.href}
-                    className="text-cyan-600 font-semibold flex items-center
-                      group-hover:text-cyan-700 transition-colors duration-300"
+                    className="text-[#0EB5B2] font-semibold flex items-center
+                      group-hover:text-[#0D3853] transition-colors duration-300"
                   >
                     Learn More <ChevronRight className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -387,25 +383,25 @@ export default function Home() {
         </section>
         
         {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
-        {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-br from-[#1B365D] via-[#1B365D] to-[#1B365D]/95 relative overflow-hidden w-full">
+        {/* Benefits Section - adjust spacing here */}
+        <section className="py-10 bg-gradient-to-br from-[#0D3853] via-[#0D3853] to-[#0D3853]/95 relative overflow-hidden w-full">
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(72,176,176,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(14,181,178,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-8"
             >
-              <span className="text-sm font-semibold text-cyan-400 mb-2 block">WHY CHOOSE US</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 mb-4">
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">WHY CHOOSE US</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3] mb-4">
                 Why Choose Vista Pacific Capital
               </h2>
-              <p className="text-xl text-cyan-400">
+              <p className="text-xl text-[#0EB5B2]">
                 Fast approvals with flexible terms for your business needs
               </p>
             </motion.div>
@@ -415,29 +411,29 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid md:grid-cols-3 gap-8"
+              className="grid md:grid-cols-3 gap-6"
             >
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
                   className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-lg p-6 
-                    border border-cyan-500/20 hover:border-cyan-400/30
-                    hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-500
+                    border border-[#0EB5B2]/20 hover:border-[#0EB5B2]/30
+                    hover:shadow-lg hover:shadow-[#0EB5B2]/10 transition-all duration-500
                     transform hover:-translate-y-2"
                 >
-                  <div className="bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 rounded-lg p-3 w-fit
+                  <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit
                     group-hover:scale-110 transition-transform duration-500">
-                    <benefit.icon className="h-12 w-12 text-cyan-400" />
+                    <benefit.icon className="h-12 w-12 text-[#0EB5B2]" />
                   </div>
                   <h3 className="text-xl font-bold text-white mt-4 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-300/90 mb-4">{benefit.description}</p>
+                  <p className="text-[#B3B3B3]/90 mb-4">{benefit.description}</p>
                   <ul className="space-y-2">
                     {benefit.points.map((point, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-gray-200/90">
-                        <CheckCircle2 className="h-5 w-5 text-cyan-400" />
+                      <li key={idx} className="flex items-center space-x-2 text-[#F2F2F2]/90">
+                        <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -449,10 +445,10 @@ export default function Home() {
         </section>
         
         {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden w-full">
+        {/* FAQ Section - adjust spacing here */}
+        <section className="py-10 bg-gradient-to-b from-[#F2F2F2] to-white relative overflow-hidden w-full">
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -460,13 +456,13 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-8"
             >
-              <span className="text-sm font-semibold text-cyan-600 mb-2 block">COMMON QUESTIONS</span>
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1B365D] to-[#2C4C7C] bg-clip-text text-transparent mb-4">
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">COMMON QUESTIONS</span>
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-4">
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-[#2C4C7C]/80">
+              <p className="text-xl text-[#0D3853]/80">
                 Everything you need to know about equipment financing
               </p>
             </motion.div>
@@ -476,7 +472,7 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-8"
+              className="grid md:grid-cols-2 gap-6"
             >
               {faqs.map((faq, index) => (
                 <motion.div
@@ -484,25 +480,24 @@ export default function Home() {
                   variants={fadeInUp}
                   className="group bg-white rounded-lg p-6
                     transition-all duration-500 transform hover:-translate-y-1
-                    border border-cyan-500/10 hover:border-cyan-500/30
-                    shadow-lg hover:shadow-xl hover:shadow-cyan-500/10"
+                    border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30
+                    shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
                 >
-                  <h3 className="text-xl font-bold bg-gradient-to-r from-[#1B365D] to-[#2C4C7C] bg-clip-text text-transparent mb-2">
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-2">
                     {faq.q}
                   </h3>
-                  <p className="text-[#2C4C7C]/80">{faq.a}</p>
+                  <p className="text-[#0D3853]/80">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
         </section>
         
-        
         {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
         {/* Final CTA */}
-        <section className="relative py-20 overflow-hidden w-full">
+        <section className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
               src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
@@ -511,7 +506,7 @@ export default function Home() {
               className="object-cover"
               quality={100}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -520,20 +515,20 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-4"
             >
-              <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">GET STARTED TODAY</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
                 Ready to Get Started?
               </h2>
-              <p className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10">
+              <p className="text-xl text-[#F2F2F2]/90 max-w-3xl mx-auto pb-4">
                 Get pre-qualified in minutes with no impact to your credit score
               </p>
               <Link
-                href="/contact"
+                href="/pdf-form"
                 className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                   text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >
                 Apply Now
@@ -546,3 +541,5 @@ export default function Home() {
     </>
   );
 }
+
+// Replace the current FinanceApplicationForm function with the imported component

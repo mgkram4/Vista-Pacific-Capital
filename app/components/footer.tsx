@@ -24,12 +24,13 @@ export default function Footer() {
 
   const specialPages = [
     { name: 'Payment Calculator', path: '/calculator' },
+    { name: 'Contact Us', path: '/contact' },
   ];
 
   return (
 
     
-    <footer className="bg-[#1B365D] text-white py-12" role="contentinfo">
+    <footer className="bg-[#0D3853] text-white py-12" role="contentinfo">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Main footer content - Three distinct sections with improved spacing */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -49,11 +50,11 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <p className="text-gray-300 text-base leading-relaxed text-center lg:text-left">
+            <p className="text-[#B3B3B3] text-base leading-relaxed text-center lg:text-left">
               Trusted equipment financing solutions for businesses across America. Fast approvals, competitive rates, and exceptional service.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start w-full mb-8">
-              <p className="text-gray-300">Connect with us:</p>
+              <p className="text-[#B3B3B3]">Connect with us:</p>
               <a 
                 href="https://www.linkedin.com/company/vista-pacific-capital/?viewAsMember=true" 
                 target="_blank" 
@@ -70,7 +71,7 @@ export default function Footer() {
 
           {/* Section 2: Equipment Categories with improved spacing and hover effects */}
           <div>
-            <h2 className="text-xl font-semibold mb-5 uppercase tracking-wider text-cyan-400 border-b border-cyan-400/30 pb-3 w-full">
+            <h2 className="text-xl font-semibold mb-5 uppercase tracking-wider text-[#0EB5B2] border-b border-[#0EB5B2]/30 pb-3 w-full">
               Industry Solutions
             </h2>
             <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -80,7 +81,7 @@ export default function Footer() {
                     <Link 
                       key={category.path}
                       href={category.path}
-                      className="block text-gray-300 hover:text-cyan-400 transition-colors"
+                      className="block text-[#B3B3B3] hover:text-[#0EB5B2] transition-colors"
                     >
                       {category.name}
                     </Link>
@@ -94,7 +95,7 @@ export default function Footer() {
           <div className="space-y-6">
             {/* Quick Links */}
             <div>
-              <h2 className="text-xl font-semibold mb-5 uppercase tracking-wider text-cyan-400 border-b border-cyan-400/30 pb-3 w-full">
+              <h2 className="text-xl font-semibold mb-5 uppercase tracking-wider text-[#0EB5B2] border-b border-[#0EB5B2]/30 pb-3 w-full">
                 Quick Links
               </h2>
               <div className="flex flex-wrap gap-x-8 gap-y-4">
@@ -102,7 +103,7 @@ export default function Footer() {
                   <Link 
                     key={page.path}
                     href={page.path}
-                    className="block text-gray-300 hover:text-cyan-400 transition-colors"
+                    className="block text-[#B3B3B3] hover:text-[#0EB5B2] transition-colors"
                   >
                     {page.name}
                   </Link>
@@ -111,21 +112,28 @@ export default function Footer() {
             </div>
 
             {/* Contact Us */}
-            <div className="bg-[#1D3D68] p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-6 uppercase tracking-wider text-cyan-400">
+            <div className="bg-[#0D3853]/50 p-6 rounded-lg shadow-sm border border-[#0EB5B2]/20">
+              <h2 className="text-xl font-semibold mb-6 uppercase tracking-wider text-[#0EB5B2]">
                 Contact Us
               </h2>
               <div className="space-y-6">
                 <Link 
-                  href="/contact"
+                  href="/pdf-form"
                   className="inline-block bg-gradient-to-r from-[#FF6B35] to-[#ff825c] 
                     text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:opacity-90 transition-opacity"
                 >
                   Apply Now
                 </Link>
+                <Link 
+                  href="/contact"
+                  className="inline-block bg-gradient-to-r from-[#0D3853] to-[#0D3853] 
+                    text-white font-medium px-6 py-3 rounded-lg shadow-sm hover:opacity-90 transition-opacity ml-4 border border-[#0EB5B2]"
+                >
+                  Contact Us
+                </Link>
                 <div className="space-y-2">
-                  <p className="text-gray-300 text-sm">Call us today:</p>
-                  <a href="tel:+16577228726" className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors">
+                  <p className="text-[#B3B3B3] text-sm">Call us today:</p>
+                  <a href="tel:+16577228726" className="text-2xl font-bold text-white hover:text-[#0EB5B2] transition-colors">
                     (714) 985-6207
                   </a>
                 </div>
@@ -135,8 +143,8 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom - Copyright only */}
-        <div className="mt-12 pt-8 border-t border-gray-700/50">
-          <div className="flex justify-center md:justify-start items-center text-sm text-gray-400">
+        <div className="mt-12 pt-8 border-t border-[#0EB5B2]/20">
+          <div className="flex justify-center md:justify-start items-center text-sm text-[#B3B3B3]">
             <p>© {new Date().getFullYear()} Vista Pacific Capital. All rights reserved.</p>
           </div>
         </div>

@@ -171,10 +171,10 @@ export const equipmentLinks: EquipmentLink[] = [
 ];
 
 export const quoteLink: EquipmentLink = {
-  topText: 'Get',
-  bottomText: 'Quote',
-  path: '/contact',
-  description: 'Get a customized equipment financing quote',
+  topText: 'Apply',
+  bottomText: 'Now',
+  path: '/pdf-form',
+  description: 'Apply for equipment financing',
   isCallToAction: true,
   style: {
     background: 'bg-[#5BB5B0]',
@@ -223,10 +223,10 @@ const NavLink: React.FC<{
           hover:scale-105
           active:scale-95
         `}
-        aria-label="Get your equipment financing quote"
+        aria-label="Apply for equipment financing"
         title={link.description}
       >
-        <span className="relative z-10">GET QUOTE</span>
+        <span className="relative z-10">APPLY NOW</span>
         <div className="absolute inset-x-0 h-px bottom-0 bg-white/20" />
       </Link>
     );
@@ -407,6 +407,14 @@ const AppNavBar: React.FC = () => {
   const equipmentFinancingLinks = equipmentLinks.filter(link => 
     link.path !== '/calculator'
   );
+
+  // Add Contact link to mainLinks
+  const contactLink = {
+    topText: 'Contact',
+    bottomText: 'Us',
+    path: '/contact',
+    description: 'Get in touch with our team'
+  };
 
   if (!isClient) {
     return null;
@@ -604,6 +612,12 @@ const AppNavBar: React.FC = () => {
                       isActive={pathname === link.path}
                     />
                   ))}
+                  
+                  {/* Contact Us Link */}
+                  <NavLink
+                    link={contactLink}
+                    isActive={pathname === contactLink.path}
+                  />
 
                   {/* Equipment Dropdown - Modified for hover */}
                   <div 
@@ -709,6 +723,15 @@ const AppNavBar: React.FC = () => {
                   >
                     Payment Calculator
                   </Link>
+                  
+                  {/* Contact Us Link */}
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#5BB5B0] text-lg"
+                  >
+                    Contact Us
+                  </Link>
 
                   {/* All Equipment Link */}
                   <Link
@@ -739,7 +762,7 @@ const AppNavBar: React.FC = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block w-full py-4 bg-[#FF6B35] text-white text-center text-lg font-medium rounded-lg mt-6"
                   >
-                    GET QUOTE
+                    APPLY NOW
                   </Link>
                 </div>
               </div>
