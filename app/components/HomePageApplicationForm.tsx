@@ -35,7 +35,7 @@ interface BusinessFormData {
 interface OwnerFormData {
   firstName: string;
   lastName: string;
-  socialSecurityNumber: string;
+  dateOfBirth: string;
   ownershipPercentage: string;
 }
 
@@ -51,9 +51,10 @@ interface SubmitStatus {
 
 interface HomePageApplicationFormProps {
   teamMember?: TeamMember;
+  onSubmit?: () => void;
 }
 
-export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan }: HomePageApplicationFormProps) {
+export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan, onSubmit }: HomePageApplicationFormProps) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -70,7 +71,7 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
   const [ownerData, setOwnerData] = useState<OwnerFormData>({
     firstName: '',
     lastName: '',
-    socialSecurityNumber: '',
+    dateOfBirth: '',
     ownershipPercentage: '100',
   });
 
@@ -86,17 +87,6 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
       : '';
   };
 
-  const formatSSN = (value: string): string => {
-    const digits = value.replace(/\D/g, '');
-    return digits.length > 0
-      ? digits.length <= 3
-        ? `${digits}`
-        : digits.length <= 5
-        ? `${digits.slice(0, 3)}-${digits.slice(3)}`
-        : `${digits.slice(0, 3)}-${digits.slice(3, 5)}-${digits.slice(5, 9)}`
-      : '';
-  };
-
   const formatCurrency = (value: string): string => {
     const digits = value.replace(/\D/g, '');
     return digits ? `$${parseInt(digits).toLocaleString()}` : '';
@@ -106,11 +96,6 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
     setBusinessData({ ...businessData, businessPhone: formatted });
-  };
-
-  const handleSSNChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatSSN(e.target.value);
-    setOwnerData({ ...ownerData, socialSecurityNumber: formatted });
   };
 
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -157,10 +142,8 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
       newErrors.push({ field: 'lastName', message: 'Last name is required' });
     }
     
-    if (!ownerData.socialSecurityNumber) {
-      newErrors.push({ field: 'socialSecurityNumber', message: 'Social Security Number is required' });
-    } else if (ownerData.socialSecurityNumber.replace(/\D/g, '').length !== 9) {
-      newErrors.push({ field: 'socialSecurityNumber', message: 'Please enter a valid 9-digit SSN' });
+    if (!ownerData.dateOfBirth) {
+      newErrors.push({ field: 'dateOfBirth', message: 'Date of birth is required' });
     }
     
     if (!ownerData.ownershipPercentage) {
@@ -196,23 +179,35 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
       setLoading(true);
       
       try {
-        // Determine which finance page to redirect to based on the team member
-        const redirectPath = teamMember === TEAM_MEMBERS.noah ? '/noah-finance' : '/alan-finance';
-        
         // Save form data to session storage for pre-filling the full form
         sessionStorage.setItem('businessData', JSON.stringify(businessData));
         sessionStorage.setItem('ownerData', JSON.stringify(ownerData));
         
-        // Redirect to the appropriate finance page
-        setSubmitStatus({
-          success: true,
-          message: 'Your application has been started! Redirecting to complete the full form...'
-        });
-        
-        // Small delay to show the success message before redirecting
-        setTimeout(() => {
-          router.push(redirectPath);
-        }, 1500);
+        // If custom onSubmit is provided, use that instead of default routing
+        if (onSubmit) {
+          setSubmitStatus({
+            success: true,
+            message: 'Your application has been started! Redirecting to the PDF form...'
+          });
+          
+          // Small delay to show the success message before redirecting
+          setTimeout(() => {
+            onSubmit();
+          }, 1500);
+        } else {
+          // Default behavior - determine which finance page to redirect to based on the team member
+          const redirectPath = teamMember === TEAM_MEMBERS.noah ? '/noah-finance' : '/alan-finance';
+          
+          setSubmitStatus({
+            success: true,
+            message: 'Your application has been started! Redirecting to complete the full form...'
+          });
+          
+          // Small delay to show the success message before redirecting
+          setTimeout(() => {
+            router.push(redirectPath);
+          }, 1500);
+        }
         
       } catch (error) {
         setSubmitStatus({
@@ -360,20 +355,19 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
               </div>
 
               <div>
-                <label htmlFor="socialSecurityNumber" className="block text-xs font-medium text-gray-700">
-                  Social Security Number <span className="text-red-500">*</span>
+                <label htmlFor="dateOfBirth" className="block text-xs font-medium text-gray-700">
+                  Date of Birth <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
-                  id="socialSecurityNumber"
-                  value={ownerData.socialSecurityNumber}
-                  onChange={handleSSNChange}
+                  type="date"
+                  id="dateOfBirth"
+                  value={ownerData.dateOfBirth}
+                  onChange={(e) => setOwnerData({ ...ownerData, dateOfBirth: e.target.value })}
                   className={inputClasses}
-                  placeholder="123-45-6789"
                   required
                 />
-                {errors.find(e => e.field === 'socialSecurityNumber') && (
-                  <p className={errorMessage}>{errors.find(e => e.field === 'socialSecurityNumber')?.message}</p>
+                {errors.find(e => e.field === 'dateOfBirth') && (
+                  <p className={errorMessage}>{errors.find(e => e.field === 'dateOfBirth')?.message}</p>
                 )}
               </div>
 

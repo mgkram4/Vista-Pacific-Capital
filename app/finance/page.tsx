@@ -11,4 +11,4 @@ const PDFForm = dynamic(
 export default function FinancePage() {
   // Simply render the PDF form page directly
   return <PDFForm />;
-} 
+}

@@ -20,4 +20,4 @@ export const TEAM_MEMBERS = {
     phone: "(949)413-5942",
     endpoint: "/api/submit-quote-noah"
   }
-}; 
+};

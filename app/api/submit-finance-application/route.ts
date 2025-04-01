@@ -50,6 +50,12 @@ interface AdditionalOwner {
   homeZip: string;
 }
 
+interface AgentData {
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export async function POST(request: Request) {
   try {
     // Parse the JSON body
@@ -60,11 +66,13 @@ export async function POST(request: Request) {
       business,
       primaryOwner,
       additionalOwners,
-      pdfAttachment
+      pdfAttachment,
+      agent
     } = body;
 
     const businessData: BusinessData = business;
     const ownerData: OwnerData = primaryOwner;
+    const agentData: AgentData | null = agent;
 
     console.log('Preparing to send finance application emails');
 
@@ -120,7 +128,7 @@ export async function POST(request: Request) {
     // Email to customer with PDF attachment
     const customerEmail = {
       to: businessData.email,
-      from: 'alanj@vistapacificcapital.com',
+      from: agentData ? agentData.email : 'alanj@vistapacificcapital.com',
       subject: 'Your Vista Pacific Capital Finance Application',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #0D3853;">
@@ -166,8 +174,17 @@ export async function POST(request: Request) {
 
           <p style="font-size: 16px; line-height: 1.5; margin-bottom: 25px;">A PDF copy of your complete application is attached to this email for your records. Our team will review your application and contact you shortly to discuss the next steps.</p>
 
+          ${agentData ? `
+          <div style="background-color: #f7f9fc; border: 1px solid #e1e6ed; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <h3 style="color: #0D3853; margin-top: 0; font-size: 16px;">Your Assigned Agent</h3>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>${agentData.name}</strong></p>
+            <p style="margin: 5px 0; font-size: 14px;">Email: ${agentData.email}</p>
+            <p style="margin: 5px 0; font-size: 14px;">Phone: ${agentData.phone}</p>
+          </div>
+          ` : ''}
+
           <div style="background-color: #0EB5B2; color: white; padding: 15px; border-radius: 5px; text-align: center;">
-            <p style="margin: 0; font-size: 14px;">If you have any questions, please contact us at <a href="mailto:alanj@vistapacificcapital.com" style="color: white; text-decoration: underline;">alanj@vistapacificcapital.com</a> or call us at (888) 555-1234.</p>
+            <p style="margin: 0; font-size: 14px;">If you have any questions, please contact us at <a href="mailto:${agentData ? agentData.email : 'alanj@vistapacificcapital.com'}" style="color: white; text-decoration: underline;">${agentData ? agentData.email : 'alanj@vistapacificcapital.com'}</a> or call us at ${agentData ? agentData.phone : '(888) 555-1234'}.</p>
           </div>
         </div>
       `,
@@ -186,6 +203,13 @@ export async function POST(request: Request) {
       <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #0D3853;">
         <h1 style="color: #0EB5B2; border-bottom: 2px solid #0EB5B2; padding-bottom: 10px;">New Finance Application</h1>
         <p style="font-size: 16px; color: #0D3853;">Submitted on: ${applicationDate}</p>
+
+        ${agentData ? `
+        <div style="background-color: #f0f7ff; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #0EB5B2;">
+          <h3 style="color: #0D3853; margin-top: 0; font-size: 16px;">Assigned Agent: ${agentData.name}</h3>
+          <p style="margin: 5px 0; font-size: 14px;">${agentData.email} | ${agentData.phone}</p>
+        </div>
+        ` : ''}
 
         <div style="background-color: #F2F2F2; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h2 style="color: #0EB5B2; margin-top: 0;">Business Information</h2>
@@ -259,25 +283,62 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // Emails to team members
-    const teamEmails = [
-      'alanj@vistapacificcapital.com',
-    //   'cynthiaj@vistapacificcapital.com',
-      'danielm@vistapacificcapital.com'
-    ].map(recipient => ({
-      to: recipient,
-      from: 'alanj@vistapacificcapital.com',
-      subject: `New Finance Application - ${businessData.businessName}`,
-      html: detailedHtml,
-      attachments: [
-        {
-          content: pdfAttachment,
-          filename: filename,
-          type: 'application/pdf',
-          disposition: 'attachment',
-        },
-      ],
-    }));
+    // Determine team emails list based on assigned agent
+    let teamEmails = [];
+    if (agentData) {
+      // Include the agent's email
+      teamEmails.push({
+        to: agentData.email,
+        from: 'alanj@vistapacificcapital.com',
+        subject: `New Finance Application - ${businessData.businessName}`,
+        html: detailedHtml,
+        attachments: [
+          {
+            content: pdfAttachment,
+            filename: filename,
+            type: 'application/pdf',
+            disposition: 'attachment',
+          },
+        ],
+      });
+      
+      // Always include Daniel as a backup
+      if (agentData.email !== 'danielm@vistapacificcapital.com') {
+        teamEmails.push({
+          to: 'danielm@vistapacificcapital.com',
+          from: 'alanj@vistapacificcapital.com',
+          subject: `New Finance Application (${agentData.name}) - ${businessData.businessName}`,
+          html: detailedHtml,
+          attachments: [
+            {
+              content: pdfAttachment,
+              filename: filename,
+              type: 'application/pdf',
+              disposition: 'attachment',
+            },
+          ],
+        });
+      }
+    } else {
+      // Default team emails if no agent specified
+      teamEmails = [
+        'alanj@vistapacificcapital.com',
+        'danielm@vistapacificcapital.com'
+      ].map(recipient => ({
+        to: recipient,
+        from: 'alanj@vistapacificcapital.com',
+        subject: `New Finance Application - ${businessData.businessName}`,
+        html: detailedHtml,
+        attachments: [
+          {
+            content: pdfAttachment,
+            filename: filename,
+            type: 'application/pdf',
+            disposition: 'attachment',
+          },
+        ],
+      }));
+    }
 
     console.log('Attempting to send finance application emails...');
 
