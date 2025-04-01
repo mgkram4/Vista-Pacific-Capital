@@ -16,11 +16,38 @@ interface SubmitStatus {
   message?: string;
 }
 
-interface QuickQuoteFormProps {
-  title?: string;
+interface TeamMember {
+  name: string;
+  email: string;
+  phone: string;
+  endpoint: string;
 }
 
-const QuickQuoteForm = ({ title = "Apply NOW" }: QuickQuoteFormProps) => {
+interface QuickQuoteFormProps {
+  title?: string;
+  teamMember?: TeamMember;
+}
+
+// Default team members
+const TEAM_MEMBERS = {
+  alan: {
+    name: "Alan Johnson",
+    email: "alanj@vistapacificcapital.com",
+    phone: "(949)677-1167",
+    endpoint: "/api/submit-quote"
+  },
+  noah: {
+    name: "Noah Miller",
+    email: "noahm@vistapacificcapital.com",
+    phone: "(949)413-5942",
+    endpoint: "/api/submit-quote-noah"
+  }
+};
+
+const QuickQuoteForm = ({ 
+  title = "Apply NOW", 
+  teamMember = TEAM_MEMBERS.alan 
+}: QuickQuoteFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     equipmentType: '',
     equipmentCost: '',
@@ -78,7 +105,7 @@ const QuickQuoteForm = ({ title = "Apply NOW" }: QuickQuoteFormProps) => {
     setSubmitStatus({});
 
     try {
-      const response = await fetch('/api/submit-quote', {
+      const response = await fetch(teamMember.endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -373,4 +400,5 @@ const QuickQuoteForm = ({ title = "Apply NOW" }: QuickQuoteFormProps) => {
   );
 };
 
+export { TEAM_MEMBERS };
 export default QuickQuoteForm;

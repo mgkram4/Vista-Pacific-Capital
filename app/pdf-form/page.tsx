@@ -2,8 +2,32 @@
 
 import { CheckCircle } from 'lucide-react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Toast from '../components/Toast'; // Add this import
+
+// Team member configuration
+interface TeamMember {
+  name: string;
+  email: string;
+  phone: string;
+  endpoint: string;
+}
+
+// Default team members
+const TEAM_MEMBERS = {
+  alan: {
+    name: "Alan Johnson",
+    email: "alanj@vistapacificcapital.com",
+    phone: "(949)677-1167",
+    endpoint: "/api/submit-quote"
+  },
+  noah: {
+    name: "Noah Miller",
+    email: "noahm@vistapacificcapital.com",
+    phone: "(949)413-5942",
+    endpoint: "/api/submit-quote-noah"
+  }
+};
 
 // Define types for form data
 interface BusinessFormData {
@@ -59,8 +83,13 @@ interface SubmitStatus {
   message?: string;
 }
 
-export default function FinanceApplicationPage() {
+interface FinanceApplicationProps {
+  teamMember?: TeamMember;
+}
+
+export default function FinanceApplicationPage({ teamMember = TEAM_MEMBERS.alan }: FinanceApplicationProps) {
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [selectedAgent, setSelectedAgent] = useState<string>(teamMember.name === TEAM_MEMBERS.noah.name ? 'noah' : 'alan');
   const [businessData, setBusinessData] = useState<BusinessFormData>({
     amountNeeded: '',
     email: '',
@@ -141,6 +170,46 @@ export default function FinanceApplicationPage() {
     "$1 million - $5 million",
     "More than $5 million"
   ];
+
+  // Load pre-filled data from session storage if available
+  useEffect(() => {
+    // Check if running in browser and if sessionStorage is available
+    if (typeof window !== 'undefined') {
+      try {
+        // Get pre-filled business data
+        const storedBusinessData = sessionStorage.getItem('businessData');
+        if (storedBusinessData) {
+          const parsedData = JSON.parse(storedBusinessData);
+          setBusinessData(prevData => ({
+            ...prevData,
+            amountNeeded: parsedData.amountNeeded || prevData.amountNeeded,
+            email: parsedData.email || prevData.email,
+            businessName: parsedData.businessName || prevData.businessName,
+            businessPhone: parsedData.businessPhone || prevData.businessPhone
+          }));
+        }
+        
+        // Get pre-filled owner data
+        const storedOwnerData = sessionStorage.getItem('ownerData');
+        if (storedOwnerData) {
+          const parsedData = JSON.parse(storedOwnerData);
+          setOwnerData(prevData => ({
+            ...prevData,
+            firstName: parsedData.firstName || prevData.firstName,
+            lastName: parsedData.lastName || prevData.lastName,
+            socialSecurityNumber: parsedData.socialSecurityNumber || prevData.socialSecurityNumber,
+            ownershipPercentage: parsedData.ownershipPercentage || prevData.ownershipPercentage
+          }));
+        }
+        
+        // Clear session storage after retrieval
+        sessionStorage.removeItem('businessData');
+        sessionStorage.removeItem('ownerData');
+      } catch (error) {
+        console.error('Error loading pre-filled data:', error);
+      }
+    }
+  }, []);
 
   // Validate business form
   const validateBusinessForm = (): boolean => {
@@ -431,38 +500,62 @@ export default function FinanceApplicationPage() {
 
   // Generate PDF
   const generatePDF = async () => {
+    // Create a new PDF document
     const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
+    
+    // Add a page to the document
+    const page = pdfDoc.addPage([612, 792]); // Standard US Letter size
+    
+    // Load the standard font
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
     
-    // Add header to PDF
-    page.drawText('Vista Pacific Capital - Finance Application', {
-      x: 50,
-      y: height - 50,
-      size: 24,
-      font: boldFont,
-      color: rgb(0.1, 0.1, 0.4),
-    });
+    // Set up some constants for layout
+    const margin = 50;
+    const fontSize = 12;
+    const smallFontSize = 10;
+    const lineHeight = 20;
+    const secondColumnX = 300;
     
-    // Add submission date
+    // Get current date for submission
     const currentDate = new Date().toLocaleDateString();
-    page.drawText(`Submission Date: ${currentDate}`, {
-      x: 50,
-      y: height - 80,
-      size: 12,
-      font,
-      color: rgb(0.3, 0.3, 0.3),
+    
+    // Get the current team member
+    const currentTeamMember = getCurrentTeamMember();
+    
+    // Draw the title and header
+    page.drawText('Vista Pacific Capital - Finance Application', {
+      x: margin,
+      y: 730,
+      size: 18,
+      font: boldFont,
+      color: rgb(0, 0.306, 0.545), // #004E8B (Indigo Dye)
     });
     
-    // Business Information Header
+    page.drawText(`Submission Date: ${currentDate}`, {
+      x: margin,
+      y: 710,
+      size: smallFontSize,
+      font: font,
+      color: rgb(0, 0, 0),
+    });
+    
+    // Draw the selected agent information
+    page.drawText(`Agent: ${currentTeamMember.name}`, {
+      x: secondColumnX,
+      y: 710,
+      size: smallFontSize,
+      font: font,
+      color: rgb(0, 0, 0),
+    });
+    
+    // Draw the Business Information section
     page.drawText('Business Information', {
-      x: 50,
-      y: height - 120,
-      size: 16,
+      x: margin,
+      y: 670,
+      size: 14,
       font: boldFont,
-      color: rgb(0, 0.5, 0),
+      color: rgb(0, 0.502, 0), // Dark Green
     });
     
     // Business Information Fields - Updated to include federalTaxId
@@ -480,17 +573,17 @@ export default function FinanceApplicationPage() {
     
     businessFields.forEach((field, index) => {
       page.drawText(`${field.label}:`, {
-        x: 50,
-        y: height - 150 - (index * 25),
-        size: 12,
-        font: boldFont,
-        color: rgb(0.3, 0.3, 0.3),
+        x: margin,
+        y: 650 - (index * lineHeight),
+        size: fontSize,
+        font: font,
+        color: rgb(0, 0, 0),
       });
       
       page.drawText(field.value, {
-        x: 220,
-        y: height - 150 - (index * 25),
-        size: 12,
+        x: secondColumnX,
+        y: 650 - (index * lineHeight),
+        size: fontSize,
         font,
         color: rgb(0, 0, 0),
       });
@@ -498,11 +591,11 @@ export default function FinanceApplicationPage() {
     
     // Owner Information Header
     page.drawText('Owner Information', {
-      x: 50,
-      y: height - 150 - (businessFields.length * 25) - 30,
-      size: 16,
+      x: margin,
+      y: 650 - (businessFields.length * lineHeight) - 20,
+      size: 14,
       font: boldFont,
-      color: rgb(0, 0.5, 0),
+      color: rgb(0, 0.502, 0), // Dark Green
     });
     
     // Owner Information Fields
@@ -514,21 +607,21 @@ export default function FinanceApplicationPage() {
       { label: 'Home Address', value: `${ownerData.homeAddress}, ${ownerData.homeSuite ? 'Suite ' + ownerData.homeSuite + ', ' : ''}${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}` },
     ];
     
-    const ownerStartY = height - 150 - (businessFields.length * 25) - 60;
+    const ownerStartY = 650 - (businessFields.length * lineHeight) - 40;
     
     ownerFields.forEach((field, index) => {
       page.drawText(`${field.label}:`, {
-        x: 50,
-        y: ownerStartY - (index * 25),
-        size: 12,
-        font: boldFont,
-        color: rgb(0.3, 0.3, 0.3),
+        x: margin,
+        y: ownerStartY - (index * lineHeight),
+        size: fontSize,
+        font: font,
+        color: rgb(0, 0, 0),
       });
       
       page.drawText(field.value, {
-        x: 220,
-        y: ownerStartY - (index * 25),
-        size: 12,
+        x: secondColumnX,
+        y: ownerStartY - (index * lineHeight),
+        size: fontSize,
         font,
         color: rgb(0, 0, 0),
       });
@@ -538,28 +631,28 @@ export default function FinanceApplicationPage() {
     if (additionalOwners.length > 0) {
       // Add a new page if needed
       let currentPage = page;
-      let currentY = ownerStartY - (ownerFields.length * 25) - 30;
+      let currentY = ownerStartY - (ownerFields.length * lineHeight) - 20;
       
       if (currentY < 100) {
         currentPage = pdfDoc.addPage();
-        currentY = height - 50;
+        currentY = 730 - 50;
       }
       
       currentPage.drawText('Additional Owners', {
-        x: 50,
+        x: margin,
         y: currentY,
-        size: 16,
+        size: 14,
         font: boldFont,
-        color: rgb(0, 0.5, 0),
+        color: rgb(0, 0.502, 0), // Dark Green
       });
       
       additionalOwners.forEach((owner, ownerIndex) => {
         currentPage.drawText(`Additional Owner ${ownerIndex + 1}:`, {
-          x: 50,
-          y: currentY - 30,
-          size: 14,
-          font: boldFont,
-          color: rgb(0.3, 0.3, 0.3),
+          x: margin,
+          y: currentY - 20,
+          size: 12,
+          font: font,
+          color: rgb(0, 0, 0),
         });
         
         const additionalOwnerFields = [
@@ -572,27 +665,27 @@ export default function FinanceApplicationPage() {
         
         additionalOwnerFields.forEach((field, index) => {
           currentPage.drawText(`${field.label}:`, {
-            x: 50,
-            y: currentY - 60 - (index * 25),
+            x: margin,
+            y: currentY - 40 - (index * lineHeight),
             size: 12,
-            font: boldFont,
-            color: rgb(0.3, 0.3, 0.3),
+            font: font,
+            color: rgb(0, 0, 0),
           });
           
           currentPage.drawText(field.value, {
-            x: 220,
-            y: currentY - 60 - (index * 25),
-            size: 12,
+            x: secondColumnX,
+            y: currentY - 40 - (index * lineHeight),
+            size: fontSize,
             font,
             color: rgb(0, 0, 0),
           });
         });
         
-        currentY = currentY - 60 - (additionalOwnerFields.length * 25) - 30;
+        currentY = currentY - 40 - (additionalOwnerFields.length * lineHeight) - 20;
         
         if (currentY < 100 && ownerIndex < additionalOwners.length - 1) {
           currentPage = pdfDoc.addPage();
-          currentY = height - 50;
+          currentY = 730 - 50;
         }
       });
     }
@@ -600,11 +693,11 @@ export default function FinanceApplicationPage() {
     // Add footer
     const lastPage = pdfDoc.getPages()[pdfDoc.getPageCount() - 1];
     lastPage.drawText('Thank you for your application.', {
-      x: 50,
+      x: margin,
       y: 50,
       size: 10,
-      font: boldFont,
-      color: rgb(0.3, 0.3, 0.3),
+      font: font,
+      color: rgb(0, 0, 0),
     });
     
     const pdfBytes = await pdfDoc.save();
@@ -632,6 +725,9 @@ export default function FinanceApplicationPage() {
       
       // Convert PDF bytes to base64
       const pdfBase64 = Buffer.from(pdfBytes).toString('base64');
+      
+      // Get the current team member based on selection
+      const currentTeamMember = getCurrentTeamMember();
       
       // Prepare form data for submission
       const completeFormData = {
@@ -665,11 +761,21 @@ export default function FinanceApplicationPage() {
               owner.ownershipPercentage : 
               `${owner.ownershipPercentage}%` : '',
         })),
-        pdfAttachment: pdfBase64
+        pdfAttachment: pdfBase64,
+        // Add team member info to the submission
+        teamMember: {
+          name: currentTeamMember.name,
+          email: currentTeamMember.email,
+          phone: currentTeamMember.phone
+        }
       };
       
-      // Submit form data and PDF
-      const response = await fetch('/api/submit-finance-application', {
+      // Submit form data and PDF to the team member's endpoint
+      const endpoint = currentTeamMember.endpoint.includes('finance-application') 
+        ? currentTeamMember.endpoint 
+        : '/api/submit-finance-application';
+        
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -793,6 +899,11 @@ export default function FinanceApplicationPage() {
     setAdditionalOwners(updatedOwners);
   };
 
+  // Get the current team member based on selection
+  const getCurrentTeamMember = () => {
+    return selectedAgent === 'noah' ? TEAM_MEMBERS.noah : TEAM_MEMBERS.alan;
+  };
+
   // Render form based on current step
   const renderForm = () => {
     switch (currentStep) {
@@ -800,6 +911,8 @@ export default function FinanceApplicationPage() {
         return (
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Agent selection is hidden from users - it's pre-determined by the URL */}
+              
               <div className="md:col-span-1">
                 <label className={labelClasses}>
                   Amount Needed <span className="text-red-500">*</span>
@@ -1620,130 +1733,147 @@ export default function FinanceApplicationPage() {
         );
       
       case 3:
+        // Get current team member
+        const currentTeamMember = getCurrentTeamMember();
+        
         return (
-          <div className="space-y-6">
-            {/* Business Information Review */}
-            <div className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
-              <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">Business Information</h3>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Review Your Information</h3>
               
-              <div className="grid grid-cols-1 gap-y-2">
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Amount Needed:</span>
-                  <span className="text-[#0D3853]">{businessData.amountNeeded}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Email:</span>
-                  <span className="text-[#0D3853]">{businessData.email}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Business Name:</span>
-                  <span className="text-[#0D3853]">{businessData.businessName}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Business Type:</span>
-                  <span className="text-[#0D3853]">{businessData.businessType}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Business Phone:</span>
-                  <span className="text-[#0D3853]">{businessData.businessPhone}</span>
-                </div>
-                {/* Show Federal Tax ID in business section if it exists */}
-                {businessData.federalTaxId && (
-                  <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Federal Tax ID:</span>
-                    <span className="text-[#0D3853]">{businessData.federalTaxId}</span>
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
+                <h4 className="text-md font-semibold text-gray-800 mb-3">Your Agent Information</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <span className="font-medium text-[#0D3853] mr-2">Name:</span>
+                    <span className="text-black font-semibold">{currentTeamMember.name}</span>
                   </div>
-                )}
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Years in Business:</span>
-                  <span className="text-[#0D3853]">{businessData.yearsInBusiness}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Annual Revenue:</span>
-                  <span className="text-[#0D3853]">{businessData.annualRevenue}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Business Address:</span>
-                  <span className="text-[#0D3853]">
-                    {businessData.businessAddress}
-                    {businessData.businessSuite && `, Suite ${businessData.businessSuite}`}
-                    {`, ${businessData.city}, ${businessData.state} ${businessData.zip}`}
-                  </span>
+                  <div>
+                    <span className="font-medium text-[#0D3853] mr-2">Email:</span>
+                    <span className="text-black font-semibold">{currentTeamMember.email}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Owner Information Review */}
-            <div className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
-              <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">Owner Information</h3>
               
-              <div className="grid grid-cols-1 gap-y-2">
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
-                  <span className="text-[#0D3853]">{ownerData.firstName} {ownerData.lastName}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
-                  <span className="text-[#0D3853]">{ownerData.socialSecurityNumber}</span>
-                </div>
-                {/* Removed Federal Tax ID from here as it's now in the business section */}
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
-                  <span className="text-[#0D3853]">{ownerData.ownershipPercentage}%</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
-                  <span className="text-[#0D3853]">{ownerData.dateOfBirth}</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
-                  <span className="text-[#0D3853]">
-                    {ownerData.homeAddress}
-                    {ownerData.homeSuite && `, Suite ${ownerData.homeSuite}`}
-                    {`, ${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}`}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Additional Owners Review (if any) */}
-            {additionalOwners.length > 0 && additionalOwners.map((owner, index) => (
-              <div key={index} className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
-                <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">
-                  {owner.ownershipPercentage !== '0' 
-                    ? `Additional Owner ${index + 1} (${owner.ownershipPercentage}%)` 
-                    : `Additional Guarantor ${index + 1}`}
-                </h3>
-                
-                <div className="grid grid-cols-1 gap-y-2">
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
+                <h4 className="text-md font-semibold text-gray-800 mb-3">Business Information</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
-                    <span className="text-[#0D3853]">{owner.firstName} {owner.lastName}</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Amount Needed:</span>
+                    <span className="text-[#0D3853]">{businessData.amountNeeded}</span>
                   </div>
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
-                    <span className="text-[#0D3853]">{owner.socialSecurityNumber}</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Email:</span>
+                    <span className="text-[#0D3853]">{businessData.email}</span>
                   </div>
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
-                    <span className="text-[#0D3853]">{owner.ownershipPercentage}%</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Business Name:</span>
+                    <span className="text-[#0D3853]">{businessData.businessName}</span>
                   </div>
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
-                    <span className="text-[#0D3853]">{owner.dateOfBirth}</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Business Type:</span>
+                    <span className="text-[#0D3853]">{businessData.businessType}</span>
                   </div>
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Business Phone:</span>
+                    <span className="text-[#0D3853]">{businessData.businessPhone}</span>
+                  </div>
+                  {/* Show Federal Tax ID in business section if it exists */}
+                  {businessData.federalTaxId && (
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Federal Tax ID:</span>
+                      <span className="text-[#0D3853]">{businessData.federalTaxId}</span>
+                    </div>
+                  )}
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Years in Business:</span>
+                    <span className="text-[#0D3853]">{businessData.yearsInBusiness}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Annual Revenue:</span>
+                    <span className="text-[#0D3853]">{businessData.annualRevenue}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Business Address:</span>
                     <span className="text-[#0D3853]">
-                      {owner.homeAddress}
-                      {owner.homeSuite && `, Suite ${owner.homeSuite}`}
-                      {`, ${owner.homeCity}, ${owner.homeState} ${owner.homeZip}`}
+                      {businessData.businessAddress}
+                      {businessData.businessSuite && `, Suite ${businessData.businessSuite}`}
+                      {`, ${businessData.city}, ${businessData.state} ${businessData.zip}`}
                     </span>
                   </div>
                 </div>
               </div>
-            ))}
-
+              
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
+                <h4 className="text-md font-semibold text-gray-800 mb-3">Owner Information</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
+                    <span className="text-[#0D3853]">{ownerData.firstName} {ownerData.lastName}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
+                    <span className="text-[#0D3853]">{ownerData.socialSecurityNumber}</span>
+                  </div>
+                  {/* Removed Federal Tax ID from here as it's now in the business section */}
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
+                    <span className="text-[#0D3853]">{ownerData.ownershipPercentage}%</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
+                    <span className="text-[#0D3853]">{ownerData.dateOfBirth}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
+                    <span className="text-[#0D3853]">
+                      {ownerData.homeAddress}
+                      {ownerData.homeSuite && `, Suite ${ownerData.homeSuite}`}
+                      {`, ${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}`}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Additional Owners Review (if any) */}
+              {additionalOwners.length > 0 && additionalOwners.map((owner, index) => (
+                <div key={index} className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
+                  <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">
+                    {owner.ownershipPercentage !== '0' 
+                      ? `Additional Owner ${index + 1} (${owner.ownershipPercentage}%)` 
+                      : `Additional Guarantor ${index + 1}`}
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 gap-y-2">
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
+                      <span className="text-[#0D3853]">{owner.firstName} {owner.lastName}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
+                      <span className="text-[#0D3853]">{owner.socialSecurityNumber}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
+                      <span className="text-[#0D3853]">{owner.ownershipPercentage}%</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
+                      <span className="text-[#0D3853]">{owner.dateOfBirth}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
+                      <span className="text-[#0D3853]">
+                        {owner.homeAddress}
+                        {owner.homeSuite && `, Suite ${owner.homeSuite}`}
+                        {`, ${owner.homeCity}, ${owner.homeState} ${owner.homeZip}`}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
             {/* Terms and Conditions */}
             <div className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
               <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">Agreement</h3>

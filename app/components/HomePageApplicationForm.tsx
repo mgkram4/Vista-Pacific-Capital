@@ -1,6 +1,30 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
+// Import team members from our shared form component
+interface TeamMember {
+  name: string;
+  email: string;
+  phone: string;
+  endpoint: string;
+}
+
+// Team members data (matching what we have in the form.tsx)
+export const TEAM_MEMBERS = {
+  alan: {
+    name: "Alan Johnson",
+    email: "alanj@vistapacificcapital.com",
+    phone: "(949)677-1167",
+    endpoint: "/api/submit-quote"
+  },
+  noah: {
+    name: "Noah Miller",
+    email: "noahm@vistapacificcapital.com",
+    phone: "(949)413-5942",
+    endpoint: "/api/submit-quote-noah"
+  }
+};
+
 interface BusinessFormData {
   amountNeeded: string;
   email: string;
@@ -25,7 +49,11 @@ interface SubmitStatus {
   message?: string;
 }
 
-export default function HomePageApplicationForm() {
+interface HomePageApplicationFormProps {
+  teamMember?: TeamMember;
+}
+
+export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan }: HomePageApplicationFormProps) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -168,16 +196,24 @@ export default function HomePageApplicationForm() {
       setLoading(true);
       
       try {
-        // Simulating API submission - replace with actual API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Determine which finance page to redirect to based on the team member
+        const redirectPath = teamMember === TEAM_MEMBERS.noah ? '/noah-finance' : '/alan-finance';
         
-        // Redirect to full application form with pre-filled data
-        router.push('/pdf-form');
+        // Save form data to session storage for pre-filling the full form
+        sessionStorage.setItem('businessData', JSON.stringify(businessData));
+        sessionStorage.setItem('ownerData', JSON.stringify(ownerData));
         
+        // Redirect to the appropriate finance page
         setSubmitStatus({
           success: true,
           message: 'Your application has been started! Redirecting to complete the full form...'
         });
+        
+        // Small delay to show the success message before redirecting
+        setTimeout(() => {
+          router.push(redirectPath);
+        }, 1500);
+        
       } catch (error) {
         setSubmitStatus({
           success: false,

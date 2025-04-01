@@ -1,4 +1,3 @@
-// app/api/submit-quote/route.ts
 import sgMail from '@sendgrid/mail';
 import { NextResponse } from 'next/server';
 
@@ -30,7 +29,7 @@ export async function POST(request: Request) {
     // Email to customer
     const customerEmail = {
       to: email,
-      from: 'alanj@vistapacificcapital.com',
+      from: 'noahm@vistapacificcapital.com',
       subject: 'Your Equipment Quote Request',
       html: `
         <h1>Thank you for your quote request, ${name}!</h1>
@@ -45,16 +44,16 @@ export async function POST(request: Request) {
         <p>We will review your information and get back to you shortly.</p>
         <p>For a full finance application, please click the button below:</p>
         <div style="margin-top: 20px; margin-bottom: 20px;">
-          <a href="https://dev.vistapacificcapital.com/alan" style="display: inline-block; padding: 10px 20px; background-color: #0EB5B2; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Apply Now</a>
+          <a href="https://dev.vistapacificcapital.com/noah" style="display: inline-block; padding: 10px 20px; background-color: #0EB5B2; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Apply Now</a>
         </div>
       `
     };
 
-    // Emails to team members (two recipients)
+    // Emails to team members
     const teamEmails = [
       {
-        to: 'alanj@vistapacificcapital.com', // First recipient
-        from: 'alanj@vistapacificcapital.com',
+        to: 'noahm@vistapacificcapital.com',
+        from: 'noahm@vistapacificcapital.com',
         subject: 'New Equipment Quote Request',
         html: `
           <h1>New Quote Request</h1>
@@ -71,26 +70,8 @@ export async function POST(request: Request) {
         `
       },
       {
-        to: 'cynthiaj@vistapacificcapital.com', // Second recipient (replace with actual email)
-        from: 'alanj@vistapacificcapital.com',
-        subject: 'New Equipment Quote Request',
-        html: `
-          <h1>New Quote Request</h1>
-          <ul>
-            <li>Name: ${name}</li>
-            <li>Email: ${email}</li>
-            <li>Phone: ${phone}</li>
-            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
-            <li>Equipment Cost: ${equipmentCost}</li>
-            <li>Business Type: ${businessType}</li>
-            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
-          </ul>
-        `
-      },
-      {
-        to: 'danielm@vistapacificcapital.com', // Second recipient (replace with actual email)
-        from: 'alanj@vistapacificcapital.com',
+        to: 'alanj@vistapacificcapital.com',
+        from: 'noahm@vistapacificcapital.com',
         subject: 'New Equipment Quote Request',
         html: `
           <h1>New Quote Request</h1>
@@ -153,4 +134,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-}
+} 
