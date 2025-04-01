@@ -42,10 +42,10 @@ export default function AlanPage() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Equipment Financing Quote
+                Equipment Financing Finance Application
               </h1>
               <p className="text-xl md:text-2xl text-white/90">
-                Fill out the form below to get your free quote and fast approval
+                Fill out the form below to get your free finance application and fast approval
               </p>
             </motion.div>
           </div>
