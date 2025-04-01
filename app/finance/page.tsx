@@ -1,19 +1,14 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { TEAM_MEMBERS } from '../utils/team-members';
 
-// Dynamically import the Finance Application component with no SSR
-const FinanceApplication = dynamic(
-  () => import('../components/FinanceApplication'),
+// Directly import the PDF form page
+const PDFForm = dynamic(
+  () => import('../pdf-form/page'),
   { ssr: false }
 );
 
 export default function FinancePage() {
-  return (
-    <div>
-      {/* Always default to Alan's form if accessed via the main /finance URL */}
-      <FinanceApplication teamMember={TEAM_MEMBERS.alan} />
-    </div>
-  );
+  // Simply render the PDF form page directly
+  return <PDFForm />;
 } 
