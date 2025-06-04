@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       equipmentCost,
       businessType,
       timeInBusiness,
-      creditScore,
+      annualRevenue,
       name,
       email,
       phone,
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
           <li>Equipment Cost: ${equipmentCost}</li>
           <li>Business Type: ${businessType}</li>
           ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-          ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+          ${annualRevenue ? `<li>Estimated Annual Revenue: ${annualRevenue}</li>` : ''}
         </ul>
         <p>We will review your information and get back to you shortly.</p>
       `
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
             <li>Equipment Cost: ${equipmentCost}</li>
             <li>Business Type: ${businessType}</li>
             ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+            ${annualRevenue ? `<li>Estimated Annual Revenue: ${annualRevenue}</li>` : ''}
           </ul>
         `
       },
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
             <li>Equipment Cost: ${equipmentCost}</li>
             <li>Business Type: ${businessType}</li>
             ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+            ${annualRevenue ? `<li>Estimated Annual Revenue: ${annualRevenue}</li>` : ''}
           </ul>
         `
       },
@@ -98,7 +98,7 @@ export async function POST(request: Request) {
             <li>Equipment Cost: ${equipmentCost}</li>
             <li>Business Type: ${businessType}</li>
             ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+            ${annualRevenue ? `<li>Estimated Annual Revenue: ${annualRevenue}</li>` : ''}
           </ul>
         `
       }
