@@ -76,12 +76,6 @@ export const navigationSchema: StructuredData = {
 
 export const equipmentLinks: EquipmentLink[] = [
   {
-    topText: 'About',
-    bottomText: 'Us',
-    path: '/about',
-    description: 'Learn about our company and commitment to equipment financing'
-  },
-  {
     topText: 'Construction',
     bottomText: 'Equipment',
     path: '/construction',
