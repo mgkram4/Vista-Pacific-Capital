@@ -68,7 +68,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaPhone className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">(714) 985-6207</p>
+                  <p className="ml-4 text-gray-700 font-medium">(949)677-1167</p>
                 </div>
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
