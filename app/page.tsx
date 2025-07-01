@@ -3,12 +3,12 @@
 import PDFForm from '@/app/pdf-form/page';
 import { motion } from 'framer-motion';
 import {
-  Beer,
   Building2,
   Calculator,
   CheckCircle2,
   ChevronRight,
   Clock,
+  Cog,
   DollarSign,
   Factory,
   LucideIcon,
@@ -61,46 +61,46 @@ const SEO: SEOProps = {
 
 const services: Service[] = [
   {
+    title: "Material Handling Equipment Financing",
+    description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
+    features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
+    icon: Factory,
+    href: "/equipment/construction"
+  },
+  {
     title: "Construction Equipment Financing",
-    description: "Quick approvals for forklifts, bulldozers, and more with flexible terms that fit your budget.",
-    features: ["Same-day funding", "Starting at $20,000", "Up to 84-month terms", "No down payment options"],
+    description: "Comprehensive financing for construction equipment from dealers or private parties.",
+    features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction"
   },
   {
     title: "Medical Equipment Financing",
-    description: "Fund imaging systems, surgical tools, and more for practice upgrades or expansions with budget-friendly options.",
-    features: ["100% equipment financing", "Tax-advantage options", "Deferred payments", "Equipment-specific programs"],
+    description: "Specialized financing for medical practices of all sizes with flexible application limits.",
+    features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
     icon: Stethoscope,
     href: "/equipment/medical"
   },
   {
-    title: "Manufacturing Equipment",
-    description: "Finance CNC machines and precision tools to improve efficiency and production quality.",
-    features: ["Step payment options", "Sale-leaseback available", "Working capital included", "Equipment credit lines"],
-    icon: Factory,
+    title: "Manufacturing Equipment Financing",
+    description: "Comprehensive manufacturing equipment financing with competitive rates and international vendor support.",
+    features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
+    icon: Cog,
     href: "/equipment/cnc-machine"
   },
   {
-    title: "Restaurant Equipment",
-    description: "Quick approvals for ovens, refrigerators, and complete kitchen systems with tailored terms.",
-    features: ["90-day deferred payments", "Seasonal payment options", "Start-up programs", "Software included"],
+    title: "Restaurant Equipment Financing",
+    description: "Complete restaurant financing solutions for new locations and equipment upgrades.",
+    features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant"
   },
   {
-    title: "Transportation Equipment",
-    description: "Finance dump trucks and fleet vehicles with payments that work for your business.",
-    features: ["TRAC lease options", "Fleet management tools", "Fuel card programs", "Maintenance included"],
+    title: "Transportation Financing Programs",
+    description: "Flexible transportation financing for all types of commercial vehicles and drivers.",
+    features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
     icon: Truck,
     href: "/equipment/dump-truck"
-  },
-  {
-    title: "Brewery Equipment",
-    description: "Fund kegging equipment and brewhouses with new and used options for your craft brewery.",
-    features: ["Revenue-based payments", "Equipment-specific terms", "Working capital included", "Expansion programs"],
-    icon: Beer,
-    href: "/equipment/brewery"
   }
 ];
 
@@ -129,22 +129,22 @@ const stats: Stat[] = [
 
 const benefits: Benefit[] = [
   {
-    title: "Same-Day Approvals",
-    description: "Get approved in hours, not days. Simple online process with minimal documentation.",
-    icon: Clock,
-    points: ["2-minute application", "Soft credit pull only", "No financials under $400k", "Next-day funding available"]
-  },
-  {
-    title: "Flexible Payment Options",
-    description: "Custom payment structures aligned with your business cash flow.",
-    icon: DollarSign,
-    points: ["Seasonal payments", "90-day deferred start", "Step payment programs", "Skip payment options"]
-  },
-  {
     title: "Financing Solutions",
     description: "Industry-leading solutions with our comprehensive funding programs.",
     icon: DollarSign,
-    points: ["Starting at $20,000", "Terms up to 84 months", "No prepayment penalties", "Tax advantage options"]
+    points: ["Terms up to 84 months", "Access to as many as 15 different lenders", "No money down for qualified customers", "Competitive Rates", "New and Used Equipment"]
+  },
+  {
+    title: "Quick Approval Time",
+    description: "Same day approvals for qualified application-only transactions.",
+    icon: Clock,
+    points: ["2-minute application", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $20 million"]
+  },
+  {
+    title: "Vendor Partnership Programs",
+    description: "Provide easy streamline financing solutions for your customers so they can grow their business.",
+    icon: DollarSign,
+    points: ["Programs for startup customers", "Vendor Rewards Programs", "Great alternative for customer to cash or local bank", "Prepayment up to 100% prior to completion", "Can cover shipping/training/labor costs"]
   }
 ];
 
@@ -205,7 +205,7 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-        <section className="relative w-full overflow-hidden pt-0 sm:pt-0 pt-14">
+        <section className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-28">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
             <Image 
@@ -221,7 +221,7 @@ export default function Home() {
 
           {/* Hero Content */}
           <div className="relative w-full flex items-center">
-            <div className="max-w-7xl mx-auto px-2 py-2 w-full">
+            <div className="max-w-7xl mx-auto px-2 py-8 w-full">
               <div className="grid lg:grid-cols-2 gap-2 items-center">
                 {/* Left Column - Hero Content */}
                 <motion.div
@@ -318,75 +318,8 @@ export default function Home() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Services Section - adjust spacing here */}
-        <section className="py-10 bg-gradient-to-b from-white via-[#F2F2F2]/50 to-[#F2F2F2] w-full">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mb-8"
-            >
-              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">INDUSTRY SOLUTIONS</span>
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-4">
-                Equipment Financing Solutions
-              </h2>
-              <p className="text-xl text-[#0D3853]/80">
-                Specialized funding programs for every industry
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="group bg-white rounded-lg p-6
-                    transition-all duration-500 transform hover:-translate-y-2
-                    border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30
-                    shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
-                >
-                  <div className="bg-gradient-to-br from-[#0EB5B2]/10 to-[#0D3853]/5 rounded-lg p-3 w-fit
-                    group-hover:scale-110 transition-transform duration-500">
-                    <service.icon className="h-12 w-12 text-[#0EB5B2]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#0D3853]/80 mb-4">{service.description}</p>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-[#0D3853]/80">
-                        <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={service.href}
-                    className="text-[#0EB5B2] font-semibold flex items-center
-                      group-hover:text-[#0D3853] transition-colors duration-300"
-                  >
-                    Learn More <ChevronRight className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-        
-        {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
-        
         {/* Benefits Section - adjust spacing here */}
-        <section className="py-10 bg-gradient-to-br from-[#0D3853] via-[#0D3853] to-[#0D3853]/95 relative overflow-hidden w-full">
+        <section className="py-10 bg-gradient-to-b from-white via-[#F2F2F2]/50 to-[#F2F2F2] relative overflow-hidden w-full">
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(14,181,178,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -398,10 +331,10 @@ export default function Home() {
               className="text-center mb-8"
             >
               <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">WHY CHOOSE US</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3] mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-4">
                 Why Choose Vista Pacific Capital
               </h2>
-              <p className="text-xl text-[#0EB5B2]">
+              <p className="text-xl text-[#0D3853]/80">
                 Fast approvals with flexible terms for your business needs
               </p>
             </motion.div>
@@ -426,18 +359,84 @@ export default function Home() {
                     group-hover:scale-110 transition-transform duration-500">
                     <benefit.icon className="h-12 w-12 text-[#0EB5B2]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mt-4 mb-2">
+                  <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-[#B3B3B3]/90 mb-4">{benefit.description}</p>
+                  <p className="text-[#0D3853]/80 mb-4">{benefit.description}</p>
                   <ul className="space-y-2">
                     {benefit.points.map((point, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-[#F2F2F2]/90">
+                      <li key={idx} className="flex items-center space-x-2 text-[#0D3853]/80">
                         <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
+        
+        {/* Services Section - adjust spacing here */}
+        <section className="py-10 bg-gradient-to-br from-[#0D3853] via-[#0D3853] to-[#0D3853]/95 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-center mb-8"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3] mb-4">
+                Industry Solutions
+              </h2>
+              <p className="text-xl text-[#0EB5B2]">
+                Specialized funding programs for every industry
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {services.map((service, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-lg p-6
+                    transition-all duration-500 transform hover:-translate-y-2
+                    border border-[#0EB5B2]/20 hover:border-[#0EB5B2]/30
+                    shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
+                >
+                  <div className="bg-gradient-to-br from-[#0EB5B2]/10 to-[#0D3853]/5 rounded-lg p-3 w-fit
+                    group-hover:scale-110 transition-transform duration-500">
+                    <service.icon className="h-12 w-12 text-[#0EB5B2]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mt-4 mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-[#B3B3B3]/90 mb-4">{service.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center space-x-2 text-[#F2F2F2]/90">
+                        <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={service.href}
+                    className="text-[#0EB5B2] font-semibold flex items-center
+                      group-hover:text-white transition-colors duration-300"
+                  >
+                    Learn More <ChevronRight className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

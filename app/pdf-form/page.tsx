@@ -864,8 +864,8 @@ export default function FinanceApplicationPage() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-1">
                 <label className={labelClasses}>
                   Amount Needed <span className="text-red-500">*</span>
@@ -913,7 +913,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className={labelClasses}>
                   Business Name <span className="text-red-500">*</span>
@@ -995,7 +995,7 @@ export default function FinanceApplicationPage() {
             </div>
 
             {/* Added Federal Tax ID to business information */}
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <div>
                 <label className={labelClasses}>
                   Federal Tax ID Number (if available)
@@ -1012,7 +1012,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
                 <label className={labelClasses}>
                   Business Address <span className="text-red-500">*</span>
@@ -1052,7 +1052,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className={labelClasses}>
                   City <span className="text-red-500">*</span>
@@ -1133,7 +1133,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className={labelClasses}>
                   Years in Business <span className="text-red-500">*</span>
@@ -1205,9 +1205,9 @@ export default function FinanceApplicationPage() {
       
       case 2:
         return (
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* First row - First Name / Last Name */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className={labelClasses}>
                   First Name <span className="text-red-500">*</span>
@@ -1256,7 +1256,7 @@ export default function FinanceApplicationPage() {
             </div>
 
             {/* Second row - Social Security Number / Ownership Percentage */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className={labelClasses}>
                   Social Security Number <span className="text-red-500">*</span>
@@ -1305,7 +1305,7 @@ export default function FinanceApplicationPage() {
             </div>
 
             {/* Add Date of Birth field - THIS WAS MISSING */}
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <div>
                 <label className={labelClasses}>
                   Date of Birth <span className="text-red-500">*</span>
@@ -1329,7 +1329,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
                 <label className={labelClasses}>
                   Home Address <span className="text-red-500">*</span>
@@ -1860,7 +1860,7 @@ export default function FinanceApplicationPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4" style={{ paddingTop: '200px' }}>
+    <div className="max-w-2xl mx-auto py-4 px-4">
       {/* Add the Toast component here */}
       {showSuccessToast && (
         <Toast
@@ -1872,20 +1872,20 @@ export default function FinanceApplicationPage() {
         />
       )}
       
-      <div className="w-full bg-white shadow-xl rounded-xl p-5 md:p-8 border border-gray-100">
-        <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Small Business Finance Application</h1>
+      <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100">
+        <div className="mb-6 text-center">
+          <h1 className="text-xl font-bold text-gray-800 mb-1">Small Business Finance Application</h1>
           <p className="text-[#0EB5B2] text-sm font-medium">Complete the application to apply for financing</p>
         </div>
 
         {/* Progress Indicator */}
-        <div className="mb-8">
+        <div className="mb-6">
           <div className="flex justify-between">
             <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-[#0EB5B2]' : 'text-gray-400'}`}>
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full mb-1 ${
+              <div className={`flex items-center justify-center w-6 h-6 rounded-full mb-1 ${
                 currentStep >= 1 ? 'bg-[#0EB5B2] text-white' : 'bg-gray-200 text-gray-500'
               }`}>
-                {businessComplete ? <CheckCircle size={16} /> : 1}
+                {businessComplete ? <CheckCircle size={14} /> : 1}
               </div>
               <span className="text-xs font-medium">Business Information</span>
             </div>
@@ -1897,10 +1897,10 @@ export default function FinanceApplicationPage() {
             </div>
             
             <div className={`flex flex-col items-center ${currentStep >= 2 ? 'text-[#0EB5B2]' : 'text-gray-400'}`}>
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full mb-1 ${
+              <div className={`flex items-center justify-center w-6 h-6 rounded-full mb-1 ${
                 currentStep >= 2 ? 'bg-[#0EB5B2] text-white' : 'bg-gray-200 text-gray-500'
               }`}>
-                {ownerComplete ? <CheckCircle size={16} /> : 2}
+                {ownerComplete ? <CheckCircle size={14} /> : 2}
               </div>
               <span className="text-xs font-medium">Owner Information</span>
             </div>
@@ -1912,7 +1912,7 @@ export default function FinanceApplicationPage() {
             </div>
             
             <div className={`flex flex-col items-center ${currentStep >= 3 ? 'text-[#0EB5B2]' : 'text-gray-400'}`}>
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full mb-1 ${
+              <div className={`flex items-center justify-center w-6 h-6 rounded-full mb-1 ${
                 currentStep >= 3 ? 'bg-[#0EB5B2] text-white' : 'bg-gray-200 text-gray-500'
               }`}>
                 3
@@ -1925,7 +1925,7 @@ export default function FinanceApplicationPage() {
         <form onSubmit={handleSubmit}>
           {renderForm()}
           
-          <div className="mt-8 flex justify-between">
+          <div className="mt-6 flex justify-between">
             {currentStep > 1 ? (
               <button
                 type="button"
@@ -1977,7 +1977,7 @@ export default function FinanceApplicationPage() {
           </div>
         </form>
 
-        <p className="text-xs text-gray-600 text-center mt-6">
+        <p className="text-xs text-gray-600 text-center mt-4">
           Your information is secure and protected by industry-standard encryption.
         </p>
       </div>

@@ -131,7 +131,7 @@ const Section179Page: React.FC = () => {
             reducing your tax burden.
           </p>
           <p className="text-gray-700">
-            If you're interested in learning more, feel free to contact me at (714) 985-6207 or email
+            If you're interested in learning more, feel free to contact me at (714) 500-7017 or email
             alanj@providencecapitalfunding.com.
           </p>
         </motion.div>

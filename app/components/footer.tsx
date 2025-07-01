@@ -5,19 +5,21 @@ export default function Footer() {
   const equipmentCategories = [
     // Left column
     [
+      { name: 'All Equipment', path: '/equipment' },
+      { name: 'Material Handling Equipment', path: '/warehouse' },
       { name: 'Construction Equipment', path: '/equipment/construction' },
+      { name: 'Medical Equipment', path: '/equipment/medical' },
       { name: 'Restaurant Equipment', path: '/equipment/restaurant' },
-      { name: 'Crane Financing', path: '/equipment/crane' },
-      { name: 'Excavator Financing', path: '/equipment/excavator' },
-      { name: 'Box Truck Financing', path: '/equipment/box-truck' },
       { name: 'Used Equipment', path: '/equipment/used' },
+      { name: 'Brewery Equipment', path: '/equipment/brewery' },
     ],
     // Right column
     [
-      { name: 'Medical Equipment', path: '/equipment/medical' },
-      { name: 'Brewery Equipment', path: '/equipment/brewery' },
+      { name: 'Crane Financing', path: '/equipment/crane' },
       { name: 'Dental Equipment', path: '/equipment/dental' },
+      { name: 'Excavator Financing', path: '/equipment/excavator' },
       { name: 'Dump Truck Financing', path: '/equipment/dump-truck' },
+      { name: 'Box Truck Financing', path: '/equipment/box-truck' },
       { name: 'CNC Machine Financing', path: '/equipment/cnc-machine' },
     ]
   ];
@@ -133,9 +135,16 @@ export default function Footer() {
                 </Link>
                 <div className="space-y-2">
                   <p className="text-[#B3B3B3] text-sm">Call us today:</p>
-                  <a href="tel:+16577228726" className="text-2xl font-bold text-white hover:text-[#0EB5B2] transition-colors">
-                    (714) 985-6207
+                  <a href="tel:+17145007017" className="text-2xl font-bold text-white hover:text-[#0EB5B2] transition-colors">
+                    (714) 500-7017
                   </a>
+                </div>
+                <div className="space-y-1 mt-4">
+                  <p className="text-[#B3B3B3] text-sm">Visit us at:</p>
+                  <p className="text-white font-medium">
+                    180 N. Riverview Ave #360<br />
+                    Anaheim Hills, CA 92808
+                  </p>
                 </div>
               </div>
             </div>

@@ -40,33 +40,12 @@ export default function VendorPrograms() {
     },
   ];
 
-  const faqs = [
-    {
-      question: 'What types of equipment can be financed through your Vendor Program?',
-      answer: 'We finance a wide range of equipment across various industries, including manufacturing, construction, healthcare, transportation, and more.',
-    },
-    {
-      question: 'How long does the approval process take?',
-      answer: 'We strive to provide credit decisions within 24-48 hours for most applications.',
-    },
-    {
-      question: 'Is there a minimum or maximum financing amount?',
-      answer: 'We offer financing from $25,000 up to $5 million, with options for larger transactions available.',
-    },
-    {
-      question: 'Do you offer financing for both new and used equipment?',
-      answer: 'Yes, we provide financing solutions for both new and used equipment.',
-    },
-    {
-      question: 'What fees are associated with the Vendor Program?',
-      answer: 'There are no fees charged to vendors for participating in our program.',
-    },
-  ];
+
 
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+      <section className="w-full bg-[#1B365D] text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
             src="https://images.unsplash.com/photo-1556155092-490a1ba16284?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsZXN8ZW58MHx8MHx8fDA%3D"
@@ -97,7 +76,10 @@ export default function VendorPrograms() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+              text-white px-8 py-4 rounded-lg font-semibold text-lg 
+              shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+              transform hover:-translate-y-1 transition-all duration-300">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Become a Partner</span>
             </Link>
@@ -105,10 +87,167 @@ export default function VendorPrograms() {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold mb-6 text-center text-[#1B365D]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Why Choose Vista Pacific Capital
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-600 mb-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Fast approvals with flexible terms for your business needs
+          </motion.p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"
+            >
+              <motion.h3 
+                className="text-2xl font-bold mb-4"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Financing Solutions
+              </motion.h3>
+              <motion.p 
+                className="text-blue-100 mb-6"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                Industry-leading solutions with our comprehensive funding programs.
+              </motion.p>
+              <ul className="space-y-4">
+                {[
+                  'Terms up to 84 months',
+                  'Access to as many as 15 different lenders',
+                  'No money down for qualified customers',
+                  'Competitive Rates',
+                  'New and Used Equipment'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            
+            <div
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
+            >
+              <motion.h3 
+                className="text-2xl font-bold mb-4 text-[#1B365D]"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                Quick Approval Time
+              </motion.h3>
+              <motion.p 
+                className="text-gray-600 mb-6"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Same day approvals for qualified application-only transactions.
+              </motion.p>
+              <ul className="space-y-4">
+                {[
+                  '2-minute application',
+                  'Soft credit pull only',
+                  'Application Only up to $750,000',
+                  'Financing from $20,000 to $20 million'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center text-gray-700"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="h-2 w-2 bg-[#11B5B2] rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="bg-gradient-to-br from-[#11B5B2] to-[#0E9B97] rounded-2xl shadow-xl p-6 md:p-8 text-white"
+            >
+              <motion.h3 
+                className="text-2xl font-bold mb-4"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                Vendor Partnership Programs
+              </motion.h3>
+              <motion.p 
+                className="text-blue-100 mb-6"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                viewport={{ once: true }}
+              >
+                Provide easy streamline financing solutions for your customers so they can grow their business.
+              </motion.p>
+              <ul className="space-y-4">
+                {[
+                  'Programs for startup customers',
+                  'Vendor Rewards Programs',
+                  'Great alternative for customer to cash or local bank',
+                  'Prepayment up to 100% prior to completion',
+                  'Can cover shipping/training/labor costs'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="h-2 w-2 bg-white rounded-full mr-3" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="max-w-6xl mx-auto py-24 px-4">
         <motion.h2
-          className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+          className="text-4xl font-bold mb-16 text-center text-[#1B365D]"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -133,12 +272,12 @@ export default function VendorPrograms() {
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#1B365D] bg-opacity-60 flex items-center justify-center">
                   <benefit.icon className="text-6xl text-white" />
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-indigo-dye mb-3">{benefit.title}</h3>
+                <h3 className="text-2xl font-bold text-[#1B365D] mb-3">{benefit.title}</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">{benefit.description}</p>
               </div>
             </motion.div>
@@ -150,7 +289,7 @@ export default function VendorPrograms() {
       <section className="py-24 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+            className="text-4xl font-bold mb-16 text-center text-[#1B365D]"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -168,74 +307,56 @@ export default function VendorPrograms() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <p className="text-indigo-dye font-bold text-xl">{`${index + 1}. ${step}`}</p>
+                <p className="text-[#1B365D] font-bold text-xl">{`${index + 1}. ${step}`}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
+
+      {/* CTA Section */}
+      <section className="relative py-24 px-4 overflow-hidden w-full">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+            alt="Modern office background"
+            fill
+            className="object-cover"
+            quality={100}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative">
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-6"
           >
-            Frequently Asked Questions
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-50 p-8 rounded-2xl shadow-xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-2xl font-semibold mb-4 text-indigo-dye">{faq.question}</h3>
-                <p className="text-gray-700 text-lg leading-relaxed">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-5xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready to Become a Vista Pacific Capital Vendor Partner?
-          </motion.h2>
-          <motion.p
-            className="text-2xl mb-10 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Join our Vendor Program today and start offering your customers flexible financing solutions that can help grow your business.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Sign Up Now</span>
-            </Link>
+            <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">JOIN OUR NETWORK</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
+              Ready to Become a Vista Pacific Capital Vendor Partner?
+            </h2>
+            <p className="text-xl text-[#F2F2F2]/90 max-w-3xl mx-auto">
+              Join our Vendor Program today and start offering your customers flexible financing solutions that can help grow your business.
+            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/contact" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                transform hover:-translate-y-1 transition-all duration-300">
+                <GiReceiveMoney className="mr-3 text-2xl" />
+                <span>Sign Up Now</span>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

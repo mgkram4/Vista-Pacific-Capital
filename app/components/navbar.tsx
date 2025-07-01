@@ -38,8 +38,8 @@ export const BASE_URL = 'https://vistapacificcapital.com';
 export const navigationSchema: StructuredData = {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
-  "name": "Equipment Financing Solutions",
-  "description": "Complete equipment financing solutions for businesses across industries",
+  "name": "Industry Solutions",
+  "description": "Complete industry financing solutions for businesses across various sectors",
   "hasPart": [
     {
       "@type": "WebPage",
@@ -49,6 +49,16 @@ export const navigationSchema: StructuredData = {
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": `${BASE_URL}/equipment`
+      }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Material Handling Equipment Financing",
+      "url": `${BASE_URL}/equipment/material-handling`,
+      "description": "Material handling and warehouse equipment financing solutions",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/equipment/material-handling`
       }
     },
     {
@@ -101,6 +111,12 @@ export const equipmentLinks: EquipmentLink[] = [
     bottomText: 'Equipment',
     path: '/equipment',
     description: 'Explore all equipment financing options'
+  },
+  {
+    topText: 'Material Handling',
+    bottomText: 'Equipment',
+    path: '/equipment/construction',
+    description: 'Material handling and warehouse equipment financing solutions'
   },
   {
     topText: 'Construction',
@@ -249,7 +265,7 @@ const NavLink: React.FC<{
         aria-expanded={isDropdownOpen}
         aria-haspopup="true"
       >
-        <span className="font-medium text-xs">Equipment Financing</span>
+        <span className="font-medium text-xs">Industry Solutions</span>
         <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
       </button>
     );
@@ -408,12 +424,26 @@ const AppNavBar: React.FC = () => {
     link.path !== '/calculator'
   );
 
-  // Add Contact link to mainLinks
+  // Add About Us, Contact, and Vendor links to mainLinks
+  const aboutLink = {
+    topText: 'About',
+    bottomText: 'Us',
+    path: '/services',
+    description: 'Learn about Vista Pacific Capital and why choose us'
+  };
+
   const contactLink = {
     topText: 'Contact',
     bottomText: 'Us',
     path: '/contact',
     description: 'Get in touch with our team'
+  };
+
+  const vendorLink = {
+    topText: 'Vendor',
+    bottomText: 'Program',
+    path: '/vendor',
+    description: 'Partner with Vista Pacific Capital and grow your business'
   };
 
   if (!isClient) {
@@ -604,7 +634,7 @@ const AppNavBar: React.FC = () => {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5BB5B0]/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1B365D]/20 to-transparent" />
                   
-                  {/* About Link and Payment Calculator */}
+                  {/* Payment Calculator */}
                   {mainLinks.map((link) => (
                     <NavLink
                       key={link.path}
@@ -613,10 +643,22 @@ const AppNavBar: React.FC = () => {
                     />
                   ))}
                   
+                  {/* About Us Link */}
+                  <NavLink
+                    link={aboutLink}
+                    isActive={pathname === aboutLink.path}
+                  />
+                  
                   {/* Contact Us Link */}
                   <NavLink
                     link={contactLink}
                     isActive={pathname === contactLink.path}
+                  />
+                  
+                  {/* Vendor Program Link */}
+                  <NavLink
+                    link={vendorLink}
+                    isActive={pathname === vendorLink.path}
                   />
 
                   {/* Equipment Dropdown - Modified for hover */}
@@ -642,7 +684,7 @@ const AppNavBar: React.FC = () => {
                       aria-expanded={isEquipmentDropdownOpen}
                       aria-haspopup="true"
                     >
-                      <span className="font-medium text-xs">Equipment Financing</span>
+                      <span className="font-medium text-xs">Industry Solutions</span>
                       <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isEquipmentDropdownOpen ? 'rotate-180' : ''}`} />
                     </div>
 
@@ -656,7 +698,7 @@ const AppNavBar: React.FC = () => {
                           className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg py-1 z-50"
                           role="menu"
                           aria-orientation="vertical"
-                          aria-labelledby="equipment-financing-menu"
+                          aria-labelledby="industry-solutions-menu"
                         >
                           {equipmentFinancingLinks.map((link) => (
                             <Link
@@ -724,6 +766,15 @@ const AppNavBar: React.FC = () => {
                     Payment Calculator
                   </Link>
                   
+                  {/* About Us Link */}
+                  <Link
+                    href="/services"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#5BB5B0] text-lg"
+                  >
+                    About Us
+                  </Link>
+                  
                   {/* Contact Us Link */}
                   <Link
                     href="/contact"
@@ -731,6 +782,15 @@ const AppNavBar: React.FC = () => {
                     className="block py-3 text-[#5BB5B0] text-lg"
                   >
                     Contact Us
+                  </Link>
+
+                  {/* Vendor Program Link */}
+                  <Link
+                    href="/vendor"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 text-[#5BB5B0] text-lg"
+                  >
+                    Vendor Program
                   </Link>
 
                   {/* All Equipment Link */}

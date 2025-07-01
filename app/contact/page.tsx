@@ -1,9 +1,14 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
-import QuickQuoteForm from '../components/form';
+
+const PDFForm = dynamic(
+  () => import('../pdf-form/page'),
+  { ssr: false }
+);
 
 export default function Contact() {
   return (
@@ -52,7 +57,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <QuickQuoteForm />
+              <PDFForm />
             </motion.div>
           </div>
 
@@ -68,11 +73,15 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaPhone className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">(949)677-1167</p>
+                  <p className="ml-4 text-gray-700 font-medium">(714)500-7017</p>
                 </div>
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
                   <p className="ml-4 text-gray-700 font-medium">alanj@vistapacificcapital.com</p>
+                </div>
+                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
+                  <div className="text-[#1E5470] text-xl">📍</div>
+                  <p className="ml-4 text-gray-700 font-medium">180 N. Riverview Ave #360<br />Anaheim Hills, CA 92808</p>
                 </div>
               </div>
             </motion.div>
