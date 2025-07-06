@@ -205,7 +205,7 @@ export default function Home() {
       </Head>
 
       <main className="bg-white">
-        <section className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-28">
+        <section className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-16">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
             <Image 

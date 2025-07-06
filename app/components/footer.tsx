@@ -139,13 +139,6 @@ export default function Footer() {
                     (714) 500-7017
                   </a>
                 </div>
-                <div className="space-y-1 mt-4">
-                  <p className="text-[#B3B3B3] text-sm">Visit us at:</p>
-                  <p className="text-white font-medium">
-                    180 N. Riverview Ave #360<br />
-                    Anaheim Hills, CA 92808
-                  </p>
-                </div>
               </div>
             </div>
           </div>

@@ -79,10 +79,6 @@ export default function Contact() {
                   <FaEnvelope className="text-[#1E5470] text-xl" />
                   <p className="ml-4 text-gray-700 font-medium">alanj@vistapacificcapital.com</p>
                 </div>
-                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
-                  <div className="text-[#1E5470] text-xl">📍</div>
-                  <p className="ml-4 text-gray-700 font-medium">180 N. Riverview Ave #360<br />Anaheim Hills, CA 92808</p>
-                </div>
               </div>
             </motion.div>
 

@@ -14,7 +14,7 @@ const fadeInUp = {
 
 export default function CalculatorPage() {
   return (
-    <main className="bg-[#f8fafc] relative overflow-hidden min-h-screen">
+    <main className="bg-[#f8fafc] relative overflow-hidden min-h-screen py-12">
       <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

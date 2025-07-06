@@ -189,7 +189,7 @@ export const equipmentLinks: EquipmentLink[] = [
 export const quoteLink: EquipmentLink = {
   topText: 'Apply',
   bottomText: 'Now',
-  path: '/pdf-form',
+  path: '/apply',
   description: 'Apply for equipment financing',
   isCallToAction: true,
   style: {
@@ -745,82 +745,86 @@ const AppNavBar: React.FC = () => {
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: `calc(100vh - ${isScrolled ? '56px' : '64px'})` }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="lg:hidden fixed inset-x-0 top-[64px] bg-white shadow-lg z-40"
+              className={`lg:hidden fixed inset-x-0 bg-white shadow-lg z-40 ${isScrolled ? 'top-[56px]' : 'top-[64px]'}`}
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
-              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-6">
-                {/* All Links Container */}
-                <div className="py-6 space-y-6">
-                  {/* Calculator Link */}
-                  <Link
-                    href="/calculator"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#5BB5B0] text-lg"
-                  >
-                    Payment Calculator
-                  </Link>
-                  
-                  {/* About Us Link */}
-                  <Link
-                    href="/services"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#5BB5B0] text-lg"
-                  >
-                    About Us
-                  </Link>
-                  
-                  {/* Contact Us Link */}
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#5BB5B0] text-lg"
-                  >
-                    Contact Us
-                  </Link>
+              <div className="h-full flex flex-col">
+                <div className="flex-grow overflow-y-auto px-6">
+                  {/* All Links Container */}
+                  <div className="py-6 space-y-6">
+                    {/* Calculator Link */}
+                    <Link
+                      href="/calculator"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 text-[#5BB5B0] text-lg"
+                    >
+                      Payment Calculator
+                    </Link>
+                    
+                    {/* About Us Link */}
+                    <Link
+                      href="/services"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 text-[#5BB5B0] text-lg"
+                    >
+                      About Us
+                    </Link>
+                    
+                    {/* Contact Us Link */}
+                    <Link
+                      href="/contact"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 text-[#5BB5B0] text-lg"
+                    >
+                      Contact Us
+                    </Link>
 
-                  {/* Vendor Program Link */}
-                  <Link
-                    href="/vendor"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#5BB5B0] text-lg"
-                  >
-                    Vendor Program
-                  </Link>
+                    {/* Vendor Program Link */}
+                    <Link
+                      href="/vendor"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 text-[#5BB5B0] text-lg"
+                    >
+                      Vendor Program
+                    </Link>
 
-                  {/* All Equipment Link */}
-                  <Link
-                    href="/equipment"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 text-[#1B365D] text-lg"
-                  >
-                    All Equipment
-                  </Link>
+                    {/* All Equipment Link */}
+                    <Link
+                      href="/equipment"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 text-[#1B365D] text-lg"
+                    >
+                      All Equipment
+                    </Link>
 
-                  {/* Equipment Links */}
-                  {equipmentFinancingLinks
-                    .filter(link => link.path !== '/calculator' && link.path !== '/equipment')
-                    .map((link) => (
-                      <Link
-                        key={link.path}
-                        href={link.path}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block py-3 text-[#1B365D] text-lg"
-                      >
-                        {`${link.topText} ${link.bottomText}`}
-                      </Link>
-                    ))}
+                    {/* Equipment Links */}
+                    {equipmentFinancingLinks
+                      .filter(link => link.path !== '/calculator' && link.path !== '/equipment')
+                      .map((link) => (
+                        <Link
+                          key={link.path}
+                          href={link.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block py-3 text-[#1B365D] text-lg"
+                        >
+                          {`${link.topText} ${link.bottomText}`}
+                        </Link>
+                      ))}
+                  </div>
+                </div>
 
-                  {/* Quote Button */}
+                {/* Sticky Apply Button */}
+                <div className="flex-shrink-0 px-6 py-4 border-t border-gray-100 bg-white">
                   <Link
                     href={quoteLink.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full py-4 bg-[#FF6B35] text-white text-center text-lg font-medium rounded-lg mt-6"
+                    className="block w-full py-4 bg-[#FF6B35] text-white text-center text-lg font-medium rounded-lg"
                   >
                     APPLY NOW
                   </Link>

@@ -22,6 +22,7 @@ interface BusinessData {
   yearsInBusiness: string;
   annualRevenue: string;
   federalTaxId: string;
+  equipmentDescription: string;
 }
 
 interface OwnerData {
@@ -149,6 +150,12 @@ export async function POST(request: Request) {
                 <td style="padding: 8px 0;"><strong>Amount Requested:</strong></td>
                 <td style="padding: 8px 0;">$${parseFloat(businessData.amountNeeded.replace(/[^0-9.-]+/g, '')).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
               </tr>
+              ${businessData.equipmentDescription ? `
+              <tr>
+                <td style="padding: 8px 0;"><strong>Equipment:</strong></td>
+                <td style="padding: 8px 0;">${businessData.equipmentDescription}</td>
+              </tr>
+              ` : ''}
               <tr>
                 <td style="padding: 8px 0;"><strong>Business Type:</strong></td>
                 <td style="padding: 8px 0;">${businessData.businessType}</td>
@@ -222,6 +229,12 @@ export async function POST(request: Request) {
               <td style="padding: 8px 0;"><strong>Amount Requested:</strong></td>
               <td style="padding: 8px 0;">$${parseFloat(businessData.amountNeeded.replace(/[^0-9.-]+/g, '')).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             </tr>
+            ${businessData.equipmentDescription ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Equipment:</strong></td>
+              <td style="padding: 8px 0;">${businessData.equipmentDescription}</td>
+            </tr>
+            ` : ''}
             <tr>
               <td style="padding: 8px 0;"><strong>Business Type:</strong></td>
               <td style="padding: 8px 0;">${businessData.businessType}</td>

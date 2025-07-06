@@ -20,6 +20,7 @@ interface BusinessFormData {
   yearsInBusiness: string;
   annualRevenue: string;
   federalTaxId: string; // Added federalTaxId to business data
+  equipmentDescription: string;
 }
 
 // Add Agent interface
@@ -82,7 +83,8 @@ export default function FinanceApplicationPage() {
     zip: '',
     yearsInBusiness: '',
     annualRevenue: '',
-    federalTaxId: '' // Initialize federalTaxId in business data
+    federalTaxId: '', // Initialize federalTaxId in business data
+    equipmentDescription: '',
   });
 
   const [ownerData, setOwnerData] = useState<OwnerFormData>({
@@ -528,6 +530,7 @@ export default function FinanceApplicationPage() {
     // Business Information Fields - Updated to include federalTaxId
     const businessFields = [
       { label: 'Amount Needed ', value: `$${businessData.amountNeeded}` },
+      { label: 'Equipment Description', value: businessData.equipmentDescription || 'N/A' },
       { label: 'Business Name', value: businessData.businessName },
       { label: 'Business Type', value: businessData.businessType },
       { label: 'Business Phone', value: businessData.businessPhone },
@@ -773,7 +776,8 @@ export default function FinanceApplicationPage() {
           zip: '',
           yearsInBusiness: '',
           annualRevenue: '',
-          federalTaxId: '' // Reset federalTaxId
+          federalTaxId: '', // Reset federalTaxId
+          equipmentDescription: '',
         });
         setOwnerData({
           firstName: '',
@@ -1196,6 +1200,102 @@ export default function FinanceApplicationPage() {
                 {businessErrors.some(error => error.field === 'annualRevenue') && (
                   <p className="text-red-500 text-xs mt-1">
                     {businessErrors.find(error => error.field === 'annualRevenue')?.message}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClasses}>
+                Equipment Description
+              </label>
+              <input
+                type="text"
+                value={businessData.equipmentDescription}
+                onChange={(e) => setBusinessData({ ...businessData, equipmentDescription: e.target.value })}
+                onFocus={() => setFocused('equipmentDescription')}
+                onBlur={() => setFocused('')}
+                placeholder="e.g., 2022 Freightliner Cascadia"
+                className={`${inputClasses} ${focused === 'equipmentDescription' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className={labelClasses}>
+                  City <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={businessData.city}
+                  onChange={(e) => setBusinessData({...businessData, city: e.target.value})}
+                  onFocus={() => setFocused('city')}
+                  onBlur={() => setFocused('')}
+                  placeholder="City"
+                  className={`${inputClasses} ${focused === 'city' ? 'ring-2 ring-green-500' : ''} ${
+                    businessErrors.some(error => error.field === 'city') ? 'border-red-500' : ''
+                  }`}
+                  required
+                />
+                {businessErrors.some(error => error.field === 'city') && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {businessErrors.find(error => error.field === 'city')?.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className={labelClasses}>
+                  State <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    value={businessData.state}
+                    onChange={(e) => setBusinessData({...businessData, state: e.target.value})}
+                    onFocus={() => setFocused('state')}
+                    onBlur={() => setFocused('')}
+                    className={`${selectClasses} ${focused === 'state' ? 'ring-2 ring-green-500' : ''} ${
+                      businessErrors.some(error => error.field === 'state') ? 'border-red-500' : ''
+                    }`}
+                    required
+                  >
+                    <option value="">Select State</option>
+                    {states.map((state) => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                {businessErrors.some(error => error.field === 'state') && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {businessErrors.find(error => error.field === 'state')?.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className={labelClasses}>
+                  Zip <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={businessData.zip}
+                  onChange={(e) => setBusinessData({...businessData, zip: e.target.value})}
+                  onFocus={() => setFocused('zip')}
+                  onBlur={() => setFocused('')}
+                  placeholder="12345"
+                  className={`${inputClasses} ${focused === 'zip' ? 'ring-2 ring-green-500' : ''} ${
+                    businessErrors.some(error => error.field === 'zip') ? 'border-red-500' : ''
+                  }`}
+                  required
+                />
+                {businessErrors.some(error => error.field === 'zip') && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {businessErrors.find(error => error.field === 'zip')?.message}
                   </p>
                 )}
               </div>
@@ -1697,6 +1797,12 @@ export default function FinanceApplicationPage() {
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Amount Needed:</span>
                   <span className="text-[#0D3853]">{businessData.amountNeeded}</span>
                 </div>
+                {businessData.equipmentDescription && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Equipment Description:</span>
+                    <span className="text-[#0D3853]">{businessData.equipmentDescription}</span>
+                  </div>
+                )}
                 <div className="flex">
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Email:</span>
                   <span className="text-[#0D3853]">{businessData.email}</span>
