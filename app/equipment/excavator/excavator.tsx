@@ -7,9 +7,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
     FaCalendarAlt,
+    FaCalendarCheck,
     FaChartLine,
-    FaClock,
-    FaIndustry,
+    FaGlobeAmericas,
     FaTools,
     FaTractor,
     FaTruck,
@@ -63,7 +63,7 @@ const stats = [
   { value: '$5M+', label: 'Maximum Financing', icon: GiCrane },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
   { value: '4.99%', label: 'Starting Rates', icon: FaChartLine },
-  { value: '24hrs', label: 'Quick Approval', icon: FaIndustry }
+  { value: 'Flexible', label: 'Payment Structures', icon: FaCalendarCheck },
 ];
 
 // Update keyFeatures to match standard format
@@ -71,7 +71,7 @@ const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+  { value: 'Nationwide', label: 'Serving all 50 states', icon: FaGlobeAmericas },
 ];
 
 export default function ExcavatorFinancingContent() {
@@ -263,9 +263,9 @@ export default function ExcavatorFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing solutions for startups and established companies',
+                  'Expert advice from our equipment financing specialists',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated excavator equipment specialists',
                   'Competitive rates for earthmoving machinery'

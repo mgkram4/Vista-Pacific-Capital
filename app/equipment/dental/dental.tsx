@@ -8,13 +8,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
     FaCalendarAlt,
-    FaClock,
     FaCog,
     FaDesktop,
     FaMicroscope,
     FaSyringe,
     FaTools,
-    FaTooth
+    FaTooth,
+    FaUserPlus
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -64,7 +64,7 @@ const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+  { value: 'Practice', label: 'Startup Programs', icon: FaUserPlus },
 ];
 
 export default function DentalFinancingContent() {
@@ -256,9 +256,9 @@ export default function DentalFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for practice acquisitions and expansions',
+                  'Deferred payment options available',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated dental equipment specialists',
                   'Competitive rates for modern dental technology'

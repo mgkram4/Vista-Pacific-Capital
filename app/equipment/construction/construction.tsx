@@ -8,10 +8,11 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaHardHat,
-  FaIndustry,
-  FaTools, FaTruck,
-  FaWarehouse
+    FaCreditCard,
+    FaHardHat,
+    FaIndustry,
+    FaTools, FaTruck,
+    FaWarehouse
 } from 'react-icons/fa';
 import { GiCrane, GiMineTruck, GiReceiveMoney } from 'react-icons/gi';
 
@@ -60,7 +61,7 @@ const stats = [
   { value: '$20M', label: 'Maximum Financing', icon: FaHardHat },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
   { value: 'New & Used', label: 'Equipment Options', icon: GiCrane },
-  { value: '24hrs', label: 'Quick Approval', icon: FaTruck }
+  { value: 'All Credit', label: 'All Credit Scores Welcome', icon: FaCreditCard },
 ];
 
 export default function ConstructionFinancingContent() {
@@ -250,9 +251,9 @@ export default function ConstructionFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for start-ups and growing businesses',
+                  'Simple and streamlined application process',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated construction equipment specialists',
                   'Competitive rates starting at 4.99%'

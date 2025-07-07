@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBeer, FaBox, FaFlask, FaThermometerHalf, FaWineBottle } from 'react-icons/fa';
+import { FaBeer, FaBox, FaFlask, FaHeadset, FaThermometerHalf, FaWineBottle } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
 
@@ -48,7 +48,7 @@ const stats = [
   { value: '$20M', label: 'Maximum Financing', icon: FaBeer },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaWineBottle },
   { value: 'New & Used', label: 'Equipment Options', icon: FaFlask },
-  { value: '24hrs', label: 'Quick Approval', icon: FaBox }
+  { value: 'Free', label: 'Expert Consultation', icon: FaHeadset },
 ];
 
 export default function BreweryDistilleryEquipment() {
@@ -236,9 +236,9 @@ export default function BreweryDistilleryEquipment() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Personalized financing consultations',
+                  'Financing for both start-ups and established breweries',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated brewery equipment specialists',
                   'Competitive rates for craft breweries and distilleries'

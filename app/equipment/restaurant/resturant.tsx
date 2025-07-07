@@ -11,6 +11,7 @@ import {
     FaCoffee,
     FaDollarSign,
     FaHamburger,
+    FaStore,
     FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
@@ -52,7 +53,7 @@ const stats = [
   { value: '$20M+', label: 'Maximum Financing', icon: FaDollarSign },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
   { value: 'New & Used', label: 'Equipment Options', icon: FaChartLine },
-  { value: '24hrs', label: 'Quick Approval', icon: FaUtensils }
+  { value: 'Startups', label: 'New Restaurant Programs', icon: FaStore },
 ];
 
 export default function RestaurantFinancingContent() {
@@ -241,9 +242,9 @@ export default function RestaurantFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for new locations and remodels',
+                  'Working capital loans also available',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated restaurant equipment specialists',
                   'Competitive rates for food service businesses'

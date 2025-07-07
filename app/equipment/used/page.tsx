@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
     FaBarcode,
-    FaCheckCircle,
     FaCogs,
+    FaCreditCard,
     FaIndustry,
     FaMedkit,
     FaSearchDollar,
@@ -55,7 +55,7 @@ const stats = [
   { value: '$20M+', label: 'Maximum Financing', icon: FaSearchDollar },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaBarcode },
   { value: 'A-C', label: 'Credit Types', icon: FaCogs },
-  { value: '24hrs', label: 'Quick Approval', icon: FaCheckCircle }
+  { value: 'All Credit', label: 'Flexible Credit Options', icon: FaCreditCard },
 ];
 
 const benefits = [
@@ -97,7 +97,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Get Equipment Financing Terms In 24 Hours
+            Used Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -105,7 +105,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            For a more affordable and economical route, used equipment may be the right direction for you. With excellent quality equipment and machinery, get your company rolling with our quick approvals and tailored terms.
+            For a more affordable and economical route, used equipment may be the right direction for you. With excellent quality equipment and machinery, get your company rolling with our tailored terms.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -212,9 +212,9 @@ export default function UsedEquipmentContent() {
               <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing from private party sellers and dealers',
+                  'Solutions for businesses with challenged credit',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for all types of used equipment',
                   'Dedicated used equipment specialists',
                   'Competitive rates for quality pre-owned machinery'

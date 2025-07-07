@@ -7,11 +7,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
     FaCalendarAlt,
-    FaClock,
     FaRecycle,
     FaRoad,
     FaTools,
     FaTruck,
+    FaUsers,
     FaWarehouse
 } from 'react-icons/fa';
 import { GiMining, GiReceiveMoney, GiTruck } from 'react-icons/gi';
@@ -65,7 +65,7 @@ const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+  { value: 'All Types', label: 'Fleets & Owner-Operators', icon: FaUsers },
 ];
 
 export default function DumpTruckFinancingContent() {
@@ -257,9 +257,9 @@ export default function DumpTruckFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for both dealerships and private sellers',
+                  'Streamlined process to get you on the road faster',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated dump truck equipment specialists',
                   'Competitive rates for hauling equipment'

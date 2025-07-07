@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBuilding, FaCalendarAlt, FaClock, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
+import { FaBuilding, FaCalendarAlt, FaGlobeAmericas, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
 import { GiCrane, GiReceiveMoney } from 'react-icons/gi';
 
 export default function CraneServices() {
@@ -12,7 +12,7 @@ export default function CraneServices() {
     { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
     { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
     { value: 'New & Used', label: 'Equipment Options', icon: FaTools },
-    { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+    { value: 'Nationwide', label: 'Serving All 50 States', icon: FaGlobeAmericas },
   ];
 
   const equipmentTypes = [
@@ -240,9 +240,9 @@ export default function CraneServices() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Custom-fit financing for your specific needs',
+                  'Transparent terms with no hidden fees',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated crane equipment specialists',
                   'Competitive rates for lifting equipment'

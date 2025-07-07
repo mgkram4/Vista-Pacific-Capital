@@ -7,8 +7,8 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaHeartbeat, FaHospital, FaMedkit,
-  FaMicroscope, FaProcedures, FaUserMd
+    FaHeartbeat, FaHospital, FaMedkit,
+    FaMicroscope, FaProcedures, FaStethoscope, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -46,7 +46,7 @@ const stats = [
   { value: '$20M', label: 'Maximum Financing', icon: FaHospital },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
   { value: 'New & Used', label: 'Equipment Options', icon: FaHeartbeat },
-  { value: '24hrs', label: 'Quick Approval', icon: FaMedkit }
+  { value: 'Startups', label: 'New Practice Programs', icon: FaStethoscope },
 ];
 
 export default function MedicalFinancingContent() {
@@ -237,9 +237,9 @@ export default function MedicalFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for practice expansion and technology upgrades',
+                  'Deferred and seasonal payment options',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
                   'Dedicated healthcare equipment specialists',
                   'Competitive rates for medical practices'

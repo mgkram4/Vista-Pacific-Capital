@@ -91,9 +91,9 @@ export default function Contact() {
               <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Personalized financing consultations',
+                  'Solutions for all credit profiles',
                   'Flexible terms from 12 to 72 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment'
                 ].map((item, index) => (
                   <motion.li

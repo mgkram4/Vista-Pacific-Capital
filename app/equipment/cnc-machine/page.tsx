@@ -7,15 +7,16 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaChartLine,
-  FaClock,
-  FaCogs,
-  FaIndustry,
-  FaLaptop,
-  FaMicrochip,
-  FaTools
+    FaChartLine,
+    FaClock,
+    FaCogs,
+    FaHandshake,
+    FaIndustry,
+    FaLaptop,
+    FaMicrochip,
+    FaTools
 } from 'react-icons/fa';
-import { GiGears, GiReceiveMoney } from 'react-icons/gi';
+import { GiReceiveMoney } from 'react-icons/gi';
 
 const equipmentTypes = [
   {
@@ -55,7 +56,7 @@ const stats = [
   { value: "20M", label: 'Maximum Financing', icon: FaMicrochip },
   { value:  '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
   { value: 'New & Used', label: 'Equipment Options', icon: FaChartLine },
-  { value: '24hrs', label: 'Quick Approval', icon: GiGears }
+  { value: 'Custom', label: 'Tailored Solutions', icon: FaHandshake },
 ];
 
 
@@ -296,9 +297,9 @@ export default function CNCFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Solutions for all credit profiles',
+                  'Vendor & private party sales financing',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate for CNC equipment',
                   'Financing for both new and used machines',
                   'Dedicated CNC equipment specialists',
                   'Competitive rates with flexible options'

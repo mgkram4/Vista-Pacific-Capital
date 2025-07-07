@@ -1,59 +1,57 @@
 "use client"
 
-import { boxTruckMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BsGearFill } from 'react-icons/bs';
 import {
-  FaBox,
   FaCalendarAlt,
-  FaClock,
   FaShippingFast,
   FaStore,
   FaTools,
   FaTruck,
-  FaTruckMoving
+  FaWarehouse
 } from 'react-icons/fa';
-import { GiDeliveryDrone, GiReceiveMoney } from 'react-icons/gi';
+import { GiReceiveMoney } from 'react-icons/gi';
 
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Delivery Box Trucks',
-    description: boxTruckMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaTruckMoving,
+    title: 'Warehouse Racking',
+    description: 'Pallet racking, cantilever racking, and industrial shelving solutions.',
+    icon: FaWarehouse,
     image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e'
   },
   {
-    title: 'Commercial Vans',
-    description: boxTruckMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaShippingFast,
+    title: 'Forklifts & Lift Trucks',
+    description: 'Counterbalance forklifts, reach trucks, pallet jacks, and order pickers.',
+    icon: FaTruck,
     image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e'
   },
   {
-    title: 'Last Mile Delivery',
-    description: 'Specialized vehicles for urban and residential delivery.',
-    icon: GiDeliveryDrone,
+    title: 'Conveyor Systems',
+    description: 'Automated, belt, and roller conveyor systems for efficient workflow.',
+    icon: BsGearFill,
     image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
   },
   {
-    title: 'Retail Delivery Trucks',
-    description: 'Custom solutions for retail and furniture delivery.',
-    icon: FaStore,
+    title: 'Loading Dock Equipment',
+    description: 'Dock levelers, seals, shelters, and vehicle restraints.',
+    icon: FaShippingFast,
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
   },
   {
-    title: 'Express Cargo Vans',
-    description: 'Efficient cargo vans for express delivery services.',
-    icon: FaBox,
+    title: 'Automated Systems',
+    description: 'AGVs (Automated Guided Vehicles) and ASRS (Automated Storage/Retrieval Systems).',
+    icon: BsGearFill,
     image: 'https://images.unsplash.com/photo-1543465077-db45d34b88a5'
   },
   {
-    title: 'Fleet Solutions',
-    description: 'Comprehensive fleet financing options.',
-    icon: FaTruck,
+    title: 'Storage Solutions',
+    description: 'Industrial shelving, mezzanines, and modular offices.',
+    icon: FaStore,
     image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
   }
 ];
@@ -63,17 +61,17 @@ const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: '24hrs', label: 'Quick Approval', icon: FaClock }
+  { value: 'Custom', label: 'Tailored Solutions', icon: FaTools }
 ];
 
-export default function BoxTruckFinancingContent() {
+export default function RackingMaterialHandlingFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <link
           rel="preload"
-          href="/Images/boxTruckH.png"
+          href="/Images/warehouseH.png"
           as="image"
           type="image/png"
           fetchPriority="high"
@@ -81,7 +79,7 @@ export default function BoxTruckFinancingContent() {
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
-            alt="Box truck equipment financing"
+            alt="Racking and material handling equipment financing"
             fill
             sizes="100vw"
             className="object-cover"
@@ -97,7 +95,7 @@ export default function BoxTruckFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {boxTruckMetadata.title}
+            Racking and Material Handling Equipment Financing
           </motion.h1>
           <motion.p
             className="text-2xl mb-12 leading-relaxed max-w-3xl"
@@ -105,7 +103,7 @@ export default function BoxTruckFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {boxTruckMetadata.description}
+            Financing for warehouse racking, forklifts, and material handling systems.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -254,12 +252,12 @@ export default function BoxTruckFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Fast approvals within 24-48 hours',
+                  'Financing for warehouse automation and systems',
+                  'Consultative approach to find the best terms',
                   'Flexible terms from 24 to 84 months',
-                  'High approval rate of 94.6%',
                   'Financing for both new and used equipment',
-                  'Dedicated delivery vehicle specialists',
-                  'Competitive rates for delivery fleets'
+                  'Dedicated material handling specialists',
+                  'Competitive rates for warehouse equipment'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -290,12 +288,12 @@ export default function BoxTruckFinancingContent() {
               </motion.h3>
               <ul className="space-y-4">
                 {[
-                  'Flexible solutions tailored to your delivery business',
+                  'Flexible solutions for your warehouse needs',
                   'Preserve working capital for other business operations',
                   'Potential tax advantages for your business',
                   'Simplified application process with minimal paperwork',
                   'Tailored payment plans that match your cash flow',
-                  'Industry expertise in delivery and logistics equipment'
+                  'Industry expertise in warehouse & logistics equipment'
                 ].map((item, index) => (
                   <motion.li
                     key={index}

@@ -113,9 +113,9 @@ export const equipmentLinks: EquipmentLink[] = [
     description: 'Explore all equipment financing options'
   },
   {
-    topText: 'Material Handling',
-    bottomText: 'Equipment',
-    path: '/equipment/construction',
+    topText: 'Racking and Material',
+    bottomText: 'Handling Equipment',
+    path: '/equipment/racking-material-handling',
     description: 'Material handling and warehouse equipment financing solutions'
   },
   {
@@ -171,12 +171,6 @@ export const equipmentLinks: EquipmentLink[] = [
     bottomText: 'Financing',
     path: '/equipment/dump-truck',
     description: 'Dump truck financing'
-  },
-  {
-    topText: 'Box Truck',
-    bottomText: 'Financing',
-    path: '/equipment/box-truck',
-    description: 'Box truck financing'
   },
   {
     topText: 'CNC Machine',
@@ -533,6 +527,7 @@ const AppNavBar: React.FC = () => {
               <div className="flex-shrink-0 relative z-10 ml-auto lg:ml-0">
                 <Link 
                   href="/" 
+                  onClick={() => setIsMobileMenuOpen(false)}
                   aria-label="Vista Pacific Capital - Equipment Financing Solutions"
                   className="block"
                 >
@@ -543,7 +538,7 @@ const AppNavBar: React.FC = () => {
                       height={60}
                       alt="Vista Pacific Capital - Equipment Financing Solutions"
                       className={`
-                        md:hidden
+                        lg:hidden
                         w-auto
                         transition-all
                         duration-300
@@ -568,6 +563,7 @@ const AppNavBar: React.FC = () => {
               <div className="flex-shrink-0 relative z-10">
                 <Link
                   href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   aria-label="Vista Pacific Capital - Equipment Financing Solutions"
                   className="flex items-center gap-3 lg:relative lg:left-0"
                 >
