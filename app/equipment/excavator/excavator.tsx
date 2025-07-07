@@ -9,7 +9,6 @@ import {
     FaCalendarAlt,
     FaCalendarCheck,
     FaChartLine,
-    FaGlobeAmericas,
     FaTools,
     FaTractor,
     FaTruck,
@@ -71,7 +70,6 @@ const keyFeatures = [
   { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: 'Nationwide', label: 'Serving all 50 states', icon: FaGlobeAmericas },
 ];
 
 export default function ExcavatorFinancingContent() {

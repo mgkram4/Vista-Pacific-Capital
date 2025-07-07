@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBuilding, FaCalendarAlt, FaGlobeAmericas, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
+import { FaBuilding, FaCalendarAlt, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
 import { GiCrane, GiReceiveMoney } from 'react-icons/gi';
 
 export default function CraneServices() {
@@ -12,7 +12,6 @@ export default function CraneServices() {
     { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
     { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
     { value: 'New & Used', label: 'Equipment Options', icon: FaTools },
-    { value: 'Nationwide', label: 'Serving All 50 States', icon: FaGlobeAmericas },
   ];
 
   const equipmentTypes = [
