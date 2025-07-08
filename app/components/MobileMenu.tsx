@@ -68,7 +68,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               onClick={onClose}
               className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/' 
-                  ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
+                  ? 'bg-sea-green-dark/10 text-sea-green-dark' 
                   : 'text-gray-700'
               }`}
             >
@@ -81,7 +81,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               onClick={onClose}
               className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/about' 
-                  ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
+                  ? 'bg-sea-green-dark/10 text-sea-green-dark' 
                   : 'text-gray-700'
               }`}
             >
@@ -94,7 +94,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
               onClick={onClose}
               className={`flex items-center p-4 transition-colors active:bg-gray-100 ${
                 pathname === '/contact' 
-                  ? 'bg-[#5BB5B0]/10 text-[#5BB5B0]' 
+                  ? 'bg-sea-green-dark/10 text-sea-green-dark' 
                   : 'text-gray-700'
               }`}
             >
@@ -110,7 +110,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, pathname, onClos
           <h2 className="text-sm font-semibold text-gray-500 px-4 uppercase tracking-wider">
             Equipment Financing
           </h2>
-          <div className="space-y-2">
+          <div role="menu" className="space-y-2">
             {equipmentLinks.map((link) => (
               <motion.div
                 key={link.path}

@@ -66,7 +66,7 @@ export default function FinanceApplication({ teamMember = TEAM_MEMBERS.alan }: F
   // Copy the entire component implementation from pdf-form/page.tsx here
   // This will be a complete copy of the component with all its functionality
   const [currentStep, setCurrentStep] = useState<number>(1);
-  const [selectedAgent, setSelectedAgent] = useState<string>(teamMember.name === TEAM_MEMBERS.noah.name ? 'noah' : 'alan');
+  const [selectedAgent, setSelectedAgent] = useState<string>('alan');
   const [businessData, setBusinessData] = useState<BusinessFormData>({
     amountNeeded: '',
     email: '',
@@ -100,7 +100,7 @@ export default function FinanceApplication({ teamMember = TEAM_MEMBERS.alan }: F
   const [showSuccessToast, setShowSuccessToast] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4" style={{ paddingTop: '200px' }}>
+    <div className="max-w-4xl mx-auto pb-10 pt-[200px] px-4">
       {/* Add the Toast component here */}
       {showSuccessToast && (
         <Toast

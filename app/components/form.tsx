@@ -222,10 +222,12 @@ const QuickQuoteForm = ({
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className={labelClasses}>
+              <label htmlFor="equipmentType" className={labelClasses}>
                 Equipment Type
               </label>
               <select
+                id="equipmentType"
+                name="equipmentType"
                 value={formData.equipmentType}
                 onChange={(e) => setFormData({...formData, equipmentType: e.target.value})}
                 onFocus={() => setFocused('equipmentType')}
@@ -242,126 +244,142 @@ const QuickQuoteForm = ({
             </div>
 
             <div>
-              <label className={labelClasses}>
+              <label htmlFor="equipmentCost" className={labelClasses}>
                 Equipment Cost
               </label>
               <input
+                id="equipmentCost"
+                name="equipmentCost"
                 type="text"
                 value={formData.equipmentCost}
                 onChange={handleCostChange}
-                onFocus={() => setFocused('cost')}
+                onFocus={() => setFocused('equipmentCost')}
                 onBlur={() => setFocused('')}
                 placeholder="$50,000"
-                className={`${inputClasses} ${focused === 'cost' ? 'ring-2 ring-blue-500' : ''}`}
+                className={`${inputClasses} ${focused === 'equipmentCost' ? 'ring-2 ring-blue-500' : ''}`}
                 required
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClasses}>
-                Business Name
-              </label>
-              <input
-                type="text"
-                value={formData.businessType}
-                onChange={(e) => setFormData({...formData, businessType: e.target.value})}
-                onFocus={() => setFocused('business')}
-                onBlur={() => setFocused('')}
-                placeholder="ABC Construction LLC"
-                className={`${inputClasses} ${focused === 'business' ? 'ring-2 ring-blue-500' : ''}`}
-              />
-            </div>
-
-            <div>
-              <label className={labelClasses}>
-                Full Name
-              </label>
-              <input
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                onFocus={() => setFocused('name')}
-                onBlur={() => setFocused('')}
-                placeholder="Alex Johnson"
-                className={`${inputClasses} ${focused === 'name' ? 'ring-2 ring-blue-500' : ''}`}
-              />
-            </div>
+          <div>
+            <label htmlFor="businessType" className={labelClasses}>
+              Business Type
+            </label>
+            <select
+              id="businessType"
+              name="businessType"
+              value={formData.businessType}
+              onChange={(e) => setFormData({...formData, businessType: e.target.value})}
+              onFocus={() => setFocused('businessType')}
+              onBlur={() => setFocused('')}
+              className={`${inputClasses} ${focused === 'businessType' ? 'ring-2 ring-blue-500' : ''}`}
+            >
+              <option value="" disabled>Select type</option>
+              <option value="Sole Proprietorship">Sole Proprietorship</option>
+              <option value="Partnership">Partnership</option>
+              <option value="LLC">LLC</option>
+              <option value="S-Corporation">S-Corporation</option>
+              <option value="C-Corporation">C-Corporation</option>
+            </select>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className={labelClasses}>
-                Email
-              </label>
-              <input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                onFocus={() => setFocused('email')}
-                onBlur={() => setFocused('')}
-                placeholder="you@company.com"
-                className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-blue-500' : ''}`}
-                required
-              />
-            </div>
-
-            <div>
-              <label className={labelClasses}>
-                Phone
-              </label>
-              <input
-                type="tel"
-                value={formData.phone}
-                onChange={handlePhoneChange}
-                onFocus={() => setFocused('phone')}
-                onBlur={() => setFocused('')}
-                placeholder="(555) 123-4567"
-                className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-blue-500' : ''}`}
-              />
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClasses}>
-                Years in Business
+              <label htmlFor="timeInBusiness" className={labelClasses}>
+                Time in Business
               </label>
               <select
+                id="timeInBusiness"
+                name="timeInBusiness"
                 value={formData.timeInBusiness}
                 onChange={(e) => setFormData({...formData, timeInBusiness: e.target.value})}
                 onFocus={() => setFocused('timeInBusiness')}
                 onBlur={() => setFocused('')}
                 className={`${inputClasses} ${focused === 'timeInBusiness' ? 'ring-2 ring-blue-500' : ''}`}
               >
-                <option value="" disabled>Select years</option>
-                <option value="Startup">Startup</option>
-                <option value="1-2 years">1-2 years</option>
-                <option value="3-5 years">3-5 years</option>
-                <option value="5+ years">5+ years</option>
+                <option value="" disabled>Select range</option>
+                <option value="0-1">0-1 years</option>
+                <option value="1-2">1-2 years</option>
+                <option value="2-5">2-5 years</option>
+                <option value="5+">5+ years</option>
               </select>
             </div>
-            
+
             <div>
-              <label className={labelClasses}>
-                Annual Revenue
+              <label htmlFor="creditScore" className={labelClasses}>
+                Credit Score
               </label>
               <select
+                id="creditScore"
+                name="creditScore"
                 value={formData.creditScore}
                 onChange={(e) => setFormData({...formData, creditScore: e.target.value})}
                 onFocus={() => setFocused('creditScore')}
                 onBlur={() => setFocused('')}
                 className={`${inputClasses} ${focused === 'creditScore' ? 'ring-2 ring-blue-500' : ''}`}
               >
-                <option value="" disabled>Select revenue</option>
-                <option value="Under $250k">Under $250k</option>
-                <option value="$250k-$500k">$250k-$500k</option>
-                <option value="$500k-$1M">$500k-$1M</option>
-                <option value="$1M-$5M">$1M-$5M</option>
-                <option value="$5M+">$5M+</option>
+                <option value="" disabled>Select range</option>
+                <option value="<600">Below 600</option>
+                <option value="600-680">600-680</option>
+                <option value="680-720">680-720</option>
+                <option value="720+">Above 720</option>
               </select>
             </div>
+          </div>
+        </div>
+
+        <div className="h-px bg-gray-200"></div>
+
+        <div className="space-y-3">
+          <div>
+            <label htmlFor="name" className={labelClasses}>
+              Full Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onFocus={() => setFocused('name')}
+              onBlur={() => setFocused('')}
+              placeholder="Alex Johnson"
+              className={`${inputClasses} ${focused === 'name' ? 'ring-2 ring-blue-500' : ''}`}
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className={labelClasses}>
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              onFocus={() => setFocused('email')}
+              onBlur={() => setFocused('')}
+              placeholder="you@company.com"
+              className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-blue-500' : ''}`}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone" className={labelClasses}>
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              onFocus={() => setFocused('phone')}
+              onBlur={() => setFocused('')}
+              placeholder="(555) 123-4567"
+              className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-blue-500' : ''}`}
+            />
           </div>
         </div>
 
@@ -377,6 +395,7 @@ const QuickQuoteForm = ({
             text-white shadow-lg hover:shadow-orange-500/30
             transform transition-all duration-300
             flex items-center justify-center space-x-2 mt-3
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF6B35]
           `}
         >
           {loading ? (

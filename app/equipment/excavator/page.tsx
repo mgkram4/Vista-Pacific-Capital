@@ -1,12 +1,14 @@
 // app/excavator/page.tsx
 
-import { excavatorMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
+
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
+import { excavatorMetadata } from '@/app/lib/metadata/excavator';
 import ExcavatorFinancingContent from './excavator';
 
-// Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(excavatorMetadata);
+
+export const viewport = generateEnhancedViewport();
 
 // Server Component
 export default function ExcavatorFinancingPage() {

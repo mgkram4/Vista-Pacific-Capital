@@ -1,14 +1,15 @@
 // app/medical/page.tsx
 
 
-import { medicalMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
+
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
+import { medicalMetadata } from '@/app/lib/metadata/medical';
 import MedicalFinancingContent from './medical';
 
-
-// Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(medicalMetadata);
+
+export const viewport = generateEnhancedViewport();
 
 // Server Component
 export default function MedicalFinancingPage() {

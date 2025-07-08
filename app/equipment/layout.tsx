@@ -1,6 +1,8 @@
+import { AnimatePresence } from 'framer-motion';
 import type { Metadata } from 'next';
-import ImagePreloader from './ImagePreloader';
 
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
 
 export const metadata: Metadata = {
   title: {
@@ -16,12 +18,10 @@ export default function EquipmentLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="equipment-layout">
-      {/* Client component to preload images */}
-      <ImagePreloader />
-      <div className="equipment-content">
-        {children}
-      </div>
-    </div>
+    <AnimatePresence mode="wait">
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </AnimatePresence>
   );
 }

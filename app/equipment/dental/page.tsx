@@ -2,14 +2,15 @@
 
 import { Metadata } from 'next';
 
-import { dentalMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
-import DentalServicesContent from './dental';
+import { dentalMetadata } from '@/app/lib/metadata/dental';
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
+import DentalFinancingContent from './dental';
 
-// Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(dentalMetadata);
 
+export const viewport = generateEnhancedViewport();
+
 // Server Component
-export default function DentalServicesPage() {
-  return <DentalServicesContent />;
+export default function DentalFinancingPage() {
+  return <DentalFinancingContent />;
 }

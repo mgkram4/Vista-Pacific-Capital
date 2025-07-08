@@ -169,7 +169,7 @@ export default function EquipmentFinancingPage() {
                       src={category.image}
                       alt={category.title}
                       fill
-                      style={{objectFit: "cover"}}
+                      className="object-cover"
                     />
                     <motion.div 
                       className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
@@ -207,7 +207,7 @@ export default function EquipmentFinancingPage() {
                       transition={{ duration: 0.5, delay: index * 0.05 + 0.3 }}
                       viewport={{ once: true }}
                     >
-                      <span>Learn more</span>
+                      <span>Learn more about {category.title}</span>
                       <ChevronRight className="ml-1 w-5 h-5" />
                     </motion.div>
                   </div>
@@ -225,7 +225,7 @@ export default function EquipmentFinancingPage() {
             src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
             alt="Modern office background"
             fill
-            style={{objectFit: "cover"}}
+            className="object-cover"
             quality={100}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />

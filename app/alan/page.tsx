@@ -18,6 +18,22 @@ export default function AlanPage() {
 
   return (
     <div className="bg-gradient-to-br from-[#113E59]/10 to-[#082F4A]/10 min-h-screen font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Alan Johnson",
+          "url": "https://www.vistapacificcapital.com/alan",
+          "jobTitle": "Finance Specialist",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Vista Pacific Capital"
+          },
+          "telephone": "+17145007017",
+          "email": "alanj@vistapacificcapital.com"
+        }) }}
+      />
       {/* Hero Section with Equipment Financing Image */}
       <section className="w-full relative overflow-hidden">
         {/* Background Image Container */}

@@ -10,7 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         'indigo-dye': '#113E59',
-        'light-sea-green': '#11B5B2',
+        'light-sea-green': '#0D8C8A',
+        'sea-green-dark': '#3E8A8C',
         'indigo-dye-2': '#1E5470',
         'prussian-blue': '#082F4A',
         'white': '#FFFFFF',

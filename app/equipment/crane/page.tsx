@@ -3,11 +3,13 @@
 import { Metadata } from 'next';
 
 import { craneMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
 import CraneFinancingContent from './crane';
 
 // Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(craneMetadata);
+
+export const viewport = generateEnhancedViewport();
 
 // Server Component
 export default function CraneFinancingPage() {

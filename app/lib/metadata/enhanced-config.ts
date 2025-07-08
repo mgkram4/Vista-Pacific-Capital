@@ -128,8 +128,6 @@ export function generateEnhancedMetadata(config: EnhancedEquipmentMetadata): Met
     },
     applicationName: SITE_NAME,
     referrer: 'origin-when-cross-origin',
-    viewport: 'width=device-width, initial-scale=1',
-    themeColor: '#113E59',
     category: config.category,
     creator: SITE_NAME,
     publisher: SITE_NAME,
@@ -139,6 +137,13 @@ export function generateEnhancedMetadata(config: EnhancedEquipmentMetadata): Met
       address: false,
       telephone: false,
     },
+  };
+}
+
+export function generateEnhancedViewport() {
+  return {
+    themeColor: '#113E59',
+    viewport: 'width=device-width, initial-scale=1'
   };
 }
 

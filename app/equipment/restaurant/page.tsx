@@ -1,15 +1,15 @@
 // app/restaurant/page.tsx
 
-import { restaurantMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
+import { restaurantMetadata } from '@/app/lib/metadata/restaurant';
 import { Metadata } from 'next';
-import RestaurantFinancingContent from './resturant';
+import RestaurantServices from './resturant';
 
 
-// Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(restaurantMetadata);
 
-// Server Component
+export const viewport = generateEnhancedViewport();
+
 export default function RestaurantFinancingPage() {
-  return <RestaurantFinancingContent />;
+  return <RestaurantServices />;
 }

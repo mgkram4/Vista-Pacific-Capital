@@ -809,26 +809,26 @@ export default function FinanceApplicationPage() {
 
   // CSS Classes
   const inputClasses = `
-    w-full px-3 py-3 rounded-lg
+    w-full px-3 py-2.5 rounded-lg
     border border-gray-300
     bg-white text-gray-900 placeholder-gray-400
-    focus:outline-none focus:ring-1 focus:ring-[#0EB5B2] focus:border-[#0EB5B2]
+    focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent
     hover:bg-gray-50 transition-all duration-200
     text-sm leading-tight
+    shadow-sm
   `;
 
   const selectClasses = `
     w-full px-3 py-2.5 rounded-lg
     border border-gray-300
-    bg-white text-gray-900 placeholder-gray-400
-    focus:outline-none focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent
+    bg-white text-gray-900
+    focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent
     hover:bg-gray-50 transition-all duration-200
     text-sm leading-tight
-    shadow-sm
-    appearance-none
+    shadow-sm appearance-none
   `;
 
-  const labelClasses = "block text-xs font-medium text-gray-700 mb-1";
+  const labelClasses = "block text-sm font-semibold text-gray-700 mb-1.5";
 
   const buttonClasses = `
     px-4 py-3 rounded-lg font-semibold text-base
@@ -871,10 +871,11 @@ export default function FinanceApplicationPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-1">
-                <label className={labelClasses}>
+                <label htmlFor="amountNeeded" className={labelClasses}>
                   Amount Needed <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="amountNeeded"
                   type="text"
                   value={businessData.amountNeeded}
                   onChange={handleCurrencyChange}
@@ -894,10 +895,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div className="md:col-span-1">
-                <label className={labelClasses}>
+                <label htmlFor="email" className={labelClasses}>
                   Email Address <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="email"
                   type="email"
                   value={businessData.email}
                   onChange={(e) => setBusinessData({...businessData, email: e.target.value})}
@@ -919,10 +921,11 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="businessName" className={labelClasses}>
                   Business Name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="businessName"
                   type="text"
                   value={businessData.businessName}
                   onChange={(e) => setBusinessData({...businessData, businessName: e.target.value})}
@@ -942,11 +945,12 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="businessType" className={labelClasses}>
                   Business Type <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="businessType"
                     value={businessData.businessType}
                     onChange={(e) => setBusinessData({...businessData, businessType: e.target.value})}
                     onFocus={() => setFocused('businessType')}
@@ -975,10 +979,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="businessPhone" className={labelClasses}>
                   Business Phone <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="businessPhone"
                   type="tel"
                   value={businessData.businessPhone}
                   onChange={(e) => handlePhoneChange(e, 'business')}
@@ -1001,10 +1006,11 @@ export default function FinanceApplicationPage() {
             {/* Added Federal Tax ID to business information */}
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="federalTaxId" className={labelClasses}>
                   Federal Tax ID Number (if available)
                 </label>
                 <input
+                  id="federalTaxId"
                   type="text"
                   value={businessData.federalTaxId}
                   onChange={(e) => setBusinessData({...businessData, federalTaxId: e.target.value})}
@@ -1018,10 +1024,11 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
-                <label className={labelClasses}>
+                <label htmlFor="businessAddress" className={labelClasses}>
                   Business Address <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="businessAddress"
                   type="text"
                   value={businessData.businessAddress}
                   onChange={(e) => setBusinessData({...businessData, businessAddress: e.target.value})}
@@ -1041,10 +1048,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div className="md:col-span-2">
-                <label className={labelClasses}>
+                <label htmlFor="businessSuite" className={labelClasses}>
                   Suite #
                 </label>
                 <input
+                  id="businessSuite"
                   type="text"
                   value={businessData.businessSuite}
                   onChange={(e) => setBusinessData({...businessData, businessSuite: e.target.value})}
@@ -1058,10 +1066,11 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="city" className={labelClasses}>
                   City <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="city"
                   type="text"
                   value={businessData.city}
                   onChange={(e) => setBusinessData({...businessData, city: e.target.value})}
@@ -1081,11 +1090,12 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="state" className={labelClasses}>
                   State <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="state"
                     value={businessData.state}
                     onChange={(e) => setBusinessData({...businessData, state: e.target.value})}
                     onFocus={() => setFocused('state')}
@@ -1114,10 +1124,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  Zip <span className="text-red-500">*</span>
+                <label htmlFor="zip" className={labelClasses}>
+                  ZIP Code <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="zip"
                   type="text"
                   value={businessData.zip}
                   onChange={(e) => setBusinessData({...businessData, zip: e.target.value})}
@@ -1139,11 +1150,12 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="yearsInBusiness" className={labelClasses}>
                   Years in Business <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="yearsInBusiness"
                     value={businessData.yearsInBusiness}
                     onChange={(e) => setBusinessData({...businessData, yearsInBusiness: e.target.value})}
                     onFocus={() => setFocused('yearsInBusiness')}
@@ -1172,11 +1184,12 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="annualRevenue" className={labelClasses}>
                   Annual Revenue <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="annualRevenue"
                     value={businessData.annualRevenue}
                     onChange={(e) => setBusinessData({...businessData, annualRevenue: e.target.value})}
                     onFocus={() => setFocused('annualRevenue')}
@@ -1206,26 +1219,28 @@ export default function FinanceApplicationPage() {
             </div>
 
             <div>
-              <label className={labelClasses}>
-                Equipment Description
+              <label htmlFor="equipmentDescription" className={labelClasses}>
+                Equipment Description <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
+              <textarea
+                id="equipmentDescription"
                 value={businessData.equipmentDescription}
-                onChange={(e) => setBusinessData({ ...businessData, equipmentDescription: e.target.value })}
+                onChange={(e) => setBusinessData({...businessData, equipmentDescription: e.target.value})}
                 onFocus={() => setFocused('equipmentDescription')}
                 onBlur={() => setFocused('')}
                 placeholder="e.g., 2022 Freightliner Cascadia"
                 className={`${inputClasses} ${focused === 'equipmentDescription' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
+                required
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="city" className={labelClasses}>
                   City <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="city"
                   type="text"
                   value={businessData.city}
                   onChange={(e) => setBusinessData({...businessData, city: e.target.value})}
@@ -1245,11 +1260,12 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="state" className={labelClasses}>
                   State <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="state"
                     value={businessData.state}
                     onChange={(e) => setBusinessData({...businessData, state: e.target.value})}
                     onFocus={() => setFocused('state')}
@@ -1278,10 +1294,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  Zip <span className="text-red-500">*</span>
+                <label htmlFor="zip" className={labelClasses}>
+                  ZIP Code <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="zip"
                   type="text"
                   value={businessData.zip}
                   onChange={(e) => setBusinessData({...businessData, zip: e.target.value})}
@@ -1309,10 +1326,11 @@ export default function FinanceApplicationPage() {
             {/* First row - First Name / Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="firstName" className={labelClasses}>
                   First Name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="firstName"
                   type="text"
                   value={ownerData.firstName}
                   onChange={(e) => setOwnerData({...ownerData, firstName: e.target.value})}
@@ -1332,10 +1350,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="lastName" className={labelClasses}>
                   Last Name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="lastName"
                   type="text"
                   value={ownerData.lastName}
                   onChange={(e) => setOwnerData({...ownerData, lastName: e.target.value})}
@@ -1358,10 +1377,11 @@ export default function FinanceApplicationPage() {
             {/* Second row - Social Security Number / Ownership Percentage */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={labelClasses}>
-                  Social Security Number <span className="text-red-500">*</span>
+                <label htmlFor="socialSecurityNumber" className={labelClasses}>
+                  Social Security # <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="socialSecurityNumber"
                   type="text"
                   value={ownerData.socialSecurityNumber}
                   onChange={(e) => handleSSNChange(e, 'owner')}
@@ -1381,10 +1401,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  % Ownership <span className="text-red-500">*</span>
+                <label htmlFor="ownershipPercentage" className={labelClasses}>
+                  Ownership % <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="ownershipPercentage"
                   type="text"
                   value={ownerData.ownershipPercentage}
                   onChange={handleOwnershipChange}
@@ -1407,11 +1428,12 @@ export default function FinanceApplicationPage() {
             {/* Add Date of Birth field - THIS WAS MISSING */}
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="dateOfBirth" className={labelClasses}>
                   Date of Birth <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="date"
+                  id="dateOfBirth"
+                  type="text"
                   value={ownerData.dateOfBirth}
                   onChange={(e) => setOwnerData({...ownerData, dateOfBirth: e.target.value})}
                   onFocus={() => setFocused('dateOfBirth')}
@@ -1431,10 +1453,11 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
-                <label className={labelClasses}>
+                <label htmlFor="homeAddress" className={labelClasses}>
                   Home Address <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="homeAddress"
                   type="text"
                   value={ownerData.homeAddress}
                   onChange={(e) => setOwnerData({...ownerData, homeAddress: e.target.value})}
@@ -1454,10 +1477,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div className="md:col-span-2">
-                <label className={labelClasses}>
+                <label htmlFor="homeSuite" className={labelClasses}>
                   Suite #
                 </label>
                 <input
+                  id="homeSuite"
                   type="text"
                   value={ownerData.homeSuite}
                   onChange={(e) => setOwnerData({...ownerData, homeSuite: e.target.value})}
@@ -1471,10 +1495,11 @@ export default function FinanceApplicationPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="homeCity" className={labelClasses}>
                   City <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="homeCity"
                   type="text"
                   value={ownerData.homeCity}
                   onChange={(e) => setOwnerData({...ownerData, homeCity: e.target.value})}
@@ -1494,11 +1519,12 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
+                <label htmlFor="homeState" className={labelClasses}>
                   State <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
+                    id="homeState"
                     value={ownerData.homeState}
                     onChange={(e) => setOwnerData({...ownerData, homeState: e.target.value})}
                     onFocus={() => setFocused('homeState')}
@@ -1527,10 +1553,11 @@ export default function FinanceApplicationPage() {
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  Zip <span className="text-red-500">*</span>
+                <label htmlFor="homeZip" className={labelClasses}>
+                  ZIP Code <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="homeZip"
                   type="text"
                   value={ownerData.homeZip}
                   onChange={(e) => setOwnerData({...ownerData, homeZip: e.target.value})}

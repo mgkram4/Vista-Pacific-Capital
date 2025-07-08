@@ -13,11 +13,5 @@ export const TEAM_MEMBERS = {
     email: "alanj@vistapacificcapital.com",
     phone: "(714)500-7017",
     endpoint: "/api/submit-quote"
-  },
-  noah: {
-    name: "Noah Miller",
-    email: "noahm@vistapacificcapital.com",
-    phone: "(714)500-7017",
-    endpoint: "/api/submit-quote-noah"
   }
 };

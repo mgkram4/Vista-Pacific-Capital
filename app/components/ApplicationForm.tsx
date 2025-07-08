@@ -19,24 +19,27 @@ export default function ApplicationForm() {
       
       <form className="space-y-4">
         <div>
-          <label className="block mb-1">Full Name</label>
+          <label htmlFor="fullName" className="block mb-1">Full Name</label>
           <input
+            id="fullName"
             type="text"
             className="w-full p-2 border rounded-lg"
           />
         </div>
 
         <div>
-          <label className="block mb-1">Business Name</label>
+          <label htmlFor="businessName" className="block mb-1">Business Name</label>
           <input
+            id="businessName"
             type="text"
             className="w-full p-2 border rounded-lg"
           />
         </div>
 
         <div>
-          <label className="block mb-1">Email*</label>
+          <label htmlFor="email" className="block mb-1">Email<span className="sr-only"> (required)</span>*</label>
           <input
+            id="email"
             type="email"
             required
             className="w-full p-2 border rounded-lg"
@@ -44,16 +47,18 @@ export default function ApplicationForm() {
         </div>
 
         <div>
-          <label className="block mb-1">Phone</label>
+          <label htmlFor="phone" className="block mb-1">Phone</label>
           <input
+            id="phone"
             type="tel"
             className="w-full p-2 border rounded-lg"
           />
         </div>
 
         <div>
-          <label className="block mb-1">Equipment Cost</label>
+          <label htmlFor="equipmentCost" className="block mb-1">Equipment Cost</label>
           <input
+            id="equipmentCost"
             type="number"
             className="w-full p-2 border rounded-lg"
             min="20000"
@@ -62,8 +67,8 @@ export default function ApplicationForm() {
         </div>
 
         <div>
-          <label className="block mb-1">Industry</label>
-          <select className="w-full p-2 border rounded-lg">
+          <label htmlFor="industry" className="block mb-1">Industry</label>
+          <select id="industry" className="w-full p-2 border rounded-lg">
             <option value="">Select Industry</option>
             {industries.map(industry => (
               <option key={industry} value={industry}>
@@ -74,8 +79,9 @@ export default function ApplicationForm() {
         </div>
 
         <div>
-          <label className="block mb-1">Years in Business</label>
+          <label htmlFor="yearsInBusiness" className="block mb-1">Years in Business</label>
           <input
+            id="yearsInBusiness"
             type="number"
             className="w-full p-2 border rounded-lg"
             min="0"
@@ -84,8 +90,9 @@ export default function ApplicationForm() {
         </div>
 
         <div>
-          <label className="block mb-1">Annual Revenue</label>
+          <label htmlFor="annualRevenue" className="block mb-1">Annual Revenue</label>
           <input
+            id="annualRevenue"
             type="number"
             className="w-full p-2 border rounded-lg"
             min="0"

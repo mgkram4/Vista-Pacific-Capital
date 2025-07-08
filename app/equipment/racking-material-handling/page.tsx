@@ -2,7 +2,7 @@
 
 import { Metadata } from 'next';
 
-import { EnhancedEquipmentMetadata, generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
+import { EnhancedEquipmentMetadata, generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
 import RackingMaterialHandlingFinancingContent from './racking-material-handling';
 
 
@@ -39,6 +39,8 @@ const rackingMetadata: EnhancedEquipmentMetadata = {
 
 // Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(rackingMetadata);
+
+export const viewport = generateEnhancedViewport();
 
 // Server Component
 export default function RackingMaterialHandlingFinancingPage() {

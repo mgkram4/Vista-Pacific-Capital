@@ -36,12 +36,13 @@ export default function PaymentCalculator() {
       <div className="p-8">
         {/* Amount Input */}
         <div className="mb-8">
-          <label className="block text-[#1B365D] text-sm font-medium mb-2">
+          <label htmlFor="equipmentCost" className="block text-[#1B365D] text-sm font-medium mb-2">
             Equipment Cost
           </label>
           <div className="relative">
             <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
             <input
+              id="equipmentCost"
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}

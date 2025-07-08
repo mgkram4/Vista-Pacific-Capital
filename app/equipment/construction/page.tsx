@@ -1,13 +1,14 @@
 // app/construction/page.tsx
-import { constructionMetadata } from '@/app/lib/metadata';
-import { generateEnhancedMetadata } from '@/app/lib/metadata/enhanced-config';
 import { Metadata } from 'next';
+
+import { constructionMetadata } from '@/app/lib/metadata/construction';
+import { generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
 import ConstructionFinancingContent from './construction';
 
-// Generate metadata at the page level (server component)
 export const metadata: Metadata = generateEnhancedMetadata(constructionMetadata);
 
-// Server Component
-export default function ConstructionEquipmentPage() {
+export const viewport = generateEnhancedViewport();
+
+export default function ConstructionFinancingPage() {
   return <ConstructionFinancingContent />;
 }

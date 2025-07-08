@@ -125,7 +125,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link, isActive, onClick }) => {
       href={link.path}
       onClick={onClick}
       className={`group relative p-2 transition-all duration-300 ${
-        isActive ? 'text-[#5BB5B0]' : 'text-[#1B365D]'
+        isActive ? 'text-sea-green-dark' : 'text-[#1B365D]'
       }`}
       aria-label={`${link.topText} ${link.bottomText}`}
       title={link.description}
@@ -139,7 +139,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link, isActive, onClick }) => {
         </span>
         {/* Modern hover effect */}
         <motion.div
-          className={`absolute bottom-0 left-0 h-0.5 bg-[#5BB5B0] w-0 group-hover:w-full transition-all duration-300 ${
+          className={`absolute bottom-0 left-0 h-0.5 bg-sea-green-dark w-0 group-hover:w-full transition-all duration-300 ${
             isActive ? 'w-full' : ''
           }`}
         />
@@ -218,7 +218,7 @@ const AppNavBar: React.FC = () => {
                     e.stopPropagation();
                     setIsMobileMenuOpen(!isMobileMenuOpen);
                   }}
-                  className="p-2 text-[#1B365D] hover:text-[#5BB5B0] transition-colors focus:outline-none"
+                  className="p-2 text-[#1B365D] hover:text-sea-green-dark transition-colors focus:outline-none"
                   aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isMobileMenuOpen}
                 >

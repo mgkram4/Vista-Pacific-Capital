@@ -268,15 +268,12 @@ export default function VendorPrograms() {
               <div className="relative h-56">
                 <Image
                   src={benefit.image}
-                  alt={`${benefit.title} benefit`}
+                  alt={benefit.title}
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className="absolute inset-0 bg-[#1B365D] bg-opacity-60 flex items-center justify-center">
-                  <benefit.icon className="text-6xl text-white" />
-                </div>
               </div>
-              <div className="p-6">
+              <div className="p-8">
                 <h3 className="text-2xl font-bold text-[#1B365D] mb-3">{benefit.title}</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">{benefit.description}</p>
               </div>
