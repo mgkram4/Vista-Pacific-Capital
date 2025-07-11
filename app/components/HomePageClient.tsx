@@ -53,7 +53,7 @@ const services: Service[] = [
     features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
     icon: Factory,
     href: "/equipment/construction",
-    imageSrc: "/Images/services/material-handling.jpg"
+    imageSrc: "/Images/services/material-handling-new.jpg"
   },
   {
     title: "Construction Equipment Financing",
@@ -61,7 +61,7 @@ const services: Service[] = [
     features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction",
-    imageSrc: "/Images/services/construction.jpg"
+    imageSrc: "/Images/services/construction-new.jpg"
   },
   {
     title: "Medical Equipment Financing",
@@ -69,7 +69,7 @@ const services: Service[] = [
     features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
     icon: Stethoscope,
     href: "/equipment/medical",
-    imageSrc: "/Images/services/medical.jpg"
+    imageSrc: "/Images/services/medical-new.jpg"
   },
   {
     title: "Manufacturing Equipment Financing",
@@ -77,7 +77,7 @@ const services: Service[] = [
     features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "/Images/services/manufacturing.jpg"
+    imageSrc: "/Images/services/manufacturing-new.jpg"
   },
   {
     title: "Restaurant Equipment Financing",
@@ -85,7 +85,7 @@ const services: Service[] = [
     features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant",
-    imageSrc: "/Images/services/restaurant.jpg"
+    imageSrc: "/Images/services/restaurant-new.jpg"
   },
   {
     title: "Transportation Financing Programs",
@@ -93,7 +93,7 @@ const services: Service[] = [
     features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
     icon: Truck,
     href: "/equipment/dump-truck",
-    imageSrc: "/Images/services/transportation.jpg"
+    imageSrc: "/Images/services/transportation-new.jpg"
   }
 ];
 

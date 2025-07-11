@@ -175,8 +175,9 @@ export default function RestaurantFinancingContent() {
                   <Image
                     src={type.image}
                     alt={type.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"

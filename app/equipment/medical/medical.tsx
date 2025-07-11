@@ -7,8 +7,8 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaHeartbeat, FaHospital, FaMedkit,
-    FaMicroscope, FaProcedures, FaStethoscope, FaUserMd
+  FaHeartbeat, FaHospital, FaMedkit,
+  FaMicroscope, FaProcedures, FaStethoscope, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -19,25 +19,25 @@ const equipmentTypes = [
     title: 'Diagnostic Imaging',
     description: medicalMetadata.equipment[0].types.join(', ') + ' and more.',
     icon: FaMedkit,
-    image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907'
+    image: '/Images/medical-equipment/diagnostic-imaging.jpg'
   },
   {
     title: 'Surgical Equipment',
     description: medicalMetadata.equipment[1].types.join(', ') + ' and more.',
     icon: FaProcedures,
-    image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f'
+    image: '/Images/medical-equipment/surgical-equipment.jpg'
   },
   {
     title: 'Patient Care Equipment',
     description: 'Advanced monitoring systems and patient care devices.',
     icon: FaUserMd,
-    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde'
+    image: '/Images/medical-equipment/patient-care.jpg'
   },
   {
     title: 'Laboratory Equipment',
     description: 'Cutting-edge lab and research equipment.',
     icon: FaMicroscope,
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd'
+    image: '/Images/medical-equipment/laboratory-equipment.jpg'
   }
 ];
 
@@ -170,8 +170,9 @@ export default function MedicalFinancingContent() {
                   <Image
                     src={type.image}
                     alt={type.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"

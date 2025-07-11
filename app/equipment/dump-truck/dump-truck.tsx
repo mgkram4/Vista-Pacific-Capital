@@ -73,13 +73,7 @@ export default function DumpTruckFinancingContent() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <link
-          rel="preload"
-          href="/Images/dumpTruckH.png"
-          as="image"
-          type="image/png"
-          fetchPriority="high"
-        />
+
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -190,8 +184,9 @@ export default function DumpTruckFinancingContent() {
                   <Image
                     src={type.image}
                     alt={type.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"

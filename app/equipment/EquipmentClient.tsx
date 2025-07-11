@@ -12,42 +12,42 @@ const equipmentCategories = [
     description: 'Heavy machinery and tools for building and infrastructure',
     icon: Hammer,
     href: '/equipment/construction',
-    image: '/Images/constructionH.png',
+    image: '/Images/services/construction-new.jpg',
   },
   {
     title: 'Medical Equipment',
     description: 'Advanced healthcare devices and hospital furnishings',
     icon: Microscope,
     href: '/equipment/medical',
-    image: '/Images/medH.png',
+    image: '/Images/services/medical-new.jpg',
   },
   {
     title: 'Restaurant Equipment',
     description: 'Commercial kitchen appliances and dining furniture',
     icon: UtensilsCrossed,
     href: '/equipment/restaurant',
-    image: '/Images/restH.png',
+    image: '/Images/services/restaurant-new.jpg',
   },
   {
     title: 'Manufacturing Equipment',
     description: 'Industrial machinery and production line systems',
     icon: Factory,
     href: '/equipment/cnc-machine',
-    image: '/Images/manufacturing-equipment.jpg', // Assume a local image
+    image: '/Images/services/manufacturing-new.jpg',
   },
   {
     title: 'Transportation Equipment',
     description: 'Commercial vehicles and logistics solutions',
     icon: Truck,
     href: '/equipment/dump-truck',
-    image: '/Images/transportation-equipment.jpg', // Assume a local image
+    image: '/Images/services/transportation-new.jpg',
   },
   {
     title: 'Material Handling',
     description: 'Warehouse racking and handling equipment',
     icon: Warehouse,
     href: '/equipment/racking-material-handling',
-    image: '/Images/material-handling-equipment.jpg', // Assume a local image
+    image: '/Images/services/material-handling-new.jpg',
   },
 ];
 

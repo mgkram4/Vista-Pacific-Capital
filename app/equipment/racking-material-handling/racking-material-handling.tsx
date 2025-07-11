@@ -69,13 +69,7 @@ export default function RackingMaterialHandlingFinancingContent() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <link
-          rel="preload"
-          href="/Images/warehouseH.png"
-          as="image"
-          type="image/png"
-          fetchPriority="high"
-        />
+
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
             src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
@@ -185,8 +179,9 @@ export default function RackingMaterialHandlingFinancingContent() {
                   <Image
                     src={type.image}
                     alt={type.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <motion.div 
                     className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
