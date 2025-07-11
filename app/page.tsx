@@ -104,7 +104,7 @@ const faqSchema = {
 export const metadata: Metadata = {
   title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
   description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months. Apply online for construction, medical, restaurant equipment loans.",
-  keywords: ["equipment financing", "business equipment loans", "quick equipment financing", "construction equipment financing", "medical equipment loans", "restaurant equipment financing", "heavy equipment financing", "commercial truck financing"],
+  keywords: ["equipment financing", "business equipment loans", "quick equipment financing", "construction equipment financing", "medical equipment loans", "restaurant equipment financing", "heavy equipment financing", "commercial truck financing", "material handling financing", "manufacturing equipment loans", "transportation financing"],
   openGraph: {
     title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
     description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months. Apply online for construction, medical, restaurant equipment loans.",
@@ -120,6 +120,12 @@ export const metadata: Metadata = {
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
+    description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months.",
+    images: ['https://vistapacificcapital.com/og-image.jpg'],
   },
 };
 

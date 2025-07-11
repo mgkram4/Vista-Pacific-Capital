@@ -25,6 +25,7 @@ interface Service {
   features: string[];
   icon: LucideIcon;
   href: string;
+  imageSrc: string;
 }
 
 interface Benefit {
@@ -51,42 +52,48 @@ const services: Service[] = [
     description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
     features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
     icon: Factory,
-    href: "/equipment/construction"
+    href: "/equipment/construction",
+    imageSrc: "/Images/services/material-handling.jpg"
   },
   {
     title: "Construction Equipment Financing",
     description: "Comprehensive financing for construction equipment from dealers or private parties.",
     features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
-    href: "/equipment/construction"
+    href: "/equipment/construction",
+    imageSrc: "/Images/services/construction.jpg"
   },
   {
     title: "Medical Equipment Financing",
     description: "Specialized financing for medical practices of all sizes with flexible application limits.",
     features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
     icon: Stethoscope,
-    href: "/equipment/medical"
+    href: "/equipment/medical",
+    imageSrc: "/Images/services/medical.jpg"
   },
   {
     title: "Manufacturing Equipment Financing",
     description: "Comprehensive manufacturing equipment financing with competitive rates and international vendor support.",
     features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
     icon: Cog,
-    href: "/equipment/cnc-machine"
+    href: "/equipment/cnc-machine",
+    imageSrc: "/Images/services/manufacturing.jpg"
   },
   {
     title: "Restaurant Equipment Financing",
     description: "Complete restaurant financing solutions for new locations and equipment upgrades.",
     features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
     icon: UtensilsCrossed,
-    href: "/equipment/restaurant"
+    href: "/equipment/restaurant",
+    imageSrc: "/Images/services/restaurant.jpg"
   },
   {
     title: "Transportation Financing Programs",
     description: "Flexible transportation financing for all types of commercial vehicles and drivers.",
     features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
     icon: Truck,
-    href: "/equipment/dump-truck"
+    href: "/equipment/dump-truck",
+    imageSrc: "/Images/services/transportation.jpg"
   }
 ];
 
@@ -180,12 +187,12 @@ export default function HomePageClient() {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
             <Image 
-              src="https://images.unsplash.com/photo-1438089966501-33bb60deddf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="/Images/hero-background.jpg"
               alt="Business professional reviewing equipment financing options with 24-hour approval"
               fill
               priority
               className="object-cover"
-              quality={100}
+              quality={75}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
           </div>
@@ -331,6 +338,7 @@ export default function HomePageClient() {
                   width={600}
                   height={500}
                   className="rounded-lg shadow-lg"
+                  quality={60}
                 />
               </figure>
             </div>
@@ -368,6 +376,15 @@ export default function HomePageClient() {
                     border border-[#0EB5B2]/20 hover:border-[#0EB5B2]/30
                     shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
                 >
+                  <Image
+                    src={service.imageSrc}
+                    alt={`${service.title} illustration for equipment financing`}
+                    width={300}
+                    height={200}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    loading="lazy"
+                    quality={75}
+                  />
                   <div className="bg-gradient-to-br from-[#0EB5B2]/10 to-[#0D3853]/5 rounded-lg p-3 w-fit
                     group-hover:scale-110 transition-transform duration-500">
                     <service.icon className="h-12 w-12 text-[#0EB5B2]" />
@@ -450,11 +467,11 @@ export default function HomePageClient() {
         <footer className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+              src="/Images/cta-background-signing.jpg"
               alt="Modern office environment for equipment financing consultation"
               fill
               className="object-cover"
-              quality={100}
+              quality={75}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
           </div>

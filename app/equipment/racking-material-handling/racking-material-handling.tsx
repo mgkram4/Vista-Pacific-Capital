@@ -6,12 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BsGearFill } from 'react-icons/bs';
 import {
-  FaCalendarAlt,
-  FaShippingFast,
-  FaStore,
-  FaTools,
-  FaTruck,
-  FaWarehouse
+    FaCalendarAlt,
+    FaShippingFast,
+    FaStore,
+    FaTools,
+    FaTruck,
+    FaWarehouse
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -317,11 +317,11 @@ export default function RackingMaterialHandlingFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+            src="/Images/cta-background-signing.jpg"
             alt="Modern office background"
             fill
             className="object-cover"
-            quality={100}
+            quality={75}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
         </div>

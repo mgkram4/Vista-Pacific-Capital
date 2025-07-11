@@ -443,7 +443,7 @@ const AppNavBar: React.FC = () => {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#1B365D]/90 backdrop-blur-lg shadow-md`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white backdrop-blur-lg shadow-md`}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
@@ -452,7 +452,7 @@ const AppNavBar: React.FC = () => {
               <Link href="/" className="flex items-center space-x-2" aria-label="Vista Pacific Capital home">
                 <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={60} height={60} priority />
                 <div className="text-xl font-bold">
-                  <span className="text-white">Vista Pacific</span>
+                  <span className="text-slate-900">Vista Pacific</span>
                   <span className="text-sea-green-dark"> Capital</span>
                 </div>
               </Link>
@@ -526,12 +526,12 @@ const AppNavBar: React.FC = () => {
                 <NavLink
                   link={contactLink}
                   isActive={pathname === '/contact'}
-                  className={pathname === '/contact' ? 'text-white font-semibold' : 'text-white/70 hover:text-white'}
+                  className={pathname === '/contact' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900'}
                 />
                 <NavLink
                   link={vendorLink}
                   isActive={pathname === '/vendor'}
-                  className={pathname === '/vendor' ? 'text-white font-semibold' : 'text-white/70 hover:text-white'}
+                  className={pathname === '/vendor' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900'}
                 />
                 <NavLink link={quoteLink} isActive={pathname === quoteLink.path} isQuote />
               </div>
@@ -556,9 +556,9 @@ const AppNavBar: React.FC = () => {
                       transition={{ duration: 0.2 }}
                     >
                       {isMobileMenuOpen ? (
-                        <X size={24} className="text-white" />
+                        <X size={24} className="text-slate-900" />
                       ) : (
-                        <Menu size={24} className="text-white" />
+                        <Menu size={24} className="text-slate-900" />
                       )}
                     </motion.div>
                   </AnimatePresence>
@@ -581,7 +581,7 @@ const AppNavBar: React.FC = () => {
             className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden"
           >
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between h-24 px-4 sm:px-6 bg-black/20 backdrop-blur-lg">
+            <div className="flex items-center justify-between h-24 px-4 sm:px-6 bg-white shadow-md">
               <div className="flex-shrink-0">
                 <Link
                   href="/"
@@ -591,7 +591,7 @@ const AppNavBar: React.FC = () => {
                 >
                   <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={60} height={60} priority />
                   <div className="text-xl font-bold">
-                    <span className="text-white">Vista Pacific</span>
+                    <span className="text-slate-900">Vista Pacific</span>
                     <span className="text-sea-green-dark"> Capital</span>
                   </div>
                 </Link>
@@ -601,7 +601,7 @@ const AppNavBar: React.FC = () => {
                 className="p-2 rounded-lg hover:bg-gray-100/20 transition-colors duration-200"
                 aria-label="Close menu"
               >
-                <X size={28} className="text-white" />
+                <X size={28} className="text-slate-900" />
               </button>
             </div>
 

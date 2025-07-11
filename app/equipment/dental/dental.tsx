@@ -321,11 +321,11 @@ export default function DentalFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2lnbiUyMHBhcGVyfGVufDB8fDB8fHww"
+            src="/Images/cta-background-signing.jpg"
             alt="Modern office background"
             fill
             className="object-cover"
-            quality={100}
+            quality={75}
             priority={false}
             loading="lazy"
             sizes="100vw"
