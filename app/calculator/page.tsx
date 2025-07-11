@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import CalculatorClient from './CalculatorClient';
 
 export const metadata: Metadata = {
   title: 'Payment Calculator | Equipment Financing',
@@ -7,6 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CalculatorPage() {
-  const DynamicCalculatorClient = dynamic(() => import('./CalculatorClient.tsx'));
-  return <DynamicCalculatorClient />;
+  return <CalculatorClient />;
 } 

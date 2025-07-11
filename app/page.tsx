@@ -1,5 +1,5 @@
+import HomePageClient from '@/app/components/HomePageClient';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 
 const financialServiceSchema = {
   "@context": "https://schema.org",
@@ -130,7 +130,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const DynamicHomePageClient = dynamic(() => import('@/app/components/HomePageClient'), { ssr: false });
   return (
     <>
       <script
@@ -141,7 +140,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <DynamicHomePageClient />
+      <HomePageClient />
     </>
   );
 }

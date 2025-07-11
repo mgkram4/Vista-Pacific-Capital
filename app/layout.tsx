@@ -39,7 +39,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -74,7 +73,7 @@ export default function RootLayout({
           }) }}
         />
         {/* TODO: Replace with your Facebook Pixel ID */}
-        <Script id="facebook-pixel" strategy="lazyOnload">
+        <Script id="facebook-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -83,13 +82,13 @@ export default function RootLayout({
             n.queue=[];t=b.createElement(e);t.async=!0;
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
-            '/static/fbevents.js');
+            'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', 'REPLACE_WITH_YOUR_PIXEL_ID');
             fbq('track', 'PageView');
           `}
         </Script>
         {/* TODO: Replace with your Google Tag Manager ID */}
-        <Script id="google-tag-manager" strategy="lazyOnload">
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
