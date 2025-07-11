@@ -61,7 +61,7 @@ const services: Service[] = [
     features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction",
-    imageSrc: "/Images/services/construction-new.jpg"
+    imageSrc: "/Images/services/construction.jpg"
   },
   {
     title: "Medical Equipment Financing",
@@ -77,7 +77,7 @@ const services: Service[] = [
     features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "/Images/services/manufacturing-new.jpg"
+    imageSrc: "/Images/services/manufacturing.jpg"
   },
   {
     title: "Restaurant Equipment Financing",
