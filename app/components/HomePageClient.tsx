@@ -52,7 +52,7 @@ const services: Service[] = [
     description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
     features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
     icon: Factory,
-    href: "/equipment/construction",
+    href: "/equipment/racking-material-handling",
     imageSrc: "/Images/services/material-handling-new.jpg"
   },
   {
@@ -129,7 +129,7 @@ const benefits: Benefit[] = [
   },
   {
     title: "Quick Approval Time",
-    description: "Same day approvals for qualified application-only transactions.",
+    description: "Fast approvals for qualified application-only transactions.",
     icon: Clock,
     points: ["2-minute application", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $20 million"]
   },
@@ -144,7 +144,7 @@ const benefits: Benefit[] = [
 const faqs: FAQ[] = [
   {
     q: "How fast can I get approved?",
-    a: "Most applications receive same-day approval. Funding typically occurs within 24-48 hours of document completion."
+    a: "Most applications receive fast approval. Funding typically occurs within 24-48 hours of document completion."
   },
   {
     q: "What credit score do I need?",
@@ -229,7 +229,7 @@ export default function HomePageClient() {
                     {/* Feature Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {[
-                        ["Same-Day Approval", "bg-gradient-to-r from-[#0EB5B2]/20 to-[#0EB5B2]/10 border-[#0EB5B2]/20"],
+                        ["Fast Approval", "bg-gradient-to-r from-[#0EB5B2]/20 to-[#0EB5B2]/10 border-[#0EB5B2]/20"],
                         ["New and Used Equipment", "bg-gradient-to-r from-[#0D3853]/20 to-[#0D3853]/10 border-[#0D3853]/20"],
                         ["Flexible Terms", "bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/10 border-[#0D3853]/20"],
                         ["A through C Credit", "bg-gradient-to-r from-[#FF6B35]/20 to-[#FF6B35]/10 border-[#FF6B35]/20"]

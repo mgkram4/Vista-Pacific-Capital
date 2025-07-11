@@ -106,7 +106,7 @@ export default function PaymentCalculator() {
         {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            ["Same-Day Approval", "bg-cyan-50"],
+            ["Fast Approval", "bg-cyan-50"],
             ["Flexible Terms", "bg-blue-50"],
             ["No Hidden Fees", "bg-blue-50"],
             ["Quick Process", "bg-cyan-50"]

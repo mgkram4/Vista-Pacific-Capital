@@ -41,7 +41,7 @@ const equipmentTypes = [
   },
   {
     title: 'CAD/CAM Systems',
-    description: 'Digital impression systems and milling units for same-day restorations.',
+    description: 'Digital impression systems and milling units for efficient restorations.',
     icon: FaCog,
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d'
   },
