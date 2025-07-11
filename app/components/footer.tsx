@@ -29,9 +29,8 @@ export default function Footer() {
     { name: 'Contact Us', path: '/contact' },
   ];
 
-  return (
 
-    
+  return (
     <footer className="bg-[#0D3853] text-white py-12" role="contentinfo">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Main footer content - Three distinct sections with improved spacing */}

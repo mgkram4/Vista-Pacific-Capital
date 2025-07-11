@@ -1,7 +1,7 @@
 "use client"
 
 import PDFForm from '@/app/pdf-form/page';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   Building2,
   Calculator,
@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef } from 'react';
 
 interface Service {
   title: string;
@@ -180,6 +181,9 @@ const staggerContainer = {
 };
 
 export default function HomePageClient() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <>
       <main className="bg-white">
@@ -192,7 +196,7 @@ export default function HomePageClient() {
               fill
               priority
               className="object-cover"
-              quality={75}
+              quality={60}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
           </div>
@@ -414,9 +418,9 @@ export default function HomePageClient() {
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
         {/* FAQ Section - adjust spacing here */}
-        <section className="py-10 bg-gradient-to-b from-[#F2F2F2] to-white relative overflow-hidden w-full">
+        <section ref={ref} className="py-10 bg-gradient-to-b from-[#F2F2F2] to-white relative overflow-hidden w-full">
           <h2 className="sr-only">Frequently Asked Questions</h2>
-          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5"></div>
+          <div className="absolute inset-0 opacity-5" style={isInView ? {backgroundImage: `url('/images/noise.png')`} : {}}></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               variants={fadeInUp}

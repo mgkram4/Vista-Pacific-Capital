@@ -41,6 +41,7 @@ export default function ServicesClient() {
             fill
             className="object-cover"
             loading="lazy"
+            quality={60}
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
