@@ -17,12 +17,6 @@ export const TEAM_MEMBERS = {
     phone: "(714)500-7017",
     endpoint: "/api/submit-quote"
   },
-  noah: {
-    name: "Noah Miller",
-    email: "noahm@vistapacificcapital.com",
-    phone: "(714)500-7017",
-    endpoint: "/api/submit-quote-noah"
-  }
 };
 
 interface BusinessFormData {
@@ -196,7 +190,7 @@ export default function HomePageApplicationForm({ teamMember = TEAM_MEMBERS.alan
           }, 1500);
         } else {
           // Default behavior - determine which finance page to redirect to based on the team member
-          const redirectPath = teamMember === TEAM_MEMBERS.noah ? '/noah-finance' : '/alan-finance';
+          const redirectPath = '/alan-finance';
           
           setSubmitStatus({
             success: true,

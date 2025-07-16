@@ -36,12 +36,6 @@ const TEAM_MEMBERS = {
     phone: "(714)500-7017",
     endpoint: "/api/submit-quote"
   },
-  noah: {
-    name: "Noah Miller",
-    email: "noahm@vistapacificcapital.com",
-    phone: "(714)500-7017",
-    endpoint: "/api/submit-quote-noah"
-  }
 };
 
 const QuickQuoteForm = ({ 
