@@ -3,6 +3,7 @@
 import { CheckCircle } from 'lucide-react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { useEffect, useState } from 'react';
+import SuccessModal from '../components/SuccessModal';
 import Toast from '../components/Toast'; // Add this import
 
 // Define types for form data
@@ -36,7 +37,6 @@ interface OwnerFormData {
   lastName: string;
   socialSecurityNumber: string;
   ownershipPercentage: string;
-  dateOfBirth: string;
   homeAddress: string;
   homeSuite: string;
   homeCity: string;
@@ -50,7 +50,6 @@ interface AdditionalOwner {
   lastName: string;
   socialSecurityNumber: string;
   ownershipPercentage: string;
-  dateOfBirth: string;
   homeAddress: string;
   homeSuite: string;
   homeCity: string;
@@ -91,8 +90,7 @@ export default function FinanceApplicationPage() {
     firstName: '',
     lastName: '',
     socialSecurityNumber: '',
-    ownershipPercentage: '100',
-    dateOfBirth: '',
+    ownershipPercentage: '',
     homeAddress: '',
     homeSuite: '',
     homeCity: '',
@@ -129,7 +127,6 @@ export default function FinanceApplicationPage() {
           ...prev,
           firstName: parsedOwnerData.firstName || prev.firstName,
           lastName: parsedOwnerData.lastName || prev.lastName,
-          dateOfBirth: parsedOwnerData.dateOfBirth || prev.dateOfBirth,
           ownershipPercentage: parsedOwnerData.ownershipPercentage || prev.ownershipPercentage
         }));
       }
@@ -155,6 +152,7 @@ export default function FinanceApplicationPage() {
 
   // Add this after the state declarations (around line 61)
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Business types dropdown options
   const businessTypes = [
@@ -175,30 +173,12 @@ export default function FinanceApplicationPage() {
     "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
   ];
 
-  // Years in business options
-  const yearsOptions = [
-    "Less than 1 year",
-    "1-2 years",
-    "3-5 years",
-    "6-10 years",
-    "More than 10 years"
-  ];
-
-  // Annual revenue options
-  const revenueOptions = [
-    "Less than $100,000",
-    "$100,000 - $500,000",
-    "$500,001 - $1 million",
-    "$1 million - $5 million",
-    "More than $5 million"
-  ];
-
   // Validate business form
   const validateBusinessForm = (): boolean => {
     const errors: FormError[] = [];
 
     if (!businessData.amountNeeded) {
-      errors.push({ field: 'amountNeeded', message: 'Amount needed is required' });
+      errors.push({ field: 'amountNeeded', message: 'Requested amount is required' });
     }
 
     if (!businessData.email) {
@@ -252,9 +232,7 @@ export default function FinanceApplicationPage() {
       errors.push({ field: 'yearsInBusiness', message: 'Years in business is required' });
     }
 
-    if (!businessData.annualRevenue) {
-      errors.push({ field: 'annualRevenue', message: 'Annual revenue is required' });
-    }
+    // Annual revenue is now optional - removed validation
 
     setBusinessErrors(errors);
     setBusinessComplete(errors.length === 0);
@@ -273,27 +251,9 @@ export default function FinanceApplicationPage() {
       errors.push({ field: 'lastName', message: 'Last name is required' });
     }
 
-    if (!ownerData.socialSecurityNumber) {
-      errors.push({ field: 'socialSecurityNumber', message: 'Social Security Number is required' });
-    } else {
-      const ssnRegex = /^\d{3}-?\d{2}-?\d{4}$/;
-      if (!ssnRegex.test(ownerData.socialSecurityNumber)) {
-        errors.push({ field: 'socialSecurityNumber', message: 'Please enter a valid SSN' });
-      }
-    }
+    // SSN is now optional - removed validation
 
-    if (!ownerData.ownershipPercentage) {
-      errors.push({ field: 'ownershipPercentage', message: 'Ownership percentage is required' });
-    } else {
-      const percentage = parseInt(ownerData.ownershipPercentage);
-      if (isNaN(percentage) || percentage <= 0 || percentage > 100) {
-        errors.push({ field: 'ownershipPercentage', message: 'Please enter a valid percentage (1-100)' });
-      }
-    }
-
-    if (!ownerData.dateOfBirth) {
-      errors.push({ field: 'dateOfBirth', message: 'Date of birth is required' });
-    }
+    // Ownership percentage is now optional - removed validation
 
     if (!ownerData.homeAddress) {
       errors.push({ field: 'homeAddress', message: 'Home address is required' });
@@ -341,14 +301,7 @@ export default function FinanceApplicationPage() {
         errors.push({ field: `additionalOwner${index}_lastName`, message: `Additional owner ${index + 1}: Last name is required` });
       }
       
-      if (!owner.socialSecurityNumber) {
-        errors.push({ field: `additionalOwner${index}_ssn`, message: `Additional owner ${index + 1}: SSN is required` });
-      } else {
-        const ssnRegex = /^\d{3}-?\d{2}-?\d{4}$/;
-        if (!ssnRegex.test(owner.socialSecurityNumber)) {
-          errors.push({ field: `additionalOwner${index}_ssn`, message: `Additional owner ${index + 1}: Please enter a valid SSN` });
-        }
-      }
+      // SSN is now optional for additional owners too
       
       // Add more validations as needed for additional owners
     });
@@ -415,38 +368,12 @@ export default function FinanceApplicationPage() {
     });
   };
 
-  // Handle ownership percentage change
+  // Handle ownership percentage change - NO AUTO GUARANTOR CREATION
   const handleOwnershipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || (/^\d+$/.test(value) && parseInt(value) >= 0 && parseInt(value) <= 100)) {
       setOwnerData({ ...ownerData, ownershipPercentage: value });
-      
-      // Add additional owner field if percentage is less than 100
-      if (value !== '' && parseInt(value) < 100 && additionalOwners.length === 0) {
-        setAdditionalOwners([{
-          firstName: '',
-          lastName: '',
-          socialSecurityNumber: '',
-          ownershipPercentage: (100 - parseInt(value)).toString(),
-          dateOfBirth: '',
-          homeAddress: '',
-          homeSuite: '',
-          homeCity: '',
-          homeState: '',
-          homeZip: ''
-        }]);
-      } else if (value === '100' && additionalOwners.length === 1 && additionalOwners[0].ownershipPercentage !== '0') {
-        // Only remove the first additional owner if it's based on ownership percentage
-        setAdditionalOwners([]);
-      } else if (additionalOwners.length > 0 && value !== '') {
-        // Update the first additional owner's ownership percentage
-        const updatedOwners = [...additionalOwners];
-        updatedOwners[0] = { 
-          ...updatedOwners[0], 
-          ownershipPercentage: (100 - parseInt(value)).toString() 
-        };
-        setAdditionalOwners(updatedOwners);
-      }
+      // Removed automatic guarantor creation
     }
   };
 
@@ -529,7 +456,7 @@ export default function FinanceApplicationPage() {
     
     // Business Information Fields - Updated to include federalTaxId
     const businessFields = [
-      { label: 'Amount Needed ', value: `$${businessData.amountNeeded}` },
+      { label: 'Requested Amount', value: `$${businessData.amountNeeded}` },
       { label: 'Equipment Description', value: businessData.equipmentDescription || 'N/A' },
       { label: 'Business Name', value: businessData.businessName },
       { label: 'Business Type', value: businessData.businessType },
@@ -537,8 +464,8 @@ export default function FinanceApplicationPage() {
       { label: 'Email', value: businessData.email },
       { label: 'Federal Tax ID', value: businessData.federalTaxId || 'N/A' },
       { label: 'Business Address', value: `${businessData.businessAddress}, ${businessData.businessSuite ? 'Suite ' + businessData.businessSuite + ', ' : ''}${businessData.city}, ${businessData.state} ${businessData.zip}` },
-      { label: 'Years in Business', value: businessData.yearsInBusiness },
-      { label: 'Annual Revenue', value: businessData.annualRevenue },
+      { label: 'Years in Business (estimated)', value: businessData.yearsInBusiness },
+      { label: 'Annual Revenue', value: businessData.annualRevenue || 'N/A' },
     ];
     
     businessFields.forEach((field, index) => {
@@ -571,9 +498,8 @@ export default function FinanceApplicationPage() {
     // Owner Information Fields
     const ownerFields = [
       { label: 'Name', value: `${ownerData.firstName} ${ownerData.lastName}` },
-      { label: 'Social Security Number', value: ownerData.socialSecurityNumber },
-      { label: 'Ownership Percentage', value: `${ownerData.ownershipPercentage}%` },
-      { label: 'Date of Birth', value: ownerData.dateOfBirth },
+      { label: 'Social Security Number', value: ownerData.socialSecurityNumber || 'N/A' },
+      { label: 'Ownership Percentage', value: ownerData.ownershipPercentage ? `${ownerData.ownershipPercentage}%` : 'N/A' },
       { label: 'Home Address', value: `${ownerData.homeAddress}, ${ownerData.homeSuite ? 'Suite ' + ownerData.homeSuite + ', ' : ''}${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}` },
     ];
     
@@ -627,9 +553,8 @@ export default function FinanceApplicationPage() {
         
         const additionalOwnerFields = [
           { label: 'Name', value: `${owner.firstName} ${owner.lastName}` },
-          { label: 'Social Security Number', value: owner.socialSecurityNumber },
-          { label: 'Ownership Percentage', value: `${owner.ownershipPercentage}%` },
-          { label: 'Date of Birth', value: owner.dateOfBirth },
+          { label: 'Social Security Number', value: owner.socialSecurityNumber || 'N/A' },
+          { label: 'Ownership Percentage', value: owner.ownershipPercentage ? `${owner.ownershipPercentage}%` : 'N/A' },
           { label: 'Home Address', value: `${owner.homeAddress}, ${owner.homeSuite ? 'Suite ' + owner.homeSuite + ', ' : ''}${owner.homeCity}, ${owner.homeState} ${owner.homeZip}` },
         ];
         
@@ -659,16 +584,90 @@ export default function FinanceApplicationPage() {
         }
       });
     }
-    
-    // Add footer
+
+    // Add legal verbiage to PDF
     const lastPage = pdfDoc.getPages()[pdfDoc.getPageCount() - 1];
-    lastPage.drawText('Thank you for your application.', {
-      x: 50,
-      y: 50,
-      size: 10,
-      font: boldFont,
-      color: rgb(0.3, 0.3, 0.3),
-    });
+    let legalY = 150; // Starting position for legal text
+    
+    // Check if we need a new page for legal text
+    if (legalY < 200) {
+      const newPage = pdfDoc.addPage();
+      legalY = height - 100;
+      
+      newPage.drawText('Legal Notice', {
+        x: 50,
+        y: legalY,
+        size: 14,
+        font: boldFont,
+        color: rgb(0, 0, 0),
+      });
+      legalY -= 30;
+      
+      const legalText = [
+        "I understand that by checking the I AGREE box, I am providing 'written instructions' to Vista Pacific Capital under",
+        "the Fair Credit Reporting Act authorizing Vista Pacific Capital to obtain such information from my personal credit",
+        "profile or other information from credit bureaus. I authorize Vista Pacific Capital to obtain such information solely",
+        "to prequalify me for equipment financing/leases or small business finance/working capital, and I acknowledge that",
+        "I am the business owner and I am personally liable for the business.",
+        "",
+        "By submitting this form, you agree to receive occasional emails and reoccurring automated text messages from",
+        "Vista Pacific Capital regarding your application. You acknowledge you have read and agree the Terms of Service",
+        "and Privacy Policy. You can opt-out at any time by sending STOP. Send HELP for more information. Message",
+        "frequency may vary. Msg & Data rates may apply.",
+        "",
+        "Notice: The Federal Equal Credit Opportunity Act prohibits creditors from discriminating against credit applicants",
+        "on the basis of race, color, religion, national origin, sex, marital status, age (provided the applicant has the capacity",
+        "to enter into a binding contract); because all or part of the applicant's income derives from any public assistance",
+        "program; or because the applicant has in good faith exercised any right under the Consumer Credit Protection Act."
+      ];
+      
+      legalText.forEach((line, index) => {
+        newPage.drawText(line, {
+          x: 50,
+          y: legalY - (index * 14),
+          size: 8,
+          font,
+          color: rgb(0, 0, 0),
+        });
+      });
+    } else {
+      lastPage.drawText('Legal Notice', {
+        x: 50,
+        y: legalY,
+        size: 14,
+        font: boldFont,
+        color: rgb(0, 0, 0),
+      });
+      legalY -= 30;
+      
+      const legalText = [
+        "I understand that by checking the I AGREE box, I am providing 'written instructions' to Vista Pacific Capital under",
+        "the Fair Credit Reporting Act authorizing Vista Pacific Capital to obtain such information from my personal credit",
+        "profile or other information from credit bureaus. I authorize Vista Pacific Capital to obtain such information solely",
+        "to prequalify me for equipment financing/leases or small business finance/working capital, and I acknowledge that",
+        "I am the business owner and I am personally liable for the business.",
+        "",
+        "By submitting this form, you agree to receive occasional emails and reoccurring automated text messages from",
+        "Vista Pacific Capital regarding your application. You acknowledge you have read and agree the Terms of Service",
+        "and Privacy Policy. You can opt-out at any time by sending STOP. Send HELP for more information. Message",
+        "frequency may vary. Msg & Data rates may apply.",
+        "",
+        "Notice: The Federal Equal Credit Opportunity Act prohibits creditors from discriminating against credit applicants",
+        "on the basis of race, color, religion, national origin, sex, marital status, age (provided the applicant has the capacity",
+        "to enter into a binding contract); because all or part of the applicant's income derives from any public assistance",
+        "program; or because the applicant has in good faith exercised any right under the Consumer Credit Protection Act."
+      ];
+      
+      legalText.forEach((line, index) => {
+        lastPage.drawText(line, {
+          x: 50,
+          y: legalY - (index * 14),
+          size: 8,
+          font,
+          color: rgb(0, 0, 0),
+        });
+      });
+    }
     
     const pdfBytes = await pdfDoc.save();
     return pdfBytes;
@@ -716,7 +715,7 @@ export default function FinanceApplicationPage() {
           ownershipPercentage: ownerData.ownershipPercentage ? 
             ownerData.ownershipPercentage.endsWith('%') ? 
               ownerData.ownershipPercentage : 
-              `${ownerData.ownershipPercentage}%` : '',
+              `${ownerData.ownershipPercentage}%` : 'N/A',
         },
         additionalOwners: additionalOwners.map(owner => ({
           ...owner,
@@ -726,7 +725,7 @@ export default function FinanceApplicationPage() {
           ownershipPercentage: owner.ownershipPercentage ? 
             owner.ownershipPercentage.endsWith('%') ? 
               owner.ownershipPercentage : 
-              `${owner.ownershipPercentage}%` : '',
+              `${owner.ownershipPercentage}%` : 'N/A',
         })),
         pdfAttachment: pdfBase64,
         // Include agent information in the submission if available
@@ -753,13 +752,8 @@ export default function FinanceApplicationPage() {
       const data = await response.json();
 
       if (data.success) {
-        setSubmitStatus({
-          success: true,
-          message: 'Thank you! Your finance application has been submitted successfully. A copy has been sent to your email.',
-        });
-        
-        // Show success toast
-        setShowSuccessToast(true);
+        // Show success modal instead of toast
+        setShowSuccessModal(true);
         
         // Reset form
         setCurrentStep(1);
@@ -783,8 +777,7 @@ export default function FinanceApplicationPage() {
           firstName: '',
           lastName: '',
           socialSecurityNumber: '',
-          ownershipPercentage: '100',
-          dateOfBirth: '',
+          ownershipPercentage: '',
           homeAddress: '',
           homeSuite: '',
           homeCity: '',
@@ -846,7 +839,6 @@ export default function FinanceApplicationPage() {
         lastName: '',
         socialSecurityNumber: '',
         ownershipPercentage: '',
-        dateOfBirth: '',
         homeAddress: '',
         homeSuite: '',
         homeCity: '',
@@ -872,7 +864,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-1">
                 <label htmlFor="amountNeeded" className={labelClasses}>
-                  Amount Needed <span className="text-red-500">*</span>
+                  Requested Amount <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="amountNeeded"
@@ -1151,31 +1143,21 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="yearsInBusiness" className={labelClasses}>
-                  Years in Business <span className="text-red-500">*</span>
+                  Years in Business (estimated) <span className="text-red-500">*</span>
                 </label>
-                <div className="relative">
-                  <select
-                    id="yearsInBusiness"
-                    value={businessData.yearsInBusiness}
-                    onChange={(e) => setBusinessData({...businessData, yearsInBusiness: e.target.value})}
-                    onFocus={() => setFocused('yearsInBusiness')}
-                    onBlur={() => setFocused('')}
-                    className={`${selectClasses} ${focused === 'yearsInBusiness' ? 'ring-2 ring-green-500' : ''} ${
-                      businessErrors.some(error => error.field === 'yearsInBusiness') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  >
-                    <option value="">Select Years</option>
-                    {yearsOptions.map((option) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </div>
-                </div>
+                <input
+                  id="yearsInBusiness"
+                  type="text"
+                  value={businessData.yearsInBusiness}
+                  onChange={(e) => setBusinessData({...businessData, yearsInBusiness: e.target.value})}
+                  onFocus={() => setFocused('yearsInBusiness')}
+                  onBlur={() => setFocused('')}
+                  placeholder="e.g., 5 years"
+                  className={`${inputClasses} ${focused === 'yearsInBusiness' ? 'ring-2 ring-green-500' : ''} ${
+                    businessErrors.some(error => error.field === 'yearsInBusiness') ? 'border-red-500' : ''
+                  }`}
+                  required
+                />
                 {businessErrors.some(error => error.field === 'yearsInBusiness') && (
                   <p className="text-red-500 text-xs mt-1">
                     {businessErrors.find(error => error.field === 'yearsInBusiness')?.message}
@@ -1185,42 +1167,24 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="annualRevenue" className={labelClasses}>
-                  Annual Revenue <span className="text-red-500">*</span>
+                  Annual Revenue
                 </label>
-                <div className="relative">
-                  <select
-                    id="annualRevenue"
-                    value={businessData.annualRevenue}
-                    onChange={(e) => setBusinessData({...businessData, annualRevenue: e.target.value})}
-                    onFocus={() => setFocused('annualRevenue')}
-                    onBlur={() => setFocused('')}
-                    className={`${selectClasses} ${focused === 'annualRevenue' ? 'ring-2 ring-green-500' : ''} ${
-                      businessErrors.some(error => error.field === 'annualRevenue') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  >
-                    <option value="">Select Revenue</option>
-                    {revenueOptions.map((option) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </div>
-                </div>
-                {businessErrors.some(error => error.field === 'annualRevenue') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {businessErrors.find(error => error.field === 'annualRevenue')?.message}
-                  </p>
-                )}
+                <input
+                  id="annualRevenue"
+                  type="text"
+                  value={businessData.annualRevenue}
+                  onChange={(e) => setBusinessData({...businessData, annualRevenue: e.target.value})}
+                  onFocus={() => setFocused('annualRevenue')}
+                  onBlur={() => setFocused('')}
+                  placeholder="e.g., $500,000"
+                  className={`${inputClasses} ${focused === 'annualRevenue' ? 'ring-2 ring-green-500' : ''}`}
+                />
               </div>
             </div>
 
             <div>
               <label htmlFor="equipmentDescription" className={labelClasses}>
-                Equipment Description <span className="text-red-500">*</span>
+                Equipment Description
               </label>
               <textarea
                 id="equipmentDescription"
@@ -1230,92 +1194,7 @@ export default function FinanceApplicationPage() {
                 onBlur={() => setFocused('')}
                 placeholder="e.g., 2022 Freightliner Cascadia"
                 className={`${inputClasses} ${focused === 'equipmentDescription' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
-                required
               />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label htmlFor="city" className={labelClasses}>
-                  City <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="city"
-                  type="text"
-                  value={businessData.city}
-                  onChange={(e) => setBusinessData({...businessData, city: e.target.value})}
-                  onFocus={() => setFocused('city')}
-                  onBlur={() => setFocused('')}
-                  placeholder="City"
-                  className={`${inputClasses} ${focused === 'city' ? 'ring-2 ring-green-500' : ''} ${
-                    businessErrors.some(error => error.field === 'city') ? 'border-red-500' : ''
-                  }`}
-                  required
-                />
-                {businessErrors.some(error => error.field === 'city') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {businessErrors.find(error => error.field === 'city')?.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="state" className={labelClasses}>
-                  State <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <select
-                    id="state"
-                    value={businessData.state}
-                    onChange={(e) => setBusinessData({...businessData, state: e.target.value})}
-                    onFocus={() => setFocused('state')}
-                    onBlur={() => setFocused('')}
-                    className={`${selectClasses} ${focused === 'state' ? 'ring-2 ring-green-500' : ''} ${
-                      businessErrors.some(error => error.field === 'state') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  >
-                    <option value="">Select State</option>
-                    {states.map((state) => (
-                      <option key={state} value={state}>{state}</option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </div>
-                </div>
-                {businessErrors.some(error => error.field === 'state') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {businessErrors.find(error => error.field === 'state')?.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="zip" className={labelClasses}>
-                  ZIP Code <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="zip"
-                  type="text"
-                  value={businessData.zip}
-                  onChange={(e) => setBusinessData({...businessData, zip: e.target.value})}
-                  onFocus={() => setFocused('zip')}
-                  onBlur={() => setFocused('')}
-                  placeholder="12345"
-                  className={`${inputClasses} ${focused === 'zip' ? 'ring-2 ring-green-500' : ''} ${
-                    businessErrors.some(error => error.field === 'zip') ? 'border-red-500' : ''
-                  }`}
-                  required
-                />
-                {businessErrors.some(error => error.field === 'zip') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {businessErrors.find(error => error.field === 'zip')?.message}
-                  </p>
-                )}
-              </div>
             </div>
           </div>
         );
@@ -1378,7 +1257,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="socialSecurityNumber" className={labelClasses}>
-                  Social Security # <span className="text-red-500">*</span>
+                  Social Security #
                 </label>
                 <input
                   id="socialSecurityNumber"
@@ -1388,21 +1267,13 @@ export default function FinanceApplicationPage() {
                   onFocus={() => setFocused('socialSecurityNumber')}
                   onBlur={() => setFocused('')}
                   placeholder="123-45-6789"
-                  className={`${inputClasses} ${focused === 'socialSecurityNumber' ? 'ring-2 ring-green-500' : ''} ${
-                    ownerErrors.some(error => error.field === 'socialSecurityNumber') ? 'border-red-500' : ''
-                  }`}
-                  required
+                  className={`${inputClasses} ${focused === 'socialSecurityNumber' ? 'ring-2 ring-green-500' : ''}`}
                 />
-                {ownerErrors.some(error => error.field === 'socialSecurityNumber') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {ownerErrors.find(error => error.field === 'socialSecurityNumber')?.message}
-                  </p>
-                )}
               </div>
 
               <div>
                 <label htmlFor="ownershipPercentage" className={labelClasses}>
-                  Ownership % <span className="text-red-500">*</span>
+                  Ownership %
                 </label>
                 <input
                   id="ownershipPercentage"
@@ -1412,42 +1283,8 @@ export default function FinanceApplicationPage() {
                   onFocus={() => setFocused('ownershipPercentage')}
                   onBlur={() => setFocused('')}
                   placeholder="100"
-                  className={`${inputClasses} ${focused === 'ownershipPercentage' ? 'ring-2 ring-green-500' : ''} ${
-                    ownerErrors.some(error => error.field === 'ownershipPercentage') ? 'border-red-500' : ''
-                  }`}
-                  required
+                  className={`${inputClasses} ${focused === 'ownershipPercentage' ? 'ring-2 ring-green-500' : ''}`}
                 />
-                {ownerErrors.some(error => error.field === 'ownershipPercentage') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {ownerErrors.find(error => error.field === 'ownershipPercentage')?.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Add Date of Birth field - THIS WAS MISSING */}
-            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-              <div>
-                <label htmlFor="dateOfBirth" className={labelClasses}>
-                  Date of Birth <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="dateOfBirth"
-                  type="text"
-                  value={ownerData.dateOfBirth}
-                  onChange={(e) => setOwnerData({...ownerData, dateOfBirth: e.target.value})}
-                  onFocus={() => setFocused('dateOfBirth')}
-                  onBlur={() => setFocused('')}
-                  className={`${inputClasses} ${focused === 'dateOfBirth' ? 'ring-2 ring-green-500' : ''} ${
-                    ownerErrors.some(error => error.field === 'dateOfBirth') ? 'border-red-500' : ''
-                  }`}
-                  required
-                />
-                {ownerErrors.some(error => error.field === 'dateOfBirth') && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {ownerErrors.find(error => error.field === 'dateOfBirth')?.message}
-                  </p>
-                )}
               </div>
             </div>
 
@@ -1577,7 +1414,7 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            {/* Additional Owners (shown if primary owner has less than 100% ownership) */}
+            {/* Additional Owners (manually added only) */}
             {additionalOwners.length > 0 && (
               <div className="mt-8">
                 <h3 className="text-lg font-semibold mb-4">Additional Guarantors</h3>
@@ -1586,9 +1423,7 @@ export default function FinanceApplicationPage() {
                   <div key={index} className="mb-10 pb-8 border-b border-gray-200">
                     <div className="flex justify-between items-center mb-4">
                       <h4 className="text-md font-medium">
-                        {owner.ownershipPercentage === '0' 
-                          ? `Guarantor #${index + 1}`
-                          : `Additional Owner #${index + 1} (${owner.ownershipPercentage}%)`}
+                        Guarantor #{index + 1}
                       </h4>
                       <button
                         type="button"
@@ -1640,7 +1475,7 @@ export default function FinanceApplicationPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className={labelClasses}>
-                          Social Security Number <span className="text-red-500">*</span>
+                          Social Security Number
                         </label>
                         <input
                           type="text"
@@ -1648,13 +1483,12 @@ export default function FinanceApplicationPage() {
                           onChange={(e) => handleSSNChange(e, 'additional', index)}
                           placeholder="123-45-6789"
                           className={inputClasses}
-                          required
                         />
                       </div>
 
                       <div>
                         <label className={labelClasses}>
-                          % Ownership <span className="text-red-500">*</span>
+                          % Ownership
                         </label>
                         <input
                           type="text"
@@ -1670,23 +1504,6 @@ export default function FinanceApplicationPage() {
                           className={inputClasses}
                         />
                       </div>
-                    </div>
-
-                    <div>
-                      <label className={labelClasses}>
-                        Date of Birth <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="date"
-                        value={owner.dateOfBirth}
-                        onChange={(e) => {
-                          const updatedOwners = [...additionalOwners];
-                          updatedOwners[index] = { ...updatedOwners[index], dateOfBirth: e.target.value };
-                          setAdditionalOwners(updatedOwners);
-                        }}
-                        className={inputClasses}
-                        required
-                      />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -1821,8 +1638,8 @@ export default function FinanceApplicationPage() {
               
               <div className="grid grid-cols-1 gap-y-2">
                 <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Amount Needed:</span>
-                  <span className="text-[#0D3853]">{businessData.amountNeeded}</span>
+                  <span className="font-medium w-40 text-[#0D3853] mr-2">Requested Amount:</span>
+                  <span className="text-[#0D3853]">${businessData.amountNeeded}</span>
                 </div>
                 {businessData.equipmentDescription && (
                   <div className="flex">
@@ -1857,10 +1674,12 @@ export default function FinanceApplicationPage() {
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Years in Business:</span>
                   <span className="text-[#0D3853]">{businessData.yearsInBusiness}</span>
                 </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Annual Revenue:</span>
-                  <span className="text-[#0D3853]">{businessData.annualRevenue}</span>
-                </div>
+                {businessData.annualRevenue && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Annual Revenue:</span>
+                    <span className="text-[#0D3853]">{businessData.annualRevenue}</span>
+                  </div>
+                )}
                 <div className="flex">
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Business Address:</span>
                   <span className="text-[#0D3853]">
@@ -1881,19 +1700,18 @@ export default function FinanceApplicationPage() {
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
                   <span className="text-[#0D3853]">{ownerData.firstName} {ownerData.lastName}</span>
                 </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
-                  <span className="text-[#0D3853]">{ownerData.socialSecurityNumber}</span>
-                </div>
-                {/* Removed Federal Tax ID from here as it's now in the business section */}
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
-                  <span className="text-[#0D3853]">{ownerData.ownershipPercentage}%</span>
-                </div>
-                <div className="flex">
-                  <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
-                  <span className="text-[#0D3853]">{ownerData.dateOfBirth}</span>
-                </div>
+                {ownerData.socialSecurityNumber && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
+                    <span className="text-[#0D3853]">{ownerData.socialSecurityNumber}</span>
+                  </div>
+                )}
+                {ownerData.ownershipPercentage && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
+                    <span className="text-[#0D3853]">{ownerData.ownershipPercentage}%</span>
+                  </div>
+                )}
                 <div className="flex">
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
                   <span className="text-[#0D3853]">
@@ -1909,9 +1727,7 @@ export default function FinanceApplicationPage() {
             {additionalOwners.length > 0 && additionalOwners.map((owner, index) => (
               <div key={index} className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
                 <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">
-                  {owner.ownershipPercentage !== '0' 
-                    ? `Additional Owner ${index + 1} (${owner.ownershipPercentage}%)` 
-                    : `Additional Guarantor ${index + 1}`}
+                  Additional Guarantor {index + 1}
                 </h3>
                 
                 <div className="grid grid-cols-1 gap-y-2">
@@ -1919,18 +1735,18 @@ export default function FinanceApplicationPage() {
                     <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
                     <span className="text-[#0D3853]">{owner.firstName} {owner.lastName}</span>
                   </div>
-                  <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
-                    <span className="text-[#0D3853]">{owner.socialSecurityNumber}</span>
-                  </div>
-                  <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
-                    <span className="text-[#0D3853]">{owner.ownershipPercentage}%</span>
-                  </div>
-                  <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Date of Birth:</span>
-                    <span className="text-[#0D3853]">{owner.dateOfBirth}</span>
-                  </div>
+                  {owner.socialSecurityNumber && (
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
+                      <span className="text-[#0D3853]">{owner.socialSecurityNumber}</span>
+                    </div>
+                  )}
+                  {owner.ownershipPercentage && (
+                    <div className="flex">
+                      <span className="font-medium w-40 text-[#0D3853] mr-2">Ownership:</span>
+                      <span className="text-[#0D3853]">{owner.ownershipPercentage}%</span>
+                    </div>
+                  )}
                   <div className="flex">
                     <span className="font-medium w-40 text-[#0D3853] mr-2">Home Address:</span>
                     <span className="text-[#0D3853]">
@@ -1994,7 +1810,13 @@ export default function FinanceApplicationPage() {
 
   return (
     <div className="max-w-2xl mx-auto py-4 px-4">
-      {/* Add the Toast component here */}
+      {/* Success Modal */}
+      <SuccessModal
+        isVisible={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
+      
+      {/* Toast still available for other messages */}
       {showSuccessToast && (
         <Toast
           message="Your application was submitted successfully!"
