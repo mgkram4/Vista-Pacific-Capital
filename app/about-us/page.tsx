@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaAward, FaBuilding, FaEnvelope, FaPhone, FaQuoteLeft, FaUser } from 'react-icons/fa';
+import { FaAward, FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -60,13 +60,13 @@ export default function AboutUsPage() {
       >
         <div className="absolute inset-0">
           <Image
-            src="/Images/hero-background.jpg"
+            src="/Images/gen-ai/bg-wave-7.png"
             alt="Vista Pacific Capital office"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         <div className="relative w-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
@@ -152,9 +152,9 @@ export default function AboutUsPage() {
                 variants={fadeInUp}
                 className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30"
               >
-                <div className="relative h-56">
+                <div className="relative h-96">
                   {member.image ? (
-                    <Image src={member.image} alt={member.name} fill className="object-cover" />
+                    <Image src={member.image} alt={member.name} fill className="object-cover object-center" />
                   ) : (
                     <div className="h-full bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 flex items-center justify-center">
                       <FaUser className="text-[#0EB5B2] text-6xl" />
@@ -214,36 +214,7 @@ export default function AboutUsPage() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20 my-16"></div>
 
-        {/* Testimonials Section */}
-        <motion.section
-          id="testimonials"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-            <div className="text-center mb-12">
-                <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-[#0D3853]">What Our Clients Say</motion.h2>
-                <motion.p variants={fadeInUp} className="mt-4 text-lg text-[#0D3853]/80">Real stories from businesses we've helped.</motion.p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {testimonials.map((testimonial, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="bg-white rounded-lg shadow-lg p-8 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300"
-                    >
-                        <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mb-4">
-                          <FaQuoteLeft className="text-3xl text-[#0EB5B2]" />
-                        </div>
-                        <p className="text-[#0D3853]/80 italic mb-6">{testimonial.quote}</p>
-                        <p className="font-bold text-right text-[#0D3853]">- {testimonial.author}</p>
-                    </motion.div>
-                ))}
-            </div>
-        </motion.section>
-
+      
         {/* Contact Info Section */}
         <motion.section
           id="contact"
@@ -264,7 +235,7 @@ export default function AboutUsPage() {
               <FaEnvelope className="text-3xl text-[#F2F2F2] mr-4" />
               <div>
                 <h3 className="text-xl font-semibold">Email Us</h3>
-                <p>info@vistapacificcapital.com</p>
+                <p>alanj@vistapacificcapital.com</p>
               </div>
             </div>
             <div className="flex items-center mb-6 md:mb-0">
@@ -274,13 +245,7 @@ export default function AboutUsPage() {
                 <p>(714) 500-7017</p>
               </div>
             </div>
-            <div className="flex items-center">
-              <FaBuilding className="text-3xl text-[#F2F2F2] mr-4" />
-              <div>
-                <h3 className="text-xl font-semibold">Our Office</h3>
-                <p>Location details to be added</p>
-              </div>
-            </div>
+          
           </div>
         </motion.section>
 
@@ -299,7 +264,7 @@ export default function AboutUsPage() {
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

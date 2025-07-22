@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import {
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Cog,
-  DollarSign,
-  Factory,
-  LucideIcon,
-  Stethoscope,
-  Truck,
-  UtensilsCrossed
+    Building2,
+    CheckCircle2,
+    ChevronRight,
+    Clock,
+    Cog,
+    DollarSign,
+    Factory,
+    LucideIcon,
+    Stethoscope,
+    Truck,
+    UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -172,12 +172,12 @@ export default function ServicesClient() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 z-0 opacity-2">
           <Image
-            src="/Images/hero-background.jpg"
+            src="/Images/bg-wave2.png"
             alt="Services background"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             loading="lazy"
           />
         </div>

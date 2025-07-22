@@ -98,6 +98,16 @@ export const navigationSchema: StructuredData = {
         "@type": "WebPage",
         "@id": `${BASE_URL}/calculator`
       }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Why Choose Us",
+      "url": `${BASE_URL}/why-choose-us`,
+      "description": "Reasons to choose Vista Pacific Capital for equipment financing.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/why-choose-us`
+      }
     }
   ]
 };
@@ -213,6 +223,12 @@ export const equipmentFinancingProgramLinks: EquipmentLink[] = [
       hover: 'hover:bg-gray-100'
     }
   },
+  {
+    topText: 'Why Choose Us',
+    bottomText: '',
+    path: '/why-choose-us',
+    description: 'Reasons to choose Vista Pacific Capital for equipment financing.',
+  },
 ];
 
 // NEW: Tools Links
@@ -246,6 +262,12 @@ export const toolsLinks: EquipmentLink[] = [
         bottomText: '',
         path: '/resources',
         description: 'Blog and Resources'
+    },
+    {
+        topText: 'Contact',
+        bottomText: 'Us',
+        path: '/contact',
+        description: 'Contact Vista Pacific Capital'
     }
 ];
 
@@ -266,6 +288,8 @@ const servicesLink: EquipmentLink = { topText: 'Become a', bottomText: 'Partner'
 const aboutUsLink: EquipmentLink = { topText: 'About Us', bottomText: '', path: '/about-us', description: 'About Us' };
 const equipmentFinancingMainLink: EquipmentLink = { topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment Financing Options' };
 const toolsLink: EquipmentLink = { topText: 'Tools', bottomText: '', path: '#', description: 'Tools' };
+
+const whyChooseUsLink: EquipmentLink = { topText: 'Why Choose Us', bottomText: '', path: '/why-choose-us', description: 'Why Choose Us' };
 
 
 const NavLink: React.FC<{
@@ -296,7 +320,7 @@ const NavLink: React.FC<{
           bg-[#FF6B35] 
           ${link.style?.text}
           ${link.style?.hover}
-          ${isMobile ? 'w-full text-center py-3 text-base' : 'px-4 py-2'}
+          ${isMobile ? 'w-full text-center py-2 text-sm' : 'px-4 py-2'}
           rounded-lg
           shadow-sm
           flex
@@ -304,6 +328,7 @@ const NavLink: React.FC<{
           justify-center
           relative
           text-sm
+          font-semibold
           transition-all
           duration-300
           transform
@@ -326,7 +351,8 @@ const NavLink: React.FC<{
           relative 
           px-3 
           py-2 
-          text-sm 
+          text-xs 
+          font-medium
           rounded-full 
           transition-colors 
           duration-300
@@ -334,13 +360,13 @@ const NavLink: React.FC<{
           items-center
           group
           hover:bg-black/5
-          ${isActive ? 'text-sea-green-dark' : 'text-slate-600 hover:text-slate-900'}
+          ${isActive ? 'text-sea-green-dark bg-sea-green-dark/10' : 'text-slate-700 hover:text-slate-900'}
         `}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
       >
-        <span className={`font-medium text-sm ${isActive ? 'font-semibold' : ''}`}>{`${link.topText} ${link.bottomText}`}</span>
-        <ChevronDown className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+        <span className={`font-semibold text-xs ${isActive ? 'text-sea-green-dark' : ''}`}>{`${link.topText} ${link.bottomText}`}</span>
+        <ChevronDown className={`ml-2 w-3 h-3 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
       </button>
     );
   }
@@ -351,18 +377,18 @@ const NavLink: React.FC<{
       onClick={onClick}
       className={
         className 
-          ? `text-sm transition-colors duration-300 ${className} ${isActive ? 'text-sea-green-dark' : 'text-slate-700 hover:text-slate-900'}` 
-          : `relative px-3 py-2 text-sm rounded-full transition-all duration-200
-             ${isMobile ? 'block w-full text-left py-3 text-base rounded-lg' : ''}
-             ${isActive ? 'bg-sea-green-dark/10 text-sea-green-dark' : 'text-slate-600 hover:text-slate-900 hover:bg-black/5'}`
+          ? `text-xs font-medium transition-colors duration-300 ${className} ${isActive ? 'text-sea-green-dark' : 'text-slate-700 hover:text-slate-900'}` 
+          : `relative px-3 py-2 text-xs rounded-full transition-all duration-200 font-medium
+             ${isMobile ? 'block w-full text-left py-3 text-lg rounded-lg' : ''}
+             ${isActive ? 'bg-sea-green-dark/10 text-sea-green-dark' : 'text-slate-700 hover:text-slate-900 hover:bg-black/5'}`
       }
       aria-current={isActive ? 'page' : undefined}
       title={link.description}
     >
       <span className={`
-        font-medium 
-        ${isMobile ? 'text-base' : 'text-sm'}
-        ${isActive ? 'font-semibold' : ''}
+        font-semibold
+        ${isMobile ? 'text-lg' : 'text-xs'}
+        ${isActive ? 'text-sea-green-dark' : ''}
       `}>
         {`${link.topText} ${link.bottomText}`}
       </span>
@@ -519,15 +545,15 @@ const AppNavBar: React.FC = () => {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white backdrop-blur-lg shadow-md`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200`}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center space-x-3" aria-label="Vista Pacific Capital home">
-                <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={70} height={70} priority />
-                <div className="text-2xl font-bold whitespace-nowrap">
+                <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={60} height={60} priority />
+                <div className="text-xl font-bold whitespace-nowrap lg:text-2xl">
                   <span className="text-slate-900">Vista Pacific</span>
                   <span className="text-sea-green-dark"> Capital</span>
                 </div>
@@ -535,10 +561,10 @@ const AppNavBar: React.FC = () => {
             </div>
 
             {/* Centered Pill Navigation (Desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+            <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center">
               <nav 
                 ref={dropdownRef}
-                className="flex items-center space-x-1 bg-white/95 p-1 rounded-full shadow-lg border border-white/10"
+                className="flex items-center space-x-4 bg-white/98 p-1 rounded-full shadow-xl border border-gray-200"
                 onMouseLeave={handleMouseLeave}
               >
                 <div className="relative" onMouseEnter={() => handleMouseEnter('equipmentFinancing')} >
@@ -555,7 +581,7 @@ const AppNavBar: React.FC = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-lg p-2 z-10"
+                        className="absolute top-full mt-3 w-80 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
                       >
                         {equipmentFinancingProgramLinks.map((link, index) => (
                           <div key={link.path} className="relative">
@@ -566,10 +592,10 @@ const AppNavBar: React.FC = () => {
                                 onMouseLeave={handleNestedMouseLeave}
                               >
                                 <button
-                                  className="w-full flex items-center justify-between px-4 py-2 text-sm rounded-md hover:bg-gray-100 text-left"
+                                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 text-left transition-colors duration-200"
                                 >
-                                  <span>Industry Solutions</span>
-                                  <ChevronDown className="w-4 h-4 -rotate-90" />
+                                  <span className="text-slate-700">Industry Solutions</span>
+                                  <ChevronDown className="w-4 h-4 -rotate-90 text-slate-500" />
                                 </button>
                                 <AnimatePresence>
                                   {openNestedDropdown === 'industrySolutions' && (
@@ -577,7 +603,7 @@ const AppNavBar: React.FC = () => {
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
                                       exit={{ opacity: 0, x: -10 }}
-                                      className="absolute left-full top-0 ml-2 w-64 bg-white rounded-lg shadow-lg p-2 z-20"
+                                      className="absolute left-full top-0 ml-2 w-80 bg-white rounded-xl shadow-2xl p-4 z-20 border border-gray-200"
                                     >
                                       {industrySolutionLinks.map(nestedLink => (
                                         <NavLink
@@ -588,7 +614,7 @@ const AppNavBar: React.FC = () => {
                                             setOpenDropdown(null);
                                             setOpenNestedDropdown(null);
                                           }}
-                                          className="block w-full text-left px-4 py-2 text-sm rounded-md hover:bg-gray-100"
+                                          className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
                                         />
                                       ))}
                                     </motion.div>
@@ -600,7 +626,7 @@ const AppNavBar: React.FC = () => {
                                 link={link}
                                 isActive={pathname === link.path}
                                 onClick={() => setOpenDropdown(null)}
-                                className="block w-full text-left px-4 py-2 text-sm rounded-md hover:bg-gray-100"
+                                className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
                               />
                             )}
                           </div>
@@ -629,7 +655,7 @@ const AppNavBar: React.FC = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-lg p-2 z-10"
+                        className="absolute top-full mt-3 w-64 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
                       >
                         {toolsLinks.map(link => (
                           <NavLink
@@ -637,7 +663,7 @@ const AppNavBar: React.FC = () => {
                             link={link}
                             isActive={pathname === link.path}
                             onClick={() => setOpenDropdown(null)}
-                            className="block w-full text-left px-4 py-2 text-sm rounded-md hover:bg-gray-100"
+                            className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
                           />
                         ))}
                       </motion.div>
@@ -653,7 +679,7 @@ const AppNavBar: React.FC = () => {
             </div>
             
             {/* Right-side links & Mobile Menu Button */}
-            <div>
+            <div className="ml-auto flex items-center space-x-6">
               <div className="hidden lg:flex items-center space-x-6">
                 <NavLink link={quoteLink} isActive={pathname === quoteLink.path} isQuote />
               </div>
@@ -664,7 +690,7 @@ const AppNavBar: React.FC = () => {
                     e.stopPropagation();
                     setIsMobileMenuOpen(!isMobileMenuOpen);
                   }}
-                  className="p-2 rounded-lg hover:bg-gray-100/20 transition-colors duration-200"
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                   aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isMobileMenuOpen}
                   aria-controls="mobile-menu"
@@ -720,7 +746,7 @@ const AppNavBar: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 rounded-lg hover:bg-gray-100/20 transition-colors duration-200"
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                 aria-label="Close menu"
               >
                 <X size={28} className="text-slate-900" />
@@ -729,26 +755,26 @@ const AppNavBar: React.FC = () => {
 
             {/* Mobile Menu Links */}
             <div className="flex-1 overflow-y-auto">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div className="px-4 pt-4 pb-6 space-y-2">
                 <Disclosure>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="w-full flex justify-between items-center py-3 text-left text-[#1B365D] hover:text-sea-green-dark transition-colors duration-200">
-                        <span className="text-base font-medium">Equipment Financing</span>
+                      <Disclosure.Button className="w-full flex justify-between items-center py-4 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 rounded-lg hover:bg-gray-50 px-3">
+                        <span className="text-xl font-semibold">Equipment Financing</span>
                         <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'transform rotate-180' : ''}`} />
                       </Disclosure.Button>
-                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200">
+                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
                         {equipmentFinancingProgramLinks.map((link) => (
                           <div key={link.path}>
                             {link.topText === 'Industry Solutions' ? (
                               <Disclosure>
                                 {({ open: nestedOpen }) => (
                                   <>
-                                    <Disclosure.Button className="w-full flex justify-between items-center py-3 text-left text-[#1B365D] hover:text-sea-green-dark transition-colors duration-200 pl-2">
-                                      <span className="text-sm font-medium">Industry Solutions</span>
+                                    <Disclosure.Button className="w-full flex justify-between items-center py-3 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 pl-3 rounded-lg hover:bg-gray-50">
+                                      <span className="text-lg font-medium">Industry Solutions</span>
                                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${nestedOpen ? 'transform rotate-180' : ''}`} />
                                     </Disclosure.Button>
-                                    <Disclosure.Panel className="pl-4 border-l-2 border-gray-200">
+                                    <Disclosure.Panel className="pl-6 border-l-2 border-gray-200 ml-3">
                                       {industrySolutionLinks.map((nestedLink) => (
                                         <NavLink
                                           key={nestedLink.path}
@@ -785,11 +811,11 @@ const AppNavBar: React.FC = () => {
                 <Disclosure>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="w-full flex justify-between items-center py-3 text-left text-[#1B365D] hover:text-sea-green-dark transition-colors duration-200">
-                        <span className="text-base font-medium">Tools</span>
+                      <Disclosure.Button className="w-full flex justify-between items-center py-4 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 rounded-lg hover:bg-gray-50 px-3">
+                        <span className="text-xl font-semibold">Tools</span>
                         <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'transform rotate-180' : ''}`} />
                       </Disclosure.Button>
-                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200">
+                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
                         {toolsLinks.map((link) => (
                           <NavLink
                             key={link.path}
@@ -809,7 +835,8 @@ const AppNavBar: React.FC = () => {
                   isMobile
                   onClick={() => setIsMobileMenuOpen(false)}
                 />
-                <div className="pt-4">
+                
+                <div className="pt-6">
                   <NavLink
                     link={quoteLink}
                     isActive={pathname === quoteLink.path}

@@ -2,14 +2,18 @@
 
 import { motion } from 'framer-motion';
 import {
-    Award,
-    ChevronRight,
-    Users,
-    Zap
+  CheckCircle,
+  ChevronRight,
+  Clock,
+  DollarSign,
+  Heart,
+  Shield,
+  Users,
+  Zap
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ApplicationForm from '../components/ApplicationForm';
+import VendorPartnershipForm from '../components/VendorPartnershipForm';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -31,27 +35,69 @@ const staggerContainer = {
   }
 };
 
-const vendorPrograms = [
-    'Access to a wide range of financing products to offer your customers.',
-    'Competitive rates and flexible terms that help you close more sales.',
-    'A dedicated support team to assist you and your customers through the financing process.',
-    'Fast funding to ensure you get paid quickly.'
-];
-
-const referralProgram = [
-    'Generous referral fees for every funded deal.',
-    'A simple and straightforward referral process.',
-    'Access to marketing materials to help you promote our financing options.',
-    'Co-branded landing pages and applications to maintain your brand integrity.'
+const vendorSupport = [
+    {
+        title: 'Help Convert More Sales with Seamless Financing Options',
+        description: 'Easy-to-integrate financing solutions with flexible payment options for customers and right-time financing for equipment upgrades and operational expansion.',
+        icon: Zap
+    },
+    {
+        title: 'A Great Alternative to Cash',
+        description: 'Minimal advance payment requirements that preserve capital for customers and enable growth without draining cash reserves.',
+        icon: DollarSign
+    },
+    {
+        title: 'We Have Options for Every Customer',
+        description: 'Solutions for customers who avoid traditional banking, competitive rate shopping options, complex and story-based transaction handling, and one-stop shop positioning.',
+        icon: Users
+    },
+    {
+        title: 'Quick Approvals & Clear Communication',
+        description: 'Streamlined approval process in few business days with real-time status updates throughout the process and full transparency from application to funding.',
+        icon: Clock
+    },
+    {
+        title: 'No Costs to You',
+        description: 'Zero fees for vendor services with full-service financing management and end-to-end support from application to funding.',
+        icon: Shield
+    },
+    {
+        title: 'A Long-Term Capital Partner for Your Business',
+        description: 'Ongoing partnership commitment with scalable solutions from small purchases to large expansions and comprehensive financing needs coverage.',
+        icon: Heart
+    }
 ];
 
 const partnerBenefits = [
-    'Expand your service offerings and add a new revenue stream.',
-    'Increase customer loyalty by providing a one-stop-shop for their equipment needs.',
-    'Partner with a trusted and reliable financing provider.',
-    'Work with a team of experienced professionals who are dedicated to your success.'
+    {
+        title: 'Same-Day Approvals on Application-Only Deals',
+        description: 'Small transactions same-day, larger deals 2-3 business days'
+    },
+    {
+        title: 'No Fees, No Commitment',
+        description: 'No cost, no commitment, no formal onboarding required'
+    },
+    {
+        title: 'Clear, Reliable Communication',
+        description: 'Proactive updates at every step'
+    },
+    {
+        title: 'Flexible Financing Options',
+        description: 'Serves startups to established companies with tailored structures'
+    },
+    {
+        title: 'White-Glove Customer Service',
+        description: 'Immediate response, high-touch professional experience'
+    },
+    {
+        title: 'Custom Financing Page for Your Website',
+        description: 'Co-branded page for polished, full-service experience'
+    },
+    {
+        title: 'Co-Branded Application Experience',
+        description: 'Dual logo application for seamless, trustworthy process'
+    }
 ];
-
 
 export default function PartnerProgramClient() {
   return (
@@ -65,13 +111,13 @@ export default function PartnerProgramClient() {
       >
         <div className="absolute inset-0">
           <Image
-            src="/Images/cta-background-signing.jpg"
-            alt="Partner program background"
+            src="/Images/gen-ai/bg-wave-6.png"
+            alt="People reviewing partnership documents"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         <div className="relative w-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
@@ -79,13 +125,13 @@ export default function PartnerProgramClient() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
               variants={fadeInUp}
             >
-              Become a Partner
+              Focus on Selling, We'll Handle the Financing
             </motion.h1>
             <motion.p
               className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-[#F2F2F2]/90"
               variants={fadeInUp}
             >
-              Join our network of trusted partners and grow your business with our competitive financing solutions.
+              Your trusted partner in equipment financing. We make it easy for you to close more deals while providing your customers with seamless financing solutions.
             </motion.p>
             <motion.div variants={fadeInUp}>
               <Link
@@ -108,72 +154,70 @@ export default function PartnerProgramClient() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left Column */}
-          <div className="md:col-span-2">
-            <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-12 bg-white p-8 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300">
-              <h2 className="text-3xl font-bold text-[#0D3853] mb-4">Vendor Programs</h2>
-              <p className="text-lg text-[#0D3853]/80 mb-6">
-                Our vendor program is designed to help you sell more equipment. We provide your customers with fast, flexible, and affordable financing options, so you can close more deals and get paid faster.
-              </p>
-              <motion.ul variants={staggerContainer} initial="hidden" animate="visible" className="space-y-4">
-                {vendorPrograms.map((item, index) => (
-                  <motion.li key={index} variants={fadeInUp} className="flex items-start">
-                    <Zap className="h-6 w-6 text-[#0EB5B2] mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-lg text-[#0D3853]/80">{item}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.section>
-            
-            <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-12 bg-white p-8 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300">
-              <h2 className="text-3xl font-bold text-[#0D3853] mb-6">Referral Program</h2>
-              <p className="text-lg text-[#0D3853]/80 mb-6">Refer your clients to us and earn a commission on every funded deal. Our referral program is perfect for CPAs, banks, consultants, and other professionals who work with businesses that need equipment financing.</p>
-              <motion.ul variants={staggerContainer} initial="hidden" animate="visible" className="space-y-4">
-                {referralProgram.map((item, index) => (
-                  <motion.li key={index} variants={fadeInUp} className="flex items-start">
-                    <Users className="h-6 w-6 text-[#0EB5B2] mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-lg text-[#0D3853]/80">{item}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.section>
-          </div>
+        {/* Become a Partner Section */}
+        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-6">Your Trusted Partner, No Matter the Tide</h2>
+          <p className="text-xl text-[#0D3853]/80 max-w-4xl mx-auto">
+            We understand that your success depends on your ability to close deals quickly and efficiently. 
+            That's why we've built our partnership program around making your job easier.
+          </p>
+        </motion.section>
 
-          {/* Right Column (Sidebar) */}
-          <div className="md:col-span-1 space-y-8">
-            <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="bg-white p-6 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-[#0D3853] mb-4">Partner Benefits</h3>
-              <motion.ul variants={staggerContainer} initial="hidden" animate="visible" className="space-y-3">
-                {partnerBenefits.map((highlight, index) => (
-                  <motion.li key={index} variants={fadeInUp} className="flex items-start">
-                    <Award className="h-5 w-5 text-[#0EB5B2] mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-md text-[#0D3853]/80">{highlight}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-              <div className="mt-6 text-center">
-                <Link
-                  href="#partner-form"
-                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                    text-white px-6 py-3 rounded-lg font-semibold text-lg 
-                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                    transform hover:-translate-y-1 transition-all duration-300 w-full justify-center"
+        {/* How We Support Equipment Vendors */}
+        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
+          <h3 className="text-3xl font-bold text-[#0D3853] mb-12 text-center">How We Support Equipment Vendors</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {vendorSupport.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="bg-white p-6 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl"
                 >
-                  Join Now
-                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </motion.div>
+                  <div className="flex items-center mb-4">
+                    <div className="p-3 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-lg mr-4">
+                      <IconComponent className="h-6 w-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-[#0D3853]">{item.title}</h4>
+                  </div>
+                  <p className="text-[#0D3853]/80 leading-relaxed">{item.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
+        </motion.section>
+
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20 my-16"></div>
+
+        {/* Partner Benefits Section */}
+        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
+          <h3 className="text-3xl font-bold text-[#0D3853] mb-12 text-center">Partner Benefits</h3>
+          <div className="bg-gradient-to-br from-[#0D3853]/5 to-[#0EB5B2]/5 p-8 rounded-2xl border border-[#0EB5B2]/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {partnerBenefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="flex items-start space-x-3"
+                >
+                  <CheckCircle className="h-6 w-6 text-[#0EB5B2] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-[#0D3853] mb-1">{benefit.title}</h4>
+                    <p className="text-sm text-[#0D3853]/70">{benefit.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
         
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20 my-16"></div>
         
-        <motion.section id="partner-form" variants={fadeInUp} initial="hidden" animate="visible" className="bg-white p-8 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300">
-            <h2 className="text-3xl font-bold text-center text-[#0D3853] mb-8">Partner with Us</h2>
-            <ApplicationForm />
+        <motion.section id="partner-form" variants={fadeInUp} initial="hidden" animate="visible">
+            <VendorPartnershipForm />
         </motion.section>
       </div>
 
@@ -185,12 +229,12 @@ export default function PartnerProgramClient() {
         <div className="absolute inset-0">
           <Image 
             src="/Images/cta-background-signing.jpg"
-            alt="Modern office environment for equipment financing consultation"
+            alt="Team collaborating on a business strategy"
             fill
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -201,12 +245,12 @@ export default function PartnerProgramClient() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">GET STARTED TODAY</span>
+            <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">JOIN US ON THE PATH TO SUCCESS</span>
             <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
-              Ready to Partner with Us?
+              The View is Better at the Top
             </h2>
             <p className="text-xl text-[#F2F2F2]/90 max-w-3xl mx-auto pb-4">
-              Join our network of trusted partners and start growing your business today
+              Partner with us and discover how easy equipment financing can be for your business and your customers
             </p>
             <Link
               href="#partner-form"
@@ -215,7 +259,7 @@ export default function PartnerProgramClient() {
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                 transform hover:-translate-y-1 transition-all duration-300"
             >
-              Join Now
+              Start Partnering / Join Us
               <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

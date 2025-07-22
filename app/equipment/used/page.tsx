@@ -78,7 +78,7 @@ export default function UsedEquipmentContent() {
           as="image"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
             alt="Used equipment financing"
@@ -112,7 +112,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
@@ -176,9 +176,6 @@ export default function UsedEquipmentContent() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center">
-                    <type.icon className="text-6xl text-white" />
-                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
@@ -280,7 +277,7 @@ export default function UsedEquipmentContent() {
               loading="lazy"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

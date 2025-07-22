@@ -76,7 +76,7 @@ export default function VendorPrograms() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+            <Link href="/apply" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
               text-white px-8 py-4 rounded-lg font-semibold text-lg 
               shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
               transform hover:-translate-y-1 transition-all duration-300">
@@ -322,7 +322,7 @@ export default function VendorPrograms() {
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative">
@@ -346,7 +346,7 @@ export default function VendorPrograms() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Link href="/contact" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+              <Link href="/apply" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                 text-white px-8 py-4 rounded-lg font-semibold text-lg 
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                 transform hover:-translate-y-1 transition-all duration-300">

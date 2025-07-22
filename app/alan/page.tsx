@@ -38,7 +38,7 @@ export default function AlanPage() {
       <section className="w-full relative overflow-hidden">
         {/* Background Image Container */}
         <div className="absolute inset-0 h-[40vh] md:h-[30vh]">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#082F4A]/80 to-[#113E59]/50 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 z-10" />
           <Image 
             src="/Images/cta-background-signing.jpg"
             alt="Equipment Financing"

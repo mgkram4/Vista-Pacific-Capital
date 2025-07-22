@@ -39,13 +39,13 @@ const Section179Page: React.FC = () => {
       >
         <div className="absolute inset-0">
           <Image 
-            src="/Images/hero-background.jpg"
+            src="/Images/bg-wave2.png"
             alt="Section 179 tax benefits background"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         <div className="relative w-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
@@ -212,7 +212,7 @@ const Section179Page: React.FC = () => {
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

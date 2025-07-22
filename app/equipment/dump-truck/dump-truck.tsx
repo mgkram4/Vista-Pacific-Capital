@@ -74,7 +74,7 @@ export default function DumpTruckFinancingContent() {
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
 
-        <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 z-0">
           <Image 
             src="https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Dump truck equipment financing"
@@ -109,10 +109,9 @@ export default function DumpTruckFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
+                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
               <GiReceiveMoney className="mr-3 text-3xl" />
               <span>Get Financing</span>
             </Link>
@@ -188,15 +187,6 @@ export default function DumpTruckFinancingContent() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <motion.div 
-                    className="absolute inset-0 bg-indigo-dye bg-opacity-60 flex items-center justify-center"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <type.icon className="text-6xl text-white" />
-                  </motion.div>
                 </div>
                 <div className="p-6">
                   <motion.h3 
@@ -326,7 +316,7 @@ export default function DumpTruckFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

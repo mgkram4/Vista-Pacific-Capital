@@ -50,10 +50,10 @@ const services: Service[] = [
   {
     title: "Material Handling Equipment Financing",
     description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
-    features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
+    features: ["New or refurbished racking systems", "Labor and installation installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
     icon: Factory,
     href: "/equipment/racking-material-handling",
-    imageSrc: "/Images/services/material-handling-new.jpg"
+    imageSrc: "/Images/gen-ai/img3.png"
   },
   {
     title: "Construction Equipment Financing",
@@ -61,7 +61,7 @@ const services: Service[] = [
     features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction",
-    imageSrc: "/Images/services/construction.jpg"
+    imageSrc: "/Images/gen-ai/img1.png"
   },
   {
     title: "Medical Equipment Financing",
@@ -69,7 +69,7 @@ const services: Service[] = [
     features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
     icon: Stethoscope,
     href: "/equipment/medical",
-    imageSrc: "/Images/services/medical-new.jpg"
+    imageSrc: "/Images/gen-ai/img4.png"
   },
   {
     title: "Manufacturing Equipment Financing",
@@ -77,7 +77,7 @@ const services: Service[] = [
     features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "/Images/services/manufacturing.jpg"
+    imageSrc: "/Images/gen-ai/img2.png"
   },
   {
     title: "Restaurant Equipment Financing",
@@ -85,7 +85,7 @@ const services: Service[] = [
     features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant",
-    imageSrc: "/Images/services/restaurant-new.jpg"
+    imageSrc: "/Images/gen-ai/img5.png"
   },
   {
     title: "Transportation Financing Programs",
@@ -93,7 +93,7 @@ const services: Service[] = [
     features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
     icon: Truck,
     href: "/equipment/dump-truck",
-    imageSrc: "/Images/services/transportation-new.jpg"
+    imageSrc: "/Images/gen-ai/img6.png"
   }
 ];
 
@@ -187,14 +187,14 @@ export default function HomePageClient() {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
             <Image 
-              src="/Images/hero-background.jpg"
+              src="/Images/bg-wave2.png"
               alt="Business professional reviewing equipment financing options with 24-hour approval"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-top"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/50 via-[#0D3853]/40 to-[#0EB5B2]/30" />
           </div>
 
           {/* Hero Content */}
@@ -209,19 +209,19 @@ export default function HomePageClient() {
                   className="text-white space-y-4"
                 >
                   {/* Hero Title */}
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] rounded-lg overflow-hidden">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white rounded-lg overflow-hidden">
                     Get Equipment
                     <br />
                     Financing Terms
                     <br />
-                    <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">In 24 Hours</span>
+                    <span className="text-[#FF6B35]">In 24 Hours</span>
                   </h1>
 
                   {/* Features Section */}
                   <div className="space-y-3">
                     <div className="flex items-center space-x-2 text-lg md:text-xl">
                       <span className="flex-shrink-0 w-1 h-6 bg-gradient-to-b from-[#0EB5B2] to-[#0EB5B2] rounded-full" />
-                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#F2F2F2] to-[#B3B3B3]">
+                      <p className="text-white">
                         Financing from $20,000 to $20 million
                       </p>
                     </div>
@@ -297,13 +297,13 @@ export default function HomePageClient() {
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
         {/* Benefits Section - adjust spacing here */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-24 bg-gray-50">
           <h2 className="sr-only">Our Financing Benefits</h2>
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
                 Benefits of Our Equipment Financing
-              </h3>
+              </h2>
               <p className="text-lg text-gray-600">
                 Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
               </p>
@@ -333,7 +333,7 @@ export default function HomePageClient() {
             <div className="hidden md:block">
               <figure>
                 <Image 
-                  src="/Images/constructionH.png"
+                  src="/Images/gen-ai/img7.png"
                   alt="Business owner signing equipment financing agreement"
                   width={600}
                   height={500}
@@ -349,13 +349,13 @@ export default function HomePageClient() {
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
         {/* Services Section - adjust spacing here */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-24 bg-white">
           <h2 className="sr-only">Industries We Serve</h2>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
                 Equipment Financing for Your Industry
-              </h3>
+              </h2>
               <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
                 We provide tailored equipment financing and business loan solutions for a wide range of industries. Get the capital you need for new or used equipment.
               </p>
@@ -426,9 +426,9 @@ export default function HomePageClient() {
               className="text-center mb-8"
             >
               <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">COMMON QUESTIONS</span>
-              <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-4">
                 Frequently Asked Questions
-              </h3>
+              </h2>
               <p className="text-xl text-[#0D3853]/80">
                 Everything you need to know about equipment financing
               </p>
@@ -450,9 +450,9 @@ export default function HomePageClient() {
                     border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30
                     shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
                 >
-                  <h4 className="text-xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-2">
+                  <h3 className="text-xl font-bold text-[#0D3853] mb-2">
                     {faq.q}
-                  </h4>
+                  </h3>
                   <p className="text-[#0D3853]/80">{faq.a}</p>
                 </motion.div>
               ))}
@@ -467,13 +467,13 @@ export default function HomePageClient() {
         <footer className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office environment for equipment financing consultation"
               fill
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
