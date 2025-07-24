@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { AlertCircle, CheckCircle, Loader2, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import Toast from './Toast';
+import { pdf } from '@react-pdf/renderer';
+import { AlertCircle, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import VendorPartnershipPDF from './VendorPartnershipPDF';
 
-interface VendorPartnershipData {
+export interface VendorPartnershipData {
   companyName: string;
   contactName: string;
   email: string;
@@ -29,112 +29,6 @@ interface SubmitStatus {
   success?: boolean;
   message?: string;
 }
-
-interface SuccessModalProps {
-  isVisible: boolean;
-  onClose: () => void;
-  companyName: string;
-  contactName: string;
-}
-
-const SuccessModal = ({ isVisible, onClose, companyName, contactName }: SuccessModalProps) => {
-  const [showContent, setShowContent] = useState(false);
-
-  useEffect(() => {
-    if (isVisible) {
-      // Small delay to trigger the animation
-      setTimeout(() => setShowContent(true), 100);
-    } else {
-      setShowContent(false);
-    }
-  }, [isVisible]);
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div 
-        className={`bg-white rounded-xl shadow-2xl max-w-md w-full transform transition-all duration-300 ${
-          showContent ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-        }`}
-      >
-        {/* Header */}
-        <div className="relative p-6 text-center">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <X size={20} />
-          </button>
-          
-          {/* Success Icon with Animation */}
-          <div className="mb-4 flex justify-center">
-            <div 
-              className={`relative transform transition-all duration-500 ${
-                showContent ? 'scale-100 rotate-0' : 'scale-0 rotate-180'
-              }`}
-            >
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-8 h-8 text-green-600" />
-              </div>
-              {/* Animated ring */}
-              <div 
-                className={`absolute inset-0 border-4 border-green-200 rounded-full transition-all duration-1000 ${
-                  showContent ? 'scale-125 opacity-0' : 'scale-100 opacity-100'
-                }`}
-              />
-            </div>
-          </div>
-
-          {/* Success Message */}
-          <h2 
-            className={`text-2xl font-bold text-gray-800 mb-2 transform transition-all duration-500 delay-200 ${
-              showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`}
-          >
-            Partnership Inquiry Submitted!
-          </h2>
-          
-          <div 
-            className={`text-gray-600 space-y-3 transform transition-all duration-500 delay-300 ${
-              showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`}
-          >
-            <p className="text-base">
-              Thank you for your interest in partnering with Vista Pacific Capital, {contactName}!
-            </p>
-            <p className="text-base">
-              We have received your partnership inquiry for <strong>{companyName}</strong> and will review your information within 1-2 business days.
-            </p>
-            <p className="text-sm text-gray-500">
-              If you have any questions, please feel free to call{' '}
-              <a 
-                href="tel:7145007017" 
-                className="text-[#0EB5B2] hover:text-[#0D3853] font-medium"
-              >
-                (714) 500-7017
-              </a>
-            </p>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div 
-          className={`px-6 pb-6 transform transition-all duration-500 delay-400 ${
-            showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}
-        >
-          <button
-            onClick={onClose}
-            className="w-full bg-[#0EB5B2] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#0D3853] transition-colors duration-200"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const equipmentTypeOptions = [
   'Construction Equipment',
@@ -188,9 +82,9 @@ export default function VendorPartnershipForm() {
   const [errors, setErrors] = useState<FormError[]>([]);
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
-  const [showSuccessToast, setShowSuccessToast] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [submittedData, setSubmittedData] = useState({ companyName: '', contactName: '' });
+//   const [showSuccessToast, setShowSuccessToast] = useState(false);
+//   const [showSuccessModal, setShowSuccessModal] = useState(false);
+//   const [submittedData, setSubmittedData] = useState({ companyName: '', contactName: '' });
 
   const validateForm = (): boolean => {
     const newErrors: FormError[] = [];
@@ -256,48 +150,36 @@ export default function VendorPartnershipForm() {
     setSubmitStatus({});
 
     try {
-      const response = await fetch('/api/submit-vendor-partnership', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const blob = await pdf(<VendorPartnershipPDF formData={formData} />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `VPC_Vendor_Partnership_Inquiry_${formData.companyName.replace(/ /g, '_')}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      setSubmitStatus({ success: true, message: 'Partnership inquiry PDF downloaded successfully!' });
+        
+      // Reset form
+      setFormData({
+        companyName: '',
+        contactName: '',
+        email: '',
+        phone: '',
+        website: '',
+        equipmentTypes: [],
+        averageDealSize: '',
+        monthlyDeals: '',
+        yearsInBusiness: '',
+        currentFinancingPartners: '',
+        partnershipGoals: '',
+        additionalInfo: ''
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        // Store the company name and contact name for the modal
-        setSubmittedData({
-          companyName: formData.companyName,
-          contactName: formData.contactName
-        });
-        
-        setSubmitStatus({ success: true, message: 'Partnership inquiry submitted successfully!' });
-        setShowSuccessToast(true);
-        setShowSuccessModal(true);
-        
-        // Reset form
-        setFormData({
-          companyName: '',
-          contactName: '',
-          email: '',
-          phone: '',
-          website: '',
-          equipmentTypes: [],
-          averageDealSize: '',
-          monthlyDeals: '',
-          yearsInBusiness: '',
-          currentFinancingPartners: '',
-          partnershipGoals: '',
-          additionalInfo: ''
-        });
-      } else {
-        setSubmitStatus({ success: false, message: result.message || 'Failed to submit partnership inquiry' });
-      }
     } catch (error) {
-      console.error('Error submitting partnership inquiry:', error);
-      setSubmitStatus({ success: false, message: 'An error occurred while submitting your inquiry. Please try again.' });
+      console.error('Error generating or downloading PDF:', error);
+      setSubmitStatus({ success: false, message: 'An error occurred while generating or downloading the PDF. Please try again.' });
     } finally {
       setLoading(false);
     }
@@ -309,7 +191,7 @@ export default function VendorPartnershipForm() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {showSuccessToast && (
+      {/* {showSuccessToast && (
         <Toast
           message="Your partnership inquiry was submitted successfully!"
           type="success"
@@ -324,7 +206,7 @@ export default function VendorPartnershipForm() {
         onClose={() => setShowSuccessModal(false)}
         companyName={submittedData.companyName}
         contactName={submittedData.contactName}
-      />
+      /> */}
 
       <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8">
         <div className="text-center mb-8">
@@ -588,7 +470,7 @@ export default function VendorPartnershipForm() {
 
           {/* Submit Button */}
           <div className="pt-6">
-            <motion.button
+            <button
               type="submit"
               disabled={loading}
               className="w-full bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
@@ -596,8 +478,6 @@ export default function VendorPartnershipForm() {
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                 transform hover:-translate-y-1 transition-all duration-300
                 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
             >
               {loading ? (
                 <div className="flex items-center justify-center">
@@ -607,7 +487,7 @@ export default function VendorPartnershipForm() {
               ) : (
                 'Submit Partnership Inquiry'
               )}
-            </motion.button>
+            </button>
           </div>
 
           {/* Status Messages */}
@@ -619,9 +499,9 @@ export default function VendorPartnershipForm() {
             }`}>
               <div className="flex items-center">
                 {submitStatus.success ? (
-                  <CheckCircle className="h-5 w-5 mr-2" />
+                  <AlertCircle className="h-5 w-5 mr-2 text-green-600" />
                 ) : (
-                  <AlertCircle className="h-5 w-5 mr-2" />
+                  <AlertCircle className="h-5 w-5 mr-2 text-red-600" />
                 )}
                 {submitStatus.message}
               </div>

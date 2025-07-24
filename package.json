@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
+    "@react-pdf/renderer": "^4.3.0",
     "@sendgrid/mail": "^8.1.4",
     "@types/pdfkit": "^0.17.2",
     "@uploadthing/react": "^7.3.0",
