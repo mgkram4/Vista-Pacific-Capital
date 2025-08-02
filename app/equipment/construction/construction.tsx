@@ -58,7 +58,7 @@ const equipmentTypes = [
 
 // Statistics display data - updated according to requirements
 const stats = [
-  { value: '$20M', label: 'Maximum Financing', icon: FaHardHat },
+  { value: '$50M', label: 'Maximum Financing', icon: FaHardHat },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaTools },
   { value: 'New & Used', label: 'Equipment Options', icon: GiCrane },
   { value: 'All Credit', label: 'All Credit Scores Welcome', icon: FaCreditCard },

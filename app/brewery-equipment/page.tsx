@@ -44,7 +44,7 @@ const equipmentTypes = [
 
 // Statistics display data
 const stats = [
-  { value: '$20M', label: 'Maximum Financing', icon: FaBeer },
+  { value: '$50M', label: 'Maximum Financing', icon: FaBeer },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaWineBottle },
   { value: 'A-C', label: 'Credit Types', icon: FaFlask },
   { value: '24hrs', label: 'Quick Approval', icon: FaBox }

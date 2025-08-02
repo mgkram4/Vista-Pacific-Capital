@@ -50,7 +50,7 @@ const equipmentTypes = [
 ];
 
 const stats = [
-  { value: '$20M+', label: 'Maximum Financing', icon: FaDollarSign },
+  { value: '$50M+', label: 'Maximum Financing', icon: FaDollarSign },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaClock },
   { value: 'New & Used', label: 'Equipment Options', icon: FaChartLine },
   { value: 'Startups', label: 'New Restaurant Programs', icon: FaStore },

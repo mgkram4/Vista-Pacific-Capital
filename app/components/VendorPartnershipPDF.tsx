@@ -82,15 +82,13 @@ const VendorPartnershipPDF = ({ formData }: VendorPartnershipPDFProps) => (
 
       <View style={styles.section}>
         <Text style={styles.subHeading}>Equipment and Business Details</Text>
-        {formData.equipmentTypes.length > 0 && (
+        {formData.equipmentType && (
           <View style={styles.text}>
-            <Text style={styles.label}>Equipment Types You Sell:</Text>
-            {formData.equipmentTypes.map((type: string, index: number) => (
-              <Text key={index} style={styles.listItem}>- {type}</Text>
-            ))}
+            <Text style={styles.label}>Equipment Type You Sell:</Text>
+            <Text style={styles.listItem}>- {formData.equipmentType}</Text>
           </View>
         )}
-        <Text style={styles.text}><Text style={styles.label}>Average Deal Size:</Text> {formData.averageDealSize}</Text>
+        <Text style={styles.text}><Text style={styles.label}>Average Ticket Size:</Text> {formData.averageTicketSize}</Text>
         <Text style={styles.text}><Text style={styles.label}>Monthly Deals Volume:</Text> {formData.monthlyDeals}</Text>
         {formData.yearsInBusiness && <Text style={styles.text}><Text style={styles.label}>Years in Business:</Text> {formData.yearsInBusiness}</Text>}
       </View>

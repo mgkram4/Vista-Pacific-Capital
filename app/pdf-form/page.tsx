@@ -695,23 +695,43 @@ export default function FinanceApplicationPage() {
       // Convert PDF bytes to base64
       const pdfBase64 = Buffer.from(pdfBytes).toString('base64');
       
-      // Prepare form data for submission
+      // Prepare form data for submission in the format expected by the API
       const completeFormData = {
+        // Required fields for API validation
+        name: `${ownerData.firstName} ${ownerData.lastName}`,
+        email: businessData.email,
+        phone: businessData.businessPhone,
+        amountNeeded: businessData.amountNeeded ? 
+          businessData.amountNeeded.startsWith('$') ? 
+            businessData.amountNeeded : 
+            `$${businessData.amountNeeded}` : '',
+        businessName: businessData.businessName,
+        businessType: businessData.businessType,
+        
+        // Additional business fields
+        timeInBusiness: businessData.yearsInBusiness,
+        annualRevenue: businessData.annualRevenue || '',
+        creditScore: '', // Not collected in this form
+        equipmentType: businessData.equipmentDescription || '',
+        equipmentCost: businessData.amountNeeded || '',
+        downPayment: '', // Not collected in this form
+        termLength: '', // Not collected in this form
+        address: businessData.businessAddress,
+        city: businessData.city,
+        state: businessData.state,
+        zipCode: businessData.zip,
+        ssn: ownerData.socialSecurityNumber || '',
+        dateOfBirth: '', // Not collected in this form
+        additionalInfo: `Primary Owner: ${ownerData.firstName} ${ownerData.lastName}, Ownership: ${ownerData.ownershipPercentage || 'N/A'}%${additionalOwners.length > 0 ? `, Additional Owners: ${additionalOwners.map(owner => `${owner.firstName} ${owner.lastName}`).join(', ')}` : ''}`,
+        
+        // Include the original nested data for PDF generation
         business: {
           ...businessData,
-          // Format the needed amount as currency for API
-          amountNeeded: businessData.amountNeeded ? 
-            businessData.amountNeeded.startsWith('$') ? 
-              businessData.amountNeeded : 
-              `$${businessData.amountNeeded}` : '',
-          // Include federalTaxId here now
           federalTaxId: businessData.federalTaxId || '',
         },
         primaryOwner: {
           ...ownerData,
-          // Construct full name for API
           fullName: `${ownerData.firstName} ${ownerData.lastName}`,
-          // Format ownership percentage with % symbol for API
           ownershipPercentage: ownerData.ownershipPercentage ? 
             ownerData.ownershipPercentage.endsWith('%') ? 
               ownerData.ownershipPercentage : 
@@ -719,16 +739,13 @@ export default function FinanceApplicationPage() {
         },
         additionalOwners: additionalOwners.map(owner => ({
           ...owner,
-          // Construct full name for each additional owner
           fullName: `${owner.firstName} ${owner.lastName}`,
-          // Format ownership percentage with % symbol for API
           ownershipPercentage: owner.ownershipPercentage ? 
             owner.ownershipPercentage.endsWith('%') ? 
               owner.ownershipPercentage : 
               `${owner.ownershipPercentage}%` : 'N/A',
         })),
         pdfAttachment: pdfBase64,
-        // Include agent information in the submission if available
         agent: agent ? {
           name: agent.name,
           email: agent.email,

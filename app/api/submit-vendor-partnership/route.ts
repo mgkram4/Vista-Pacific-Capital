@@ -1,12 +1,20 @@
 // app/api/submit-vendor-partnership/route.ts
-import sgMail from '@sendgrid/mail';
+import VendorPartnershipPDF from '@/app/components/VendorPartnershipPDF';
+import { renderToStream } from '@react-pdf/renderer';
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+import { Readable } from 'stream';
 
-// Initialize SendGrid with your API key
-if (!process.env.SENDGRID_API_KEY) {
-  console.error('SENDGRID_API_KEY is not defined in environment variables');
-}
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+// Nodemailer transporter setup
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT),
+  secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false for other ports
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 interface VendorPartnershipData {
   companyName: string;
@@ -14,8 +22,8 @@ interface VendorPartnershipData {
   email: string;
   phone: string;
   website: string;
-  equipmentTypes: string[];
-  averageDealSize: string;
+  equipmentType: string;
+  averageTicketSize: string;
   monthlyDeals: string;
   yearsInBusiness: string;
   currentFinancingPartners: string;
@@ -23,22 +31,56 @@ interface VendorPartnershipData {
   additionalInfo: string;
 }
 
+// Helper function to convert stream to buffer
+async function streamToBuffer(stream: Readable): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    const chunks: Uint8Array[] = [];
+    stream.on('data', (chunk) => chunks.push(chunk));
+    stream.on('end', () => resolve(Buffer.concat(chunks)));
+    stream.on('error', reject);
+  });
+}
+
+// Helper function to format phone number
+const formatPhoneNumber = (phone: string) => {
+  const cleaned = ('' + phone).replace(/\D/g, '');
+  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (match) {
+    return `${match[1]}-${match[2]}-${match[3]}`;
+  }
+  return phone;
+};
+
 export async function POST(request: Request) {
   try {
+    // Check if SMTP is properly configured
+    if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('SMTP configuration is missing in environment variables');
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Email service is not configured. Please contact support.',
+          error: 'SMTP configuration not found'
+        },
+        { status: 500 }
+      );
+    }
     // Parse the JSON body
     const body = await request.json();
     console.log('Received vendor partnership data:', body);
 
-    const { companyName, contactName, email, phone, website, equipmentTypes, averageDealSize, monthlyDeals, yearsInBusiness, currentFinancingPartners, partnershipGoals, additionalInfo } = body;
+    const { companyName, contactName, email, phone, website, equipmentType, averageTicketSize, monthlyDeals, yearsInBusiness, currentFinancingPartners, partnershipGoals, additionalInfo } = body;
+
+    const formattedPhone = formatPhoneNumber(phone);
 
     const formData: VendorPartnershipData = {
       companyName,
       contactName,
       email,
-      phone,
+      phone: formattedPhone,
       website,
-      equipmentTypes,
-      averageDealSize,
+      equipmentType,
+      averageTicketSize,
       monthlyDeals,
       yearsInBusiness,
       currentFinancingPartners,
@@ -47,6 +89,10 @@ export async function POST(request: Request) {
     };
 
     console.log('Preparing to send vendor partnership emails');
+
+    // Generate PDF
+    const pdfStream = await renderToStream(VendorPartnershipPDF({ formData }));
+    const pdfBuffer = await streamToBuffer(pdfStream as Readable);
 
     // Format the submission date
     const submissionDate = new Date().toLocaleDateString('en-US', {
@@ -80,12 +126,12 @@ export async function POST(request: Request) {
                 <td style="padding: 8px 0;">${formData.contactName}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0;"><strong>Equipment Types:</strong></td>
-                <td style="padding: 8px 0;">${formData.equipmentTypes.join(', ')}</td>
+                <td style="padding: 8px 0;"><strong>Equipment Type:</strong></td>
+                <td style="padding: 8px 0;">${formData.equipmentType}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0;"><strong>Average Deal Size:</strong></td>
-                <td style="padding: 8px 0;">${formData.averageDealSize}</td>
+                <td style="padding: 8px 0;"><strong>Average Ticket Size:</strong></td>
+                <td style="padding: 8px 0;">${formData.averageTicketSize}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0;"><strong>Monthly Deals:</strong></td>
@@ -170,12 +216,12 @@ export async function POST(request: Request) {
           <h2 style="color: #0EB5B2; margin-top: 0;">Business Details</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
-              <td style="padding: 8px 0; width: 250px;"><strong>Equipment Types:</strong></td>
-              <td style="padding: 8px 0;">${formData.equipmentTypes.join(', ')}</td>
+              <td style="padding: 8px 0; width: 250px;"><strong>Equipment Type:</strong></td>
+              <td style="padding: 8px 0;">${formData.equipmentType}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0;"><strong>Average Deal Size:</strong></td>
-              <td style="padding: 8px 0;">${formData.averageDealSize}</td>
+              <td style="padding: 8px 0;"><strong>Average Ticket Size:</strong></td>
+              <td style="padding: 8px 0;">${formData.averageTicketSize}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Monthly Deals Volume:</strong></td>
@@ -216,83 +262,13 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // Generate HTML for admin attachment
-    const adminAttachmentHtml = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-          <title>Vendor Partnership Inquiry - ${formData.companyName}</title>
-          <style>
-              body { font-family: Arial, sans-serif; color: #0D3853; margin: 20px; }
-              h1 { color: #0EB5B2; border-bottom: 2px solid #0EB5B2; padding-bottom: 10px; }
-              h2 { color: #0EB5B2; margin-top: 20px; }
-              table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-              th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
-              th { background-color: #f2f2f2; }
-              .section { background-color: #f7f9fc; padding: 15px; border-radius: 5px; margin-bottom: 15px; border-left: 4px solid #0EB5B2; }
-              .field-label { font-weight: bold; width: 200px; }
-          </style>
-      </head>
-      <body>
-          <h1>New Vendor Partnership Inquiry</h1>
-          <p>Submitted on: ${submissionDate}</p>
-
-          <div class="section">
-              <h2>Company Information</h2>
-              <table>
-                  <tr><td class="field-label">Company Name:</td><td>${formData.companyName}</td></tr>
-                  <tr><td class="field-label">Contact Name:</td><td>${formData.contactName}</td></tr>
-                  <tr><td class="field-label">Email:</td><td>${formData.email}</td></tr>
-                  <tr><td class="field-label">Phone:</td><td>${formData.phone}</td></tr>
-                  ${formData.website ? `<tr><td class="field-label">Website:</td><td><a href="${formData.website}" target="_blank">${formData.website}</a></td></tr>` : ''}
-                  ${formData.yearsInBusiness ? `<tr><td class="field-label">Years in Business:</td><td>${formData.yearsInBusiness}</td></tr>` : ''}
-              </table>
-          </div>
-
-          <div class="section">
-              <h2>Business Details</h2>
-              <table>
-                  <tr><td class="field-label">Equipment Types:</td><td>${formData.equipmentTypes.join(', ')}</td></tr>
-                  <tr><td class="field-label">Average Deal Size:</td><td>${formData.averageDealSize}</td></tr>
-                  <tr><td class="field-label">Monthly Deals Volume:</td><td>${formData.monthlyDeals}</td></tr>
-                  ${formData.currentFinancingPartners ? `<tr><td class="field-label">Current Partners:</td><td>${formData.currentFinancingPartners}</td></tr>` : ''}
-              </table>
-          </div>
-
-          ${formData.partnershipGoals ? `
-          <div class="section">
-              <h2>Partnership Goals</h2>
-              <p>${formData.partnershipGoals}</p>
-          </div>
-          ` : ''}
-
-          ${formData.additionalInfo ? `
-          <div class="section">
-              <h2>Additional Information</h2>
-              <p>${formData.additionalInfo}</p>
-          </div>
-          ` : ''}
-          
-          <div class="section">
-              <h2>Next Steps for Internal Team</h2>
-              <ul>
-                  <li>Review vendor profile and business metrics</li>
-                  <li>Schedule initial consultation call</li>
-                  <li>Assess partnership fit and potential</li>
-                  <li>Prepare partnership agreement if suitable</li>
-              </ul>
-          </div>
-      </body>
-      </html>
-    `;
-
     // Common attachment for team emails
-    const adminAttachments = [
+    const adminAttachments: any[] = [
       {
-        content: Buffer.from(adminAttachmentHtml).toString('base64'),
-        filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_inquiry_${submissionDate.replace(/\s+/g, '_').replace(/,/g, '')}.html`,
-        type: 'text/html',
-        disposition: 'attachment',
+        content: pdfBuffer,
+        filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_inquiry.pdf`,
+        contentType: 'application/pdf',
+        contentDisposition: 'attachment',
       },
     ];
 
@@ -303,21 +279,21 @@ export async function POST(request: Request) {
         from: 'alanj@vistapacificcapital.com',
         subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
         html: detailedHtml,
-        attachments: adminAttachments // Attach HTML file
+        attachments: adminAttachments // Attach PDF file
       },
       {
         to: 'danielm@vistapacificcapital.com',
         from: 'alanj@vistapacificcapital.com',
         subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
         html: detailedHtml,
-        attachments: adminAttachments // Attach HTML file
+        attachments: adminAttachments // Attach PDF file
       },
       {
         to: 'cynthiaj@vistapacificcapital.com',
         from: 'alanj@vistapacificcapital.com',
         subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
         html: detailedHtml,
-        attachments: adminAttachments // Attach HTML file
+        attachments: adminAttachments // Attach PDF file
       }
     ];
 
@@ -326,19 +302,18 @@ export async function POST(request: Request) {
     try {
       // Send vendor confirmation email
       console.log('Sending vendor email...');
-      await sgMail.send(vendorEmail);
+      await transporter.sendMail(vendorEmail);
       console.log('Vendor email sent successfully');
 
       // Send team emails
       console.log('Sending team emails...');
       for (const teamEmail of teamEmails) {
-        await sgMail.send(teamEmail);
+        await transporter.sendMail(teamEmail);
         console.log(`Team email sent successfully to ${teamEmail.to}`);
       }
     } catch (emailError: any) {
-      console.error('SendGrid Error:', {
+      console.error('Nodemailer Error:', {
         message: emailError.message,
-        response: emailError.response?.body,
         code: emailError.code,
       });
       throw emailError;
@@ -366,4 +341,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-} 
+}

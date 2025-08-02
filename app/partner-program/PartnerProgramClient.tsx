@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import VendorPartnershipForm from '../components/VendorPartnershipForm';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -103,91 +102,65 @@ export default function PartnerProgramClient() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <motion.section
-        className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-16"
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-      >
-        <div className="absolute inset-0">
-          <Image
-            src="/Images/gen-ai/bg-wave-6.png"
-            alt="People reviewing partnership documents"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
-        </div>
-        <div className="relative w-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
-              variants={fadeInUp}
-            >
-              Focus on Selling, We'll Handle the Financing
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-[#F2F2F2]/90"
-              variants={fadeInUp}
-            >
-              Your trusted partner in equipment financing. We make it easy for you to close more deals while providing your customers with seamless financing solutions.
-            </motion.p>
-            <motion.div variants={fadeInUp}>
-              <Link
-                href="#partner-form"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                  transform hover:-translate-y-1 transition-all duration-300"
+      <section className="w-full">
+        <motion.div 
+          className="lg:grid lg:grid-cols-10"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {/* Left Column (Text Content) */}
+          <div className="lg:col-span-3 bg-[#0D3853]/95 lg:bg-[#0D3853] min-h-screen flex flex-col justify-center p-8 sm:p-12">
+            <div className="max-w-md mx-auto w-full text-center lg:text-left">
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+                style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)' }}
+                variants={fadeInUp}
               >
-                Start Partnering / Join Us
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+                Partner Program
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl text-gray-200 mb-8"
+                style={{ textShadow: '1px 1px 4px rgba(0, 0, 0, 0.7)' }}
+                variants={fadeInUp}
+              >
+                Your Trusted Partner, No Matter the Tide
+              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <Link
+                  href="/vendor-form/"
+                  className="group inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/30 hover:shadow-[#FF6B35]/50
+                    transform transition-all duration-300 hover:scale-105"
+                >
+                  Start Partnering / Join Us
+                  <ChevronRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </motion.section>
 
-      {/* Section Divider */}
+          {/* Right Column (Image) */}
+          <div className="lg:col-span-7 relative h-96 lg:h-screen">
+            <Image
+              src="/Images/gen-ai/bg-wave-6.png"
+              alt="People reviewing partnership documents"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
+          </div>
+        </motion.div>
+      </section>
+
+     {/* Section Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Become a Partner Section */}
-        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-6">Your Trusted Partner, No Matter the Tide</h2>
-          <p className="text-xl text-[#0D3853]/80 max-w-4xl mx-auto">
-            We understand that your success depends on your ability to close deals quickly and efficiently. 
-            That's why we've built our partnership program around making your job easier.
-          </p>
-        </motion.section>
-
-        {/* How We Support Equipment Vendors */}
-        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
-          <h3 className="text-3xl font-bold text-[#0D3853] mb-12 text-center">How We Support Equipment Vendors</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vendorSupport.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-white p-6 rounded-lg shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-lg mr-4">
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-[#0D3853]">{item.title}</h4>
-                  </div>
-                  <p className="text-[#0D3853]/80 leading-relaxed">{item.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.section>
-
+        
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20 my-16"></div>
 
@@ -211,13 +184,6 @@ export default function PartnerProgramClient() {
               ))}
             </div>
           </div>
-        </motion.section>
-        
-        {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20 my-16"></div>
-        
-        <motion.section id="partner-form" variants={fadeInUp} initial="hidden" animate="visible">
-            <VendorPartnershipForm />
         </motion.section>
       </div>
 
@@ -253,7 +219,7 @@ export default function PartnerProgramClient() {
               Partner with us and discover how easy equipment financing can be for your business and your customers
             </p>
             <Link
-              href="#partner-form"
+              href="/vendor-form/"
               className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                 text-white px-8 py-4 rounded-lg font-semibold text-lg 
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 

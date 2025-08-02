@@ -67,7 +67,7 @@ const stats = [
 
 // Update keyFeatures to match standard format
 const keyFeatures = [
-  { value: '$20M', label: 'Maximum Financing', icon: GiReceiveMoney },
+  { value: '$50M', label: 'Maximum Financing', icon: GiReceiveMoney },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
 ];

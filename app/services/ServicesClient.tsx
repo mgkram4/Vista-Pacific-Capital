@@ -92,9 +92,9 @@ const services: Service[] = [
 
 const stats: Stat[] = [
   {
-    value: "$20M",
+    value: "$50M",
     label: "Maximum Funding",
-    description: "Financing from $20,000 to $20 million"
+    description: "Financing from $20,000 to $50 million"
   },
   {
     value: "A-C",
@@ -124,7 +124,7 @@ const benefits: Benefit[] = [
     title: "Quick Approval Process",
     description: "Fast approvals for qualified application-only transactions.",
     icon: Clock,
-    points: ["Simple application process", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $20 million"]
+    points: ["Simple application process", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $50 million"]
   },
   {
     title: "Vendor Partnership Programs",
@@ -140,7 +140,7 @@ const industries = [
 ];
 
 const keyFeatures = [
-  { value: '$20M', label: 'Maximum Financing', icon: DollarSign },
+  { value: '$50M', label: 'Maximum Financing', icon: DollarSign },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: Clock },
   { value: '15+', label: 'Lender Partners', icon: DollarSign },
   { value: 'Fast', label: 'Quick Approval', icon: Clock }

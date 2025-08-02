@@ -43,7 +43,7 @@ const equipmentTypes = [
 
 // Statistics display data - updated according to requirements
 const stats = [
-  { value: '$20M', label: 'Maximum Financing', icon: FaHospital },
+  { value: '$50M', label: 'Maximum Financing', icon: FaHospital },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaUserMd },
   { value: 'New & Used', label: 'Equipment Options', icon: FaHeartbeat },
   { value: 'Startups', label: 'New Practice Programs', icon: FaStethoscope },

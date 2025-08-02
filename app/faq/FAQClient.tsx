@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     question: "What are the financing amounts available?",
-    answer: "We offer equipment financing from $20,000 up to $20 million, with flexible terms and payment options to match your business needs."
+    answer: "We offer equipment financing from $20,000 up to $50 million, with flexible terms and payment options to match your business needs."
   },
   {
     question: "What types of equipment can be financed?",
-    answer: "We finance a wide range of equipment across various industries, including manufacturing, construction, healthcare, transportation, restaurant, and more. We handle both new and used equipment, with financing available for amounts ranging from $20,000 to $20 million."
+    answer: "We finance a wide range of equipment across various industries, including manufacturing, construction, healthcare, transportation, restaurant, and more. We handle both new and used equipment, with financing available for amounts ranging from $20,000 to $50 million."
   },
   {
     question: "Do you finance used equipment?",
@@ -68,51 +68,56 @@ export default function FAQClient() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <motion.section
-        className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-16"
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-      >
-        <div className="absolute inset-0">
-          <Image 
-            src="/Images/gen-ai/bg-wave-8.png"
-            alt="FAQ background"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
-        </div>
-        <div className="relative w-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
-              variants={fadeInUp}
-            >
-              Frequently Asked Questions
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-[#F2F2F2]/90"
-              variants={fadeInUp}
-            >
-              Find answers to common questions about our equipment financing solutions
-            </motion.p>
-            <motion.div variants={fadeInUp}>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                  transform hover:-translate-y-1 transition-all duration-300"
+      <section className="w-full">
+        <motion.div 
+          className="lg:grid lg:grid-cols-10"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {/* Left Column (Text Content) */}
+          <div className="lg:col-span-3 bg-[#0D3853]/95 lg:bg-[#0D3853] min-h-screen flex flex-col justify-center p-8 sm:p-12">
+            <div className="max-w-md mx-auto w-full text-center">
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
+                variants={fadeInUp}
               >
-                Get Personalized Answers
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+                Frequently Asked Questions
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl mb-8 text-[#F2F2F2]/90"
+                variants={fadeInUp}
+              >
+                Find answers to common questions about our equipment financing solutions
+              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                    transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  Get Personalized Answers
+                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+
+          {/* Right Column (Image) */}
+          <div className="lg:col-span-7 relative h-96 lg:h-screen">
+            <Image 
+              src="/Images/gen-ai/bg-wave-8.png"
+              alt="FAQ background"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          </div>
+        </motion.div>
+      </section>
 
       {/* Section Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>

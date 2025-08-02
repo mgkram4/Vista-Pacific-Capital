@@ -58,11 +58,36 @@ const QuickQuoteForm = ({
   const [focused, setFocused] = useState<string>('');
 
   const validateForm = (): boolean => {
+    // Check required fields
+    if (!formData.name || formData.name.trim() === '') {
+      setSubmitStatus({
+        success: false,
+        message: 'Please enter your name.'
+      });
+      return false;
+    }
+
+    if (!formData.email || formData.email.trim() === '') {
+      setSubmitStatus({
+        success: false,
+        message: 'Please enter your email address.'
+      });
+      return false;
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus({
         success: false,
         message: 'Please enter a valid email address.'
+      });
+      return false;
+    }
+
+    if (!formData.phone || formData.phone.trim() === '') {
+      setSubmitStatus({
+        success: false,
+        message: 'Please enter your phone number.'
       });
       return false;
     }
@@ -76,11 +101,27 @@ const QuickQuoteForm = ({
       return false;
     }
 
+    if (!formData.equipmentCost || formData.equipmentCost.trim() === '') {
+      setSubmitStatus({
+        success: false,
+        message: 'Please enter the equipment cost.'
+      });
+      return false;
+    }
+
     const cost = parseFloat(formData.equipmentCost.replace(/[^0-9.]/g, ''));
     if (isNaN(cost) || cost <= 0) {
       setSubmitStatus({
         success: false,
         message: 'Please enter a valid equipment cost.'
+      });
+      return false;
+    }
+
+    if (!formData.businessType || formData.businessType.trim() === '') {
+      setSubmitStatus({
+        success: false,
+        message: 'Please select a business type.'
       });
       return false;
     }

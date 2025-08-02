@@ -3,7 +3,7 @@ import CommercialEquipmentFinancingClient from './CommercialEquipmentFinancingCl
 
 export const metadata: Metadata = {
   title: 'Commercial Equipment Financing | Vista Pacific Capital',
-  description: 'Financing from $500,000 to $20,000,000 for middle- to large-ticket equipment purchases.',
+  description: 'Financing from $500,000 to $50 million for middle- to large-ticket equipment purchases.',
 };
 
 export default function CommercialEquipmentFinancingPage() {

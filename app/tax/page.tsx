@@ -5,7 +5,8 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaCalculator, FaChartLine, FaFileInvoiceDollar, FaQuestionCircle } from 'react-icons/fa';
+import { FaChartLine, FaFileInvoiceDollar, FaQuestionCircle } from 'react-icons/fa';
+import Section179Calculator from '../components/Section179Calculator';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -31,54 +32,59 @@ const Section179Page: React.FC = () => {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <motion.section
-        className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-16"
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
-      >
-        <div className="absolute inset-0">
-          <Image 
-            src="/Images/bg-wave2.png"
-            alt="Section 179 tax benefits background"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
-        </div>
-        <div className="relative w-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 py-32 w-full text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
-              variants={fadeInUp}
-            >
-              Maximizing Your Tax Savings
-              <br />
-              <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">with Section 179</span>
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-[#F2F2F2]/90"
-              variants={fadeInUp}
-            >
-              Unlock the power of equipment financing and tax deductions
-            </motion.p>
-            <motion.div variants={fadeInUp}>
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                  transform hover:-translate-y-1 transition-all duration-300"
+      <section className="w-full">
+        <motion.div 
+          className="lg:grid lg:grid-cols-10"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {/* Left Column (Text Content) */}
+          <div className="lg:col-span-3 bg-[#0D3853]/95 lg:bg-[#0D3853] min-h-screen flex flex-col justify-center p-8 sm:p-12">
+            <div className="max-w-md mx-auto w-full text-center">
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
+                variants={fadeInUp}
               >
-                <FaFileInvoiceDollar className="mr-3 text-xl" />
-                Maximize Your Savings
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+                Maximizing Your Tax Savings
+                <br />
+                <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">with Section 179</span>
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl mb-8 text-[#F2F2F2]/90"
+                variants={fadeInUp}
+              >
+                Unlock the power of equipment financing and tax deductions
+              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                    transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  <FaFileInvoiceDollar className="mr-3 text-xl" />
+                  Maximize Your Savings
+                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </motion.section>
+
+          {/* Right Column (Image) */}
+          <div className="lg:col-span-7 relative h-96 lg:h-screen">
+            <Image 
+              src="/Images/bg-wave2.png"
+              alt="Section 179 tax benefits background"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          </div>
+        </motion.div>
+      </section>
 
       {/* Section Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
@@ -148,24 +154,7 @@ const Section179Page: React.FC = () => {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="bg-white rounded-lg shadow-lg p-8 mb-12 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300"
-        >
-          <div className="flex items-center mb-4">
-            <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mr-3">
-              <FaCalculator className="text-3xl text-[#0EB5B2]" />
-            </div>
-            <h3 className="text-2xl font-semibold text-[#0D3853]">Are There Limits?</h3>
-          </div>
-          <p className="text-[#0D3853]/80">
-            For 2024, the deduction limit is $1.16 million, with a spending cap of $4.05 million. As long as
-            your equipment is purchased or financed and in use by December 31st, you can take
-            advantage of the deduction.
-          </p>
-        </motion.div>
+
 
         <motion.div
           variants={fadeInUp}
@@ -181,7 +170,7 @@ const Section179Page: React.FC = () => {
           </p>
           <p className="text-[#0D3853]/80">
             If you're interested in learning more, feel free to contact me at (714) 500-7017 or email
-            alanj@providencecapitalfunding.com.
+            alanj@vistapacificcapital.com.
           </p>
         </motion.div>
 
@@ -198,6 +187,9 @@ const Section179Page: React.FC = () => {
           </p>
         </motion.div>
       </section>
+
+      {/* Section 179 Calculator */}
+      <Section179Calculator />
 
       {/* Section Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
@@ -244,6 +236,8 @@ const Section179Page: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+
     </div>
   );
 };

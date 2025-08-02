@@ -1,9 +1,8 @@
 'use client';
 
-import { pdf } from '@react-pdf/renderer';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useState } from 'react';
-import VendorPartnershipPDF from './VendorPartnershipPDF';
+import SuccessModal from './SuccessModal';
 
 export interface VendorPartnershipData {
   companyName: string;
@@ -11,8 +10,8 @@ export interface VendorPartnershipData {
   email: string;
   phone: string;
   website: string;
-  equipmentTypes: string[];
-  averageDealSize: string;
+  equipmentType: string;
+  averageTicketSize: string;
   monthlyDeals: string;
   yearsInBusiness: string;
   currentFinancingPartners: string;
@@ -46,7 +45,7 @@ const equipmentTypeOptions = [
   'Other'
 ];
 
-const dealSizeOptions = [
+const ticketSizeOptions = [
   'Under $50,000',
   '$50,000 - $100,000',
   '$100,000 - $250,000',
@@ -70,8 +69,8 @@ export default function VendorPartnershipForm() {
     email: '',
     phone: '',
     website: '',
-    equipmentTypes: [],
-    averageDealSize: '',
+    equipmentType: '',
+    averageTicketSize: '',
     monthlyDeals: '',
     yearsInBusiness: '',
     currentFinancingPartners: '',
@@ -82,9 +81,8 @@ export default function VendorPartnershipForm() {
   const [errors, setErrors] = useState<FormError[]>([]);
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
-//   const [showSuccessToast, setShowSuccessToast] = useState(false);
-//   const [showSuccessModal, setShowSuccessModal] = useState(false);
-//   const [submittedData, setSubmittedData] = useState({ companyName: '', contactName: '' });
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [submittedData, setSubmittedData] = useState({ companyName: '', contactName: '' });
 
   const validateForm = (): boolean => {
     const newErrors: FormError[] = [];
@@ -107,12 +105,12 @@ export default function VendorPartnershipForm() {
       newErrors.push({ field: 'phone', message: 'Phone number is required' });
     }
 
-    if (formData.equipmentTypes.length === 0) {
-      newErrors.push({ field: 'equipmentTypes', message: 'Please select at least one equipment type' });
+    if (!formData.equipmentType) {
+      newErrors.push({ field: 'equipmentType', message: 'Please select an equipment type' });
     }
 
-    if (!formData.averageDealSize) {
-      newErrors.push({ field: 'averageDealSize', message: 'Average deal size is required' });
+    if (!formData.averageTicketSize) {
+      newErrors.push({ field: 'averageTicketSize', message: 'Average ticket size is required' });
     }
 
     if (!formData.monthlyDeals) {
@@ -123,20 +121,10 @@ export default function VendorPartnershipForm() {
     return newErrors.length === 0;
   };
 
-  const handleInputChange = (field: keyof VendorPartnershipData, value: string | string[]) => {
+  const handleInputChange = (field: keyof VendorPartnershipData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     // Clear error for this field when user starts typing
     setErrors(prev => prev.filter(error => error.field !== field));
-  };
-
-  const handleEquipmentTypeChange = (equipmentType: string) => {
-    setFormData(prev => ({
-      ...prev,
-      equipmentTypes: prev.equipmentTypes.includes(equipmentType)
-        ? prev.equipmentTypes.filter(type => type !== equipmentType)
-        : [...prev.equipmentTypes, equipmentType]
-    }));
-    setErrors(prev => prev.filter(error => error.field !== 'equipmentTypes'));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -150,36 +138,45 @@ export default function VendorPartnershipForm() {
     setSubmitStatus({});
 
     try {
-      const blob = await pdf(<VendorPartnershipPDF formData={formData} />).toBlob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `VPC_Vendor_Partnership_Inquiry_${formData.companyName.replace(/ /g, '_')}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-
-      setSubmitStatus({ success: true, message: 'Partnership inquiry PDF downloaded successfully!' });
-        
-      // Reset form
-      setFormData({
-        companyName: '',
-        contactName: '',
-        email: '',
-        phone: '',
-        website: '',
-        equipmentTypes: [],
-        averageDealSize: '',
-        monthlyDeals: '',
-        yearsInBusiness: '',
-        currentFinancingPartners: '',
-        partnershipGoals: '',
-        additionalInfo: ''
+      // Send data to SendGrid API
+      const response = await fetch('/api/submit-vendor-partnership', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmittedData({
+          companyName: formData.companyName,
+          contactName: formData.contactName
+        });
+        setShowSuccessModal(true);
+        
+        // Reset form
+        setFormData({
+          companyName: '',
+          contactName: '',
+          email: '',
+          phone: '',
+          website: '',
+          equipmentType: '',
+          averageTicketSize: '',
+          monthlyDeals: '',
+          yearsInBusiness: '',
+          currentFinancingPartners: '',
+          partnershipGoals: '',
+          additionalInfo: ''
+        });
+      } else {
+        setSubmitStatus({ success: false, message: result.message || 'An error occurred while submitting your inquiry. Please try again.' });
+      }
     } catch (error) {
-      console.error('Error generating or downloading PDF:', error);
-      setSubmitStatus({ success: false, message: 'An error occurred while generating or downloading the PDF. Please try again.' });
+      console.error('Error submitting vendor partnership inquiry:', error);
+      setSubmitStatus({ success: false, message: 'An error occurred while submitting your inquiry. Please try again.' });
     } finally {
       setLoading(false);
     }
@@ -191,22 +188,10 @@ export default function VendorPartnershipForm() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {/* {showSuccessToast && (
-        <Toast
-          message="Your partnership inquiry was submitted successfully!"
-          type="success"
-          isVisible={showSuccessToast}
-          onClose={() => setShowSuccessToast(false)}
-          duration={5000}
-        />
-      )}
-
       <SuccessModal
         isVisible={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
-        companyName={submittedData.companyName}
-        contactName={submittedData.contactName}
-      /> */}
+      />
 
       <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8">
         <div className="text-center mb-8">
@@ -316,37 +301,39 @@ export default function VendorPartnershipForm() {
               Company Website
             </label>
             <input
-              type="url"
+              type="text"
               id="website"
               value={formData.website}
               onChange={(e) => handleInputChange('website', e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853]"
-              placeholder="https://www.yourcompany.com"
+              placeholder="www.yourcompany.com"
             />
           </div>
 
-          {/* Equipment Types */}
+          {/* Equipment Type */}
           <div>
-            <label className="block text-sm font-medium text-[#0D3853] mb-2">
-              Equipment Types You Sell *
+            <label htmlFor="equipmentType" className="block text-sm font-medium text-[#0D3853] mb-2">
+              Equipment Type You Sell *
             </label>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {equipmentTypeOptions.map((type) => (
-                <label key={type} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.equipmentTypes.includes(type)}
-                    onChange={() => handleEquipmentTypeChange(type)}
-                    className="rounded border-gray-300 text-[#0EB5B2] focus:ring-[#0EB5B2]"
-                  />
-                  <span className="text-sm text-[#0D3853]">{type}</span>
-                </label>
+            <select
+              id="equipmentType"
+              value={formData.equipmentType}
+              onChange={(e) => handleInputChange('equipmentType', e.target.value)}
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853] ${
+                getFieldError('equipmentType') ? 'border-red-500' : 'border-gray-300'
+              }`}
+            >
+              <option value="">Select equipment type</option>
+              {equipmentTypeOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
               ))}
-            </div>
-            {getFieldError('equipmentTypes') && (
+            </select>
+            {getFieldError('equipmentType') && (
               <p className="text-red-500 text-sm mt-1 flex items-center">
                 <AlertCircle className="h-4 w-4 mr-1" />
-                {getFieldError('equipmentTypes')}
+                {getFieldError('equipmentType')}
               </p>
             )}
           </div>
@@ -354,28 +341,28 @@ export default function VendorPartnershipForm() {
           {/* Business Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label htmlFor="averageDealSize" className="block text-sm font-medium text-[#0D3853] mb-2">
-                Average Deal Size *
+              <label htmlFor="averageTicketSize" className="block text-sm font-medium text-[#0D3853] mb-2">
+                Average Ticket Size *
               </label>
               <select
-                id="averageDealSize"
-                value={formData.averageDealSize}
-                onChange={(e) => handleInputChange('averageDealSize', e.target.value)}
+                id="averageTicketSize"
+                value={formData.averageTicketSize}
+                onChange={(e) => handleInputChange('averageTicketSize', e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853] ${
-                  getFieldError('averageDealSize') ? 'border-red-500' : 'border-gray-300'
+                  getFieldError('averageTicketSize') ? 'border-red-500' : 'border-gray-300'
                 }`}
               >
-                <option value="">Select deal size</option>
-                {dealSizeOptions.map((option) => (
+                <option value="">Select ticket size</option>
+                {ticketSizeOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
                   </option>
                 ))}
               </select>
-              {getFieldError('averageDealSize') && (
+              {getFieldError('averageTicketSize') && (
                 <p className="text-red-500 text-sm mt-1 flex items-center">
                   <AlertCircle className="h-4 w-4 mr-1" />
-                  {getFieldError('averageDealSize')}
+                  {getFieldError('averageTicketSize')}
                 </p>
               )}
             </div>

@@ -207,28 +207,44 @@ export const equipmentFinancingProgramLinks: EquipmentLink[] = [
   },
   {
     topText: 'Commercial Equipment Financing',
-    bottomText: '$500,000 to $20,000,000',
+            bottomText: '$500,000 to $50 million',
     path: '/commercial-equipment-financing',
     description: 'Financing for large-scale commercial equipment.',
   },
   {
-    topText: 'Industry Solutions',
-    bottomText: '',
-    path: '#',
-    description: 'Industry-specific equipment financing solutions',
-    isCallToAction: false,
-    style: {
-      background: 'bg-gray-50',
-      text: 'text-gray-700',
-      hover: 'hover:bg-gray-100'
-    }
+    topText: 'Why Choose',
+    bottomText: 'Us',
+    path: '/why-choose-us',
+    description: 'Reasons to choose Vista Pacific Capital for equipment financing'
   },
   {
-    topText: 'Why Choose Us',
+    topText: 'Apply Now',
     bottomText: '',
-    path: '/why-choose-us',
-    description: 'Reasons to choose Vista Pacific Capital for equipment financing.',
-  },
+    path: '/apply',
+    description: 'Apply for equipment financing'
+  }
+];
+
+// NEW: Partner Links
+export const partnerLinks: EquipmentLink[] = [
+    {
+        topText: 'Vendor',
+        bottomText: 'Programs',
+        path: '/vendor',
+        description: 'Vendor Programs'
+    },
+    {
+        topText: 'Partner',
+        bottomText: 'Benefits',
+        path: '/partner-program',
+        description: 'Partner Benefits with Vista Pacific Capital'
+    },
+    {
+        topText: 'Partnership',
+        bottomText: 'Form',
+        path: '/vendor-form',
+        description: 'Become a Partner with Vista Pacific Capital'
+    }
 ];
 
 // NEW: Tools Links
@@ -240,28 +256,22 @@ export const toolsLinks: EquipmentLink[] = [
         description: 'Calculate your equipment financing payments'
     },
     {
+        topText: 'Tax',
+        bottomText: 'Calculator',
+        path: '/tax-calculator',
+        description: 'Section 179 Tax Calculator'
+    },
+    {
         topText: 'FAQ',
         bottomText: '',
         path: '/faq',
         description: 'Frequently Asked Questions'
     },
     {
-        topText: 'Tax',
-        bottomText: 'Information',
+        topText: '179 Tax',
+        bottomText: 'Savings',
         path: '/tax',
         description: 'Section 179 Tax Information'
-    },
-    {
-        topText: 'Vendor',
-        bottomText: 'Solutions',
-        path: '/vendor',
-        description: 'Vendor Partner Solutions'
-    },
-    {
-        topText: 'Resources',
-        bottomText: '',
-        path: '/resources',
-        description: 'Blog and Resources'
     },
     {
         topText: 'Contact',
@@ -272,25 +282,22 @@ export const toolsLinks: EquipmentLink[] = [
 ];
 
 export const quoteLink: EquipmentLink = {
-  topText: 'Apply',
-  bottomText: 'Now',
+  topText: 'Apply Now',
+  bottomText: '',
   path: '/apply',
   description: 'Apply for equipment financing',
   isCallToAction: true,
   style: {
-    background: 'bg-sea-green-dark',
+    background: 'bg-orange-500',
     text: 'text-white font-medium',
-    hover: 'hover:bg-[#4a9e99]'
+    hover: 'hover:bg-orange-600'
   }
 };
 
-const servicesLink: EquipmentLink = { topText: 'Become a', bottomText: 'Partner', path: '/partner-program', description: 'Become a Partner' };
-const aboutUsLink: EquipmentLink = { topText: 'About Us', bottomText: '', path: '/about-us', description: 'About Us' };
+const partnerMainLink: EquipmentLink = { topText: 'Become a', bottomText: 'Partner', path: '#', description: 'Vendor Programs' };
+const aboutUsLink: EquipmentLink = { topText: 'Meet the', bottomText: 'Founder', path: '/about-us', description: 'About Us' };
 const equipmentFinancingMainLink: EquipmentLink = { topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment Financing Options' };
 const toolsLink: EquipmentLink = { topText: 'Tools', bottomText: '', path: '#', description: 'Tools' };
-
-const whyChooseUsLink: EquipmentLink = { topText: 'Why Choose Us', bottomText: '', path: '/why-choose-us', description: 'Why Choose Us' };
-
 
 const NavLink: React.FC<{
   link: EquipmentLink;
@@ -317,7 +324,7 @@ const NavLink: React.FC<{
         href={link.path}
         onClick={onClick}
         className={`
-          bg-[#FF6B35] 
+          ${link.style?.background || 'bg-[#FF6B35]'}
           ${link.style?.text}
           ${link.style?.hover}
           ${isMobile ? 'w-full text-center py-2 text-sm' : 'px-4 py-2'}
@@ -338,7 +345,7 @@ const NavLink: React.FC<{
         aria-label="Apply for equipment financing"
         title={link.description}
       >
-        <span className="relative z-10">Apply for Financing</span>
+        <span className="relative z-10">{`${link.topText} ${link.bottomText}`.trim()}</span>
       </Link>
     );
   }
@@ -365,7 +372,7 @@ const NavLink: React.FC<{
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
       >
-        <span className={`font-semibold text-xs ${isActive ? 'text-sea-green-dark' : ''}`}>{`${link.topText} ${link.bottomText}`}</span>
+        <span className={`font-semibold text-xs ${isActive ? 'text-sea-green-dark' : ''}`}>{`${link.topText} ${link.bottomText}`.trim()}</span>
         <ChevronDown className={`ml-2 w-3 h-3 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
       </button>
     );
@@ -390,7 +397,7 @@ const NavLink: React.FC<{
         ${isMobile ? 'text-lg' : 'text-xs'}
         ${isActive ? 'text-sea-green-dark' : ''}
       `}>
-        {`${link.topText} ${link.bottomText}`}
+        {`${link.topText} ${link.bottomText}`.trim()}
       </span>
     </Link>
   );
@@ -400,7 +407,6 @@ const AppNavBar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [openNestedDropdown, setOpenNestedDropdown] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -463,14 +469,10 @@ const AppNavBar: React.FC = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      // Close desktop dropdown if click is outside
       if (openDropdown && dropdownRef.current && !dropdownRef.current.contains(target)) {
         setOpenDropdown(null);
       }
-      // Close mobile menu if click is outside
       if (isMobileMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(target)) {
-        // The mobile menu toggle button has its own click handler with stopPropagation,
-        // so we don't need to worry about clicks on the toggle button closing the menu here.
         setIsMobileMenuOpen(false);
       }
     };
@@ -493,7 +495,6 @@ const AppNavBar: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Add this function to handle mouse enter
   const handleMouseEnter = (dropdown: string) => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
@@ -502,30 +503,12 @@ const AppNavBar: React.FC = () => {
     setOpenDropdown(dropdown);
   };
 
-  // Add this function to handle mouse leave
   const handleMouseLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
-    }, 200); // Small delay to prevent accidental closing
+    }, 200); 
   };
 
-  // Add this function to handle mouse enter for nested dropdowns
-  const handleNestedMouseEnter = (dropdown: string) => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
-    setOpenNestedDropdown(dropdown);
-  };
-
-  // Add this function to handle mouse leave for nested dropdowns
-  const handleNestedMouseLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setOpenNestedDropdown(null);
-    }, 200);
-  };
-
-  // Clean up timeout on unmount
   useEffect(() => {
     return () => {
       if (hoverTimeoutRef.current) {
@@ -533,10 +516,6 @@ const AppNavBar: React.FC = () => {
       }
     };
   }, []);
-
-  const industrySolutionLinks = equipmentLinks.filter(link => 
-    link.path !== '/calculator'
-  );
 
   if (!isClient) {
     return null;
@@ -570,7 +549,7 @@ const AppNavBar: React.FC = () => {
                 <div className="relative" onMouseEnter={() => handleMouseEnter('equipmentFinancing')} >
                   <NavLink
                     link={equipmentFinancingMainLink}
-                    isActive={openDropdown === 'equipmentFinancing' || equipmentFinancingProgramLinks.some(l => l.path === pathname) || industrySolutionLinks.some(l => l.path === pathname)}
+                    isActive={openDropdown === 'equipmentFinancing' || equipmentFinancingProgramLinks.some(l => l.path === pathname)}
                     isDropdownTrigger
                     isDropdownOpen={openDropdown === 'equipmentFinancing'}
                     onClick={() => setOpenDropdown(openDropdown === 'equipmentFinancing' ? null : 'equipmentFinancing')}
@@ -583,63 +562,50 @@ const AppNavBar: React.FC = () => {
                         exit={{ opacity: 0, y: 10 }}
                         className="absolute top-full mt-3 w-80 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
                       >
-                        {equipmentFinancingProgramLinks.map((link, index) => (
-                          <div key={link.path} className="relative">
-                            {link.topText === 'Industry Solutions' ? (
-                              <div 
-                                className="relative"
-                                onMouseEnter={() => handleNestedMouseEnter('industrySolutions')}
-                                onMouseLeave={handleNestedMouseLeave}
-                              >
-                                <button
-                                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 text-left transition-colors duration-200"
-                                >
-                                  <span className="text-slate-700">Industry Solutions</span>
-                                  <ChevronDown className="w-4 h-4 -rotate-90 text-slate-500" />
-                                </button>
-                                <AnimatePresence>
-                                  {openNestedDropdown === 'industrySolutions' && (
-                                    <motion.div
-                                      initial={{ opacity: 0, x: -10 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      exit={{ opacity: 0, x: -10 }}
-                                      className="absolute left-full top-0 ml-2 w-80 bg-white rounded-xl shadow-2xl p-4 z-20 border border-gray-200"
-                                    >
-                                      {industrySolutionLinks.map(nestedLink => (
-                                        <NavLink
-                                          key={nestedLink.path}
-                                          link={nestedLink}
-                                          isActive={pathname === nestedLink.path}
-                                          onClick={() => {
-                                            setOpenDropdown(null);
-                                            setOpenNestedDropdown(null);
-                                          }}
-                                          className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                                        />
-                                      ))}
-                                    </motion.div>
-                                  )}
-                                </AnimatePresence>
-                              </div>
-                            ) : (
-                              <NavLink
+                        {equipmentFinancingProgramLinks.map((link) => (
+                           <NavLink
+                                key={link.path}
                                 link={link}
                                 isActive={pathname === link.path}
                                 onClick={() => setOpenDropdown(null)}
                                 className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
                               />
-                            )}
-                          </div>
                         ))}
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
+                
+                <div className="relative" onMouseEnter={() => handleMouseEnter('partner')}>
+                  <NavLink
+                      link={partnerMainLink}
+                      isActive={openDropdown === 'partner' || partnerLinks.some(l => l.path === pathname)}
+                      isDropdownTrigger
+                      isDropdownOpen={openDropdown === 'partner'}
+                      onClick={() => setOpenDropdown(openDropdown === 'partner' ? null : 'partner')}
+                  />
+                  <AnimatePresence>
+                      {openDropdown === 'partner' && (
+                          <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 10 }}
+                              className="absolute top-full mt-3 w-64 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
+                          >
+                              {partnerLinks.map(link => (
+                                  <NavLink
+                                      key={link.path}
+                                      link={link}
+                                      isActive={pathname === link.path}
+                                      onClick={() => setOpenDropdown(null)}
+                                      className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                                  />
+                              ))}
+                          </motion.div>
+                      )}
+                  </AnimatePresence>
+                </div>
 
-                <NavLink
-                  link={servicesLink}
-                  isActive={pathname === '/partner-program'}
-                />
 
                 <div className="relative" onMouseEnter={() => handleMouseEnter('tools')} >
                   <NavLink
@@ -765,49 +731,41 @@ const AppNavBar: React.FC = () => {
                       </Disclosure.Button>
                       <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
                         {equipmentFinancingProgramLinks.map((link) => (
-                          <div key={link.path}>
-                            {link.topText === 'Industry Solutions' ? (
-                              <Disclosure>
-                                {({ open: nestedOpen }) => (
-                                  <>
-                                    <Disclosure.Button className="w-full flex justify-between items-center py-3 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 pl-3 rounded-lg hover:bg-gray-50">
-                                      <span className="text-lg font-medium">Industry Solutions</span>
-                                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${nestedOpen ? 'transform rotate-180' : ''}`} />
-                                    </Disclosure.Button>
-                                    <Disclosure.Panel className="pl-6 border-l-2 border-gray-200 ml-3">
-                                      {industrySolutionLinks.map((nestedLink) => (
-                                        <NavLink
-                                          key={nestedLink.path}
-                                          link={nestedLink}
-                                          isActive={pathname === nestedLink.path}
-                                          isMobile
-                                          onClick={() => setIsMobileMenuOpen(false)}
-                                        />
-                                      ))}
-                                    </Disclosure.Panel>
-                                  </>
-                                )}
-                              </Disclosure>
-                            ) : (
-                              <NavLink
+                           <NavLink
+                                key={link.path}
                                 link={link}
                                 isActive={pathname === link.path}
                                 isMobile
                                 onClick={() => setIsMobileMenuOpen(false)}
                               />
-                            )}
-                          </div>
                         ))}
                       </Disclosure.Panel>
                     </>
                   )}
                 </Disclosure>
-                <NavLink
-                  link={servicesLink}
-                  isActive={pathname === '/partner-program'}
-                  isMobile
-                  onClick={() => setIsMobileMenuOpen(false)}
-                />
+
+                <Disclosure>
+                    {({ open }) => (
+                        <>
+                            <Disclosure.Button className="w-full flex justify-between items-center py-4 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 rounded-lg hover:bg-gray-50 px-3">
+                                <span className="text-xl font-semibold">Partner Program</span>
+                                <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'transform rotate-180' : ''}`} />
+                            </Disclosure.Button>
+                            <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
+                                {partnerLinks.map((link) => (
+                                    <NavLink
+                                        key={link.path}
+                                        link={link}
+                                        isActive={pathname === link.path}
+                                        isMobile
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    />
+                                ))}
+                            </Disclosure.Panel>
+                        </>
+                    )}
+                </Disclosure>
+
                 <Disclosure>
                   {({ open }) => (
                     <>

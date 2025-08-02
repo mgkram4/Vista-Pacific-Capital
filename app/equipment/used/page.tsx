@@ -52,7 +52,7 @@ const equipmentTypes = [
 
 // Statistics display data
 const stats = [
-  { value: '$20M+', label: 'Maximum Financing', icon: FaSearchDollar },
+  { value: '$50M+', label: 'Maximum Financing', icon: FaSearchDollar },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaBarcode },
   { value: 'A-C', label: 'Credit Types', icon: FaCogs },
   { value: 'All Credit', label: 'Flexible Credit Options', icon: FaCreditCard },
