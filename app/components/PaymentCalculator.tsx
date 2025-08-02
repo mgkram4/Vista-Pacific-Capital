@@ -123,7 +123,7 @@ export default function PaymentCalculator() {
 
         {/* Disclaimer */}
         <p className="text-sm text-gray-600 mt-6 italic">
-          *Payments are estimated and subject to credit approval. Financing from $20,000 to $20 million available.
+          *Payments are estimated and subject to credit approval. Financing from $20,000 to $50 million available.
         </p>
       </div>
     </div>

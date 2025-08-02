@@ -5,7 +5,7 @@ export default function MedicalEquipmentPage() {
     title: "Medical Equipment Financing",
     description: "Specialized medical equipment from imaging systems to surgical equipment, for delivering exceptional patient care. Whether you're upgrading existing equipment, expanding your practice, or opening a new facility, our financing options provide you with the resources to meet your needs without compromising your budget.",
     features: [
-      "Maximum financing $20 million",
+      "Maximum financing $50 million",
       "Flexible terms up to 84 months",
       "New and used equipment options",
       "Quick approval process"

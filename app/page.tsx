@@ -5,7 +5,7 @@ const financialServiceSchema = {
   "@context": "https://schema.org",
   "@type": "FinancialService",
   "name": "Equipment Financing Solutions",
-  "description": "Equipment financing from $20,000 to $20 million with quick approval",
+  "description": "Equipment financing from $20,000 to $50 million with quick approval",
   "areaServed": "United States",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -95,18 +95,18 @@ const faqSchema = {
       "name": "What are the financing amounts available?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We offer equipment financing from $20,000 up to $20 million, with flexible terms and payment options to match your business needs."
+        "text": "We offer equipment financing from $20,000 up to $50 million, with flexible terms and payment options to match your business needs."
       }
     }
   ]
 };
 
 export const metadata: Metadata = {
-  title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
+  title: "Equipment Financing $20K-$50M | Quick Approval | All Industries",
   description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months. Apply online for construction, medical, restaurant equipment loans.",
   keywords: ["equipment financing", "business equipment loans", "quick equipment financing", "construction equipment financing", "medical equipment loans", "restaurant equipment financing", "heavy equipment financing", "commercial truck financing", "material handling financing", "manufacturing equipment loans", "transportation financing"],
   openGraph: {
-    title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
+    title: "Equipment Financing $20K-$50M | Quick Approval | All Industries",
     description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months. Apply online for construction, medical, restaurant equipment loans.",
     url: "https://vistapacificcapital.com",
     siteName: "Vista Pacific Capital",
@@ -123,7 +123,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Equipment Financing $20K-$20M | Quick Approval | All Industries",
+    title: "Equipment Financing $20K-$50M | Quick Approval | All Industries",
     description: "Get equipment financing approved quickly. New & used equipment, A-C credit accepted, terms up to 84 months.",
     images: ['https://vistapacificcapital.com/og-image.jpg'],
   },

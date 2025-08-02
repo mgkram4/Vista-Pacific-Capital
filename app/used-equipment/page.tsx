@@ -52,7 +52,7 @@ const equipmentTypes = [
 
 // Statistics display data
 const stats = [
-  { value: '$20M+', label: 'Maximum Financing', icon: FaSearchDollar },
+  { value: '$50M+', label: 'Maximum Financing', icon: FaSearchDollar },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaBarcode },
   { value: 'A-C', label: 'Credit Types', icon: FaCogs },
   { value: '24hrs', label: 'Quick Approval', icon: FaCheckCircle }
@@ -103,7 +103,7 @@ export default function UsedEquipmentContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/contact" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                         bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
                         rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
                         group relative overflow-hidden">
@@ -221,7 +221,7 @@ export default function UsedEquipmentContent() {
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1B365D]/95 via-[#1B365D]/90 to-[#48B0B0]/80 " />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

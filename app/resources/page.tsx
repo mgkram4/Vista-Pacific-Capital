@@ -1,10 +1,30 @@
 "use client"
 
 import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaWarehouse } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
 
 export default function BlogResources() {
   const articles = [
@@ -24,7 +44,6 @@ export default function BlogResources() {
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       category: "Warehouse Solutions"
     },
-    // ... (other articles remain the same)
   ];
 
   const recentFinancing = [
@@ -35,50 +54,76 @@ export default function BlogResources() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Industry Insights
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Comprehensive information to power your equipment financing decisions
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/contact" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Explore Financing Options</span>
-            </Link>
-          </motion.div>
-        </div>
+      <section className="w-full">
+        <motion.div 
+          className="lg:grid lg:grid-cols-10"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {/* Left Column (Text Content) */}
+          <div className="lg:col-span-3 bg-[#0D3853]/95 lg:bg-[#0D3853] min-h-screen flex flex-col justify-center p-8 sm:p-12">
+            <div className="max-w-md mx-auto w-full text-center">
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6"
+                variants={fadeInUp}
+              >
+                Industry Insights
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl mb-8 text-[#F2F2F2]/90"
+                variants={fadeInUp}
+              >
+                Comprehensive information to power your equipment financing decisions
+              </motion.p>
+              <motion.div variants={fadeInUp}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                    transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  Explore Financing Options
+                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right Column (Image) */}
+          <div className="lg:col-span-7 relative h-96 lg:h-screen">
+            <Image 
+              src="/Images/bg-wave2.png"
+              alt="Industry insights background"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          </div>
+        </motion.div>
       </section>
 
+      {/* Section Divider */}
+      <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
+
       {/* Articles Section */}
-      <section className="max-w-6xl mx-auto py-24 px-4">
-        <div className="grid grid-cols-1 gap-16">
+      <section className="max-w-6xl mx-auto py-20 px-4">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 gap-16"
+        >
           {articles.map((article, index) => (
             <motion.div 
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30"
             >
               <div className="md:flex">
                 <div className="md:w-1/3">
@@ -86,81 +131,107 @@ export default function BlogResources() {
                     <Image 
                       src={article.image}
                       alt={article.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 </div>
                 <div className="md:w-2/3 p-6">
                   <div className="flex items-center mb-4">
-                    <article.icon className="text-2xl text-light-sea-green mr-2" />
-                    <span className="text-sm text-indigo-dye">{article.category}</span>
+                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-2 w-fit mr-2">
+                      <article.icon className="text-2xl text-[#0EB5B2]" />
+                    </div>
+                    <span className="text-sm text-[#0EB5B2] font-semibold">{article.category}</span>
                   </div>
-                  <h3 className="text-2xl font-semibold text-indigo-dye mb-4">{article.title}</h3>
-                  <div className="text-gray-700 space-y-2">
+                  <h3 className="text-2xl font-semibold text-[#0D3853] mb-4">{article.title}</h3>
+                  <div className="text-[#0D3853]/80 space-y-2">
                     {article.content.split('\n').map((paragraph, idx) => (
-                      <p key={idx}>{paragraph}</p>
+                      paragraph.trim() && <p key={idx}>{paragraph.trim()}</p>
                     ))}
                   </div>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
+      {/* Section Divider */}
+      <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
+
       {/* Recent Financing Section */}
-      <section className="w-full bg-gray-50 py-16 px-4">
+      <section className="w-full bg-gradient-to-b from-[#F2F2F2] to-white py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center text-indigo-dye">Recently Financed</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.h2
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-3xl font-bold mb-8 text-center text-[#0D3853]"
+          >
+            Recently Financed
+          </motion.h2>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
             {recentFinancing.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg text-center shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="bg-white p-6 rounded-lg text-center shadow-lg border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300"
               >
-                <p className="text-2xl font-bold mb-2 text-light-sea-green">{item.amount}</p>
-                <p className="text-sm text-gray-700">{item.description}</p>
+                <p className="text-2xl font-bold mb-2 text-[#0EB5B2]">{item.amount}</p>
+                <p className="text-sm text-[#0D3853]/80">{item.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
       
-      {/* CTA Section */}
-      <section className="w-full bg-light-sea-green text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-4xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready to Explore Your Financing Options?
-          </motion.h2>
-          <motion.p
-            className="text-xl mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Let's discuss how our equipment financing solutions can help your business thrive.
-          </motion.p>
+      {/* Section Divider */}
+      <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
+
+      {/* Final CTA */}
+      <section className="relative py-20 overflow-hidden w-full">
+        <div className="absolute inset-0">
+          <Image 
+            src="/Images/cta-background-signing.jpg"
+            alt="Modern office environment for equipment financing consultation"
+            fill
+            className="object-cover"
+            quality={75}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            className="space-y-4"
           >
-            <Link href="/contact" className="bg-white text-light-sea-green py-4 px-10 rounded-full text-xl font-semibold hover:bg-indigo-dye hover:text-white transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Contact Us Today</span>
+            <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">GET STARTED TODAY</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
+              Ready to Explore Your Financing Options?
+            </h2>
+            <p className="text-xl text-[#F2F2F2]/90 max-w-3xl mx-auto pb-4">
+              Let's discuss how our equipment financing solutions can help your business thrive.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                transform hover:-translate-y-1 transition-all duration-300"
+            >
+              Contact Us Today
+              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </div>

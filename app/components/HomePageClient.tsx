@@ -1,10 +1,8 @@
 "use client"
 
-import PDFForm from '@/app/pdf-form/page';
 import { motion } from 'framer-motion';
 import {
   Building2,
-  Calculator,
   CheckCircle2,
   ChevronRight,
   Clock,
@@ -50,10 +48,10 @@ const services: Service[] = [
   {
     title: "Material Handling Equipment Financing",
     description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
-    features: ["New or refurbished racking systems", "Labor and installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
+    features: ["New or refurbished racking systems", "Labor and installation installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
     icon: Factory,
     href: "/equipment/racking-material-handling",
-    imageSrc: "/Images/services/material-handling-new.jpg"
+    imageSrc: "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?_gl=1*qr8qt3*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ3ODYkajYkbDAkaDA."
   },
   {
     title: "Construction Equipment Financing",
@@ -61,7 +59,7 @@ const services: Service[] = [
     features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction",
-    imageSrc: "/Images/services/construction.jpg"
+    imageSrc: "/Images/gen-ai/img1.png"
   },
   {
     title: "Medical Equipment Financing",
@@ -69,7 +67,7 @@ const services: Service[] = [
     features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
     icon: Stethoscope,
     href: "/equipment/medical",
-    imageSrc: "/Images/services/medical-new.jpg"
+    imageSrc: "https://images.pexels.com/photos/11288658/pexels-photo-11288658.jpeg?_gl=1*8sz3nl*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ2MjAkajE5JGwwJGgw"
   },
   {
     title: "Manufacturing Equipment Financing",
@@ -77,7 +75,7 @@ const services: Service[] = [
     features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "/Images/services/manufacturing.jpg"
+    imageSrc: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg?_gl=1*17r2db3*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ0NTEkajI1JGwwJGgw"
   },
   {
     title: "Restaurant Equipment Financing",
@@ -85,7 +83,7 @@ const services: Service[] = [
     features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant",
-    imageSrc: "/Images/services/restaurant-new.jpg"
+    imageSrc: "/Images/gen-ai/img5.png"
   },
   {
     title: "Transportation Financing Programs",
@@ -93,15 +91,15 @@ const services: Service[] = [
     features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
     icon: Truck,
     href: "/equipment/dump-truck",
-    imageSrc: "/Images/services/transportation-new.jpg"
+    imageSrc: "/Images/gen-ai/img6.png"
   }
 ];
 
 const stats: Stat[] = [
   {
-    value: "$20M",
+    value: "$50M",
     label: "Maximum Funding",
-    description: "Financing from $20,000 to $20 million"
+    description: "Financing from $20,000 to $50 million"
   },
   {
     value: "A-C",
@@ -131,7 +129,7 @@ const benefits: Benefit[] = [
     title: "Quick Approval Time",
     description: "Fast approvals for qualified application-only transactions.",
     icon: Clock,
-    points: ["2-minute application", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $20 million"]
+    points: ["2-minute application", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $50 million"]
   },
   {
     title: "Vendor Partnership Programs",
@@ -156,7 +154,7 @@ const faqs: FAQ[] = [
   },
   {
     q: "What are the financing amounts available?",
-    a: "We offer equipment financing from $20,000 up to $20 million, with flexible terms and payment options to match your business needs."
+    a: "We offer equipment financing from $20,000 up to $50 million, with flexible terms and payment options to match your business needs."
   }
 ];
 
@@ -182,113 +180,53 @@ const staggerContainer = {
 export default function HomePageClient() {
   return (
     <>
-      <main className="bg-white">
-        <section className="relative w-full overflow-hidden pt-20 sm:pt-24 lg:pt-16">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0">
-            <Image 
-              src="/Images/hero-background.jpg"
-              alt="Business professional reviewing equipment financing options with 24-hour approval"
+      <main className="bg-white font-sans">
+        <section className="relative w-full min-h-screen">
+          {/* Full-screen background image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/Images/bg-wave2.png"
+              alt="Scenic coastal view for equipment financing background"
               fill
               priority
               className="object-cover"
-              quality={75}
+              quality={100}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/85" />
           </div>
 
-          {/* Hero Content */}
-          <div className="relative w-full flex items-center">
-            <div className="max-w-7xl mx-auto px-2 py-8 w-full">
-              <div className="grid lg:grid-cols-2 gap-2 items-center">
-                {/* Left Column - Hero Content */}
-                <motion.div
-                  variants={fadeInUp}
-                  initial="hidden"
-                  animate="visible"
-                  className="text-white space-y-4"
+          {/* Content layout */}
+          <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
+            {/* Left content area with overlay */}
+            <div className="lg:col-span-3 bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="w-full max-w-md mx-auto"
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+                Your Growth 
+                  <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent"> Partner</span>
+                </h1>
+                <p className="text-lg md:text-xl text-[#B3B3B3] mb-8">
+                Equipment Financing from $20,000 to $50 million
+                </p>
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                    transform hover:-translate-y-1 transition-all duration-300"
                 >
-                  {/* Hero Title */}
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] rounded-lg overflow-hidden">
-                    Get Equipment
-                    <br />
-                    Financing Terms
-                    <br />
-                    <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">In 24 Hours</span>
-                  </h1>
+                  Apply Now
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </motion.div>
+            </div>
 
-                  {/* Features Section */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2 text-lg md:text-xl">
-                      <span className="flex-shrink-0 w-1 h-6 bg-gradient-to-b from-[#0EB5B2] to-[#0EB5B2] rounded-full" />
-                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#F2F2F2] to-[#B3B3B3]">
-                        Financing from $20,000 to $20 million
-                      </p>
-                    </div>
-                    
-                    {/* Feature Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {[
-                        ["Fast Approval", "bg-gradient-to-r from-[#0EB5B2]/20 to-[#0EB5B2]/10 border-[#0EB5B2]/20"],
-                        ["New and Used Equipment", "bg-gradient-to-r from-[#0D3853]/20 to-[#0D3853]/10 border-[#0D3853]/20"],
-                        ["Flexible Terms", "bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/10 border-[#0D3853]/20"],
-                        ["A through C Credit", "bg-gradient-to-r from-[#FF6B35]/20 to-[#FF6B35]/10 border-[#FF6B35]/20"]
-                      ].map((item, index) => (
-                        <motion.div
-                          key={index}
-                          variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { 
-                              opacity: 1, 
-                              y: 0,
-                              transition: { delay: index * 0.1 }
-                            }
-                          }}
-                          className={`flex items-center space-x-2 p-3 rounded-lg border ${item[1]}
-                            backdrop-blur-md hover:bg-white/5 transition-all duration-300 shadow-lg hover:shadow-xl`}
-                        >
-                          <CheckCircle2 className="text-[#0EB5B2] h-5 w-5 flex-shrink-0" />
-                          <span className="text-sm font-medium text-[#F2F2F2]">{item[0]}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <Link
-                      href="/pdf-form"
-                      className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] text-white px-6 py-3 rounded-lg
-                        font-semibold text-lg shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                        transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center backdrop-blur-sm"
-                    >
-                      Apply Now
-                      <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-
-                    <Link
-                      href="/calculator"
-                      className="group px-4 py-2 rounded-lg border border-[#0EB5B2]/30 text-white
-                        font-semibold text-lg bg-gradient-to-r from-[#0EB5B2]/10 to-[#0D3853]/10 hover:from-[#0EB5B2]/20 hover:to-[#0D3853]/20
-                        backdrop-blur-md transform hover:-translate-y-1 transition-all duration-300 
-                        flex items-center justify-center shadow-lg hover:shadow-[#0EB5B2]/20"
-                    >
-                      <Calculator className="mr-2 h-5 w-5" />
-                      Payment Calculator
-                    </Link>
-                  </div>
-                </motion.div>
-
-                {/* Right Column - Form */}
-                <motion.div
-                  variants={fadeInUp}
-                  initial="hidden"
-                  animate="visible"
-                  className="relative"
-                >
-                  <PDFForm />
-                </motion.div>
-              </div>
+            {/* Right-side spacer for desktop grid */}
+            <div className="hidden lg:block lg:col-span-7">
+              {/* This area is transparent, revealing the background image */}
             </div>
           </div>
         </section>
@@ -297,14 +235,14 @@ export default function HomePageClient() {
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
         {/* Benefits Section - adjust spacing here */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-24 bg-gray-50">
           <h2 className="sr-only">Our Financing Benefits</h2>
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853]">
                 Benefits of Our Equipment Financing
-              </h3>
-              <p className="text-lg text-gray-600">
+              </h2>
+              <p className="text-lg text-[#B3B3B3]">
                 Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
               </p>
               <div className="space-y-4">
@@ -317,10 +255,10 @@ export default function HomePageClient() {
                     <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
                       {benefit.title}
                     </h3>
-                    <p className="text-[#0D3853]/80 mb-4">{benefit.description}</p>
+                    <p className="text-[#B3B3B3] mb-4">{benefit.description}</p>
                     <ul className="space-y-2">
                       {benefit.points.map((point, idx) => (
-                        <li key={idx} className="flex items-center space-x-2 text-[#0D3853]/80">
+                        <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
                           <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                           <span>{point}</span>
                         </li>
@@ -333,7 +271,7 @@ export default function HomePageClient() {
             <div className="hidden md:block">
               <figure>
                 <Image 
-                  src="/Images/constructionH.png"
+                  src="/Images/gen-ai/img7.png"
                   alt="Business owner signing equipment financing agreement"
                   width={600}
                   height={500}
@@ -349,14 +287,14 @@ export default function HomePageClient() {
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
         {/* Services Section - adjust spacing here */}
-        <section className="py-12 md:py-20 bg-white">
+        <section className="py-24 bg-white">
           <h2 className="sr-only">Industries We Serve</h2>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#1B365D]">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853]">
                 Equipment Financing for Your Industry
-              </h3>
-              <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+              </h2>
+              <p className="text-lg text-[#B3B3B3] mt-4 max-w-3xl mx-auto">
                 We provide tailored equipment financing and business loan solutions for a wide range of industries. Get the capital you need for new or used equipment.
               </p>
             </div>
@@ -392,10 +330,10 @@ export default function HomePageClient() {
                   <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-[#0D3853]/80 mb-4">{service.description}</p>
+                  <p className="text-[#B3B3B3] mb-4">{service.description}</p>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-[#0D3853]/80">
+                      <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
                         <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                         <span>{feature}</span>
                       </li>
@@ -426,10 +364,10 @@ export default function HomePageClient() {
               className="text-center mb-8"
             >
               <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">COMMON QUESTIONS</span>
-              <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-4">
                 Frequently Asked Questions
-              </h3>
-              <p className="text-xl text-[#0D3853]/80">
+              </h2>
+              <p className="text-xl text-[#B3B3B3]">
                 Everything you need to know about equipment financing
               </p>
             </motion.div>
@@ -450,10 +388,10 @@ export default function HomePageClient() {
                     border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30
                     shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
                 >
-                  <h4 className="text-xl font-bold bg-gradient-to-r from-[#0D3853] to-[#0D3853] bg-clip-text text-transparent mb-2">
+                  <h3 className="text-xl font-bold text-[#0D3853] mb-2">
                     {faq.q}
-                  </h4>
-                  <p className="text-[#0D3853]/80">{faq.a}</p>
+                  </h3>
+                  <p className="text-[#B3B3B3]">{faq.a}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -467,13 +405,13 @@ export default function HomePageClient() {
         <footer className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office environment for equipment financing consultation"
               fill
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/95 via-[#0D3853]/90 to-[#0EB5B2]/80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -488,11 +426,11 @@ export default function HomePageClient() {
               <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
                 Ready to Get Started?
               </h2>
-              <p className="text-xl text-[#F2F2F2]/90 max-w-3xl mx-auto pb-4">
+              <p className="text-xl text-[#B3B3B3] max-w-3xl mx-auto pb-4">
                 Get pre-qualified in minutes with no impact to your credit score
               </p>
               <Link
-                href="/pdf-form"
+                href="/apply"
                 className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                   text-white px-8 py-4 rounded-lg font-semibold text-lg 
                   shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 

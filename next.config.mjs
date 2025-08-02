@@ -12,6 +12,21 @@ const nextConfig = {
         hostname: '5ycd9odhqw.ufs.sh',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.squarespace-cdn.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'wallpapercrafter.com',
+        pathname: '**',
+      },
     ],
   },
 };

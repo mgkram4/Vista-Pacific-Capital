@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import {
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Cog,
-  DollarSign,
-  Factory,
-  LucideIcon,
-  Stethoscope,
-  Truck,
-  UtensilsCrossed
+    Building2,
+    CheckCircle2,
+    ChevronRight,
+    Clock,
+    Cog,
+    DollarSign,
+    Factory,
+    LucideIcon,
+    Stethoscope,
+    Truck,
+    UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -92,9 +92,9 @@ const services: Service[] = [
 
 const stats: Stat[] = [
   {
-    value: "$20M",
+    value: "$50M",
     label: "Maximum Funding",
-    description: "Financing from $20,000 to $20 million"
+    description: "Financing from $20,000 to $50 million"
   },
   {
     value: "A-C",
@@ -124,7 +124,7 @@ const benefits: Benefit[] = [
     title: "Quick Approval Process",
     description: "Fast approvals for qualified application-only transactions.",
     icon: Clock,
-    points: ["Simple application process", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $20 million"]
+    points: ["Simple application process", "Soft credit pull only", "Application Only up to $750,000", "Financing from $20,000 to $50 million"]
   },
   {
     title: "Vendor Partnership Programs",
@@ -140,7 +140,7 @@ const industries = [
 ];
 
 const keyFeatures = [
-  { value: '$20M', label: 'Maximum Financing', icon: DollarSign },
+  { value: '$50M', label: 'Maximum Financing', icon: DollarSign },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: Clock },
   { value: '15+', label: 'Lender Partners', icon: DollarSign },
   { value: 'Fast', label: 'Quick Approval', icon: Clock }
@@ -172,12 +172,12 @@ export default function ServicesClient() {
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 z-0 opacity-2">
           <Image
-            src="/Images/hero-background.jpg"
+            src="/Images/bg-wave2.png"
             alt="Services background"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             loading="lazy"
           />
         </div>

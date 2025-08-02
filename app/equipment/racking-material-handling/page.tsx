@@ -25,7 +25,7 @@ const rackingMetadata: EnhancedEquipmentMetadata = {
     { name: 'Forklifts', types: ['Counterbalance Forklifts', 'Reach Trucks', 'Pallet Jacks'] }
   ],
   features: [
-    'Financing up to $20M',
+    'Financing up to $50M',
     'Terms from 24-84 months',
     'New and used equipment',
     'Fast approvals'
