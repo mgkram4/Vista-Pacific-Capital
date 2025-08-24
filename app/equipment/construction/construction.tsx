@@ -2,6 +2,7 @@
 "use client"
 
 
+import PaymentCalculator from '@/app/components/PaymentCalculator';
 import { constructionMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';

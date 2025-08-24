@@ -1651,8 +1651,15 @@ export default function FinanceApplicationPage() {
           <div className="space-y-6">
             {/* Business Information Review */}
             <div className="bg-[#F2F2F2] rounded-lg p-5 border border-gray-200">
-              <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">Business Information</h3>
+              <h3 className="text-lg font-semibold mb-3 text-[#0D3853]">Application Summary</h3>
               
+              {agent && (
+                <div className="flex mb-3 pt-1 pb-2 border-b border-gray-300">
+                  <span className="font-medium w-40 text-[#0D3853] mr-2">Your Agent:</span>
+                  <span className="text-[#0D3853] font-bold">{agent.name}</span>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 gap-y-2">
                 <div className="flex">
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Requested Amount:</span>

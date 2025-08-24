@@ -3,42 +3,6 @@ import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Helper function to create a password-protected ZIP from a buffer
-async function createPasswordProtectedZip(fileBuffer: Buffer, fileName: string, password: string): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
-    const archive = archiver('zip', {
-      zlib: { level: 9 } // Set compression level
-    });
-    
-    // Use the zip-crypto library for password protection
-    // This is an older, less secure method but widely supported.
-    // For stronger encryption, you might need external libraries or tools.
-    // This example will use standard zip encryption.
-    archive.setArchiverOption({ forceZip64: false });
-    // The 'archiver-zip-encryptable' module would be needed for real encryption.
-    // Since we can't easily add it, we'll simulate the structure.
-    // For a real-world scenario, you would use a library that supports zip encryption.
-    
-    const chunks: Buffer[] = [];
-
-    archive.on('data', (chunk) => {
-      chunks.push(chunk);
-    });
-
-    archive.on('end', () => {
-      resolve(Buffer.concat(chunks));
-    });
-
-    archive.on('error', (err) => {
-      reject(err);
-    });
-
-    archive.append(fileBuffer, { name: fileName });
-    archive.finalize();
-  });
-}
-
-
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -95,7 +59,7 @@ export async function POST(request: NextRequest) {
     
 
     // Create transporter for sending email
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false,

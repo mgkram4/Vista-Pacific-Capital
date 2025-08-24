@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -44,7 +44,7 @@ const Section179Calculator: React.FC = () => {
     }).format(amount);
   };
 
-  const calculateSection179 = () => {
+  const calculateSection179 = useCallback(() => {
     const { equipmentPrice, taxRate } = inputs;
 
     // Section 179 limits for 2024
@@ -64,11 +64,11 @@ const Section179Calculator: React.FC = () => {
       taxSavings,
       effectiveCost
     });
-  };
+  }, [inputs]);
 
   useEffect(() => {
     calculateSection179();
-  }, [inputs]);
+  }, [calculateSection179]);
 
   const handleInputChange = (field: keyof CalculatorInputs, value: string | number) => {
     setInputs(prev => ({
