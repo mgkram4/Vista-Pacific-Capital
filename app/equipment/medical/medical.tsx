@@ -11,6 +11,7 @@ import {
     FaMicroscope, FaProcedures, FaStethoscope, FaUserMd
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
+import PaymentCalculator from '../../components/PaymentCalculator';
 
 
 // Define equipment types with their details
@@ -74,34 +75,36 @@ export default function MedicalFinancingContent() {
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Medical Equipment Financing
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Specialized medical equipment from imaging systems to surgical equipment, for delivering exceptional patient care. Whether you're upgrading existing equipment, expanding your practice, or opening a new facility, our financing options provide you with the resources to meet your needs without compromising your budget.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
-            </Link>
-          </motion.div>
+          <div className="bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8 max-w-4xl">
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Medical Equipment Financing
+            </motion.h1>
+            <motion.p
+              className="text-2xl mb-12 leading-relaxed max-w-3xl"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Specialized medical equipment from imaging systems to surgical equipment, for delivering exceptional patient care. Whether you're upgrading existing equipment, expanding your practice, or opening a new facility, our financing options provide you with the resources to meet your needs without compromising your budget.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                          bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                          rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
+                <GiReceiveMoney className="mr-3 text-3xl" />
+                <span>Get Financing</span>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -286,6 +289,34 @@ export default function MedicalFinancingContent() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Payment Calculator Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
+              Calculate Your Monthly Payments
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Get instant payment estimates for your medical equipment financing with flexible terms.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PaymentCalculator />
+          </motion.div>
         </div>
       </section>
 

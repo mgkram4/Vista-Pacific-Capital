@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import {
-  Clock,
-  DollarSign,
-  Heart,
-  Shield,
-  Users,
-  Zap
+    Clock,
+    DollarSign,
+    Heart,
+    Shield,
+    Users,
+    Zap
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';

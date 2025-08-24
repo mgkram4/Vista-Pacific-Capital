@@ -5,15 +5,15 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaBarcode,
-    FaCogs,
-    FaCreditCard,
-    FaIndustry,
-    FaMedkit,
-    FaSearchDollar,
-    FaTools,
-    FaTruck,
-    FaWarehouse
+  FaBarcode,
+  FaCogs,
+  FaCreditCard,
+  FaIndustry,
+  FaMedkit,
+  FaSearchDollar,
+  FaTools,
+  FaTruck,
+  FaWarehouse
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
 
@@ -71,7 +71,7 @@ export default function UsedEquipmentContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
+      <section className="w-full text-white py-32 px-4 relative overflow-hidden">
         <link
           rel="preload"
           href="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
@@ -89,8 +89,9 @@ export default function UsedEquipmentContent() {
             loading="eager"
             sizes="100vw"
           />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]">
           <motion.h1 
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
@@ -268,7 +269,7 @@ export default function UsedEquipmentContent() {
       <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office background"
               fill
               className="object-cover"
@@ -277,7 +278,7 @@ export default function UsedEquipmentContent() {
               loading="lazy"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -285,7 +286,7 @@ export default function UsedEquipmentContent() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]"
             >
               <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
               <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">

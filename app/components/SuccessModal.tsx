@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle, X } from 'lucide-react';
+import { CheckCircle, Upload, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface SuccessModalProps {
@@ -10,6 +10,10 @@ interface SuccessModalProps {
 
 export default function SuccessModal({ isVisible, onClose }: SuccessModalProps) {
   const [showContent, setShowContent] = useState(false);
+  const [showFileUpload, setShowFileUpload] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   useEffect(() => {
     if (isVisible) {
@@ -17,8 +21,61 @@ export default function SuccessModal({ isVisible, onClose }: SuccessModalProps) 
       setTimeout(() => setShowContent(true), 100);
     } else {
       setShowContent(false);
+      setShowFileUpload(false);
+      setSelectedFile(null);
+      setUploading(false);
+      setUploadSuccess(false);
     }
   }, [isVisible]);
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      // Check if it's a PDF file
+      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+        setSelectedFile(file);
+      } else {
+        alert('Please select a PDF file only.');
+        event.target.value = '';
+      }
+    }
+  };
+
+  const handleFileUpload = async () => {
+    if (!selectedFile) {
+      alert('Please select a PDF file.');
+      return;
+    }
+
+    setUploading(true);
+    
+    try {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('timestamp', new Date().toISOString());
+
+      const response = await fetch('/api/upload-documents', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        setUploadSuccess(true);
+        setSelectedFile(null);
+        setTimeout(() => {
+          setShowFileUpload(false);
+          setUploadSuccess(false);
+        }, 2000);
+      } else {
+        throw new Error('Upload failed');
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Upload failed. Please try again or contact support.');
+    } finally {
+      setUploading(false);
+    }
+  };
 
   if (!isVisible) return null;
 
@@ -88,6 +145,70 @@ export default function SuccessModal({ isVisible, onClose }: SuccessModalProps) 
             </p>
           </div>
         </div>
+
+        {/* File Upload Section */}
+        {!showFileUpload && (
+          <div 
+            className={`px-6 pb-4 border-t border-gray-100 transform transition-all duration-500 delay-400 ${
+              showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+          >
+            <button
+              onClick={() => setShowFileUpload(true)}
+              className="w-full bg-blue-50 text-blue-700 py-3 px-4 rounded-lg font-medium hover:bg-blue-100 transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              <Upload size={18} />
+              Have files ready to submit?
+            </button>
+          </div>
+        )}
+
+        {/* File Upload Form */}
+        {showFileUpload && (
+          <div className="px-6 pb-4 border-t border-gray-100 space-y-4">
+            <h3 className="font-semibold text-gray-800 text-center">Upload Supporting Documents</h3>
+            <p className="text-sm text-gray-600 text-center">
+              Upload a PDF file with your documents. It will be securely zipped and sent.
+            </p>
+            
+            {uploadSuccess ? (
+              <div className="text-center py-4">
+                <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <p className="text-green-600 font-medium">Documents uploaded successfully!</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Select PDF file
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf,application/pdf"
+                    onChange={handleFileSelect}
+                    className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                </div>
+                
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setShowFileUpload(false)}
+                    className="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleFileUpload}
+                    disabled={!selectedFile || uploading}
+                    className="flex-1 bg-[#0EB5B2] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#0D3853] transition-colors duration-200 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  >
+                    {uploading ? 'Uploading...' : 'Upload'}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Footer */}
         <div 

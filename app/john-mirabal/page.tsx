@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation';
 import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
 import HomePageApplicationForm, { TEAM_MEMBERS } from '../components/HomePageApplicationForm';
 
-export default function JohnPage() {
+export default function JohnMirabalPage() {
   const router = useRouter();
   
   // Custom submit handler to redirect to the PDF form
   const handleFormSubmit = () => {
     // Store the team member in session storage
-    sessionStorage.setItem('teamMember', JSON.stringify(TEAM_MEMBERS.john));
+    sessionStorage.setItem('teamMember', JSON.stringify(TEAM_MEMBERS.johnMirabal));
     router.push('/pdf-form');
   };
 
@@ -23,14 +23,14 @@ export default function JohnPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "John Miller",
-          "url": "https://www.vistapacificcapital.com/john",
+          "name": "John Mirabal",
+          "url": "https://www.vistapacificcapital.com/john-mirabal",
           "jobTitle": "Finance Specialist",
           "worksFor": {
             "@type": "Organization",
             "name": "Vista Pacific Capital"
           },
-          "telephone": "+17145007018",
+          "telephone": "+17145519955",
           "email": "johnm@vistapacificcapital.com"
         }) }}
       />
@@ -52,7 +52,7 @@ export default function JohnPage() {
         <div className="relative z-20 h-[40vh] md:h-[40vh] flex items-center">
           <div className="max-w-6xl mx-auto px-4 w-full">
             <motion.div
-              className="max-w-3xl"
+              className="max-w-3xl bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -79,7 +79,7 @@ export default function JohnPage() {
               transition={{ duration: 0.6 }}
             >
               <HomePageApplicationForm 
-                teamMember={TEAM_MEMBERS.john} 
+                teamMember={TEAM_MEMBERS.johnMirabal} 
                 onSubmit={handleFormSubmit} 
               />
             </motion.div>
@@ -97,7 +97,7 @@ export default function JohnPage() {
                 <div className="bg-[#11B5B2]/10 p-3 rounded-full">
                   <FaUser className="text-[#1E5470] text-xl" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold ml-4 text-[#113E59]">John Miller</h2>
+                <h2 className="text-2xl md:text-3xl font-bold ml-4 text-[#113E59]">John Mirabal</h2>
               </div>
               <p className="text-gray-600 mb-6">
                 As your dedicated finance specialist, I'm here to help you secure the equipment financing 
@@ -107,11 +107,11 @@ export default function JohnPage() {
               <div className="space-y-4">
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaPhone className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.john.phone}</p>
+                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.johnMirabal.phone}</p>
                 </div>
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.john.email}</p>
+                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.johnMirabal.email}</p>
                 </div>
               </div>
             </motion.div>

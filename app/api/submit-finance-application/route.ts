@@ -329,29 +329,40 @@ export async function POST(request: Request) {
     ];
 
     // Emails to team members
-    const teamEmails = [
-      {
-        to: 'alanj@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Finance Application - ${formData.name}`,
-        html: detailedHtml,
-        attachments: adminAttachments
-      },
-      {
-        to: 'danielm@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Finance Application - ${formData.name}`,
-        html: detailedHtml,
-        attachments: adminAttachments
-      },
-      {
-        to: 'cynthiaj@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Finance Application - ${formData.name}`,
-        html: detailedHtml,
-        attachments: adminAttachments
+    // Determine the primary recipient and CC list
+    const agent = body.agent;
+    let primaryTo = 'alanj@vistapacificcapital.com'; // Default to Alan
+    const ccList = ['danielm@vistapacificcapital.com', 'cynthiaj@vistapacificcapital.com'];
+
+    if (agent && agent.email) {
+      primaryTo = agent.email;
+      // Add Alan to CC if he's not the primary recipient
+      if (agent.email.toLowerCase() !== 'alanj@vistapacificcapital.com') {
+        ccList.push('alanj@vistapacificcapital.com');
       }
-    ];
+    } else {
+      // If no agent, Alan is the primary, so no need to CC him.
+    }
+
+    const teamEmailOptions = {
+      to: primaryTo,
+      cc: ccList,
+      from: 'alanj@vistapacificcapital.com',
+      subject: `New Finance Application - ${formData.name}`,
+      html: detailedHtml,
+      attachments: adminAttachments
+    };
+    
+    // Check for PDF attachment and add it to the team email
+    if (body.pdfAttachment) {
+      teamEmailOptions.attachments.push({
+        filename: `${formData.name.replace(/\s+/g, '_')}_application.pdf`,
+        content: body.pdfAttachment,
+        encoding: 'base64',
+        contentType: 'application/pdf',
+      });
+    }
+
 
     console.log('Attempting to send finance application emails...');
 
@@ -361,12 +372,11 @@ export async function POST(request: Request) {
       await transporter.sendMail(customerEmail);
       console.log('Customer email sent successfully');
 
-      // Send team emails
-      console.log('Sending team emails...');
-      for (const teamEmail of teamEmails) {
-        await transporter.sendMail(teamEmail);
-        console.log(`Team email sent successfully to ${teamEmail.to}`);
-      }
+      // Send single email to the team (primary + cc)
+      console.log(`Sending team email to: ${primaryTo} (CC: ${ccList.join(', ')})`);
+      await transporter.sendMail(teamEmailOptions);
+      console.log('Team email sent successfully');
+
     } catch (emailError: any) {
       console.error('Nodemailer Error Details:', {
         message: emailError.message,

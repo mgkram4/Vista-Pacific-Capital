@@ -1,8 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import type { Metadata } from 'next';
 
-import Footer from '../components/footer';
-import Navbar from '../components/navbar';
+
 
 export const metadata: Metadata = {
   title: {
@@ -19,9 +18,7 @@ export default function EquipmentLayout({
 }) {
   return (
     <AnimatePresence mode="wait">
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+      {children}
     </AnimatePresence>
   );
 }

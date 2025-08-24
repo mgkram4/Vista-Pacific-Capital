@@ -59,32 +59,34 @@ export default function VehicleFinancing() {
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Vehicle Financing Solutions
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Drive your business forward with our comprehensive vehicle financing options
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/apply" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing Now</span>
-            </Link>
-          </motion.div>
+          <div className="bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8 max-w-4xl">
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Vehicle Financing Solutions
+            </motion.h1>
+            <motion.p
+              className="text-2xl mb-12 leading-relaxed max-w-3xl"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Drive your business forward with our comprehensive vehicle financing options
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link href="/apply" className="bg-light-sea-green text-white py-4 px-10 rounded-full text-xl font-semibold hover:bg-white hover:text-indigo-dye transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:scale-105">
+                <GiReceiveMoney className="mr-3 text-3xl" />
+                <span>Get Financing Now</span>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 

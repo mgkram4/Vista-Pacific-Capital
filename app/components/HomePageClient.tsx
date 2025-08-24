@@ -9,13 +9,14 @@ import {
   Cog,
   DollarSign,
   Factory,
-  LucideIcon,
+  type LucideIcon,
   Stethoscope,
   Truck,
   UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ServicesCarousel from './ServicesCarousel';
 
 interface Service {
   title: string;
@@ -46,52 +47,52 @@ interface FAQ {
 
 const services: Service[] = [
   {
-    title: "Material Handling Equipment Financing",
-    description: "Complete financing solutions for warehouse and material handling equipment with flexible terms.",
-    features: ["New or refurbished racking systems", "Labor and installation installation cost included", "Application only financing up to $500,000", "Can included other items (security equipment, forklifts, etc)", "Projects up to $10 million"],
+    title: "Racks",
+    description: "Financing for warehouse racks and equipment.",
+    features: ["New & refurbished systems", "Labor & installation included", "Application-only up to $500,000"],
     icon: Factory,
-    href: "/equipment/racking-material-handling",
-    imageSrc: "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?_gl=1*qr8qt3*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ3ODYkajYkbDAkaDA."
+    href: "/equipment/racks",
+    imageSrc: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
   },
   {
-    title: "Construction Equipment Financing",
-    description: "Comprehensive financing for construction equipment from dealers or private parties.",
-    features: ["New and Use Equipment", "Dealer or private party", "Title or non-titled", "Application Only up to $750,000"],
+    title: "Construction",
+    description: "Financing for construction equipment from dealers or private parties.",
+    features: ["New & used equipment", "Dealer or private party sales", "Application-only up to $750,000"],
     icon: Building2,
     href: "/equipment/construction",
-    imageSrc: "/Images/gen-ai/img1.png"
+    imageSrc: "https://5ycd9odhqw.ufs.sh/f/7JQdB1yagFle5yqq6OwWivOgUaMDFJpuPze7rjHXN4YZo01w"
   },
   {
-    title: "Medical Equipment Financing",
-    description: "Specialized financing for medical practices of all sizes with flexible application limits.",
-    features: ["New and Used Medical Equipment", "Funding for specialized equipment", "Refurbished equipment is okay", "Small practices to large surgery centers", "Special Application Only limits for MD's"],
+    title: "Medical",
+    description: "Specialized financing for medical practices of all sizes.",
+    features: ["New & used medical equipment", "Funding for specialized equipment", "Solutions for all practice sizes"],
     icon: Stethoscope,
     href: "/equipment/medical",
-    imageSrc: "https://images.pexels.com/photos/11288658/pexels-photo-11288658.jpeg?_gl=1*8sz3nl*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ2MjAkajE5JGwwJGgw"
+    imageSrc: "/Images/medH.png"
   },
   {
-    title: "Manufacturing Equipment Financing",
-    description: "Comprehensive manufacturing equipment financing with competitive rates and international vendor support.",
-    features: ["Full Production Line Programs", "Can finance from international vendors", "Installation and shipping costs included", "Aggressive rates"],
+    title: "Manufacturing",
+    description: "Financing for manufacturing equipment with competitive rates.",
+    features: ["Full production line programs", "International vendors supported", "Installation & shipping included"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg?_gl=1*17r2db3*_ga*MTMyNjA4MzY5Ni4xNzU0MDg0NDE3*_ga_8JE65Q40S6*czE3NTQwODQ0MTYkbzEkZzEkdDE3NTQwODQ0NTEkajI1JGwwJGgw"
+    imageSrc: "https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
   },
   {
-    title: "Restaurant Equipment Financing",
-    description: "Complete restaurant financing solutions for new locations and equipment upgrades.",
-    features: ["Furniture, POS, kitchen equipment", "New and used equipment", "Second locations and existing locations", "A through C Credit"],
+    title: "Restaurant",
+    description: "Financing solutions for new locations and equipment upgrades.",
+    features: ["Furniture, POS & kitchen equipment", "New & used equipment", "All credit types considered"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant",
-    imageSrc: "/Images/gen-ai/img5.png"
+    imageSrc: "https://images.unsplash.com/photo-1735599051587-6c13bb858214?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
-    title: "Transportation Financing Programs",
-    description: "Flexible transportation financing for all types of commercial vehicles and drivers.",
-    features: ["Long and short haul", "New and used", "Dealer or private party", "No fleet requirement", "1099 drivers up to $250,000 with comparable borrowing"],
+    title: "Transportation",
+    description: "Flexible financing for all types of commercial vehicles.",
+    features: ["Long & short haul", "New & used vehicles", "Dealer or private party sales"],
     icon: Truck,
     href: "/equipment/dump-truck",
-    imageSrc: "/Images/gen-ai/img6.png"
+    imageSrc: "https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
 ];
 
@@ -178,6 +179,7 @@ const staggerContainer = {
 };
 
 export default function HomePageClient() {
+
   return (
     <>
       <main className="bg-white font-sans">
@@ -192,28 +194,29 @@ export default function HomePageClient() {
               className="object-cover"
               quality={100}
             />
+            <div className="absolute inset-0 bg-black/20 lg:hidden" />
           </div>
 
           {/* Content layout */}
           <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
             {/* Left content area with overlay */}
-            <div className="lg:col-span-3 bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+            <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="w-full max-w-md mx-auto"
+                className="w-full max-w-md mx-auto [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
                 Your Growth 
                   <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent"> Partner</span>
                 </h1>
-                <p className="text-lg md:text-xl text-[#B3B3B3] mb-8">
+                <p className="text-lg md:text-xl text-white lg:text-[#B3B3B3] mb-8">
                 Equipment Financing from $20,000 to $50 million
                 </p>
                 <Link
                   href="/apply"
-                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  className="flex w-full max-w-[300px] mx-auto items-center justify-center lg:inline-flex lg:w-auto lg:max-w-none lg:mx-0 bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                     text-white px-8 py-4 rounded-lg font-semibold text-lg 
                     shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                     transform hover:-translate-y-1 transition-all duration-300"
@@ -246,11 +249,13 @@ export default function HomePageClient() {
                 Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
               </p>
               <div className="space-y-4">
-                {benefits.map((benefit, index) => (
+                {benefits.map((benefit, index) => {
+                  const Icon = benefit.icon;
+                  return (
                   <div key={index}>
                     <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit
                       group-hover:scale-110 transition-transform duration-500">
-                      <benefit.icon className="h-12 w-12 text-[#0EB5B2]" />
+                      <Icon className="h-12 w-12 text-[#0EB5B2]" />
                     </div>
                     <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
                       {benefit.title}
@@ -265,7 +270,7 @@ export default function HomePageClient() {
                       ))}
                     </ul>
                   </div>
-                ))}
+                )})}
               </div>
             </div>
             <div className="hidden md:block">
@@ -298,53 +303,7 @@ export default function HomePageClient() {
                 We provide tailored equipment financing and business loan solutions for a wide range of industries. Get the capital you need for new or used equipment.
               </p>
             </div>
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {services.map((service, index) => (
-                <motion.article
-                  key={index}
-                  variants={fadeInUp}
-                  className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-lg p-6
-                    transition-all duration-500 transform hover:-translate-y-2
-                    border border-[#0EB5B2]/20 hover:border-[#0EB5B2]/30
-                    shadow-lg hover:shadow-xl hover:shadow-[#0EB5B2]/10"
-                >
-                  <Image
-                    src={service.imageSrc}
-                    alt={`${service.title} illustration for equipment financing`}
-                    width={300}
-                    height={200}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    loading="lazy"
-                    quality={75}
-                  />
-                  <div className="bg-gradient-to-br from-[#0EB5B2]/10 to-[#0D3853]/5 rounded-lg p-3 w-fit
-                    group-hover:scale-110 transition-transform duration-500">
-                    <service.icon className="h-12 w-12 text-[#0EB5B2]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#B3B3B3] mb-4">{service.description}</p>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
-                        <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={service.href} className="inline-flex items-center font-semibold text-[#0EB5B2] group mt-4">
-                    Learn more about {service.title.replace("Financing", "")} <ChevronRight className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.article>
-              ))}
-            </motion.div>
+            <ServicesCarousel services={services} />
           </div>
         </section>
         
@@ -411,7 +370,7 @@ export default function HomePageClient() {
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -420,13 +379,13 @@ export default function HomePageClient() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-4"
+              className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]"
             >
               <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">GET STARTED TODAY</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#B3B3B3]">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">
                 Ready to Get Started?
               </h2>
-              <p className="text-xl text-[#B3B3B3] max-w-3xl mx-auto pb-4">
+              <p className="text-xl text-white/90 max-w-3xl mx-auto pb-4">
                 Get pre-qualified in minutes with no impact to your credit score
               </p>
               <Link

@@ -14,10 +14,16 @@ export const TEAM_MEMBERS = {
     phone: "(714)500-7017",
     endpoint: "/api/submit-quote"
   },
-  john: {
-    name: "John Miller",
+  johnMirabal: {
+    name: "John Mirabal",
     email: "johnm@vistapacificcapital.com",
-    phone: "(714)500-7018",
+    phone: "(714)551-9955",
+    endpoint: "/api/submit-quote"
+  },
+  ianWhitelaw: {
+    name: "Ian Whitelaw",
+    email: "ianw@vistapacificcapital.com",
+    phone: "",
     endpoint: "/api/submit-quote"
   }
 };

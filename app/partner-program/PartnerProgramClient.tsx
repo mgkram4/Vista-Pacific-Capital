@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 import {
-  CheckCircle,
-  ChevronRight,
-  Clock,
-  DollarSign,
-  Heart,
-  Shield,
-  Users,
-  Zap
+    CheckCircle,
+    ChevronRight,
+    Clock,
+    DollarSign,
+    Heart,
+    Shield,
+    Users,
+    Zap
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';

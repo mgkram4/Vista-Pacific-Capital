@@ -3,7 +3,7 @@
 import { Metadata } from 'next';
 
 import { EnhancedEquipmentMetadata, generateEnhancedMetadata, generateEnhancedViewport } from '@/app/lib/metadata/enhanced-config';
-import RackingMaterialHandlingFinancingContent from './racking-material-handling';
+import RackingFinancingContent from './racks';
 
 
 const rackingMetadata: EnhancedEquipmentMetadata = {
@@ -43,6 +43,6 @@ export const metadata: Metadata = generateEnhancedMetadata(rackingMetadata);
 export const viewport = generateEnhancedViewport();
 
 // Server Component
-export default function RackingMaterialHandlingFinancingPage() {
-  return <RackingMaterialHandlingFinancingContent />;
+export default function RackingFinancingPage() {
+  return <RackingFinancingContent />;
 }

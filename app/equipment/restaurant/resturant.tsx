@@ -15,6 +15,7 @@ import {
     FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
 import { GiReceiveMoney } from 'react-icons/gi';
+import PaymentCalculator from '../../components/PaymentCalculator';
 
 const equipmentTypes = [
   {
@@ -292,6 +293,34 @@ export default function RestaurantFinancingContent() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Payment Calculator Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
+              Calculate Your Monthly Payments
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Get instant payment estimates for your restaurant equipment financing with competitive rates.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <PaymentCalculator />
+          </motion.div>
         </div>
       </section>
 

@@ -88,34 +88,36 @@ export default function CNCFinancingContent() {
           />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {cncMetadata.title}
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {cncMetadata.description}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                          bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                          rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
-            </Link>
-          </motion.div>
+          <div className="bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8 max-w-4xl">
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {cncMetadata.title}
+            </motion.h1>
+            <motion.p
+              className="text-2xl mb-12 leading-relaxed max-w-3xl"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {cncMetadata.description}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+                            bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
+                            rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
+                <GiReceiveMoney className="mr-3 text-3xl" />
+                <span>Get Financing</span>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation';
 import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
 import HomePageApplicationForm, { TEAM_MEMBERS } from '../components/HomePageApplicationForm';
 
-export default function AlanPage() {
+export default function IanWhitelawPage() {
   const router = useRouter();
   
   // Custom submit handler to redirect to the PDF form
   const handleFormSubmit = () => {
     // Store the team member in session storage
-    sessionStorage.setItem('teamMember', JSON.stringify(TEAM_MEMBERS.alan));
+    sessionStorage.setItem('teamMember', JSON.stringify(TEAM_MEMBERS.ianWhitelaw));
     router.push('/pdf-form');
   };
 
@@ -23,15 +23,14 @@ export default function AlanPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Alan Johnson",
-          "url": "https://www.vistapacificcapital.com/alan",
+          "name": "Ian Whitelaw",
+          "url": "https://www.vistapacificcapital.com/ian-whitelaw",
           "jobTitle": "Finance Specialist",
           "worksFor": {
             "@type": "Organization",
             "name": "Vista Pacific Capital"
           },
-          "telephone": "+17145007017",
-          "email": "alanj@vistapacificcapital.com"
+          "email": "ianw@vistapacificcapital.com"
         }) }}
       />
       {/* Hero Section with Equipment Financing Image */}
@@ -79,7 +78,7 @@ export default function AlanPage() {
               transition={{ duration: 0.6 }}
             >
               <HomePageApplicationForm 
-                teamMember={TEAM_MEMBERS.alan} 
+                teamMember={TEAM_MEMBERS.ianWhitelaw} 
                 onSubmit={handleFormSubmit} 
               />
             </motion.div>
@@ -97,7 +96,7 @@ export default function AlanPage() {
                 <div className="bg-[#11B5B2]/10 p-3 rounded-full">
                   <FaUser className="text-[#1E5470] text-xl" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold ml-4 text-[#113E59]">Alan Johnson</h2>
+                <h2 className="text-2xl md:text-3xl font-bold ml-4 text-[#113E59]">Ian Whitelaw</h2>
               </div>
               <p className="text-gray-600 mb-6">
                 As your dedicated finance specialist, I'm here to help you secure the equipment financing 
@@ -105,13 +104,15 @@ export default function AlanPage() {
                 I'll guide you through the entire process.
               </p>
               <div className="space-y-4">
-                <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
-                  <FaPhone className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.alan.phone}</p>
-                </div>
+                {TEAM_MEMBERS.ianWhitelaw.phone && (
+                  <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
+                    <FaPhone className="text-[#1E5470] text-xl" />
+                    <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.ianWhitelaw.phone}</p>
+                  </div>
+                )}
                 <div className="flex items-center p-4 bg-[#11B5B2]/10 rounded-lg">
                   <FaEnvelope className="text-[#1E5470] text-xl" />
-                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.alan.email}</p>
+                  <p className="ml-4 text-gray-700 font-medium">{TEAM_MEMBERS.ianWhitelaw.email}</p>
                 </div>
               </div>
             </motion.div>
@@ -148,4 +149,4 @@ export default function AlanPage() {
       </div>
     </div>
   );
-} 
+}

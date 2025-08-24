@@ -43,10 +43,10 @@ const equipmentCategories = [
     image: '/Images/services/transportation-new.jpg',
   },
   {
-    title: 'Material Handling',
-    description: 'Warehouse racking and handling equipment',
+    title: 'Racks',
+    description: 'Warehouse racks and handling equipment',
     icon: Warehouse,
-    href: '/equipment/racking-material-handling',
+    href: '/equipment/racks',
     image: '/Images/services/material-handling-new.jpg',
   },
 ];
