@@ -43,8 +43,9 @@ const equipmentCategories = [
     image: '/Images/services/transportation-new.jpg',
   },
   {
-    title: 'Racking',
-    description: 'Financing for warehouse racking and equipment.',
+    title: 'Racking & Material Handling',
+    description:
+      "Financing for warehouse racking and material handling equipment.",
     icon: Warehouse,
     href: '/equipment/racks',
     image: '/Images/bg-wave2.png',

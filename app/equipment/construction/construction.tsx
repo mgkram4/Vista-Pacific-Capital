@@ -69,10 +69,9 @@ export default function ConstructionFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        
+      <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
-          <Image 
+          <Image
             src="https://5ycd9odhqw.ufs.sh/f/7JQdB1yagFle5yqq6OwWivOgUaMDFJpuPze7rjHXN4YZo01w"
             alt="Construction equipment background"
             fill
@@ -85,39 +84,49 @@ export default function ConstructionFinancingContent() {
             fetchPriority="high"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8 max-w-4xl">
-            <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Construction Equipment Financing
-            </motion.h1>
-            <motion.p
-              className="text-2xl mb-12 leading-relaxed max-w-3xl"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              When it comes to construction projects, having the right equipment can make all the difference. With flexible financing options, from forklifts to bulldozers, our quick approvals and flexible terms ensure you get the equipment you need without breaking your budget.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
+          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+            <div className="w-full max-w-2xl [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none">
+              <motion.h1
+                className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Construction Equipment Financing
+              </motion.h1>
+              <motion.p
+                className="text-xl mb-12 leading-relaxed"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                When it comes to construction projects, having the right
+                equipment can make all the difference. With flexible financing
+                options, from forklifts to bulldozers, our quick approvals and
+                flexible terms ensure you get the equipment you need without
+                breaking your budget.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
                             bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                            rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
-                <GiReceiveMoney className="mr-3 text-3xl" />
-                <span>Get Financing</span>
-              </Link>
-            </motion.div>
+                            rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300"
+                >
+                  <GiReceiveMoney className="mr-3 text-3xl" />
+                  <span>Get Financing</span>
+                </Link>
+              </motion.div>
+            </div>
           </div>
+          <div className="hidden lg:block lg:col-span-6" />
         </div>
       </section>
 
