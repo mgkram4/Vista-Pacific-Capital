@@ -10,7 +10,7 @@ export default function Footer() {
       { name: 'Construction Equipment', path: '/equipment/construction' },
       { name: 'Medical Equipment', path: '/equipment/medical' },
       { name: 'Restaurant Equipment', path: '/equipment/restaurant' },
-      { name: 'Used Equipment', path: '/equipment/used' },
+
       { name: 'Brewery Equipment', path: '/equipment/brewery' },
     ],
     // Right column

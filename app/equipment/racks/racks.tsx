@@ -12,7 +12,6 @@ import {
   FaTools,
   FaWarehouse
 } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
 
 
 // Define equipment types with their details
@@ -21,96 +20,107 @@ const equipmentTypes = [
     title: 'Warehouse Racking',
     description: 'Pallet racking, cantilever racking, and industrial shelving solutions.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e'
+    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Forklifts & Material Handling',
     description: 'Counterbalance forklifts, reach trucks, pallet jacks, and order pickers for warehouse operations.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Conveyor Systems',
     description: 'Automated, belt, and roller conveyor systems for efficient workflow.',
     icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
+    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Loading Dock Equipment',
     description: 'Dock levelers, seals, shelters, and vehicle restraints.',
     icon: FaShippingFast,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Automated Systems',
     description: 'AGVs (Automated Guided Vehicles) and ASRS (Automated Storage/Retrieval Systems).',
     icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1543465077-db45d34b88a5'
+    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Storage Solutions',
     description: 'Industrial shelving, mezzanines, and modular offices.',
     icon: FaStore,
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
+    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 
 // Update keyFeatures to match standard format
 const keyFeatures = [
-  { value: '$50M', label: 'Maximum Financing', icon: GiReceiveMoney },
+  { value: '$50M', label: 'Maximum Financing', icon: FaWarehouse },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: 'Custom', label: 'Tailored Solutions', icon: FaTools }
+  { value: 'Custom', label: 'Tailored Solutions', icon: FaStore }
 ];
 
 export default function RackingFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-
+      <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
-            alt="Racking and material handling equipment financing"
+          <Image
+            src="https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Warehouse racking and material handling equipment financing"
             fill
             sizes="100vw"
-            className="object-cover"
+            quality={75}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0aGhocHxkYHBwYGRgcIiEcHh4cISEhHBwcJCQlHCwvMTExLzkqOio5LzkxMTn/2wBDARUXFx0ZHTgcHDg5LiEuOTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTn/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIAAwAAPwCdABmX/9k="
             priority={true}
             loading="eager"
             fetchPriority="high"
+            className="object-cover"
           />
+          <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Racking Equipment Financing
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Financing for warehouse racking systems, forklifts, and more.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
-            </Link>
-          </motion.div>
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
+          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+            <div className="w-full max-w-2xl [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none">
+              <motion.h1
+                className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Racking & Material Handling Equipment Financing
+              </motion.h1>
+              <motion.p
+                className="text-xl mb-12 leading-relaxed"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Optimize your warehouse operations with financing for racking systems, forklifts, and material handling equipment. Our flexible terms and quick approvals help you get the equipment you need to maximize efficiency and storage capacity.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                    transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  Apply Now
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+          <div className="hidden lg:block lg:col-span-6" />
         </div>
       </section>
 
@@ -352,14 +362,14 @@ export default function RackingFinancingContent() {
               viewport={{ once: true }}
             >
               <Link
-                href="/contact"
+                href="/apply"
                 className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                   text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >
-                Get Started Today
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                Apply Now
+                <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
             </motion.div>
           </div>

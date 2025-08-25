@@ -4,7 +4,27 @@ import { CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function PaymentCalculator() {
-  const [amount, setAmount] = useState<string>('25000');
+  const [amount, setAmount] = useState<string>('25,000');
+  const [rawAmount, setRawAmount] = useState<number>(25000);
+  
+  // Format number with commas
+  const formatWithCommas = (value: string) => {
+    const num = value.replace(/,/g, '');
+    if (isNaN(Number(num))) return value;
+    return Number(num).toLocaleString();
+  };
+
+  // Handle input change with comma formatting
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/,/g, '');
+    if (!isNaN(Number(value)) && value !== '') {
+      setRawAmount(Number(value));
+      setAmount(formatWithCommas(value));
+    } else if (value === '') {
+      setRawAmount(0);
+      setAmount('');
+    }
+  };
   
   // Calculate monthly payments based on the terms
   const calculatePayment = (months: number) => {
@@ -17,7 +37,7 @@ export default function PaymentCalculator() {
     };
     
     const rate = rates[months];
-    const payment = parseFloat(amount) * rate;
+    const payment = rawAmount * rate;
     return Math.round(payment);
   };
 
@@ -43,14 +63,12 @@ export default function PaymentCalculator() {
             <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
             <input
               id="equipmentCost"
-              type="number"
+              type="text"
               value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={handleAmountChange}
               className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg
                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                 transition-all bg-white text-[#1B365D]"
-              min="20000"
-              step="1000"
               placeholder="Enter amount"
             />
           </div>

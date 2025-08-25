@@ -12,7 +12,6 @@ import {
   FaTools,
   FaWarehouse
 } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
 
 
 // Define equipment types with their details
@@ -21,46 +20,46 @@ const equipmentTypes = [
     title: 'Warehouse Racking',
     description: 'Pallet racking, cantilever racking, and industrial shelving solutions.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e'
+    image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Forklifts & Material Handling',
     description: 'Counterbalance forklifts, reach trucks, pallet jacks, and order pickers for warehouse operations.',
     icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Conveyor Systems',
     description: 'Automated, belt, and roller conveyor systems for efficient workflow.',
     icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7'
+    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Loading Dock Equipment',
     description: 'Dock levelers, seals, shelters, and vehicle restraints.',
     icon: FaShippingFast,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Automated Systems',
     description: 'AGVs (Automated Guided Vehicles) and ASRS (Automated Storage/Retrieval Systems).',
     icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1543465077-db45d34b88a5'
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     title: 'Storage Solutions',
     description: 'Industrial shelving, mezzanines, and modular offices.',
     icon: FaStore,
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ];
 
 // Update keyFeatures to match standard format
 const keyFeatures = [
-  { value: '$50M', label: 'Maximum Financing', icon: GiReceiveMoney },
+  { value: '$50M', label: 'Maximum Financing', icon: FaWarehouse },
   { value: '24-84', label: 'Flexible Terms (Months)', icon: FaCalendarAlt },
   { value: 'New/Used', label: 'Equipment Options', icon: FaTools },
-  { value: 'Custom', label: 'Tailored Solutions', icon: FaTools }
+  { value: 'Custom', label: 'Tailored Solutions', icon: FaStore }
 ];
 
 export default function RackingFinancingContent() {
@@ -103,12 +102,15 @@ export default function RackingFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
+            <Link 
+              href="/apply" 
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                transform hover:-translate-y-1 transition-all duration-300"
+            >
+              Apply Now
+              <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </motion.div>
         </div>
@@ -352,14 +354,14 @@ export default function RackingFinancingContent() {
               viewport={{ once: true }}
             >
               <Link
-                href="/contact"
+                href="/apply"
                 className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                   text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                   transform hover:-translate-y-1 transition-all duration-300"
               >
-                Get Started Today
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                Apply Now
+                <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
             </motion.div>
           </div>

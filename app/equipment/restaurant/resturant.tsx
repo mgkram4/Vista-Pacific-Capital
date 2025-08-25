@@ -5,17 +5,16 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCashRegister,
-    FaChartLine,
-    FaClock,
-    FaCoffee,
-    FaDollarSign,
-    FaHamburger,
-    FaStore,
-    FaUtensils, FaWineGlassAlt
+  FaCashRegister,
+  FaChartLine,
+  FaClock,
+  FaCoffee,
+  FaDollarSign,
+  FaHamburger,
+  FaStore,
+  FaUtensils, FaWineGlassAlt
 } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
-import PaymentCalculator from '../../components/PaymentCalculator';
+
 
 const equipmentTypes = [
   {
@@ -103,11 +102,15 @@ export default function RestaurantFinancingContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                          bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                          rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Get Financing</span>
+            <Link 
+              href="/apply" 
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                transform hover:-translate-y-1 transition-all duration-300"
+            >
+              Apply Now
+              <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </motion.div>
         </div>
@@ -296,33 +299,7 @@ export default function RestaurantFinancingContent() {
         </div>
       </section>
 
-      {/* Payment Calculator Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
-              Calculate Your Monthly Payments
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Get instant payment estimates for your restaurant equipment financing with competitive rates.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <PaymentCalculator />
-          </motion.div>
-        </div>
-      </section>
+
 
       {/* CTA Section */}
       <section className="relative py-20 overflow-hidden">
@@ -373,14 +350,14 @@ export default function RestaurantFinancingContent() {
                 viewport={{ once: true }}
               >
                 <Link
-                  href="/contact"
+                  href="/apply"
                   className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                     text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                    shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 
+                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                     transform hover:-translate-y-1 transition-all duration-300"
                 >
-                  Get Started Today
-                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  Apply Now
+                  <ChevronRight className="ml-2 h-5 w-5" />
                 </Link>
               </motion.div>
             </div>

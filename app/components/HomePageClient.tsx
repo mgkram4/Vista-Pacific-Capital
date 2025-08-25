@@ -52,7 +52,7 @@ const services: Service[] = [
     features: ["New & refurbished systems", "Labor & installation included", "Application-only up to $500,000"],
     icon: Factory,
     href: "/equipment/racks",
-    imageSrc: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e"
+    imageSrc: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     title: "Construction",
