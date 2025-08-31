@@ -69,8 +69,8 @@ export default function ManufacturingFinancingContent() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1581092795442-6d4b3c6d1b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-            alt="Manufacturing equipment background"
+            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="CNC machine and manufacturing equipment background"
             fill
             sizes="100vw"
             quality={85}
