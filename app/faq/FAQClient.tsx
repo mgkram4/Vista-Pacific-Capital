@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const faqs = [
   {
@@ -63,7 +61,6 @@ const staggerContainer = {
 };
 
 export default function FAQClient() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="bg-white font-sans">
@@ -108,13 +105,13 @@ export default function FAQClient() {
           {/* Right Column (Image) */}
           <div className="lg:col-span-7 relative h-96 lg:h-screen">
             <Image 
-              src="/Images/gen-ai/bg-wave-8.png"
+              src="/Images/bg-wave2.png"
               alt="FAQ background"
               fill
               className="object-cover object-top"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
         </motion.div>
       </section>
@@ -129,35 +126,21 @@ export default function FAQClient() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-12"
         >
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
               variants={fadeInUp}
-              className="bg-white border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white border border-[#0EB5B2]/10 rounded-lg overflow-hidden shadow-lg transition-all duration-300"
+              id={`faq-${index + 1}`}
             >
-              <button
-                className="flex justify-between items-center w-full p-6 text-left hover:bg-gradient-to-r hover:from-[#0EB5B2]/5 hover:to-white transition-all duration-300"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              >
-                <span className="text-xl font-semibold text-[#0D3853]">{faq.question}</span>
-                {openIndex === index ? 
-                  <FaChevronUp className="text-[#0EB5B2] flex-shrink-0 ml-4" /> : 
-                  <FaChevronDown className="text-[#0EB5B2] flex-shrink-0 ml-4" />
-                }
-              </button>
-              {openIndex === index && (
-                <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="px-6 pb-6"
-                >
-                  <p className="text-[#0D3853]/80 leading-relaxed">{faq.answer}</p>
-                </motion.div>
-              )}
+              <div className="p-8">
+                <h3 className="text-2xl font-semibold text-[#0D3853] mb-6">{faq.question}</h3>
+                <div className="text-[#0D3853]/80 leading-relaxed text-lg">
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -170,13 +153,13 @@ export default function FAQClient() {
       <section className="relative py-20 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office environment for equipment financing consultation"
             fill
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NewVendorPartnerForm from '../components/NewVendorPartnerForm';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -105,7 +106,7 @@ export default function PartnerProgramClient() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Images/gen-ai/bg-wave-6.png"
+            src="/Images/bg-wave2.png"
             alt="People reviewing partnership documents"
             fill
             className="object-cover"
@@ -173,6 +174,12 @@ export default function PartnerProgramClient() {
             </div>
           </div>
         </motion.section>
+
+        {/* Vendor Partner Form Section */}
+        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
+          <h3 className="text-3xl font-bold text-[#0D3853] mb-12 text-center">Start Your Partnership</h3>
+          <NewVendorPartnerForm />
+        </motion.section>
       </div>
 
       {/* Section Divider */}
@@ -182,13 +189,13 @@ export default function PartnerProgramClient() {
       <section className="relative py-20 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Team collaborating on a business strategy"
             fill
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

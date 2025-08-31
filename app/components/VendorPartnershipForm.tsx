@@ -191,14 +191,12 @@ export default function VendorPartnershipForm() {
       <SuccessModal
         isVisible={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
+        isVendorForm={true}
       />
 
       <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-[#0D3853] mb-4">Become a Partner</h2>
-          <p className="text-lg text-[#0D3853]/80">
-            Join our network of trusted equipment financing partners and start growing your business today.
-          </p>
+          <h2 className="text-3xl font-bold text-[#0D3853] mb-4">Vendor Partner Form</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

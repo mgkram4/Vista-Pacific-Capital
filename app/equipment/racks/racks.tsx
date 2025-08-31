@@ -3,15 +3,18 @@
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+
 import Link from 'next/link';
 import { BsGearFill } from 'react-icons/bs';
 import {
   FaCalendarAlt,
-  FaShippingFast,
+  FaRobot,
   FaStore,
   FaTools,
+  FaTruck,
   FaWarehouse
 } from 'react-icons/fa';
+import { GiForklift } from 'react-icons/gi';
 
 
 // Define equipment types with their details
@@ -19,38 +22,32 @@ const equipmentTypes = [
   {
     title: 'Warehouse Racking',
     description: 'Pallet racking, cantilever racking, and industrial shelving solutions.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: FaWarehouse
   },
   {
     title: 'Forklifts & Material Handling',
     description: 'Counterbalance forklifts, reach trucks, pallet jacks, and order pickers for warehouse operations.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: GiForklift
   },
   {
     title: 'Conveyor Systems',
     description: 'Automated, belt, and roller conveyor systems for efficient workflow.',
-    icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: BsGearFill
   },
   {
     title: 'Loading Dock Equipment',
     description: 'Dock levelers, seals, shelters, and vehicle restraints.',
-    icon: FaShippingFast,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: FaTruck
   },
   {
     title: 'Automated Systems',
     description: 'AGVs (Automated Guided Vehicles) and ASRS (Automated Storage/Retrieval Systems).',
-    icon: BsGearFill,
-    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: FaRobot
   },
   {
     title: 'Storage Solutions',
     description: 'Industrial shelving, mezzanines, and modular offices.',
-    icon: FaStore,
-    image: 'https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    icon: FaStore
   }
 ];
 
@@ -69,13 +66,11 @@ export default function RackingFinancingContent() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1715764142120-1c8b5b0e7e8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/Images/services/material-handling-new.jpg"
             alt="Warehouse racking and material handling equipment financing"
             fill
             sizes="100vw"
-            quality={75}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0aGhocHxkYHBwYGRgcIiEcHh4cISEhHBwcJCQlHCwvMTExLzkqOio5LzkxMTn/2wBDARUXFx0ZHTgcHDg5LiEuOTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTn/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIAAwAAPwCdABmX/9k="
+            quality={85}
             priority={true}
             loading="eager"
             fetchPriority="high"
@@ -175,46 +170,32 @@ export default function RackingFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Material Handling Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -309,10 +290,10 @@ export default function RackingFinancingContent() {
       </section>
 
       {/* CTA Section - Updated to match other pages */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-10 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office background"
             fill
             className="object-cover"
@@ -321,15 +302,15 @@ export default function RackingFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <div
-            className="space-y-8"
+            className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]"
           >
             <motion.span 
-              className="text-sm font-semibold text-cyan-400 mb-2 block"
+              className="text-sm font-semibold text-[#0EB5B2] mb-2 block"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -338,7 +319,7 @@ export default function RackingFinancingContent() {
               GET STARTED TODAY
             </motion.span>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+              className="text-4xl md:text-5xl font-bold text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -347,7 +328,7 @@ export default function RackingFinancingContent() {
               Ready to Get Started?
             </motion.h2>
             <motion.p 
-              className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+              className="text-xl text-white/90 max-w-3xl mx-auto pb-4"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}

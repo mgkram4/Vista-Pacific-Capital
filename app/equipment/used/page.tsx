@@ -21,32 +21,32 @@ const equipmentTypes = [
   {
     title: 'Construction Equipment',
     description: 'Quality used construction machinery including excavators, bulldozers, and cranes at competitive rates.',
-    icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1621922688758-359fc864071e'
+    icon: FaTools
   },
   {
     title: 'Manufacturing Equipment',
     description: 'Pre-owned manufacturing equipment including CNC machines, production lines, and industrial machinery.',
-    icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1589792923962-537704632910'
+    icon: FaIndustry
   },
   {
     title: 'Medical Equipment',
     description: 'Certified pre-owned medical and healthcare equipment with warranty options.',
-    icon: FaMedkit,
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
+    icon: FaMedkit
   },
   {
     title: 'Transportation Equipment',
     description: 'Used trucks, vans, and commercial vehicles with comprehensive inspection reports.',
-    icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c'
+    icon: FaTruck
   },
   {
     title: 'Warehouse Equipment',
     description: 'Pre-owned forklifts, pallet jacks, and material handling equipment for logistics operations.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d'
+    icon: FaWarehouse
+  },
+  {
+    title: 'Restaurant Equipment',
+    description: 'Pre-owned commercial kitchen equipment, dining furniture, and food service machinery.',
+    icon: FaCogs
   }
 ];
 
@@ -80,11 +80,11 @@ export default function UsedEquipmentContent() {
         />
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
+            src="/Images/bg-wave2.png"
             alt="Used equipment financing"
             fill
             className="object-cover"
-            quality={100}
+            quality={85}
             priority={true}
             loading="eager"
             sizes="100vw"
@@ -160,30 +160,28 @@ export default function UsedEquipmentContent() {
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-indigo-dye mb-3">{type.title}</h3>
-                  <p className="text-gray-600">{type.description}</p>
-                </div>
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
               </motion.div>
-            ))}
+            )})}
           </div>
         </div>
       </section>
@@ -278,7 +276,7 @@ export default function UsedEquipmentContent() {
               loading="lazy"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/20 " />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -286,7 +284,7 @@ export default function UsedEquipmentContent() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-8 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]"
+              className="space-y-8"
             >
               <span className="text-sm font-semibold text-cyan-400 mb-2 block">GET STARTED TODAY</span>
               <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">

@@ -13,32 +13,27 @@ const equipmentTypes = [
   {
     title: 'Brewing Systems',
     description: breweryMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaBeer,
-    image: 'https://images.unsplash.com/photo-1532634733-cae1395e440f?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJyZXdpbmclMjBiZWVyfGVufDB8fDB8fHww'
+    icon: FaBeer
   },
   {
     title: 'Distillation Equipment',
     description: 'Lease top-of-the-line stills, fermenters, and aging barrels to craft your signature spirits.',
-    icon: FaWineBottle,
-    image: 'https://images.unsplash.com/photo-1668380608937-26e2435d369b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RGlzdGlsbGF0aW9ufGVufDB8fDB8fHww'
+    icon: FaWineBottle
   },
   {
     title: 'Packaging Lines',
     description: breweryMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaBox,
-    image: 'https://images.unsplash.com/photo-1536638317175-32449deccfc0?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFja2luZyUyMGxpbmVzJTIwYmVlcnxlbnwwfHwwfHx8MA%3D%3D'
+    icon: FaBox
   },
   {
     title: 'Quality Control Equipment',
     description: 'Invest in advanced testing and analysis equipment to ensure consistent product quality.',
-    icon: FaFlask,
-    image: 'https://images.unsplash.com/photo-1533646281814-761f53fc5483?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D'
+    icon: FaFlask
   },
   {
     title: 'Temperature Control Systems',
     description: breweryMetadata.equipment[2].types.join(', ') + ' and more.',
-    icon: FaThermometerHalf,
-    image: 'https://images.unsplash.com/photo-1542835497-a6813df96ed9?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnJld2VyeXxlbnwwfHwwfHx8MA%3D%3D'
+    icon: FaThermometerHalf
   }
 ];
 
@@ -57,7 +52,7 @@ export default function BreweryDistilleryEquipment() {
       <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+            src="/Images/services/restaurant-new.jpg"
             alt="Brewery background"
             fill
             className="object-cover"
@@ -155,46 +150,32 @@ export default function BreweryDistilleryEquipment() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Brewery Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -295,7 +276,7 @@ export default function BreweryDistilleryEquipment() {
       <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office background"
               fill
               className="object-cover"
@@ -304,7 +285,7 @@ export default function BreweryDistilleryEquipment() {
               loading="lazy"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+            <div className="absolute inset-0 bg-black/20 " />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

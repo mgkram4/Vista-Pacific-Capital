@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import VendorPartnershipForm from "../components/VendorPartnershipForm";
+import NewVendorPartnerForm from "../components/NewVendorPartnerForm";
 
 export default function VendorApply() {
     return (
@@ -15,7 +15,7 @@ export default function VendorApply() {
                 delay: 0.1
             }}
         >
-            <VendorPartnershipForm />
+            <NewVendorPartnerForm />
         </motion.div>
     )
 }

@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import {
-    Building2,
-    CheckCircle2,
-    ChevronRight,
-    Clock,
-    Cog,
-    DollarSign,
-    Factory,
-    LucideIcon,
-    Stethoscope,
-    Truck,
-    UtensilsCrossed
+  Building2,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  Cog,
+  DollarSign,
+  Factory,
+  LucideIcon,
+  Stethoscope,
+  Truck,
+  UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';

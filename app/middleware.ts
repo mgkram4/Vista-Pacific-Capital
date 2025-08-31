@@ -1,6 +1,6 @@
 // middleware.ts
-import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
 // Paths that require protection
 const PROTECTED_PATHS = ['/api/submit-quote']
@@ -8,6 +8,12 @@ const PROTECTED_PATHS = ['/api/submit-quote']
 export function middleware(request: NextRequest) {
   // Get the pathname of the request (e.g. /api/submit-quote)
   const path = request.nextUrl.pathname
+
+  // Handle redirect from typo URL to correct URL
+  if (path === '/equipment-finacing' || path.startsWith('/equipment-finacing/')) {
+    const correctedPath = path.replace('/equipment-finacing', '/equipment-financing')
+    return NextResponse.redirect(new URL(correctedPath, request.url), 301)
+  }
 
   // Check if we need to protect this path
   if (!PROTECTED_PATHS.includes(path)) {
@@ -69,7 +75,7 @@ export function middleware(request: NextRequest) {
   return response
 }
 
-// Configure the middleware to only run on API routes
+// Configure the middleware to run on API routes and the typo URL
 export const config = {
-  matcher: '/api/:path*'
+  matcher: ['/api/:path*', '/equipment-finacing/:path*', '/equipment-finacing']
 }

@@ -304,7 +304,7 @@ export default function RackingFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office background"
             fill
             className="object-cover"
@@ -313,7 +313,7 @@ export default function RackingFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20 " />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

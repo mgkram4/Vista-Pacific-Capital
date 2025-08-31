@@ -70,10 +70,20 @@ const Section179Calculator: React.FC = () => {
     calculateSection179();
   }, [calculateSection179]);
 
+  const formatInputValue = (value: number) => {
+    return value ? value.toLocaleString() : '';
+  };
+
+  const parseInputValue = (value: string) => {
+    // Remove commas and parse as number
+    const cleanValue = value.replace(/,/g, '');
+    return parseFloat(cleanValue) || 0;
+  };
+
   const handleInputChange = (field: keyof CalculatorInputs, value: string | number) => {
     setInputs(prev => ({
       ...prev,
-      [field]: typeof value === 'string' ? parseFloat(value) || 0 : value
+      [field]: typeof value === 'string' ? parseInputValue(value) : value
     }));
   };
 
@@ -109,15 +119,19 @@ const Section179Calculator: React.FC = () => {
                 <label className="block text-sm font-medium text-[#0D3853] mb-2">
                   Equipment Purchase Price ($)
                 </label>
-                <input
-                  type="number"
-                  value={inputs.equipmentPrice || ''}
-                  onChange={(e) => handleInputChange('equipmentPrice', e.target.value)}
-                  className="w-full px-4 py-3 border border-[#0EB5B2]/20 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all duration-300 text-black"
-                  placeholder="Enter equipment cost"
-                  min="0"
-                  step="1000"
-                />
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#0D3853] font-medium pointer-events-none select-none">$</span>
+                  <input
+                    type="text"
+                    value={formatInputValue(inputs.equipmentPrice)}
+                    onChange={(e) => {
+                      handleInputChange('equipmentPrice', e.target.value);
+                    }}
+                    className="w-full pl-10 pr-4 py-3 border border-[#0EB5B2]/20 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all duration-300 text-black"
+                    placeholder="Enter equipment cost"
+                    aria-label="Equipment Purchase Price"
+                  />
+                </div>
               </div>
 
               <div>

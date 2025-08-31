@@ -183,8 +183,8 @@ export default function HomePageClient() {
   return (
     <>
       <main className="bg-white font-sans">
-        <section className="relative w-full min-h-screen">
-          {/* Full-screen background image */}
+        <section className="relative w-full h-[70vh] lg:h-[60vh]">
+          {/* Background image */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/Images/bg-wave2.png"
@@ -198,9 +198,9 @@ export default function HomePageClient() {
           </div>
 
           {/* Content layout */}
-          <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
+          <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
             {/* Left content area with overlay */}
-            <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+            <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full lg:h-auto">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -370,7 +370,7 @@ export default function HomePageClient() {
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/20 " />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

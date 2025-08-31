@@ -1,59 +1,52 @@
 "use client"
 
-import { dumpTruckMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCalendarAlt,
-    FaRecycle,
-    FaRoad,
-    FaTools,
-    FaTruck,
-    FaUsers,
-    FaWarehouse
+  FaCalendarAlt,
+  FaRecycle,
+  FaRoad,
+  FaTools,
+  FaTruck,
+  FaUsers,
+  FaWarehouse
 } from 'react-icons/fa';
-import { GiMining, GiTruck } from 'react-icons/gi';
+import { GiMineTruck, GiTruck } from 'react-icons/gi';
 
 
 // Define equipment types with their details
 const equipmentTypes = [
   {
-    title: 'Standard Dump Trucks',
-    description: dumpTruckMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: GiTruck,
-    image: 'https://images.unsplash.com/photo-1646927509523-3885bbf172b0?q=80&w=1056&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    title: 'Commercial Trucks',
+    description: 'Standard commercial trucks, delivery vehicles, and fleet transportation solutions.',
+    icon: GiTruck
   },
   {
-    title: 'Mining Dump Trucks',
-    description: dumpTruckMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: GiMining,
-    image: 'https://images.unsplash.com/photo-1622645916455-aa13b87438ec?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWluaW5nJTIwdHJ1Y2t8ZW58MHx8MHx8fDA%3D'
+    title: 'Heavy-Duty Trucks',
+    description: 'Heavy-duty trucks, mining vehicles, and industrial transportation equipment.',
+    icon: GiMineTruck
   },
   {
-    title: 'Transfer Dump Trucks',
-    description: 'Advanced transfer and multi-body dump truck systems.',
-    icon: FaTruck,
-    image: 'https://images.unsplash.com/photo-1629807472592-2649bfa09f9c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    title: 'Specialized Trucks',
+    description: 'Advanced transfer and multi-body truck systems.',
+    icon: FaTruck
   },
   {
     title: 'Demolition Trucks',
     description: 'Specialized demolition and debris hauling equipment.',
-    icon: FaRecycle,
-    image: 'https://images.unsplash.com/photo-1651473239598-5544ec456e35?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRlbW9saXRpb24lMjB0cnVja3xlbnwwfHwwfHx8MA%3D%3D'
+    icon: FaRecycle
   },
   {
     title: 'Road Construction',
-    description: 'Asphalt and road construction dump trucks.',
-    icon: FaRoad,
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f'
+    description: 'Asphalt and road construction vehicles.',
+    icon: FaRoad
   },
   {
     title: 'Material Handling',
     description: 'Material transport and aggregate handling solutions.',
-    icon: FaWarehouse,
-    image: 'https://images.unsplash.com/photo-1590079105886-f0f884bf4437?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fG1hdGlyZWFsJTIwdHJ1Y2t8ZW58MHx8MHx8fDA%3D'
+    icon: FaWarehouse
   }
 ];
 
@@ -68,18 +61,18 @@ const keyFeatures = [
   { value: 'All Types', label: 'Fleets & Owner-Operators', icon: FaUsers },
 ];
 
-export default function DumpTruckFinancingContent() {
+export default function TransportationFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Dump truck equipment financing"
+            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Transportation equipment financing"
             fill
             className="object-cover"
-            quality={100}
+            quality={85}
             priority={true}
             loading="eager"
             fetchPriority="high"
@@ -96,7 +89,7 @@ export default function DumpTruckFinancingContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                Dump Truck Equipment Financing
+                Transportation Equipment Financing
               </motion.h1>
               <motion.p
                 className="text-xl mb-12 leading-relaxed"
@@ -105,7 +98,7 @@ export default function DumpTruckFinancingContent() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Get the power to haul more, with financing that works for you.
-                With specialized dump truck financing to fit your needs. whether
+                With specialized transportation equipment financing to fit your needs. Whether
                 you are trying to upgrade your equipment or expand your fleet,
                 we can make the process easy without breaking the bank.
               </motion.p>
@@ -182,46 +175,32 @@ export default function DumpTruckFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Transportation Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -258,7 +237,7 @@ export default function DumpTruckFinancingContent() {
                   'Streamlined process to get you on the road faster',
                   'Flexible terms from 24 to 84 months',
                   'Financing for both new and used equipment',
-                  'Dedicated dump truck equipment specialists',
+                  'Dedicated transportation equipment specialists',
                   'Competitive rates for hauling equipment'
                 ].map((item, index) => (
                   <motion.li
@@ -319,8 +298,8 @@ export default function DumpTruckFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
-            alt="Modern office background"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Transportation equipment financing"
             fill
             className="object-cover"
             quality={75}
@@ -328,7 +307,7 @@ export default function DumpTruckFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20 " />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

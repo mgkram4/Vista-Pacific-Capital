@@ -8,44 +8,45 @@ import {
   FaCashRegister,
   FaChartLine,
   FaClock,
-  FaCoffee,
+  FaConciergeBell,
   FaDollarSign,
-  FaHamburger,
-  FaStore,
-  FaUtensils, FaWineGlassAlt
+  FaFire,
+  FaSnowflake,
+  FaStore
 } from 'react-icons/fa';
+import { GiCoffeeCup, GiKnifeFork } from 'react-icons/gi';
 
 
 const equipmentTypes = [
   {
     title: 'Kitchen Equipment',
     description: 'Finance state-of-the-art ovens, grills, fryers, and refrigeration units to enhance your culinary capabilities.',
-    icon: FaUtensils,
-    image: 'https://images.unsplash.com/photo-1622021142947-da7dedc7c39a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHJlc3RhdXJhbnQlMjBraXRjaGVufGVufDB8fDB8fHww'
+    icon: FaFire
   },
   {
     title: 'Bar & Beverage',
     description: 'Equip your bar with top-quality espresso machines, draft systems, and ice makers through flexible financing options.',
-    icon: FaCoffee,
-    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80' 
+    icon: GiCoffeeCup
   },
   {
     title: 'Dining Room Essentials',
     description: 'Create the perfect ambiance with financing for furniture, tableware, and decor that sets your restaurant apart.',
-    icon: FaWineGlassAlt,
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+    icon: FaConciergeBell
   },
   {
     title: 'POS & Management Systems',
     description: 'Streamline operations with cutting-edge point-of-sale systems and restaurant management software.',
-    icon: FaCashRegister,
-    image: 'https://images.unsplash.com/photo-1726065235239-b20b88d43eea?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww'
+    icon: FaCashRegister
   },
   {
     title: 'Food Prep Equipment',
     description: 'Maximize efficiency with high-quality food processors, slicers, and mixers designed for the demands of a busy kitchen.',
-    icon: FaHamburger,
-    image: 'https://images.unsplash.com/photo-1475610003943-f778cd2c3a6a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMGVxdWlwbWVudHxlbnwwfHwwfHx8MA%3D%3D'
+    icon: GiKnifeFork
+  },
+  {
+    title: 'Refrigeration Systems',
+    description: 'Commercial refrigerators, freezers, and cold storage solutions to keep your ingredients fresh.',
+    icon: FaSnowflake
   }
 ];
 
@@ -69,16 +70,16 @@ export default function RestaurantFinancingContent() {
         />
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1735599051587-6c13bb858214?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            src="/Images/restH.png" 
             alt="Restaurant background"
             fill
             className="object-cover"
-            quality={100}
+            quality={85}
             priority={true}
             loading="eager"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20 " />
         </div>
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h1 
@@ -167,45 +168,31 @@ export default function RestaurantFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Restaurant Equipment We Finance
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -302,22 +289,22 @@ export default function RestaurantFinancingContent() {
 
 
       {/* CTA Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office background"
               fill
               className="object-cover"
               quality={75}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <div className="space-y-8">
+            <div className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]">
               <motion.span 
-                className="text-sm font-semibold text-cyan-400 mb-2 block"
+                className="text-sm font-semibold text-[#0EB5B2] mb-2 block"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -326,7 +313,7 @@ export default function RestaurantFinancingContent() {
                 GET STARTED TODAY
               </motion.span>
               <motion.h2 
-                className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+                className="text-4xl md:text-5xl font-bold text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -335,7 +322,7 @@ export default function RestaurantFinancingContent() {
                 Ready to Get Started?
               </motion.h2>
               <motion.p 
-                className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+                className="text-xl text-white/90 max-w-3xl mx-auto pb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

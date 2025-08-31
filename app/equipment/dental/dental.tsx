@@ -7,15 +7,16 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    FaCalendarAlt,
-    FaCog,
-    FaDesktop,
-    FaMicroscope,
-    FaSyringe,
-    FaTools,
-    FaTooth,
-    FaUserPlus
+  FaCalendarAlt,
+  FaDesktop,
+  FaMicroscope,
+  FaSyringe,
+  FaTools,
+  FaTooth,
+  FaUserPlus,
+  FaXRay
 } from 'react-icons/fa';
+import { GiMedicalPack } from 'react-icons/gi';
 
 
 // Define equipment types with their details
@@ -23,38 +24,32 @@ const equipmentTypes = [
   {
     title: 'Digital Imaging Systems',
     description: dentalMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaDesktop,
-    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe'
+    icon: FaXRay
   },
   {
     title: 'Treatment Room Equipment',
     description: dentalMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaTooth,
-    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787'
+    icon: FaTooth
   },
   {
     title: 'Diagnostic Equipment',
     description: dentalMetadata.equipment[2].types.join(', ') + ' and more.',
-    icon: FaMicroscope,
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514'
+    icon: FaMicroscope
   },
   {
     title: 'CAD/CAM Systems',
     description: 'Digital impression systems and milling units for efficient restorations.',
-    icon: FaCog,
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d'
+    icon: FaDesktop
   },
   {
     title: 'Sterilization Systems',
     description: 'Modern sterilization and infection control equipment.',
-    icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1584362917165-526a968579e8'
+    icon: GiMedicalPack
   },
   {
     title: 'Specialty Equipment',
     description: 'Dental lasers, surgical instruments, and specialized tools.',
-    icon: FaSyringe,
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5'
+    icon: FaSyringe
   }
 ];
 
@@ -73,11 +68,11 @@ export default function DentalFinancingContent() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe"
+            src="/Images/services/medical-new.jpg"
             alt="Dental equipment financing"
             fill
             className="object-cover"
-            quality={100}
+            quality={85}
             priority={true}
             loading="eager"
             fetchPriority="high"
@@ -180,46 +175,32 @@ export default function DentalFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Dental Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -317,7 +298,7 @@ export default function DentalFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office background"
             fill
             className="object-cover"
@@ -326,7 +307,7 @@ export default function DentalFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20 " />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 interface SuccessModalProps {
   isVisible: boolean;
   onClose: () => void;
+  isVendorForm?: boolean;
+  customMessage?: string;
 }
 
-export default function SuccessModal({ isVisible, onClose }: SuccessModalProps) {
+export default function SuccessModal({ isVisible, onClose, isVendorForm = false, customMessage }: SuccessModalProps) {
   const [showContent, setShowContent] = useState(false);
   const [showFileUpload, setShowFileUpload] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -128,12 +130,24 @@ export default function SuccessModal({ isVisible, onClose }: SuccessModalProps) 
               showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            <p className="text-base">
-              Thank you for your submission, a copy of your application will be emailed to you.
-            </p>
-            <p className="text-base">
-              Someone will reach out to you within one business day.
-            </p>
+            {customMessage ? (
+              <p className="text-base">
+                {customMessage}
+              </p>
+            ) : isVendorForm ? (
+              <p className="text-base">
+                Thank you, your application is being assigned to a Vista Pacific Capital representative and someone will reach out within one business day.
+              </p>
+            ) : (
+              <>
+                <p className="text-base">
+                  Thank you for your submission, a copy of your application will be emailed to you.
+                </p>
+                <p className="text-base">
+                  Someone will reach out to you within one business day.
+                </p>
+              </>
+            )}
             <p className="text-sm text-gray-500">
               If you have any questions, please feel free to call{' '}
               <a 

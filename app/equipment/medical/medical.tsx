@@ -18,26 +18,32 @@ const equipmentTypes = [
   {
     title: 'Diagnostic Imaging',
     description: medicalMetadata.equipment[0].types.join(', ') + ' and more.',
-    icon: FaMedkit,
-    image: '/Images/medical-equipment/diagnostic-imaging.jpg'
+    icon: FaMedkit
   },
   {
     title: 'Surgical Equipment',
     description: medicalMetadata.equipment[1].types.join(', ') + ' and more.',
-    icon: FaProcedures,
-    image: '/Images/medical-equipment/surgical-equipment.jpg'
+    icon: FaProcedures
   },
   {
     title: 'Patient Care Equipment',
     description: 'Advanced monitoring systems and patient care devices.',
-    icon: FaUserMd,
-    image: '/Images/medical-equipment/patient-care.jpg'
+    icon: FaUserMd
   },
   {
     title: 'Laboratory Equipment',
     description: 'Cutting-edge lab and research equipment.',
-    icon: FaMicroscope,
-    image: '/Images/medical-equipment/laboratory-equipment.jpg'
+    icon: FaMicroscope
+  },
+  {
+    title: 'Practice Management',
+    description: 'Electronic health records, practice management software, and administrative systems.',
+    icon: FaHospital
+  },
+  {
+    title: 'Rehabilitation Equipment',
+    description: 'Physical therapy equipment, mobility aids, and rehabilitation devices.',
+    icon: FaHeartbeat
   }
 ];
 
@@ -164,46 +170,33 @@ export default function MedicalFinancingContent() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Medical Equipment We Finance
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )
+            })}
           </div>
         </div>
       </section>
@@ -300,10 +293,10 @@ export default function MedicalFinancingContent() {
 
 
       {/* CTA Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-10 overflow-hidden w-full">
           <div className="absolute inset-0">
             <Image 
-              src="/Images/cta-background-signing.jpg"
+              src="/Images/bg-wave2.png"
               alt="Modern office background"
               fill
               className="object-cover"
@@ -312,13 +305,13 @@ export default function MedicalFinancingContent() {
               loading="lazy"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <div className="space-y-8">
+            <div className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]">
               <motion.span 
-                className="text-sm font-semibold text-cyan-400 mb-2 block"
+                className="text-sm font-semibold text-[#0EB5B2] mb-2 block"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -327,7 +320,7 @@ export default function MedicalFinancingContent() {
                 GET STARTED TODAY
               </motion.span>
               <motion.h2 
-                className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+                className="text-4xl md:text-5xl font-bold text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -336,7 +329,7 @@ export default function MedicalFinancingContent() {
                 Ready to Get Started?
               </motion.h2>
               <motion.p 
-                className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+                className="text-xl text-white/90 max-w-3xl mx-auto pb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

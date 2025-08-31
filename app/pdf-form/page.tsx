@@ -1853,8 +1853,8 @@ export default function FinanceApplicationPage() {
       
       <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100">
         <div className="mb-6 text-center">
-          <h1 className="text-xl font-bold text-gray-800 mb-1">Small Business Finance Application</h1>
-          <p className="text-[#0EB5B2] text-sm font-medium">Complete the application to apply for financing</p>
+          <h1 className="text-xl font-bold text-gray-800 mb-1">Finance Application</h1>
+          <p className="text-[#0EB5B2] text-sm font-medium">Complete the application to start the financing process.</p>
         </div>
 
         {/* Progress Indicator */}

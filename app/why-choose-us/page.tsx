@@ -33,7 +33,7 @@ export default function WhyChooseUsPage() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Images/gen-ai/bg-wave-5.png"
+            src="/Images/bg-wave2.png"
             alt="Why Choose Us background"
             fill
             className="object-cover object-top"
@@ -83,13 +83,13 @@ export default function WhyChooseUsPage() {
       <section className="relative py-20 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office environment for equipment financing consultation"
             fill
             className="object-cover"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">

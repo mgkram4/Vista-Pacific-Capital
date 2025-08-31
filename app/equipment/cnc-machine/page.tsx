@@ -1,7 +1,6 @@
 // app/cnc/cnc-financing.tsx
 "use client"
 
-import { cncMetadata } from '@/app/lib/metadata';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
@@ -9,44 +8,39 @@ import Link from 'next/link';
 import {
   FaChartLine,
   FaClock,
-  FaCogs,
+  FaDesktop,
   FaHandshake,
-  FaIndustry,
-  FaLaptop,
   FaMicrochip,
+  FaRobot,
   FaTools
 } from 'react-icons/fa';
+import { GiDrill, GiGears } from 'react-icons/gi';
 
 const equipmentTypes = [
   {
     title: 'CNC Mills',
     description: 'Advanced vertical machining centers, horizontal machining centers, and 5-axis CNC mills.',
-    icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1674453450405-b2d71e482e80?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    icon: GiDrill
   },
   {
     title: 'CNC Lathes',
     description: 'High-precision turning centers and multi-axis CNC lathes for complex parts.',
-    icon: FaCogs,
-    image: 'https://images.unsplash.com/photo-1563520240344-52b067aa5f84?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
+    icon: GiGears
   },
   {
     title: 'Automation Systems',
     description: 'Robotic automation solutions and material handling systems for CNC operations.',
-    icon: FaIndustry,
-    image: 'https://images.unsplash.com/photo-1563520240533-66480a3916fe?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D'
+    icon: FaRobot
   },
   {
     title: 'Control Systems',
     description: 'Advanced CNC controls, software, and programming solutions.',
-    icon: FaLaptop,
-    image: 'https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    icon: FaDesktop
   },
   {
     title: 'Tool Systems',
     description: 'Automated tool changers, tool management systems, and cutting tools.',
-    icon: FaTools,
-    image: 'https://images.unsplash.com/photo-1666634157070-6fd830fb5672?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNuYyUyMG1pbGxpbmclMjBtYWNoaW5lfGVufDB8fDB8fHww'
+    icon: FaTools
   }
 ];
 
@@ -62,26 +56,24 @@ const stats = [
 
 const processSteps = [
   'Simplified application process with minimal documentation required',
-  'Financing for both new and used CNC machines',
+  'Financing for both new and used manufacturing equipment',
   'Flexible terms up to 84 months to match your production cycles',
   'Competitive rates with rapid approval times',
   'Expert guidance from machine tool financing specialists'
 ];
 
-export default function CNCFinancingContent() {
+export default function ManufacturingFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
-            alt="CNC Machine background"
+            src="https://images.unsplash.com/photo-1581092795442-6d4b3c6d1b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Manufacturing equipment background"
             fill
             sizes="100vw"
-            quality={75}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0aGhocHxkYHBwYGRgcIiEcHh4cISEhHBwcJCQlHCwvMTExLzkqOio5LzkxMTn/2wBDARUXFx0ZHTgcHDg5LiEuOTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTn/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIAAwAAPwCdABmX/9k="
+            quality={85}
             priority={true}
             loading="eager"
             fetchPriority="high"
@@ -98,7 +90,7 @@ export default function CNCFinancingContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                CNC Machine Equipment Financing
+                Manufacturing Equipment Financing
               </motion.h1>
               <motion.p
                 className="text-xl mb-12 leading-relaxed"
@@ -106,7 +98,7 @@ export default function CNCFinancingContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Precision manufacturing requires precision financing. Whether you need CNC mills, lathes, or complete automation systems, our flexible financing solutions help you acquire the advanced machinery that drives your production capabilities.
+                Precision manufacturing requires precision financing. Whether you need CNC mills, lathes, automation systems, or other manufacturing equipment, our flexible financing solutions help you acquire the advanced machinery that drives your production capabilities.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -180,7 +172,7 @@ export default function CNCFinancingContent() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          CNC Equipment We Finance
+                      Manufacturing Equipment We Finance
         </motion.h2>
         <motion.p 
           className="text-xl text-gray-700 text-center mb-16 leading-relaxed max-w-3xl mx-auto"
@@ -192,43 +184,29 @@ export default function CNCFinancingContent() {
           At Vista Pacific Capital, we specialize in providing comprehensive financing solutions for the machine tool industry, including:
         </motion.p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {equipmentTypes.map((type, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {equipmentTypes.map((type, index) => {
+            const Icon = type.icon;
+            return (
+            <motion.div
+              key={index}
+              className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <div className="relative h-48">
-                <Image 
-                  src={type.image}
-                  alt={`${type.title} CNC equipment for financing`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+              <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
               </div>
-              <div className="p-6">
-                <motion.h2 
-                  className="text-2xl font-bold text-indigo-dye mb-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  {type.title}
-                </motion.h2>
-                <motion.p 
-                  className="text-gray-700 text-lg leading-relaxed"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 + 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  {type.description}
-                </motion.p>
-              </div>
-            </div>
-          ))}
+              <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                {type.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {type.description}
+              </p>
+            </motion.div>
+          )})}
         </div>
       </section>
 
@@ -303,7 +281,7 @@ export default function CNCFinancingContent() {
                   'Vendor & private party sales financing',
                   'Flexible terms from 24 to 84 months',
                   'Financing for both new and used machines',
-                  'Dedicated CNC equipment specialists',
+                  'Dedicated manufacturing equipment specialists',
                   'Competitive rates with flexible options'
                 ].map((item, index) => (
                   <motion.li
@@ -364,8 +342,8 @@ export default function CNCFinancingContent() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
-            alt="Modern office background"
+            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Manufacturing facility background"
             fill
             className="object-cover"
             quality={75}
@@ -373,7 +351,7 @@ export default function CNCFinancingContent() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20 " />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
@@ -396,7 +374,7 @@ export default function CNCFinancingContent() {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              Ready to Get Your CNC Equipment?
+              Ready to Get Your Manufacturing Equipment?
             </motion.h2>
             <motion.p 
               className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"

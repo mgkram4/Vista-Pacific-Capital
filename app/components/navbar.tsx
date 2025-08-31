@@ -200,22 +200,22 @@ export const equipmentLinks: EquipmentLink[] = [
 
 export const equipmentFinancingProgramLinks: EquipmentLink[] = [
   {
-    topText: 'Application Only Equipment Financing up to $750,000',
-    bottomText: '',
-    path: '/equipment-finacing',
-    description: 'Application-only equipment financing up to $750,000 — no financials needed.',
+    topText: 'Application-Only Equipment Financing',
+    bottomText: 'up to $500,000',
+    path: '/equipment-financing',
+    description: 'Application-only equipment financing up to $500,000 — no financials needed.',
   },
   {
     topText: 'Commercial Equipment Financing',
-            bottomText: '$500,000 to $50 million',
+    bottomText: '$500,000 to $50 million',
     path: '/commercial-equipment-financing',
     description: 'Financing for large-scale commercial equipment.',
   },
   {
-    topText: 'Why Choose',
-    bottomText: 'Us',
-    path: '/why-choose-us',
-    description: 'Reasons to choose Vista Pacific Capital for equipment financing'
+    topText: 'Industries',
+    bottomText: '',
+    path: '/equipment-financing/industries',
+    description: 'Industry-specific equipment financing solutions'
   },
   {
     topText: 'Apply Now',
@@ -231,19 +231,19 @@ export const partnerLinks: EquipmentLink[] = [
         topText: 'Vendor',
         bottomText: 'Programs',
         path: '/vendor',
-        description: 'Vendor Programs'
+        description: 'Your Trusted Partner, No Matter the Tide'
     },
     {
-        topText: 'Partner',
-        bottomText: 'Benefits',
+        topText: 'Become a',
+        bottomText: 'Partner',
         path: '/partner-program',
-        description: 'Partner Benefits with Vista Pacific Capital'
+        description: 'Your Trusted Partner, No Matter the Tide'
     },
     {
-        topText: 'Partnership',
-        bottomText: 'Form',
+        topText: 'Start Partnering /',
+        bottomText: 'Join Us',
         path: '/vendor-form',
-        description: 'Become a Partner with Vista Pacific Capital'
+        description: 'The View is Better at the Top — Join Us on the Path to Success'
     }
 ];
 
@@ -272,12 +272,6 @@ export const toolsLinks: EquipmentLink[] = [
         bottomText: 'Savings',
         path: '/tax',
         description: 'Section 179 Tax Information'
-    },
-    {
-        topText: 'Contact',
-        bottomText: 'Us',
-        path: '/contact',
-        description: 'Contact Vista Pacific Capital'
     }
 ];
 
@@ -294,8 +288,42 @@ export const quoteLink: EquipmentLink = {
   }
 };
 
-const partnerMainLink: EquipmentLink = { topText: 'Become a', bottomText: 'Partner', path: '#', description: 'Vendor Programs' };
-const aboutUsLink: EquipmentLink = { topText: 'Meet the', bottomText: 'Founder', path: '/about-us', description: 'About Us' };
+const partnerMainLink: EquipmentLink = { topText: 'Become a Vendor', bottomText: 'Partner', path: '#', description: 'Become a Vendor Partner' };
+const aboutUsMainLink: EquipmentLink = { topText: 'About', bottomText: 'Us', path: '#', description: 'About Us' };
+
+// NEW: About Us Links
+export const aboutUsLinks: EquipmentLink[] = [
+    {
+        topText: 'Who We',
+        bottomText: 'Are',
+        path: '/about-us/who-we-are',
+        description: 'Learn about Vista Pacific Capital'
+    },
+    {
+        topText: 'Why Choose',
+        bottomText: 'Us',
+        path: '/about-us/why-choose-us',
+        description: 'Reasons to choose Vista Pacific Capital'
+    },
+    {
+        topText: 'Meet the',
+        bottomText: 'Founder',
+        path: '/about-us/meet-the-founder',
+        description: 'Meet Alan Johnson, our founder'
+    },
+    {
+        topText: 'Memberships &',
+        bottomText: 'Affiliations',
+        path: '/about-us/memberships',
+        description: 'Our professional memberships and affiliations'
+    },
+    {
+        topText: 'Contact',
+        bottomText: 'Us',
+        path: '/about-us/contact',
+        description: 'Get in touch with Vista Pacific Capital'
+    }
+];
 const equipmentFinancingMainLink: EquipmentLink = { topText: 'Equipment', bottomText: 'Financing', path: '#', description: 'Equipment Financing Options' };
 const toolsLink: EquipmentLink = { topText: 'Tools', bottomText: '', path: '#', description: 'Tools' };
 
@@ -636,11 +664,36 @@ const AppNavBar: React.FC = () => {
                     )}
                   </AnimatePresence>
                 </div>
-                
-                 <NavLink
-                  link={aboutUsLink}
-                  isActive={pathname === '/about-us'}
-                />
+
+                <div className="relative" onMouseEnter={() => handleMouseEnter('aboutUs')}>
+                  <NavLink
+                    link={aboutUsMainLink}
+                    isActive={openDropdown === 'aboutUs' || aboutUsLinks.some(l => l.path === pathname)}
+                    isDropdownTrigger
+                    isDropdownOpen={openDropdown === 'aboutUs'}
+                    onClick={() => setOpenDropdown(openDropdown === 'aboutUs' ? null : 'aboutUs')}
+                  />
+                  <AnimatePresence>
+                    {openDropdown === 'aboutUs' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full mt-3 w-64 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
+                      >
+                        {aboutUsLinks.map(link => (
+                          <NavLink
+                            key={link.path}
+                            link={link}
+                            isActive={pathname === link.path}
+                            onClick={() => setOpenDropdown(null)}
+                            className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                          />
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </nav>
             </div>
             
@@ -787,12 +840,28 @@ const AppNavBar: React.FC = () => {
                     </>
                   )}
                 </Disclosure>
-                <NavLink
-                  link={aboutUsLink}
-                  isActive={pathname === '/about-us'}
-                  isMobile
-                  onClick={() => setIsMobileMenuOpen(false)}
-                />
+
+                <Disclosure>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="w-full flex justify-between items-center py-4 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 rounded-lg hover:bg-gray-50 px-3">
+                        <span className="text-xl font-semibold">About Us</span>
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'transform rotate-180' : ''}`} />
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
+                        {aboutUsLinks.map((link) => (
+                          <NavLink
+                            key={link.path}
+                            link={link}
+                            isActive={pathname === link.path}
+                            isMobile
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          />
+                        ))}
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
                 
                 <div className="pt-6">
                   <NavLink

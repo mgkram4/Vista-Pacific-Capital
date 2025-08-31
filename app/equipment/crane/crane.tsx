@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBuilding, FaCalendarAlt, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
-import { GiCrane } from 'react-icons/gi';
+import { FaCalendarAlt, FaIndustry, FaShip, FaTools, FaTruck } from 'react-icons/fa';
+import { GiCrane, GiHook } from 'react-icons/gi';
 
 export default function CraneServices() {
   const keyFeatures = [
@@ -18,38 +18,32 @@ export default function CraneServices() {
     {
       title: 'Mobile Crane Financing',
       description: 'Flexible financing solutions for all-terrain cranes, rough terrain cranes, and truck mounted cranes.',
-      icon: GiCrane,
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd'
+      icon: GiCrane
     },
     {
       title: 'Tower Crane Financing',
       description: 'Comprehensive financing for fixed tower cranes, self-erecting cranes, and climbing cranes.',
-      icon: FaBuilding,
-      image: 'https://images.unsplash.com/photo-1586342454878-408aa841a9b9?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      icon: GiCrane
     },
     {
       title: 'Port & Marine Cranes',
       description: 'Specialized funding solutions for port cranes, container cranes, and marine lifting equipment.',
-      icon: FaShip,
-      image: 'https://images.unsplash.com/photo-1614326014420-1f0c741ca7e1?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      icon: FaShip
     },
     {
       title: 'Industrial Cranes',
       description: 'Financing options for overhead cranes, gantry cranes, and industrial lifting systems.',
-      icon: FaIndustry,
-      image: 'https://images.unsplash.com/photo-1539269071019-8bc6d57b0205?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      icon: FaIndustry
     },
     {
       title: 'Specialized Lifting Equipment',
       description: 'Custom financing programs for specialized lifting equipment and attachments.',
-      icon: FaTools,
-      image: 'https://images.unsplash.com/photo-1567662591248-865b3397d4ae?q=80&w=1437&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      icon: GiHook
     },
     {
       title: 'Transport & Installation',
       description: 'Additional financing options covering transport and installation costs.',
-      icon: FaTruck,
-      image: 'https://images.unsplash.com/photo-1586458995526-09ce6839babe?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      icon: FaTruck
     }
   ];
 
@@ -59,11 +53,11 @@ export default function CraneServices() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/Images/services/construction-new.jpg"
             alt="Crane financing"
             fill
             className="object-cover"
-            quality={100}
+            quality={85}
             priority={true}
             loading="eager"
             fetchPriority="high"
@@ -167,45 +161,31 @@ export default function CraneServices() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Equipment We Finance
+Cranes We Finance
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {equipmentTypes.map((type, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            {equipmentTypes.map((type, index) => {
+              const Icon = type.icon;
+              return (
+              <motion.div
+                key={index}
+                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border border-gray-100 hover:border-[#11B5B2]/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div className="relative h-48">
-                  <Image
-                    src={type.image}
-                    alt={type.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="bg-gradient-to-br from-[#11B5B2]/20 to-[#11B5B2]/5 rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-[#11B5B2] mx-auto" />
                 </div>
-                <div className="p-6">
-                  <motion.h3 
-                    className="text-xl font-bold text-indigo-dye mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {type.description}
-                  </motion.p>
-                </div>
-              </div>
-            ))}
+                <h3 className="text-xl font-bold text-[#113E59] mb-4">
+                  {type.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            )})}
           </div>
         </div>
       </section>
@@ -300,10 +280,10 @@ export default function CraneServices() {
       </section>
 
       {/* CTA Section - Updated to match other pages */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-10 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image 
-            src="/Images/cta-background-signing.jpg"
+            src="/Images/bg-wave2.png"
             alt="Modern office background"
             fill
             className="object-cover"
@@ -312,13 +292,13 @@ export default function CraneServices() {
             loading="lazy"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/05 via-[#0D3853]/02 to-[#0EB5B2]/02 " />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <div className="space-y-8">
+          <div className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]">
             <motion.span 
-              className="text-sm font-semibold text-cyan-400 mb-2 block"
+              className="text-sm font-semibold text-[#0EB5B2] mb-2 block"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -327,7 +307,7 @@ export default function CraneServices() {
               GET STARTED TODAY
             </motion.span>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+              className="text-4xl md:text-5xl font-bold text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -336,7 +316,7 @@ export default function CraneServices() {
               Ready to Get Started?
             </motion.h2>
             <motion.p 
-              className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
+              className="text-xl text-white/90 max-w-3xl mx-auto pb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}

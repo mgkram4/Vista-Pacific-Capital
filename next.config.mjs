@@ -29,6 +29,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/equipment-finacing',
+        destination: '/equipment-financing',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
