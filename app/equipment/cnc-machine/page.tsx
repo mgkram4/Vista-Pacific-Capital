@@ -66,10 +66,10 @@ export default function ManufacturingFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen">
+      <section className="relative w-full min-h-screen pt-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1717407983306-c8b4e2b8b8a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
             alt="Automated manufacturing assembly line equipment background"
             fill
             sizes="100vw"
@@ -81,7 +81,7 @@ export default function ManufacturingFinancingContent() {
           />
           <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
-        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen pt-0">
           <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
             <div className="w-full max-w-2xl [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none">
               <motion.h1
