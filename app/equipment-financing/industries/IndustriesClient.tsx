@@ -59,38 +59,37 @@ export default function IndustriesClient() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-br from-[#0D3853] to-[#082F4A] text-white py-20 px-4">
+      <section className="relative w-full h-[70vh] lg:h-[60vh] pt-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-            alt="Industries background"
+            src="/Images/bg-wave2.png"
+            alt="Scenic coastal view for equipment financing background"
             fill
-            className="object-cover opacity-20"
-            quality={85}
-            priority={true}
-            loading="eager"
-            sizes="100vw"
+            priority
+            className="object-cover"
+            quality={100}
           />
+          <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Industries We Finance
-          </motion.h1>
-          <motion.p
-            className="text-xl mb-12 leading-relaxed max-w-3xl mx-auto opacity-90"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Specialized equipment financing solutions across multiple industries. 
-            From construction to healthcare, we understand your unique equipment needs.
-          </motion.p>
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
+          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full lg:h-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="w-full max-w-md mx-auto [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none"
+            >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+                Industries We
+                <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent"> Finance</span>
+              </h1>
+              <p className="text-lg md:text-xl text-white lg:text-[#B3B3B3] mb-8">
+                Specialized equipment financing solutions across multiple industries
+              </p>
+            </motion.div>
+          </div>
+          <div className="hidden lg:block lg:col-span-6"></div>
         </div>
       </section>
 
@@ -145,72 +144,48 @@ export default function IndustriesClient() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 overflow-hidden">
+      <footer className="relative py-10 overflow-hidden w-full">
         <div className="absolute inset-0">
           <Image 
-            src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-            alt="Industrial equipment background"
+            src="/Images/bg-wave2.png"
+            alt="Modern office environment for equipment financing consultation"
             fill
             className="object-cover"
             quality={75}
-            priority={false}
-            loading="lazy"
-            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D3853]/90 via-[#0D3853]/80 to-[#0EB5B2]/80" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <div className="space-y-8">
-            <motion.span 
-              className="text-sm font-semibold text-cyan-400 mb-2 block"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              GET STARTED TODAY
-            </motion.span>
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              Ready to Finance Your Equipment?
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-blue-100/90 max-w-3xl mx-auto pb-10"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="space-y-4 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]"
+          >
+            <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">GET STARTED TODAY</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto pb-4">
               Get pre-qualified in minutes with no impact to your credit score
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
+            </p>
+            <Link
+              href="/apply"
+              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                transform hover:-translate-y-1 transition-all duration-300"
             >
-              <Link
-                href="/apply"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                  transform hover:-translate-y-1 transition-all duration-300"
-              >
-                Apply Now
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </motion.div>
-          </div>
+              Apply Now
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }
