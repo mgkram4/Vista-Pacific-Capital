@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Factory, Hammer, Microscope, Truck, UtensilsCrossed, Warehouse } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const industries = [
@@ -11,7 +10,6 @@ const industries = [
     description: 'Heavy machinery and tools for building and infrastructure projects. From excavators to cranes, we finance the equipment that builds America.',
     icon: Hammer,
     href: '/equipment/construction',
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['Excavators & Bulldozers', 'Cranes & Lifting Equipment', 'Road Construction', 'Material Handling']
   },
   {
@@ -19,7 +17,6 @@ const industries = [
     description: 'Advanced healthcare devices and hospital furnishings. Financing solutions for practices, hospitals, and healthcare facilities.',
     icon: Microscope,
     href: '/equipment/medical',
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['Diagnostic Imaging', 'Surgical Equipment', 'Patient Care', 'Laboratory Equipment']
   },
   {
@@ -27,7 +24,6 @@ const industries = [
     description: 'Commercial kitchen appliances and dining furniture. Complete financing solutions for restaurants, cafes, and food service businesses.',
     icon: UtensilsCrossed,
     href: '/equipment/restaurant',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['Kitchen Equipment', 'Bar & Beverage', 'POS Systems', 'Food Prep Equipment']
   },
   {
@@ -35,7 +31,6 @@ const industries = [
     description: 'Industrial machinery and production line systems. CNC machines, automation systems, and manufacturing technology financing.',
     icon: Factory,
     href: '/equipment/cnc-machine',
-    image: 'https://images.unsplash.com/photo-1581092795442-6d4b3c6d1b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['CNC Mills & Lathes', 'Automation Systems', 'Control Systems', 'Tool Systems']
   },
   {
@@ -43,7 +38,6 @@ const industries = [
     description: 'Commercial vehicles and logistics solutions. Financing for trucks, trailers, and transportation fleet equipment.',
     icon: Truck,
     href: '/equipment/dump-truck',
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['Dump Trucks', 'Commercial Vehicles', 'Fleet Equipment', 'Trailers & Transport']
   },
   {
@@ -51,7 +45,6 @@ const industries = [
     description: 'Warehouse racking and material handling equipment. Optimize your warehouse operations with our flexible financing solutions.',
     icon: Warehouse,
     href: '/equipment/racks',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     features: ['Warehouse Racking', 'Forklifts', 'Conveyor Systems', 'Automated Systems']
   },
 ];
@@ -114,18 +107,8 @@ export default function IndustriesClient() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={industry.image}
-                    alt={`${industry.title} financing`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <industry.icon className="w-8 h-8 text-white" />
-                  </div>
+                <div className="relative h-48 bg-gradient-to-br from-[#0D3853] to-[#082F4A] flex items-center justify-center group-hover:from-[#082F4A] group-hover:to-[#0D3853] transition-all duration-300">
+                  <industry.icon className="w-16 h-16 text-[#0EB5B2] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 
                 <div className="p-6">
