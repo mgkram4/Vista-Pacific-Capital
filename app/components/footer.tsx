@@ -33,9 +33,23 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Copyright */}
-          <div className="text-sm text-[#B3B3B3]">
-            <p>© 2025</p>
+          {/* Legal Links and Copyright */}
+          <div className="text-sm text-[#B3B3B3] text-center md:text-right">
+            <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4 mb-2">
+              <Link 
+                href="/privacy-policy" 
+                className="hover:text-[#0EB5B2] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/terms-of-service" 
+                className="hover:text-[#0EB5B2] transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
+            <p>© 2025 Vista Pacific Capital</p>
           </div>
         </div>
       </div>

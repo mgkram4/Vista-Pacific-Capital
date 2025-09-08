@@ -272,30 +272,14 @@ export async function POST(request: Request) {
       },
     ];
 
-    // Emails to team members
-    const teamEmails = [
-      {
-        to: 'alanj@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
-        html: detailedHtml,
-        attachments: adminAttachments // Attach PDF file
-      },
-      {
-        to: 'danielm@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
-        html: detailedHtml,
-        attachments: adminAttachments // Attach PDF file
-      },
-      {
-        to: 'cynthiaj@vistapacificcapital.com',
-        from: 'alanj@vistapacificcapital.com',
-        subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
-        html: detailedHtml,
-        attachments: adminAttachments // Attach PDF file
-      }
-    ];
+    // Email to team - only Alan gets vendor partnership inquiries
+    const teamEmail = {
+      to: 'alanj@vistapacificcapital.com',
+      from: 'alanj@vistapacificcapital.com',
+      subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
+      html: detailedHtml,
+      attachments: adminAttachments // Attach PDF file
+    };
 
     console.log('Attempting to send vendor partnership emails...');
 
@@ -305,12 +289,10 @@ export async function POST(request: Request) {
       await transporter.sendMail(vendorEmail);
       console.log('Vendor email sent successfully');
 
-      // Send team emails
-      console.log('Sending team emails...');
-      for (const teamEmail of teamEmails) {
-        await transporter.sendMail(teamEmail);
-        console.log(`Team email sent successfully to ${teamEmail.to}`);
-      }
+      // Send team email
+      console.log('Sending team email...');
+      await transporter.sendMail(teamEmail);
+      console.log(`Team email sent successfully to ${teamEmail.to}`);
     } catch (emailError: any) {
       console.error('Nodemailer Error:', {
         message: emailError.message,

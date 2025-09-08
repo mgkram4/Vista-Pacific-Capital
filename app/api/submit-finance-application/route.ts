@@ -332,16 +332,17 @@ export async function POST(request: Request) {
     // Determine the primary recipient and CC list
     const agent = body.agent;
     let primaryTo = 'alanj@vistapacificcapital.com'; // Default to Alan
-    const ccList = ['danielm@vistapacificcapital.com', 'cynthiaj@vistapacificcapital.com'];
+    let ccList: string[] = [];
 
     if (agent && agent.email) {
       primaryTo = agent.email;
       // Add Alan to CC if he's not the primary recipient
       if (agent.email.toLowerCase() !== 'alanj@vistapacificcapital.com') {
-        ccList.push('alanj@vistapacificcapital.com');
+        ccList = ['alanj@vistapacificcapital.com'];
       }
     } else {
-      // If no agent, Alan is the primary, so no need to CC him.
+      // If no agent, Alan is the primary, so no CC needed
+      ccList = [];
     }
 
     const teamEmailOptions = {

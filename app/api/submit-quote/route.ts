@@ -120,45 +120,25 @@ export async function POST(request: Request) {
       `
     };
 
-    // Emails to team members (two recipients)
-    const teamEmails = [
-      {
-        to: 'alanj@vistapacificcapital.com', // First recipient
-        from: 'alanj@vistapacificcapital.com',
-        subject: 'New Equipment Quote Request',
-        html: `
-          <h1>New Quote Request</h1>
-          <ul>
-            <li>Name: ${name}</li>
-            <li>Email: ${email}</li>
-            <li>Phone: ${phone}</li>
-            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
-            <li>Equipment Cost: ${equipmentCost}</li>
-            <li>Business Type: ${businessType}</li>
-            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
-          </ul>
-        `
-      },
-      {
-        to: 'danielm@vistapacificcapital.com', // Second recipient (replace with actual email)
-        from: 'alanj@vistapacificcapital.com',
-        subject: 'New Equipment Quote Request',
-        html: `
-          <h1>New Quote Request</h1>
-          <ul>
-            <li>Name: ${name}</li>
-            <li>Email: ${email}</li>
-            <li>Phone: ${phone}</li>
-            ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
-            <li>Equipment Cost: ${equipmentCost}</li>
-            <li>Business Type: ${businessType}</li>
-            ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
-            ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
-          </ul>
-        `
-      }
-    ];
+    // Email to team - only Alan gets quote requests
+    const teamEmail = {
+      to: 'alanj@vistapacificcapital.com',
+      from: 'alanj@vistapacificcapital.com',
+      subject: 'New Equipment Quote Request',
+      html: `
+        <h1>New Quote Request</h1>
+        <ul>
+          <li>Name: ${name}</li>
+          <li>Email: ${email}</li>
+          <li>Phone: ${phone}</li>
+          ${equipmentType ? `<li>Equipment Type: ${equipmentType}</li>` : ''}
+          <li>Equipment Cost: ${equipmentCost}</li>
+          <li>Business Type: ${businessType}</li>
+          ${timeInBusiness ? `<li>Time in Business: ${timeInBusiness}</li>` : ''}
+          ${creditScore ? `<li>Credit Score Range: ${creditScore}</li>` : ''}
+        </ul>
+      `
+    };
 
     console.log('Attempting to send emails...');
 
@@ -168,12 +148,10 @@ export async function POST(request: Request) {
       await transporter.sendMail(customerEmail);
       console.log('Customer email sent successfully');
 
-      // Send team emails
-      console.log('Sending team emails...');
-      for (const teamEmail of teamEmails) {
-        await transporter.sendMail(teamEmail);
-        console.log(`Team email sent successfully to ${teamEmail.to}`);
-      }
+      // Send team email
+      console.log('Sending team email...');
+      await transporter.sendMail(teamEmail);
+      console.log(`Team email sent successfully to ${teamEmail.to}`);
     } catch (emailError: any) {
       console.error('Nodemailer Error Details:', {
         message: emailError.message,
