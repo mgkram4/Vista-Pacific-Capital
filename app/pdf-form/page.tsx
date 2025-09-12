@@ -314,8 +314,8 @@ export default function FinanceApplicationPage() {
   const formatPhoneNumber = (value: string): string => {
     const phone = value.replace(/\D/g, '');
     if (phone.length < 4) return phone;
-    if (phone.length < 7) return `(${phone.slice(0, 3)}) - ${phone.slice(3)}`;
-    return `(${phone.slice(0, 3)}) - ${phone.slice(3, 6)}-${phone.slice(6, 10)}`;
+    if (phone.length < 7) return `(${phone.slice(0, 3)}) ${phone.slice(3)}`;
+    return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 10)}`;
   };
 
   // Format SSN
@@ -999,7 +999,7 @@ export default function FinanceApplicationPage() {
                   onChange={(e) => handlePhoneChange(e, 'business')}
                   onFocus={() => setFocused('businessPhone')}
                   onBlur={() => setFocused('')}
-                  placeholder="(111) - 111-1111"
+                  placeholder="(111) 111-1111"
                   className={`${inputClasses} ${focused === 'businessPhone' ? 'ring-2 ring-green-500' : ''} ${
                     businessErrors.some(error => error.field === 'businessPhone') ? 'border-red-500' : ''
                   }`}
