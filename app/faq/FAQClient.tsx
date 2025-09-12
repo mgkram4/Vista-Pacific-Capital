@@ -126,20 +126,18 @@ export default function FAQClient() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-12"
+          className="space-y-8"
         >
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
               variants={fadeInUp}
-              className="bg-white border border-[#0EB5B2]/10 rounded-lg overflow-hidden shadow-lg transition-all duration-300"
+              className="border-b border-gray-200 pb-8 last:border-b-0"
               id={`faq-${index + 1}`}
             >
-              <div className="p-8">
-                <h3 className="text-2xl font-semibold text-[#0D3853] mb-6">{faq.question}</h3>
-                <div className="text-[#0D3853]/80 leading-relaxed text-lg">
-                  <p>{faq.answer}</p>
-                </div>
+              <h3 className="text-xl font-semibold text-[#0D3853] mb-4">{faq.question}</h3>
+              <div className="text-[#0D3853]/80 leading-relaxed">
+                <p>{faq.answer}</p>
               </div>
             </motion.div>
           ))}

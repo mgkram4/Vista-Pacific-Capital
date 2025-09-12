@@ -251,17 +251,8 @@ export default function ManufacturingFinancingContent() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-4 bg-white">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Why Go With Us
-          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div
               className="bg-gradient-to-br from-[#113E59] to-[#082F4A] rounded-2xl shadow-xl p-6 md:p-8 text-white"

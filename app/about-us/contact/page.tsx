@@ -92,25 +92,25 @@ export default function ContactUsPage() {
             </motion.p>
           </div>
 
-          {/* Contact Information Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Contact Information - Single Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {/* Phone Contact */}
             <motion.div
               variants={fadeInUp}
-              className="bg-white rounded-lg shadow-lg p-8 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl text-center"
+              className="bg-white rounded-lg shadow-lg p-6 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl text-center"
             >
-              <div className="flex items-center justify-center mb-6">
-                <div className="p-4 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-full">
-                  <FaPhone className="h-8 w-8 text-white" />
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-full">
+                  <FaPhone className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-[#0D3853] mb-4">Call Us</h3>
-              <p className="text-[#0D3853]/80 mb-4">
-                Speak directly with our team for immediate assistance
+              <h3 className="text-xl font-semibold text-[#0D3853] mb-3">Call Us</h3>
+              <p className="text-[#0D3853]/80 mb-3 text-sm">
+                Speak directly with our team
               </p>
               <a 
                 href="tel:+17145007017" 
-                className="text-2xl font-bold text-[#0EB5B2] hover:text-[#0D3853] transition-colors"
+                className="text-lg font-bold text-[#0EB5B2] hover:text-[#0D3853] transition-colors"
               >
                 (714) 500-7017
               </a>
@@ -119,43 +119,50 @@ export default function ContactUsPage() {
             {/* Email Contact */}
             <motion.div
               variants={fadeInUp}
-              className="bg-white rounded-lg shadow-lg p-8 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl text-center"
+              className="bg-white rounded-lg shadow-lg p-6 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl text-center"
             >
-              <div className="flex items-center justify-center mb-6">
-                <div className="p-4 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-full">
-                  <FaEnvelope className="h-8 w-8 text-white" />
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-full">
+                  <FaEnvelope className="h-6 w-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-semibold text-[#0D3853] mb-4">Email Us</h3>
-              <p className="text-[#0D3853]/80 mb-4">
-                Send us your questions or financing inquiries
+              <h3 className="text-xl font-semibold text-[#0D3853] mb-3">Email Us</h3>
+              <p className="text-[#0D3853]/80 mb-3 text-sm">
+                Send us your inquiries
               </p>
               <a 
                 href="mailto:alanj@vistapacificcapital.com" 
-                className="text-lg font-semibold text-[#0EB5B2] hover:text-[#0D3853] transition-colors break-all"
+                className="text-sm font-semibold text-[#0EB5B2] hover:text-[#0D3853] transition-colors break-all"
               >
                 alanj@vistapacificcapital.com
               </a>
             </motion.div>
-          </div>
 
-          {/* Address Information */}
-          <motion.div
-            variants={fadeInUp}
-            className="bg-gradient-to-br from-[#0D3853] to-[#0EB5B2] text-white rounded-lg shadow-lg p-8 mb-12"
-          >
-            <div className="flex items-center justify-center mb-6">
-              <div className="p-4 bg-white/20 rounded-full">
-                <MapPin className="h-8 w-8 text-white" />
+            {/* Location */}
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white rounded-lg shadow-lg p-6 border border-[#0EB5B2]/10 hover:border-[#0EB5B2]/30 transition-all duration-300 hover:shadow-xl text-center"
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 bg-gradient-to-r from-[#0EB5B2] to-[#0D3853] rounded-full">
+                  <MapPin className="h-6 w-6 text-white" />
+                </div>
               </div>
-            </div>
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-4">Our Location</h3>
-              <p className="text-lg mb-2">Vista Pacific Capital</p>
-              <p className="text-white/90">Orange County, California</p>
-              <p className="text-white/90 mt-4">Serving businesses nationwide</p>
-            </div>
-          </motion.div>
+              <h3 className="text-xl font-semibold text-[#0D3853] mb-3">Location</h3>
+              <div className="text-[#0D3853]/80 text-sm space-y-1">
+                <p className="font-medium">Vista Pacific Capital</p>
+                <p>1234 Business Center Dr</p>
+                <p>Suite 200</p>
+                <p>Newport Beach, CA 92660</p>
+                <p className="text-[#0EB5B2] font-medium mt-2">Serving businesses nationwide</p>
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <p className="font-medium text-[#0D3853]">Office Hours:</p>
+                  <p>Monday - Friday</p>
+                  <p>8:00 AM - 6:00 PM PST</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
           {/* Secure Portals Information */}
           <motion.div
