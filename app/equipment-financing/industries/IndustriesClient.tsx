@@ -8,45 +8,45 @@ import Link from 'next/link';
 const industries = [
   {
     title: 'Construction Equipment',
-    description: 'Heavy machinery and tools for building and infrastructure projects. From excavators to cranes, we finance the equipment that builds America.',
+    description: 'Financing for construction equipment from dealers or private parties. We provide comprehensive funding solutions for new & used equipment, dealer or private party sales, with application-only financing up to $750,000. From excavators to cranes, we finance the equipment that builds America.',
     icon: Hammer,
     href: '/equipment/construction',
-    features: ['Excavators & Bulldozers', 'Cranes & Lifting Equipment', 'Road Construction', 'Material Handling']
+    features: ['New & used equipment', 'Dealer or private party sales', 'Application-only up to $750,000', 'Excavators & Bulldozers', 'Cranes & Lifting Equipment']
   },
   {
     title: 'Medical Equipment',
-    description: 'Advanced healthcare devices and hospital furnishings. Financing solutions for practices, hospitals, and healthcare facilities.',
+    description: 'Specialized financing for medical practices of all sizes. We offer funding for new & used medical equipment, specialized equipment financing, and solutions for all practice sizes. Advanced healthcare devices and hospital furnishings for practices, hospitals, and healthcare facilities.',
     icon: Microscope,
     href: '/equipment/medical',
-    features: ['Diagnostic Imaging', 'Surgical Equipment', 'Patient Care', 'Laboratory Equipment']
+    features: ['New & used medical equipment', 'Funding for specialized equipment', 'Solutions for all practice sizes', 'Diagnostic Imaging', 'Surgical Equipment']
   },
   {
     title: 'Restaurant Equipment',
-    description: 'Commercial kitchen appliances and dining furniture. Complete financing solutions for restaurants, cafes, and food service businesses.',
+    description: 'Financing solutions for new locations and equipment upgrades. We provide funding for furniture, POS & kitchen equipment, new & used equipment, with all credit types considered. Complete financing solutions for restaurants, cafes, and food service businesses.',
     icon: UtensilsCrossed,
     href: '/equipment/restaurant',
-    features: ['Kitchen Equipment', 'Bar & Beverage', 'POS Systems', 'Food Prep Equipment']
+    features: ['Furniture, POS & kitchen equipment', 'New & used equipment', 'All credit types considered', 'Kitchen Equipment', 'Bar & Beverage']
   },
   {
     title: 'Manufacturing Equipment',
-    description: 'Industrial machinery and production line systems. CNC machines, automation systems, and manufacturing technology financing.',
+    description: 'Financing for manufacturing equipment with competitive rates. We offer full production line programs, support for international vendors, and installation & shipping included. Industrial machinery and production line systems, CNC machines, automation systems, and manufacturing technology financing.',
     icon: Factory,
     href: '/equipment/cnc-machine',
-    features: ['CNC Mills & Lathes', 'Automation Systems', 'Control Systems', 'Tool Systems']
+    features: ['Full production line programs', 'International vendors supported', 'Installation & shipping included', 'CNC Mills & Lathes', 'Automation Systems']
   },
   {
     title: 'Transportation Equipment',
-    description: 'Commercial vehicles and logistics solutions. Financing for trucks, trailers, and transportation fleet equipment.',
+    description: 'Flexible financing for all types of commercial vehicles. We provide financing for long & short haul vehicles, new & used vehicles, dealer or private party sales. Commercial vehicles and logistics solutions for trucks, trailers, and transportation fleet equipment.',
     icon: Truck,
     href: '/equipment/dump-truck',
-    features: ['Dump Trucks', 'Commercial Vehicles', 'Fleet Equipment', 'Trailers & Transport']
+    features: ['Long & short haul', 'New & used vehicles', 'Dealer or private party sales', 'Dump Trucks', 'Commercial Vehicles']
   },
   {
     title: 'Racking & Material Handling',
-    description: 'Warehouse racking and material handling equipment. Optimize your warehouse operations with our flexible financing solutions.',
+    description: 'Financing for warehouse racks and equipment. We provide funding for new & refurbished systems, labor & installation included, with application-only financing up to $500,000. Optimize your warehouse operations with our flexible financing solutions.',
     icon: Warehouse,
     href: '/equipment/racks',
-    features: ['Warehouse Racking', 'Forklifts', 'Conveyor Systems', 'Automated Systems']
+    features: ['New & refurbished systems', 'Labor & installation included', 'Application-only up to $500,000', 'Warehouse Racking', 'Forklifts']
   },
 ];
 
@@ -107,12 +107,16 @@ export default function IndustriesClient() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
               >
-                <div className="relative h-48 bg-gradient-to-br from-[#0D3853] to-[#082F4A] flex items-center justify-center group-hover:from-[#082F4A] group-hover:to-[#0D3853] transition-all duration-300">
-                  <industry.icon className="w-16 h-16 text-[#0EB5B2] group-hover:scale-110 transition-transform duration-300" />
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-[#0EB5B2]/10 p-3 rounded-lg mr-4">
+                      <industry.icon className="w-8 h-8 text-[#0EB5B2]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0D3853]">{industry.title}</h3>
+                  </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-[#0D3853]">{industry.title}</h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">{industry.description}</p>
                   
                   <div className="mb-6">

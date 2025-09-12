@@ -234,8 +234,8 @@ export const partnerLinks: EquipmentLink[] = [
         description: 'Your Trusted Partner, No Matter the Tide'
     },
     {
-        topText: 'Start Partnering /',
-        bottomText: 'Join Us',
+        topText: 'Vendor Partner',
+        bottomText: 'Form',
         path: '/vendor-form',
         description: 'The View is Better at the Top — Join Us on the Path to Success'
     }
@@ -263,9 +263,9 @@ export const toolsLinks: EquipmentLink[] = [
     },
     {
         topText: '179 Tax',
-        bottomText: 'Savings',
-        path: '/tax',
-        description: 'Section 179 Tax Information'
+        bottomText: 'Calculator',
+        path: '/tax-calculator',
+        description: 'Section 179 Tax Calculator'
     }
 ];
 

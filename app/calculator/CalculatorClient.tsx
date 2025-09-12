@@ -24,9 +24,6 @@ export default function CalculatorClient() {
           animate="visible"
           className="text-center mb-8"
         >
-          <span className="text-sm font-semibold text-blue-600 tracking-wider uppercase mb-2 block">
-            CALCULATE YOUR PAYMENTS
-          </span>
           <h1 className="text-4xl md:text-5xl font-bold text-[#1a2b4b] mb-3">
             Equipment Financing Calculator
           </h1>

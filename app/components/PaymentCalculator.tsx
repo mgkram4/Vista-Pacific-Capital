@@ -4,8 +4,8 @@ import { CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function PaymentCalculator() {
-  const [amount, setAmount] = useState<string>('25,000');
-  const [rawAmount, setRawAmount] = useState<number>(25000);
+  const [amount, setAmount] = useState<string>('');
+  const [rawAmount, setRawAmount] = useState<number>(0);
   
   // Format number with commas
   const formatWithCommas = (value: string) => {
@@ -49,7 +49,7 @@ export default function PaymentCalculator() {
         <h2 className="text-2xl font-bold text-white">
           Payment Calculator
         </h2>
-        <p className="text-cyan-400 mt-2">Compare monthly payments across different terms</p>
+        <p className="text-cyan-400 mt-2">Estimate your monthly payments with our easy-to-use calculator</p>
       </div>
 
       {/* Calculator Body */}
@@ -69,7 +69,7 @@ export default function PaymentCalculator() {
               className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg
                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                 transition-all bg-white text-[#1B365D]"
-              placeholder="Enter amount"
+              placeholder="Enter equipment cost"
             />
           </div>
         </div>
@@ -140,8 +140,8 @@ export default function PaymentCalculator() {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-sm text-gray-600 mt-6 italic">
-          *Payments are estimated and subject to credit approval. Financing from $20,000 to $50 million available.
+        <p className="text-sm text-gray-600 mt-6">
+          <span className="text-red-500 text-lg font-bold">*</span> Payments are estimates only and subject to credit approval. Actual rates and terms may vary. Contact us for personalized financing options. Financing available from $20,000 to $50 million.
         </p>
       </div>
     </div>

@@ -237,27 +237,27 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Benefits Section - adjust spacing here */}
+        {/* Benefits Section - 2 columns layout */}
         <section className="py-24 bg-gray-50">
-          <h2 className="sr-only">Our Financing Benefits</h2>
-          <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853]">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
                 Benefits of Our Equipment Financing
               </h2>
-              <p className="text-lg text-[#B3B3B3]">
+              <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto">
                 Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
               </p>
-              <div className="space-y-4">
-                {benefits.map((benefit, index) => {
-                  const Icon = benefit.icon;
-                  return (
-                  <div key={index}>
-                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit
-                      group-hover:scale-110 transition-transform duration-500">
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mb-4">
                       <Icon className="h-12 w-12 text-[#0EB5B2]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#0D3853] mt-4 mb-2">
+                    <h3 className="text-xl font-bold text-[#0D3853] mb-2">
                       {benefit.title}
                     </h3>
                     <p className="text-[#B3B3B3] mb-4">{benefit.description}</p>
@@ -270,20 +270,8 @@ export default function HomePageClient() {
                       ))}
                     </ul>
                   </div>
-                )})}
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <figure>
-                <Image 
-                  src="/Images/gen-ai/img7.png"
-                  alt="Business owner signing equipment financing agreement"
-                  width={600}
-                  height={500}
-                  className="rounded-lg shadow-lg"
-                  quality={60}
-                />
-              </figure>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -291,9 +279,8 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
-        {/* Services Section - adjust spacing here */}
+        {/* Equipment Types Section */}
         <section className="py-24 bg-white">
-          <h2 className="sr-only">Industries We Serve</h2>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853]">
@@ -303,7 +290,38 @@ export default function HomePageClient() {
                 We provide tailored equipment financing and business loan solutions for a wide range of industries. Get the capital you need for new or used equipment.
               </p>
             </div>
-            <ServicesCarousel services={services} />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-[#0EB5B2]/10 p-3 rounded-lg mr-4">
+                        <Icon className="h-8 w-8 text-[#0EB5B2]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-[#0D3853]">{service.title}</h3>
+                    </div>
+                    <p className="text-[#B3B3B3] mb-4">{service.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center space-x-2 text-sm text-[#B3B3B3]">
+                          <CheckCircle2 className="h-4 w-4 text-[#0EB5B2] flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center text-[#0EB5B2] hover:text-[#0D3853] font-medium transition-colors"
+                    >
+                      Learn More
+                      <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
         
