@@ -77,7 +77,7 @@ export async function POST(request: Request) {
     });
 
     // Email to customer - Customized auto-response based on team member
-    const agent = body.agent;
+    const submissionAgent = body.agent;
     let responseMessage = '';
     let contactName = 'Alan Johnson';
     let contactEmail = 'alanj@vistapacificcapital.com';
@@ -315,7 +315,6 @@ export async function POST(request: Request) {
 
     // Emails to team members
     // Determine the primary recipient and CC list
-    const submissionAgent = body.agent;
     let primaryTo = 'alanj@vistapacificcapital.com'; // Default to Alan
     let ccList: string[] = [];
 
