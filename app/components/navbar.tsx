@@ -217,12 +217,6 @@ export const equipmentFinancingProgramLinks: EquipmentLink[] = [
     path: '/equipment-financing/industries',
     description: 'Industry-specific equipment financing solutions'
   },
-  {
-    topText: 'Apply Now',
-    bottomText: '',
-    path: '/apply',
-    description: 'Apply for equipment financing'
-  }
 ];
 
 // NEW: Partner Links

@@ -1840,7 +1840,32 @@ export default function FinanceApplicationPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-4 px-4">
+    <div className="max-w-2xl mx-auto py-4 px-4 print:py-0 print:px-0 print:max-w-none">
+      {/* Print Styles */}
+      <style jsx>{`
+        @media print {
+          body { 
+            background: white !important; 
+            color: black !important;
+            font-size: 12px !important;
+          }
+          .print\\:hidden { display: none !important; }
+          .print\\:block { display: block !important; }
+          .print\\:py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+          .print\\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+          .print\\:max-w-none { max-width: none !important; }
+          .print\\:text-black { color: black !important; }
+          .print\\:bg-white { background: white !important; }
+          .print\\:border-none { border: none !important; }
+          .print\\:shadow-none { box-shadow: none !important; }
+          .print\\:rounded-none { border-radius: 0 !important; }
+          .print\\:p-2 { padding: 0.5rem !important; }
+          .print\\:text-sm { font-size: 0.875rem !important; }
+          .print\\:break-inside-avoid { break-inside: avoid !important; }
+          .print\\:page-break-before { page-break-before: always !important; }
+        }
+      `}</style>
+
       {/* Success Modal */}
       <SuccessModal
         isVisible={showSuccessModal}
@@ -1858,7 +1883,17 @@ export default function FinanceApplicationPage() {
         />
       )}
       
-      <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100">
+      {/* Print Button */}
+      <div className="mb-4 text-right print:hidden">
+        <button
+          onClick={() => window.print()}
+          className="bg-[#0EB5B2] text-white px-4 py-2 rounded-lg hover:bg-[#0D3853] transition-colors text-sm font-medium"
+        >
+          🖨️ Print Form
+        </button>
+      </div>
+      
+      <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100 print:shadow-none print:border-none print:rounded-none print:p-2">
         {/* Header with Logo */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
@@ -1882,7 +1917,7 @@ export default function FinanceApplicationPage() {
         </div>
 
         {/* Progress Indicator */}
-        <div className="mb-6">
+        <div className="mb-6 print:hidden">
           <div className="flex justify-between">
             <div className={`flex flex-col items-center ${currentStep >= 1 ? 'text-[#0EB5B2]' : 'text-gray-400'}`}>
               <div className={`flex items-center justify-center w-6 h-6 rounded-full mb-1 ${
@@ -1928,7 +1963,7 @@ export default function FinanceApplicationPage() {
         <form onSubmit={handleSubmit}>
           {renderForm()}
           
-          <div className="mt-6 flex justify-between">
+          <div className="mt-6 flex justify-between print:hidden">
             {currentStep > 1 ? (
               <button
                 type="button"
@@ -1980,7 +2015,7 @@ export default function FinanceApplicationPage() {
           </div>
 
           {/* Required Fields Note */}
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center print:hidden">
             <p className="text-sm text-gray-600">
               <span className="text-red-500 text-lg font-bold">*</span> Required for application submission
             </p>

@@ -59,7 +59,7 @@ export default function MedicalFinancingContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen">
+      <section className="relative w-full h-[60vh] min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/Images/medH.png"
@@ -73,8 +73,8 @@ export default function MedicalFinancingContent() {
           />
           <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
-        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
-          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
+          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full">
             <div className="w-full max-w-2xl [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none">
               <motion.h1
                 className="text-4xl md:text-5xl font-bold mb-6 leading-tight"

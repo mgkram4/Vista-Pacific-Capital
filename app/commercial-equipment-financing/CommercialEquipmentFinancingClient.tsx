@@ -64,7 +64,7 @@ export default function CommercialEquipmentFinancingClient() {
   return (
     <div className="font-sans">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen">
+      <section className="relative w-full h-[60vh] min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1568056308658-aa380181da25?q=80&w=3003&auto=format&fit=crop&ixlib-rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -75,8 +75,8 @@ export default function CommercialEquipmentFinancingClient() {
           />
           <div className="absolute inset-0 bg-black/20 lg:hidden" />
         </div>
-        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
-          <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
+        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
+          <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
