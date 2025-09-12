@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { useEffect, useState } from 'react';
 import SuccessModal from '../components/SuccessModal';
@@ -313,8 +314,8 @@ export default function FinanceApplicationPage() {
   const formatPhoneNumber = (value: string): string => {
     const phone = value.replace(/\D/g, '');
     if (phone.length < 4) return phone;
-    if (phone.length < 7) return `(${phone.slice(0, 3)}) ${phone.slice(3)}`;
-    return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6, 10)}`;
+    if (phone.length < 7) return `(${phone.slice(0, 3)}) - ${phone.slice(3)}`;
+    return `(${phone.slice(0, 3)}) - ${phone.slice(3, 6)}-${phone.slice(6, 10)}`;
   };
 
   // Format SSN
@@ -881,7 +882,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-1">
                 <label htmlFor="amountNeeded" className={labelClasses}>
-                  Requested Amount <span className="text-red-500">*</span>
+                  Requested Amount <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="amountNeeded"
@@ -890,14 +891,14 @@ export default function FinanceApplicationPage() {
                   onChange={handleCurrencyChange}
                   onFocus={() => setFocused('amountNeeded')}
                   onBlur={() => setFocused('')}
-                  placeholder="$50,000"
+                  placeholder="$"
                   className={`${inputClasses} ${focused === 'amountNeeded' ? 'ring-2 ring-green-500' : ''} ${
                     businessErrors.some(error => error.field === 'amountNeeded') ? 'border-red-500' : ''
                   }`}
                   required
                 />
                 {businessErrors.some(error => error.field === 'amountNeeded') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'amountNeeded')?.message}
                   </p>
                 )}
@@ -905,7 +906,7 @@ export default function FinanceApplicationPage() {
 
               <div className="md:col-span-1">
                 <label htmlFor="email" className={labelClasses}>
-                  Email Address <span className="text-red-500">*</span>
+                  Email Address <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="email"
@@ -921,7 +922,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {businessErrors.some(error => error.field === 'email') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'email')?.message}
                   </p>
                 )}
@@ -931,7 +932,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label htmlFor="businessName" className={labelClasses}>
-                  Business Name <span className="text-red-500">*</span>
+                  Business Name <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="businessName"
@@ -947,7 +948,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {businessErrors.some(error => error.field === 'businessName') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'businessName')?.message}
                   </p>
                 )}
@@ -955,7 +956,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="businessType" className={labelClasses}>
-                  Business Type <span className="text-red-500">*</span>
+                  Business Type <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <div className="relative">
                   <select
@@ -981,7 +982,7 @@ export default function FinanceApplicationPage() {
                   </div>
                 </div>
                 {businessErrors.some(error => error.field === 'businessType') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'businessType')?.message}
                   </p>
                 )}
@@ -989,7 +990,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="businessPhone" className={labelClasses}>
-                  Business Phone <span className="text-red-500">*</span>
+                  Business Phone <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="businessPhone"
@@ -998,14 +999,14 @@ export default function FinanceApplicationPage() {
                   onChange={(e) => handlePhoneChange(e, 'business')}
                   onFocus={() => setFocused('businessPhone')}
                   onBlur={() => setFocused('')}
-                  placeholder="(555) 123-4567"
+                  placeholder="(111) - 111-1111"
                   className={`${inputClasses} ${focused === 'businessPhone' ? 'ring-2 ring-green-500' : ''} ${
                     businessErrors.some(error => error.field === 'businessPhone') ? 'border-red-500' : ''
                   }`}
                   required
                 />
                 {businessErrors.some(error => error.field === 'businessPhone') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'businessPhone')?.message}
                   </p>
                 )}
@@ -1034,7 +1035,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
                 <label htmlFor="businessAddress" className={labelClasses}>
-                  Business Address <span className="text-red-500">*</span>
+                  Business Address <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="businessAddress"
@@ -1050,7 +1051,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {businessErrors.some(error => error.field === 'businessAddress') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'businessAddress')?.message}
                   </p>
                 )}
@@ -1067,7 +1068,7 @@ export default function FinanceApplicationPage() {
                   onChange={(e) => setBusinessData({...businessData, businessSuite: e.target.value})}
                   onFocus={() => setFocused('businessSuite')}
                   onBlur={() => setFocused('')}
-                  placeholder="Suite 100"
+                  placeholder=""
                   className={`${inputClasses} ${focused === 'businessSuite' ? 'ring-2 ring-green-500' : ''}`}
                 />
               </div>
@@ -1076,7 +1077,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label htmlFor="city" className={labelClasses}>
-                  City <span className="text-red-500">*</span>
+                  City <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="city"
@@ -1092,7 +1093,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {businessErrors.some(error => error.field === 'city') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'city')?.message}
                   </p>
                 )}
@@ -1100,7 +1101,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="state" className={labelClasses}>
-                  State <span className="text-red-500">*</span>
+                  State <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <div className="relative">
                   <select
@@ -1126,7 +1127,7 @@ export default function FinanceApplicationPage() {
                   </div>
                 </div>
                 {businessErrors.some(error => error.field === 'state') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'state')?.message}
                   </p>
                 )}
@@ -1134,7 +1135,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="zip" className={labelClasses}>
-                  ZIP Code <span className="text-red-500">*</span>
+                  ZIP Code <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="zip"
@@ -1150,7 +1151,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {businessErrors.some(error => error.field === 'zip') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'zip')?.message}
                   </p>
                 )}
@@ -1160,7 +1161,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="yearsInBusiness" className={labelClasses}>
-                  Years in Business (estimated) <span className="text-red-500">*</span>
+                  Years in Business (estimated) <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="yearsInBusiness"
@@ -1169,14 +1170,14 @@ export default function FinanceApplicationPage() {
                   onChange={(e) => setBusinessData({...businessData, yearsInBusiness: e.target.value})}
                   onFocus={() => setFocused('yearsInBusiness')}
                   onBlur={() => setFocused('')}
-                  placeholder="e.g., 5 years"
+                  placeholder=""
                   className={`${inputClasses} ${focused === 'yearsInBusiness' ? 'ring-2 ring-green-500' : ''} ${
                     businessErrors.some(error => error.field === 'yearsInBusiness') ? 'border-red-500' : ''
                   }`}
                   required
                 />
                 {businessErrors.some(error => error.field === 'yearsInBusiness') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {businessErrors.find(error => error.field === 'yearsInBusiness')?.message}
                   </p>
                 )}
@@ -1184,16 +1185,19 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="annualRevenue" className={labelClasses}>
-                  Annual Revenue
+                  Annual Revenue (rounded)
                 </label>
                 <input
                   id="annualRevenue"
                   type="text"
                   value={businessData.annualRevenue}
-                  onChange={(e) => setBusinessData({...businessData, annualRevenue: e.target.value})}
+                  onChange={(e) => {
+                    const formatted = formatCurrency(e.target.value);
+                    setBusinessData({...businessData, annualRevenue: formatted});
+                  }}
                   onFocus={() => setFocused('annualRevenue')}
                   onBlur={() => setFocused('')}
-                  placeholder="e.g., $500,000"
+                  placeholder="$"
                   className={`${inputClasses} ${focused === 'annualRevenue' ? 'ring-2 ring-green-500' : ''}`}
                 />
               </div>
@@ -1202,6 +1206,9 @@ export default function FinanceApplicationPage() {
             <div>
               <label htmlFor="equipmentDescription" className={labelClasses}>
                 Equipment Description
+                <span className="text-xs text-gray-500 font-normal ml-1">
+                  (such as Equip. mfgr., model name or description, year of mfgr. or new)
+                </span>
               </label>
               <textarea
                 id="equipmentDescription"
@@ -1223,7 +1230,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className={labelClasses}>
-                  First Name <span className="text-red-500">*</span>
+                  First Name <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="firstName"
@@ -1239,7 +1246,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {ownerErrors.some(error => error.field === 'firstName') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'firstName')?.message}
                   </p>
                 )}
@@ -1247,7 +1254,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="lastName" className={labelClasses}>
-                  Last Name <span className="text-red-500">*</span>
+                  Last Name <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="lastName"
@@ -1263,7 +1270,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {ownerErrors.some(error => error.field === 'lastName') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'lastName')?.message}
                   </p>
                 )}
@@ -1308,7 +1315,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3">
                 <label htmlFor="homeAddress" className={labelClasses}>
-                  Home Address <span className="text-red-500">*</span>
+                  Home Address <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="homeAddress"
@@ -1324,7 +1331,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {ownerErrors.some(error => error.field === 'homeAddress') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'homeAddress')?.message}
                   </p>
                 )}
@@ -1350,7 +1357,7 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label htmlFor="homeCity" className={labelClasses}>
-                  City <span className="text-red-500">*</span>
+                  City <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="homeCity"
@@ -1366,7 +1373,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {ownerErrors.some(error => error.field === 'homeCity') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'homeCity')?.message}
                   </p>
                 )}
@@ -1374,7 +1381,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="homeState" className={labelClasses}>
-                  State <span className="text-red-500">*</span>
+                  State <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <div className="relative">
                   <select
@@ -1400,7 +1407,7 @@ export default function FinanceApplicationPage() {
                   </div>
                 </div>
                 {ownerErrors.some(error => error.field === 'homeState') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'homeState')?.message}
                   </p>
                 )}
@@ -1408,7 +1415,7 @@ export default function FinanceApplicationPage() {
 
               <div>
                 <label htmlFor="homeZip" className={labelClasses}>
-                  ZIP Code <span className="text-red-500">*</span>
+                  ZIP Code <span className="text-red-500 text-lg font-bold">*</span>
                 </label>
                 <input
                   id="homeZip"
@@ -1424,7 +1431,7 @@ export default function FinanceApplicationPage() {
                   required
                 />
                 {ownerErrors.some(error => error.field === 'homeZip') && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 text-lg font-bold text-xs mt-1">
                     {ownerErrors.find(error => error.field === 'homeZip')?.message}
                   </p>
                 )}
@@ -1445,7 +1452,7 @@ export default function FinanceApplicationPage() {
                       <button
                         type="button"
                         onClick={() => removeAdditionalOwner(index)}
-                        className="text-red-500 hover:text-red-700"
+                        className="text-red-500 text-lg font-bold hover:text-red-700"
                       >
                         Remove
                       </button>
@@ -1454,7 +1461,7 @@ export default function FinanceApplicationPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className={labelClasses}>
-                          First Name <span className="text-red-500">*</span>
+                          First Name <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -1472,7 +1479,7 @@ export default function FinanceApplicationPage() {
 
                       <div>
                         <label className={labelClasses}>
-                          Last Name <span className="text-red-500">*</span>
+                          Last Name <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -1526,7 +1533,7 @@ export default function FinanceApplicationPage() {
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                       <div className="md:col-span-3">
                         <label className={labelClasses}>
-                          Home Address <span className="text-red-500">*</span>
+                          Home Address <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -1563,7 +1570,7 @@ export default function FinanceApplicationPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
                         <label className={labelClasses}>
-                          City <span className="text-red-500">*</span>
+                          City <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -1581,7 +1588,7 @@ export default function FinanceApplicationPage() {
 
                       <div>
                         <label className={labelClasses}>
-                          State <span className="text-red-500">*</span>
+                          State <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <div className="relative">
                           <select
@@ -1609,7 +1616,7 @@ export default function FinanceApplicationPage() {
 
                       <div>
                         <label className={labelClasses}>
-                          Zip <span className="text-red-500">*</span>
+                          Zip <span className="text-red-500 text-lg font-bold">*</span>
                         </label>
                         <input
                           type="text"
@@ -1800,7 +1807,7 @@ export default function FinanceApplicationPage() {
                 </div>
                 <div className="ml-3 text-sm">
                   <label htmlFor="agreement" className={`font-medium ${!ownerData.agreeToTerms ? 'text-red-700' : 'text-[#0D3853]'}`}>
-                    I AGREE <span className="text-red-500">*</span>
+                    I AGREE <span className="text-red-500 text-lg font-bold">*</span>
                   </label>
                   <p className="text-gray-600 mt-1 text-xs leading-relaxed">
                     I understand that by checking the I AGREE box, I am providing 'written instructions' to Vista Pacific Capital under the Fair Credit Reporting Act authorizing Vista Pacific Capital to obtain such information from my personal credit profile or other information from credit bureaus. I authorize Vista Pacific Capital to obtain such information solely to prequalify me for equipment financing/leases or small business finance/working capital, and I acknowledge that I am the business owner and I am personally liable for the business.
@@ -1852,9 +1859,26 @@ export default function FinanceApplicationPage() {
       )}
       
       <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100">
-        <div className="mb-6 text-center">
-          <h1 className="text-xl font-bold text-gray-800 mb-1">Finance Application</h1>
-          <p className="text-[#0EB5B2] text-sm font-medium">Complete the application to start the financing process.</p>
+        {/* Header with Logo */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center">
+              <Image
+                src="/Images/logo-NO-BG.png"
+                alt="Vista Pacific Capital Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain mr-3"
+              />
+              <div>
+                <h2 className="text-lg font-bold text-[#113E59]">Vista Pacific Capital</h2>
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <h1 className="text-xl font-bold text-gray-800 mb-1">Finance Application</h1>
+            <p className="text-[#0EB5B2] text-sm font-medium">Complete the application to start the no-obligation financing process.</p>
+          </div>
         </div>
 
         {/* Progress Indicator */}
@@ -1954,11 +1978,33 @@ export default function FinanceApplicationPage() {
               </button>
             )}
           </div>
+
+          {/* Required Fields Note */}
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">
+              <span className="text-red-500 text-lg font-bold">*</span> Required for application submission
+            </p>
+          </div>
         </form>
 
-        <p className="text-xs text-gray-600 text-center mt-4">
-          Your information is secure and protected by industry-standard encryption.
-        </p>
+        {/* Company Footer Information */}
+        <div className="mt-6 pt-4 border-t border-gray-200 text-center">
+          <div className="text-sm text-gray-700 space-y-1">
+            <p className="font-medium">
+              <a href="https://www.vistapacificcapital.com" className="text-[#0EB5B2] hover:underline">
+                www.vistapacificcapital.com
+              </a>
+            </p>
+            <p className="font-medium">
+              <a href="tel:+17145007017" className="text-[#0EB5B2] hover:underline">
+                (714) 500-7017
+              </a>
+            </p>
+            <p className="text-xs text-gray-600">
+              Office Hours: Monday through Friday, 8 a.m. to 5 p.m. (Pacific time)
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
