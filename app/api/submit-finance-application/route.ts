@@ -76,65 +76,50 @@ export async function POST(request: Request) {
       day: 'numeric'
     });
 
-    // Email to customer
+    // Email to customer - Customized auto-response based on team member
+    const agent = body.agent;
+    let responseMessage = '';
+    let contactName = 'Alan Johnson';
+    let contactEmail = 'alanj@vistapacificcapital.com';
+    let contactPhone = '(714) 500-7017';
+    
+    if (agent && agent.email) {
+      if (agent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
+        contactName = 'John Mirabal';
+        contactEmail = 'johnm@vistapacificcapital.com';
+        contactPhone = '(714) 551-9955';
+        responseMessage = `Thank you for submitting your application. I will get back to you shortly. If you have any questions please contact me. John Mirabal, sales representative, <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: underline;">${contactEmail}</a>, phone <a href="tel:+17145519955" style="color: #0EB5B2; text-decoration: underline;">${contactPhone}</a>.`;
+      } else if (agent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
+        contactName = 'Ian Whitelaw';
+        contactEmail = 'ianw@vistapacificcapital.com';
+        contactPhone = '(714) 408-4574';
+        responseMessage = `Thank you for submitting your application. I will get back to you shortly. If you have any questions please contact me. Ian Whitelaw, sales representative, <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: underline;">${contactEmail}</a>, phone <a href="tel:+17144084574" style="color: #0EB5B2; text-decoration: underline;">${contactPhone}</a>.`;
+      } else {
+        // Default to Alan
+        responseMessage = `Thank you for submitting your application. I will get back to you shortly. If you have any questions please contact Alan Johnson, <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: underline;">${contactEmail}</a>, phone <a href="tel:+17145007017" style="color: #0EB5B2; text-decoration: underline;">${contactPhone}</a>.`;
+      }
+    } else {
+      // Default to Alan for general submissions
+      responseMessage = `Thank you for submitting your application. I will get back to you shortly. If you have any questions please contact Alan Johnson, <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: underline;">${contactEmail}</a>, phone <a href="tel:+17145007017" style="color: #0EB5B2; text-decoration: underline;">${contactPhone}</a>.`;
+    }
+
     const customerEmail = {
       to: formData.email,
-      from: 'alanj@vistapacificcapital.com',
+      from: contactEmail,
       subject: 'Thank You for Your Finance Application - Vista Pacific Capital',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #0D3853;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #0EB5B2; margin-bottom: 10px;">Thank You for Your Application!</h1>
-            <p style="font-size: 16px; color: #0D3853;">We have received your equipment financing application on ${submissionDate}</p>
-          </div>
-
-          <div style="background-color: #F2F2F2; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
-            <h2 style="color: #0EB5B2; border-bottom: 1px solid #B3B3B3; padding-bottom: 10px;">Application Summary</h2>
-            
-            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-              <tr>
-                <td style="padding: 8px 0; width: 40%;"><strong>Name:</strong></td>
-                <td style="padding: 8px 0;">${formData.name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Business:</strong></td>
-                <td style="padding: 8px 0;">${formData.businessName}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Amount Needed:</strong></td>
-                <td style="padding: 8px 0;">${formData.amountNeeded}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Equipment Type:</strong></td>
-                <td style="padding: 8px 0;">${formData.equipmentType}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Equipment Cost:</strong></td>
-                <td style="padding: 8px 0;">${formData.equipmentCost}</td>
-              </tr>
-            </table>
+            <h1 style="color: #0EB5B2; margin-bottom: 10px;">Vista Pacific Capital</h1>
           </div>
 
           <p style="font-size: 16px; line-height: 1.5; margin-bottom: 25px;">
-            Our financing team will review your application and contact you within 1-2 business days to discuss your financing options and next steps.
+            ${responseMessage}
           </p>
 
-          <div style="background-color: #0EB5B2; color: white; padding: 15px; border-radius: 5px; text-align: center;">
-            <p style="margin: 0; font-size: 14px;">
-              If you have any questions, please contact us at 
-              <a href="mailto:alanj@vistapacificcapital.com" style="color: white; text-decoration: underline;">alanj@vistapacificcapital.com</a> 
-              or call us at (888) 555-1234.
-            </p>
-          </div>
-
-          <div style="margin-top: 30px; padding: 20px; background-color: #f7f9fc; border-radius: 5px;">
-            <h3 style="color: #0D3853; margin-top: 0;">What to Expect Next</h3>
-            <ul style="color: #0D3853; line-height: 1.6;">
-              <li>Application review within 1-2 business days</li>
-              <li>Credit check and approval process</li>
-              <li>Customized financing terms</li>
-              <li>Documentation and closing process</li>
-            </ul>
+          <div style="margin-top: 30px; text-align: center; color: #666; font-size: 12px;">
+            <p>Vista Pacific Capital - Equipment Financing</p>
+            <p><a href="https://www.vistapacificcapital.com" style="color: #0EB5B2;">www.vistapacificcapital.com</a></p>
           </div>
         </div>
       `,

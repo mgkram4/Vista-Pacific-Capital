@@ -23,7 +23,7 @@ export const TEAM_MEMBERS = {
   ianWhitelaw: {
     name: "Ian Whitelaw",
     email: "ianw@vistapacificcapital.com",
-    phone: "",
+    phone: "(714) 408-4574",
     endpoint: "/api/submit-quote"
   }
 };
