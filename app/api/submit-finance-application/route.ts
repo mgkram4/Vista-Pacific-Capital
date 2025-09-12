@@ -83,13 +83,13 @@ export async function POST(request: Request) {
     let contactEmail = 'alanj@vistapacificcapital.com';
     let contactPhone = '(714) 500-7017';
     
-    if (agent && agent.email) {
-      if (agent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
+    if (submissionAgent && submissionAgent.email) {
+      if (submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
         contactName = 'John Mirabal';
         contactEmail = 'johnm@vistapacificcapital.com';
         contactPhone = '(714) 551-9955';
         responseMessage = `Thank you for submitting your application. I will get back to you shortly. If you have any questions please contact me. John Mirabal, sales representative, <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: underline;">${contactEmail}</a>, phone <a href="tel:+17145519955" style="color: #0EB5B2; text-decoration: underline;">${contactPhone}</a>.`;
-      } else if (agent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
+      } else if (submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
         contactName = 'Ian Whitelaw';
         contactEmail = 'ianw@vistapacificcapital.com';
         contactPhone = '(714) 408-4574';
@@ -315,14 +315,14 @@ export async function POST(request: Request) {
 
     // Emails to team members
     // Determine the primary recipient and CC list
-    const agent = body.agent;
+    const submissionAgent = body.agent;
     let primaryTo = 'alanj@vistapacificcapital.com'; // Default to Alan
     let ccList: string[] = [];
 
-    if (agent && agent.email) {
-      primaryTo = agent.email;
+    if (submissionAgent && submissionAgent.email) {
+      primaryTo = submissionAgent.email;
       // Add Alan to CC if he's not the primary recipient
-      if (agent.email.toLowerCase() !== 'alanj@vistapacificcapital.com') {
+      if (submissionAgent.email.toLowerCase() !== 'alanj@vistapacificcapital.com') {
         ccList = ['alanj@vistapacificcapital.com'];
       }
     } else {

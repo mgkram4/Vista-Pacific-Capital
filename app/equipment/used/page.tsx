@@ -71,7 +71,7 @@ export default function UsedEquipmentContent() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-<parameter name="new_string">      <section className="w-full text-white py-16 px-4 relative overflow-hidden h-[60vh] min-h-[500px] flex items-center">
+      <section className="w-full text-white py-16 px-4 relative overflow-hidden h-[60vh] min-h-[500px] flex items-center">
         <link
           rel="preload"
           href="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
