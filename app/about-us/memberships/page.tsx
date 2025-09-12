@@ -53,7 +53,7 @@ export default function MembershipsPage() {
   return (
     <div className="bg-white font-sans">
       {/* Hero Section */}
-<parameter name="new_string">      <section className="relative w-full h-[60vh] min-h-[500px]">
+      <section className="relative w-full h-[60vh] min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/Images/bg-wave2.png"
