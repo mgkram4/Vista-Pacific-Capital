@@ -151,14 +151,14 @@ export default function ContactUsPage() {
               <h3 className="text-xl font-semibold text-[#0D3853] mb-3">Location</h3>
               <div className="text-[#0D3853]/80 text-sm space-y-1">
                 <p className="font-medium">Vista Pacific Capital</p>
-                <p>1234 Business Center Dr</p>
-                <p>Suite 200</p>
-                <p>Newport Beach, CA 92660</p>
+                <p>180 N. Riverview Dr</p>
+                <p>Suite 360</p>
+                <p>Anaheim, CA 92808</p>
                 <p className="text-[#0EB5B2] font-medium mt-2">Serving businesses nationwide</p>
                 <div className="mt-3 pt-3 border-t border-gray-200">
                   <p className="font-medium text-[#0D3853]">Office Hours:</p>
                   <p>Monday - Friday</p>
-                  <p>8:00 AM - 6:00 PM PST</p>
+                  <p>8:00 AM - 5:00 PM Pacific</p>
                 </div>
               </div>
             </motion.div>
