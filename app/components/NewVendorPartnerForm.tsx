@@ -266,11 +266,22 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
     setSubmitStatus({});
 
     try {
-      // Prepare data for submission - parse currency fields
+      // Prepare data for submission - map field names to match API expectations
       const submissionData = {
-        ...formData,
-        averageTicketLowPrice: parseCurrency(formData.averageTicketLowPrice),
-        averageTicketHighPrice: parseCurrency(formData.averageTicketHighPrice),
+        // Map NewVendorPartnerForm fields to API expected fields
+        companyName: formData.businessName,
+        contactName: `${formData.contactPersonFirstName} ${formData.contactPersonLastName}`.trim(),
+        email: formData.emailAddress,
+        phone: formData.phoneNumber,
+        website: formData.websiteUrl,
+        equipmentType: formData.typesOfEquipmentSold,
+        averageTicketSize: `${parseCurrency(formData.averageTicketLowPrice)} - ${parseCurrency(formData.averageTicketHighPrice)}`,
+        monthlyDeals: formData.numberOfSalesReps, // Using this as a proxy for volume
+        yearsInBusiness: formData.yearsInBusiness,
+        currentFinancingPartners: formData.currentlyOfferFinancing,
+        partnershipGoals: formData.financingDescription,
+        additionalInfo: formData.additionalInformation,
+        submissionAgent: teamMember
       };
 
       // Send data to API with team member information
@@ -279,10 +290,7 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...submissionData,
-          submissionAgent: teamMember
-        }),
+        body: JSON.stringify(submissionData),
       });
 
       const result = await response.json();

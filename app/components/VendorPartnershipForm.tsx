@@ -138,7 +138,7 @@ export default function VendorPartnershipForm() {
     setSubmitStatus({});
 
     try {
-      // Send data to SendGrid API
+      // Send data to API (uses SMTP)
       const response = await fetch('/api/submit-vendor-partnership', {
         method: 'POST',
         headers: {
