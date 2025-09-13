@@ -101,6 +101,20 @@ export async function POST(request: Request) {
       day: 'numeric'
     });
 
+    // Determine team member email based on submission agent
+    let teamEmailAddress = 'alanj@vistapacificcapital.com'; // Default to Alan
+    let teamMemberName = 'Alan Johnson';
+    
+    if (submissionAgent && submissionAgent.email) {
+      if (submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
+        teamEmailAddress = 'johnm@vistapacificcapital.com';
+        teamMemberName = 'John Mirabal';
+      } else if (submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
+        teamEmailAddress = 'ianw@vistapacificcapital.com';
+        teamMemberName = 'Ian Whitelaw';
+      }
+    }
+
     // Email to vendor (no attachment)
     const vendorEmail = {
       to: formData.email,
@@ -271,20 +285,6 @@ export async function POST(request: Request) {
         contentDisposition: 'attachment',
       },
     ];
-
-    // Determine team member email based on submission agent
-    let teamEmailAddress = 'alanj@vistapacificcapital.com'; // Default to Alan
-    let teamMemberName = 'Alan Johnson';
-    
-    if (submissionAgent && submissionAgent.email) {
-      if (submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
-        teamEmailAddress = 'johnm@vistapacificcapital.com';
-        teamMemberName = 'John Mirabal';
-      } else if (submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
-        teamEmailAddress = 'ianw@vistapacificcapital.com';
-        teamMemberName = 'Ian Whitelaw';
-      }
-    }
 
     // Email to team member
     const teamEmail = {
