@@ -341,22 +341,7 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
   };
 
   return (
-    <div className="max-w-4xl mx-auto print:max-w-none">
-      {/* Print Styles */}
-      <style jsx>{`
-        @media print {
-          body { 
-            background: white !important; 
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-          .print\\:hidden { display: none !important; }
-          .print\\:shadow-none { box-shadow: none !important; }
-          .print\\:border-none { border: none !important; }
-          .print\\:rounded-none { border-radius: 0 !important; }
-          .print\\:p-2 { padding: 0.5rem !important; }
-        }
-      `}</style>
+    <div className="max-w-4xl mx-auto print:max-w-none print:bg-white">
 
       <SuccessModal
         isVisible={showSuccessModal}
