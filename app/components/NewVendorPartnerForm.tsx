@@ -1,6 +1,7 @@
 'use client';
 
 import { AlertCircle, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 import SuccessModal from './SuccessModal';
 
@@ -361,8 +362,26 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
       </div>
 
       <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8 print:shadow-none print:border-none print:rounded-none print:p-2">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-[#0D3853] mb-4">Vendor Partner Form</h2>
+        {/* Header with Logo */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center">
+              <Image
+                src="/Images/logo-NO-BG.png"
+                alt="Vista Pacific Capital Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain mr-3"
+              />
+              <div>
+                <h2 className="text-lg font-bold text-[#113E59]">Vista Pacific Capital</h2>
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <h1 className="text-xl font-bold text-gray-800 mb-1">Vendor Partner Form</h1>
+            <p className="text-[#0EB5B2] text-sm font-medium">Join our partner network and grow your business with our financing solutions.</p>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
