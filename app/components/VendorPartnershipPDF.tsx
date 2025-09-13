@@ -1,22 +1,11 @@
-'use client';
-
-import { Document, Font, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
+import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { VendorPartnershipData } from './VendorPartnershipForm';
-
-// Register a font to avoid errors with special characters
-Font.register({
-  family: 'Open Sans',
-  fonts: [
-    { src: 'https://cdn.jsdelivr.net/npm/open-sans-ttf@0.1.1/fonts/OpenSans-Regular.ttf', fontWeight: 'normal' },
-    { src: 'https://cdn.jsdelivr.net/npm/open-sans-ttf@0.1.1/fonts/OpenSans-Bold.ttf', fontWeight: 'bold' },
-  ],
-});
 
 // Create styles
 const styles = StyleSheet.create({
   page: {
     padding: 30,
-    fontFamily: 'Open Sans',
+    fontFamily: 'Helvetica',
     fontSize: 12,
     color: '#333',
   },
