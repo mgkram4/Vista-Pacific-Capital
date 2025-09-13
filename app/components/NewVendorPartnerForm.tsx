@@ -81,7 +81,40 @@ const parseCurrency = (value: string) => {
   return value.replace(/,/g, '');
 };
 
-export default function NewVendorPartnerForm() {
+interface TeamMember {
+  name: string;
+  email: string;
+  phone: string;
+  endpoint: string;
+}
+
+// Default team members (matching other forms)
+const TEAM_MEMBERS = {
+  alan: {
+    name: "Alan Johnson",
+    email: "alanj@vistapacificcapital.com",
+    phone: "(714)500-7017",
+    endpoint: "/api/submit-vendor-partnership"
+  },
+  johnMirabal: {
+    name: "John Mirabal",
+    email: "johnm@vistapacificcapital.com",
+    phone: "(714)551-9955",
+    endpoint: "/api/submit-vendor-partnership"
+  },
+  ianWhitelaw: {
+    name: "Ian Whitelaw",
+    email: "ianw@vistapacificcapital.com",
+    phone: "(714) 408-4574",
+    endpoint: "/api/submit-vendor-partnership"
+  }
+};
+
+interface NewVendorPartnerFormProps {
+  teamMember?: TeamMember;
+}
+
+export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }: NewVendorPartnerFormProps) {
   const [formData, setFormData] = useState<NewVendorPartnerData>({
     // Company Information
     businessName: '',
@@ -145,6 +178,8 @@ export default function NewVendorPartnerForm() {
 
     if (!formData.phoneNumber.trim()) {
       newErrors.push({ field: 'phoneNumber', message: 'Phone number is required' });
+    } else if (formData.phoneNumber.replace(/\D/g, '').length !== 10) {
+      newErrors.push({ field: 'phoneNumber', message: 'Please enter a valid 10-digit phone number' });
     }
 
     if (!formData.emailAddress.trim()) {
@@ -195,6 +230,26 @@ export default function NewVendorPartnerForm() {
     setErrors(prev => prev.filter(error => error.field !== field));
   };
 
+  // Phone number formatting function
+  const formatPhoneNumber = (value: string): string => {
+    const digits = value.replace(/\D/g, '');
+    return digits.length > 0
+      ? digits.length <= 3
+        ? `${digits}`
+        : digits.length <= 6
+        ? `${digits.slice(0, 3)}-${digits.slice(3)}`
+        : `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`
+      : '';
+  };
+
+  // Phone change handler with formatting
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setFormData(prev => ({ ...prev, phoneNumber: formatted }));
+    // Clear error for this field when user starts typing
+    setErrors(prev => prev.filter(error => error.field !== 'phoneNumber'));
+  };
+
   const handleCurrencyChange = (field: keyof NewVendorPartnerData, value: string) => {
     const formattedValue = formatCurrency(value);
     handleInputChange(field, formattedValue);
@@ -218,13 +273,16 @@ export default function NewVendorPartnerForm() {
         averageTicketHighPrice: parseCurrency(formData.averageTicketHighPrice),
       };
 
-      // Send data to API
+      // Send data to API with team member information
       const response = await fetch('/api/submit-vendor-partnership', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submissionData),
+        body: JSON.stringify({
+          ...submissionData,
+          submissionAgent: teamMember
+        }),
       });
 
       const result = await response.json();
@@ -275,7 +333,23 @@ export default function NewVendorPartnerForm() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto print:max-w-none">
+      {/* Print Styles */}
+      <style jsx>{`
+        @media print {
+          body { 
+            background: white !important; 
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .print\\:hidden { display: none !important; }
+          .print\\:shadow-none { box-shadow: none !important; }
+          .print\\:border-none { border: none !important; }
+          .print\\:rounded-none { border-radius: 0 !important; }
+          .print\\:p-2 { padding: 0.5rem !important; }
+        }
+      `}</style>
+
       <SuccessModal
         isVisible={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
@@ -283,7 +357,17 @@ export default function NewVendorPartnerForm() {
         customMessage="Thank you, your application is being assigned to a Vista Pacific Capital representative and someone will reach out within one business day."
       />
 
-      <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8">
+      {/* Print Button */}
+      <div className="mb-4 text-right print:hidden">
+        <button
+          onClick={() => window.print()}
+          className="bg-[#0EB5B2] text-white px-4 py-2 rounded-lg hover:bg-[#0D3853] transition-colors text-sm font-medium"
+        >
+          🖨️ Print Form
+        </button>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8 print:shadow-none print:border-none print:rounded-none print:p-2">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-[#0D3853] mb-4">Vendor Partner Form</h2>
         </div>
@@ -392,11 +476,11 @@ export default function NewVendorPartnerForm() {
                   type="tel"
                   id="phoneNumber"
                   value={formData.phoneNumber}
-                  onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                  onChange={handlePhoneChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853] ${
                     getFieldError('phoneNumber') ? 'border-red-500' : 'border-gray-300'
                   }`}
-                  placeholder="(555) 123-4567"
+                  placeholder="555-123-4567"
                 />
                 {getFieldError('phoneNumber') && (
                   <p className="text-red-500 text-sm mt-1 flex items-center">
@@ -434,12 +518,12 @@ export default function NewVendorPartnerForm() {
                 Website URL
               </label>
               <input
-                type="url"
+                type="text"
                 id="websiteUrl"
                 value={formData.websiteUrl}
                 onChange={(e) => handleInputChange('websiteUrl', e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853]"
-                placeholder="https://www.yourcompany.com"
+                placeholder="www.yourcompany.com or https://www.yourcompany.com"
               />
             </div>
 
@@ -456,7 +540,7 @@ export default function NewVendorPartnerForm() {
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent transition-all text-[#0D3853] ${
                     getFieldError('yearsInBusiness') ? 'border-red-500' : 'border-gray-300'
                   }`}
-                  placeholder="5"
+                  placeholder="Enter years in business"
                   min="0"
                 />
                 {getFieldError('yearsInBusiness') && (
@@ -798,7 +882,7 @@ export default function NewVendorPartnerForm() {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-6">
+          <div className="pt-6 print:hidden">
             <button
               type="submit"
               disabled={loading}

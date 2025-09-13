@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     console.log('Received vendor partnership data:', body);
 
-    const { companyName, contactName, email, phone, website, equipmentType, averageTicketSize, monthlyDeals, yearsInBusiness, currentFinancingPartners, partnershipGoals, additionalInfo } = body;
+    const { companyName, contactName, email, phone, website, equipmentType, averageTicketSize, monthlyDeals, yearsInBusiness, currentFinancingPartners, partnershipGoals, additionalInfo, submissionAgent } = body;
 
     const formattedPhone = formatPhoneNumber(phone);
 
@@ -152,9 +152,9 @@ export async function POST(request: Request) {
 
           <div style="background-color: #0EB5B2; color: white; padding: 15px; border-radius: 5px; text-align: center;">
             <p style="margin: 0; font-size: 14px;">
-              If you have any questions, please contact us at 
-              <a href="mailto:alanj@vistapacificcapital.com" style="color: white; text-decoration: underline;">alanj@vistapacificcapital.com</a> 
-              or call us at (888) 555-1234.
+              If you have any questions, please contact ${teamMemberName} at 
+              <a href="mailto:${teamEmailAddress}" style="color: white; text-decoration: underline;">${teamEmailAddress}</a> 
+              ${submissionAgent && submissionAgent.phone ? `or call ${submissionAgent.phone}` : 'or call (714) 500-7017'}.
             </p>
           </div>
 
@@ -272,9 +272,23 @@ export async function POST(request: Request) {
       },
     ];
 
-    // Email to team - only Alan gets vendor partnership inquiries
+    // Determine team member email based on submission agent
+    let teamEmailAddress = 'alanj@vistapacificcapital.com'; // Default to Alan
+    let teamMemberName = 'Alan Johnson';
+    
+    if (submissionAgent && submissionAgent.email) {
+      if (submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
+        teamEmailAddress = 'johnm@vistapacificcapital.com';
+        teamMemberName = 'John Mirabal';
+      } else if (submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
+        teamEmailAddress = 'ianw@vistapacificcapital.com';
+        teamMemberName = 'Ian Whitelaw';
+      }
+    }
+
+    // Email to team member
     const teamEmail = {
-      to: 'alanj@vistapacificcapital.com',
+      to: teamEmailAddress,
       from: 'alanj@vistapacificcapital.com',
       subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
       html: detailedHtml,
