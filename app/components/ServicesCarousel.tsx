@@ -129,7 +129,7 @@ const Card = ({ title, description, features, icon: Icon, href, imageSrc }: Serv
           <ul className="mt-4 space-y-2">
             {features.map((feature, idx) => (
               <li key={idx} className="flex items-center space-x-2 text-slate-300">
-                <CheckCircle2 className="h-5 w-5 text-sea-green" />
+                <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
                 <span>{feature}</span>
               </li>
             ))}

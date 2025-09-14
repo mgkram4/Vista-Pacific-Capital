@@ -237,7 +237,49 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Mid-Section with Office Image */}
+        {/* Benefits Section - 2 columns layout */}
+        <section className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
+                Benefits of Our Equipment Financing
+              </h2>
+              <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto">
+                Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mb-4">
+                      <Icon className="h-12 w-12 text-[#0EB5B2]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0D3853] mb-2">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-[#B3B3B3] mb-4">{benefit.description}</p>
+                    <ul className="space-y-2">
+                      {benefit.points.map((point, idx) => (
+                        <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
+                          <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+        
+        {/* Section Divider */}
+        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
+        
+        {/* Mid-Section with Office Image and Stats */}
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
@@ -247,80 +289,53 @@ export default function HomePageClient() {
               className="object-cover"
               quality={85}
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/50" />
           </div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left side - Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+            <div className="text-center mb-16">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="text-white"
+                className="text-3xl md:text-4xl font-bold text-white mb-4"
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Why Choose Vista Pacific Capital?
-                </h2>
-                <p className="text-lg text-white/90 mb-8">
-                  Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
-                </p>
-                
-                <div className="grid gap-6">
-                  {benefits.map((benefit, index) => {
-                    const Icon = benefit.icon;
-                    return (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start space-x-4"
-                      >
-                        <div className="bg-[#0EB5B2]/20 rounded-lg p-2 flex-shrink-0">
-                          <Icon className="h-6 w-6 text-[#0EB5B2]" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                          <p className="text-white/80 text-sm">{benefit.description}</p>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-              
-              {/* Right side - Stats */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                Why Choose Vista Pacific Capital?
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-2 gap-6"
+                className="text-lg text-white/90 max-w-3xl mx-auto"
               >
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20"
-                  >
-                    <div className="text-3xl font-bold text-[#0EB5B2] mb-2">{stat.value}</div>
-                    <div className="text-white font-semibold mb-1">{stat.label}</div>
-                    <div className="text-white/70 text-sm">{stat.description}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
+                Our streamlined process, competitive rates, and dedicated support make us the ideal partner for your growth.
+              </motion.p>
+            </div>
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20"
+                >
+                  <div className="text-3xl font-bold text-[#0EB5B2] mb-2">{stat.value}</div>
+                  <div className="text-white font-semibold mb-1">{stat.label}</div>
+                  <div className="text-white/70 text-sm">{stat.description}</div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
         
         {/* Section Divider */}
-        <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
+        <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
         {/* Equipment Types Section with Carousel */}
         <section className="py-24 bg-white">
