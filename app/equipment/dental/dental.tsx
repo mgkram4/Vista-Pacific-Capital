@@ -7,16 +7,17 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaCalendarAlt,
-  FaDesktop,
-  FaMicroscope,
-  FaSyringe,
-  FaTools,
-  FaTooth,
-  FaUserPlus,
-  FaXRay
+    FaCalendarAlt,
+    FaDesktop,
+    FaMicroscope,
+    FaSyringe,
+    FaTools,
+    FaTooth,
+    FaUserPlus,
+    FaXRay
 } from 'react-icons/fa';
 import { GiMedicalPack } from 'react-icons/gi';
+import PageHeader from '../../components/PageHeader';
 
 
 // Define equipment types with their details
@@ -64,65 +65,14 @@ const keyFeatures = [
 export default function DentalFinancingContent() {
   return (
     <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="relative w-full min-h-screen">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/Images/services/medical-new.jpg"
-            alt="Dental equipment financing"
-            fill
-            className="object-cover"
-            quality={85}
-            priority={true}
-            loading="eager"
-            fetchPriority="high"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/20 lg:hidden" />
-        </div>
-        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full min-h-screen">
-          <div className="lg:col-span-4 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 min-h-screen lg:min-h-0">
-            <div className="w-full max-w-2xl [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none">
-              <motion.h1
-                className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                Dental Equipment Financing
-              </motion.h1>
-              <motion.p
-                className="text-xl mb-12 leading-relaxed"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                Having the right dental equipment is key to providing top-notch
-                care for your patients. Whether you need chairs or a new X-Ray
-                machine, our quick approvals and flexible terms make the process
-                seamless.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <Link
-                  href="/apply"
-                  className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                    transform hover:-translate-y-1 transition-all duration-300"
-                >
-                  Apply Now
-                  <ChevronRight className="ml-2 h-5 w-5" />
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-          <div className="hidden lg:block lg:col-span-6" />
-        </div>
-      </section>
+      <PageHeader 
+        title="Dental Equipment Financing"
+        subtitle="Having the right dental equipment is key to providing top-notch care for your patients. Whether you need chairs or a new X-Ray machine, our quick approvals and flexible terms make the process seamless."
+        buttonText="Apply Now"
+        buttonHref="/apply"
+        backgroundImage="/Images/services/medical-new.jpg"
+        highlightWord="Dental"
+      />
 
       {/* Key Features Section */}
       <section className="py-16 bg-gray-50">

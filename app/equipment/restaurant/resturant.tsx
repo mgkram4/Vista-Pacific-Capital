@@ -5,16 +5,17 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaCashRegister,
-  FaChartLine,
-  FaClock,
-  FaConciergeBell,
-  FaDollarSign,
-  FaFire,
-  FaSnowflake,
-  FaStore
+    FaCashRegister,
+    FaChartLine,
+    FaClock,
+    FaConciergeBell,
+    FaDollarSign,
+    FaFire,
+    FaSnowflake,
+    FaStore
 } from 'react-icons/fa';
 import { GiCoffeeCup, GiKnifeFork } from 'react-icons/gi';
+import PageHeader from '../../components/PageHeader';
 
 
 const equipmentTypes = [
@@ -60,62 +61,14 @@ const stats = [
 export default function RestaurantFinancingContent() {
   return (
     <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <link
-          rel="preload"
-          href="https://images.unsplash.com/photo-1735599051587-6c13bb858214?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          as="image"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/Images/restH.png" 
-            alt="Restaurant background"
-            fill
-            className="object-cover"
-            quality={85}
-            priority={true}
-            loading="eager"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/20 " />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Restaurant Equipment Financing
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Running a successful restaurant requires the right equipment, whether you need new ovens, refrigerators, or a complete kitchen overhaul. With quick approvals and tailored terms, we make it easy for you to get the equipment you need.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link 
-              href="/apply" 
-              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                transform hover:-translate-y-1 transition-all duration-300"
-            >
-              Apply Now
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PageHeader 
+        title="Restaurant Equipment Financing"
+        subtitle="Running a successful restaurant requires the right equipment, whether you need new ovens, refrigerators, or a complete kitchen overhaul. With quick approvals and tailored terms, we make it easy for you to get the equipment you need."
+        buttonText="Apply Now"
+        buttonHref="/apply"
+        backgroundImage="/Images/restH.png"
+        highlightWord="Restaurant"
+      />
 
       {/* Key Features Section */}
       <section className="py-16 bg-gray-50">

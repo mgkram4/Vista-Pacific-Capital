@@ -7,6 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaChartLine, FaFileInvoiceDollar, FaQuestionCircle } from 'react-icons/fa';
 import Section179Calculator from '../components/Section179Calculator';
+import PageHeader from '../components/PageHeader';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },

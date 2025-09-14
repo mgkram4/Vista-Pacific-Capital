@@ -5,17 +5,17 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  FaBarcode,
-  FaCogs,
-  FaCreditCard,
-  FaIndustry,
-  FaMedkit,
-  FaSearchDollar,
-  FaTools,
-  FaTruck,
-  FaWarehouse
+    FaBarcode,
+    FaCogs,
+    FaCreditCard,
+    FaIndustry,
+    FaMedkit,
+    FaSearchDollar,
+    FaTools,
+    FaTruck,
+    FaWarehouse
 } from 'react-icons/fa';
-import { GiReceiveMoney } from 'react-icons/gi';
+import PageHeader from '../../components/PageHeader';
 
 const equipmentTypes = [
   {
@@ -70,59 +70,14 @@ const benefits = [
 export default function UsedEquipmentContent() {
   return (
     <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="w-full text-white py-16 px-4 relative overflow-hidden h-[60vh] min-h-[500px] flex items-center">
-        <link
-          rel="preload"
-          href="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
-          as="image"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/Images/bg-wave2.png"
-            alt="Used equipment financing"
-            fill
-            className="object-cover"
-            quality={85}
-            priority={true}
-            loading="eager"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10 [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))]">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Used Equipment Financing
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            For a more affordable and economical route, used equipment may be the right direction for you. With excellent quality equipment and machinery, get your company rolling with our tailored terms.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/apply" className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white
-                        bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700
-                        rounded-lg shadow-xl hover:shadow-orange-500/20 transition-all duration-300
-                        group relative overflow-hidden">
-              <GiReceiveMoney className="mr-3 text-3xl" />
-              <span>Apply NOW</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PageHeader 
+        title="Used Equipment Financing"
+        subtitle="For a more affordable and economical route, used equipment may be the right direction for you. With excellent quality equipment and machinery, get your company rolling with our tailored terms."
+        buttonText="Apply Now"
+        buttonHref="/apply"
+        backgroundImage="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&auto=format&fit=crop&q=60"
+        highlightWord="Used"
+      />
 
       {/* Stats Section */}
       <section className="py-16 bg-gray-50">

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import PageHeader from '../components/PageHeader';
 
 import { Factory, Hammer, Microscope, Truck, UtensilsCrossed, Warehouse } from 'lucide-react';
 
@@ -54,15 +55,17 @@ const equipmentCategories = [
 
 export default function EquipmentClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#113E59]/10 to-[#082F4A]/10 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-center mb-12 text-[#113E59]"
-        >
-          Equipment Financing Categories
-        </motion.h1>
+    <div className="min-h-screen bg-white">
+      <PageHeader 
+        title="Equipment Financing Categories"
+        subtitle="Comprehensive financing solutions for all your equipment needs across multiple industries"
+        buttonText="Get Started"
+        buttonHref="/apply"
+        backgroundImage="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        highlightWord="Equipment"
+      />
+      
+      <div className="max-w-7xl mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {equipmentCategories.map((category, index) => (
             <motion.div

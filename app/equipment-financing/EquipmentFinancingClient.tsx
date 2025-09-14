@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import PageHeader from '../components/PageHeader';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -91,51 +92,14 @@ export default function EquipmentFinancingClient() {
   return (
     <div className="font-sans">
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] min-h-[500px]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.squarespace-cdn.com/content/v1/62043a8d2e13545aea533b03/03d973c1-058a-46e2-ab30-bb52d5f5fd94/IMG_1071.jpg"
-            alt="Equipment financing background"
-            fill
-            className="object-cover object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/20 lg:hidden" />
-        </div>
-        <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
-          <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="w-full max-w-md mx-auto [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
-                Clear the Way for Growth.
-                <br />
-                <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">
-                  We'll Handle the Financing.
-                </span>
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-white lg:text-[#F2F2F2]/90">
-                Application-only equipment financing up to $500,000 — no
-                financials needed.
-              </p>
-              <Link
-                href="/apply"
-                className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                    text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                    shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                    transform hover:-translate-y-1 transition-all duration-300"
-              >
-                Apply Now
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-          <div className="hidden lg:block lg:col-span-7" />
-        </div>
-      </section>
+      <PageHeader
+        title="Clear the Way for Growth. We'll Handle the Financing."
+        subtitle="Application-only equipment financing up to $500,000 — no financials needed."
+        buttonText="Apply Now"
+        buttonHref="/apply"
+        backgroundImage="https://images.squarespace-cdn.com/content/v1/62043a8d2e13545aea533b03/03d973c1-058a-46e2-ab30-bb52d5f5fd94/IMG_1071.jpg"
+        highlightWord="We'll Handle the Financing."
+      />
 
       {/* Section Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>

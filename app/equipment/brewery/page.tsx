@@ -6,6 +6,7 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaBeer, FaBox, FaFlask, FaHeadset, FaThermometerHalf, FaWineBottle } from 'react-icons/fa';
+import PageHeader from '../../components/PageHeader';
 
 
 // Define equipment types with their details
@@ -48,56 +49,14 @@ const stats = [
 export default function BreweryDistilleryEquipment() {
   return (
     <div className="bg-white font-sans">
-      {/* Hero Section */}
-      <section className="w-full bg-indigo-dye text-white py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/Images/services/restaurant-new.jpg"
-            alt="Brewery background"
-            fill
-            className="object-cover"
-            quality={100}
-            priority={true}
-            loading="eager"
-            fetchPriority="high"
-            sizes="100vw"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Brewery Equipment Financing
-          </motion.h1>
-          <motion.p
-            className="text-2xl mb-12 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Craft your success with state of the art equipment from kegging equipment to brewhouses. Whether you are looking for new or used equipment, we make it easy to keep your focus on crafting excellent brews.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link 
-              href="/apply" 
-              className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                transform hover:-translate-y-1 transition-all duration-300"
-            >
-              Apply Now
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PageHeader 
+        title="Brewery Equipment Financing"
+        subtitle="Craft your success with state of the art equipment from kegging equipment to brewhouses. Whether you are looking for new or used equipment, we make it easy to keep your focus on crafting excellent brews."
+        buttonText="Apply Now"
+        buttonHref="/apply"
+        backgroundImage="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        highlightWord="Brewery"
+      />
 
       {/* Key Features Section */}
       <section className="py-16 bg-gray-50">

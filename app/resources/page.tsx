@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaWarehouse } from 'react-icons/fa';
+import PageHeader from '../components/PageHeader';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },

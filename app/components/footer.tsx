@@ -10,14 +10,16 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <Link href="/" aria-label="Vista Pacific Capital home">
-                <Image
-                  src="/Images/logo3.png"
-                  alt="Vista Pacific Capital Logo"
-                  width={180}
-                  height={64}
-                  quality={100}
-                  className="h-12 w-auto object-contain"
-                />
+                <div className="bg-white rounded p-2">
+                  <Image
+                    src="/Images/logo3.png"
+                    alt="Vista Pacific Capital Logo"
+                    width={180}
+                    height={64}
+                    quality={100}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
               </Link>
             </div>
             <p className="text-sm text-[#B3B3B3]">© 2025 Vista Pacific Capital</p>

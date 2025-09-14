@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import {
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Cog,
-  DollarSign,
-  Factory,
-  type LucideIcon,
-  Stethoscope,
-  Truck,
-  UtensilsCrossed
+    Building2,
+    CheckCircle2,
+    ChevronRight,
+    Clock,
+    Cog,
+    DollarSign,
+    Factory,
+    type LucideIcon,
+    Stethoscope,
+    Truck,
+    UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -100,22 +100,22 @@ const stats: Stat[] = [
   {
     value: "$50M",
     label: "Maximum Funding",
-    description: "Financing from $20,000 to $50 million"
+    description: "Comprehensive financing solutions from $20,000 to $50 million for businesses of all sizes"
   },
   {
     value: "A-C",
     label: "Credit Types",
-    description: "A through C Credit accepted"
+    description: "We work with all credit profiles - from excellent A credit to rebuilding C credit businesses"
   },
   {
     value: "24hrs",
-    label: "Approval Time",
-    description: "Get funded next business day"
+    label: "Fast Approval",
+    description: "Quick decisions with funding available next business day for qualified applications"
   },
   {
-    value: "100%",
-    label: "Equipment Types",
-    description: "New and used equipment available"
+    value: "15+",
+    label: "Lender Network",
+    description: "Access to over 15 specialized lenders ensuring competitive rates and flexible terms"
   }
 ];
 
@@ -237,39 +237,53 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Benefits Section - 2 columns layout */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
-                Benefits of Our Equipment Financing
+        {/* Benefits Section - Clean Modern Design */}
+        <section className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-4 block tracking-wider">WHY CHOOSE US</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-6">
+                Equipment Financing Made Simple
               </h2>
-              <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto">
-                Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Fast approvals, competitive rates, and dedicated support for your business growth.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mb-4">
-                      <Icon className="h-12 w-12 text-[#0EB5B2]" />
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group text-center bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#0EB5B2]/20"
+                  >
+                    <div className="bg-[#0EB5B2] rounded-2xl p-6 w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Icon className="h-10 w-10 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#0D3853] mb-2">
+                    <h3 className="text-xl font-bold text-[#0D3853] mb-4">
                       {benefit.title}
                     </h3>
-                    <p className="text-[#B3B3B3] mb-4">{benefit.description}</p>
-                    <ul className="space-y-2">
+                    <p className="text-gray-600 mb-6 leading-relaxed">{benefit.description}</p>
+                    <ul className="space-y-3 text-left">
                       {benefit.points.map((point, idx) => (
-                        <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
-                          <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
-                          <span>{point}</span>
+                        <li key={idx} className="flex items-start space-x-3 text-gray-700">
+                          <CheckCircle2 className="h-4 w-4 text-[#0EB5B2] mt-1 flex-shrink-0" />
+                          <span className="text-sm leading-relaxed">{point}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -279,55 +293,41 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
-        {/* Mid-Section with Office Image and Stats */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/Images/photo-1717386255773-a456c611dc4e.avif"
-              alt="Modern office environment for business financing"
-              fill
-              className="object-cover"
-              quality={85}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-          
-          <div className="relative z-10 max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold text-white mb-4"
-              >
-                Why Choose Vista Pacific Capital?
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-lg text-white/90 max-w-3xl mx-auto"
-              >
-                Our streamlined process, competitive rates, and dedicated support make us the ideal partner for your growth.
-              </motion.p>
-            </div>
+        {/* Stats Section - Clean Design */}
+        <section className="py-20 bg-[#0D3853]">
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="text-sm font-semibold text-[#0EB5B2] mb-4 block">BY THE NUMBERS</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Trusted by Businesses Nationwide
+              </h2>
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+                Our track record speaks for itself - delivering fast, reliable equipment financing solutions.
+              </p>
+            </motion.div>
             
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {/* Stats Display - Enhanced Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20"
+                  className="text-center group"
                 >
-                  <div className="text-3xl font-bold text-[#0EB5B2] mb-2">{stat.value}</div>
-                  <div className="text-white font-semibold mb-1">{stat.label}</div>
-                  <div className="text-white/70 text-sm">{stat.description}</div>
+                  <div className="bg-gradient-to-br from-[#0EB5B2] to-[#0EB5B2]/80 rounded-2xl p-6 mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
+                    <div className="text-white/90 font-semibold text-lg">{stat.label}</div>
+                  </div>
+                  <p className="text-white/80 text-sm leading-relaxed px-2">{stat.description}</p>
                 </motion.div>
               ))}
             </div>
