@@ -80,7 +80,7 @@ export default function EquipmentClient() {
                   src={category.image}
                   alt={`${category.title} financing`}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${category.title === 'Transportation Equipment' ? 'scale-x-[-1]' : ''}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading="lazy"
                 />
