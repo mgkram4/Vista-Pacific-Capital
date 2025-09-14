@@ -109,6 +109,7 @@ export default function PartnerProgramClient() {
         subtitle="Your Trusted Partner, No Matter the Tide"
         buttonText="Start Partnering / Join Us"
         buttonHref="/vendor-form/"
+        backgroundImage="/Images/header4.png"
       />
 
       {/* Section Divider */}

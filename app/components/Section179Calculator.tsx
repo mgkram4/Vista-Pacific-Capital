@@ -96,13 +96,54 @@ const Section179Calculator: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl font-bold text-[#0D3853] mb-4">Your Potential Tax Savings</h2>
+        <h2 className="text-4xl font-bold text-[#0D3853] mb-4">179 Tax Calculator</h2>
         <p className="text-xl text-[#0D3853]/80 max-w-3xl mx-auto">
           Calculate your potential tax savings with our interactive Section 179 calculator
         </p>
         <p className="text-sm text-gray-600 mt-4">
           <span className="text-red-500 text-lg font-bold">*</span> This calculator provides estimates only. Consult with your tax advisor for specific tax advice and to ensure compliance with current tax laws.
         </p>
+      </motion.div>
+
+      {/* Understanding Section 179 Article - Moved above calculator */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-16 bg-gray-50 rounded-xl p-8"
+      >
+        <h3 className="text-3xl font-bold text-[#0D3853] mb-6">Understanding Section 179</h3>
+        
+        <div className="prose prose-lg max-w-none text-[#0D3853]/90 space-y-6">
+          <p>
+            Section 179 of the IRS tax code allows businesses to deduct the full purchase price of qualifying equipment and/or software purchased or financed during the tax year. This means that if you buy (or lease) a piece of qualifying equipment, you can deduct the FULL PURCHASE PRICE from your gross income.
+          </p>
+          
+          <p>
+            This is an especially powerful tax strategy for small and medium-sized businesses looking to invest in equipment while reducing their tax burden. Instead of depreciating the equipment over several years, Section 179 allows you to take the entire deduction in the year of purchase.
+          </p>
+          
+          <h4 className="text-2xl font-semibold text-[#0D3853] mt-8 mb-4">Key Benefits:</h4>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Immediate tax deduction for the full purchase price</li>
+            <li>Reduces taxable income dollar-for-dollar</li>
+            <li>Applies to both new and used equipment</li>
+            <li>Can be combined with equipment financing</li>
+            <li>Helps improve cash flow through tax savings</li>
+          </ul>
+          
+          <h4 className="text-2xl font-semibold text-[#0D3853] mt-8 mb-4">2024 Limits:</h4>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Maximum deduction: $1,160,000</li>
+            <li>Total equipment purchases threshold: $2,890,000</li>
+            <li>Deduction phases out dollar-for-dollar above the threshold</li>
+          </ul>
+          
+          <p>
+            <strong>Important:</strong> This article provides general information about Section 179 and should not be considered tax advice. Tax laws are complex and change frequently. Always consult with a qualified tax professional to understand how Section 179 applies to your specific situation.
+          </p>
+        </div>
       </motion.div>
 
       <motion.div
@@ -185,47 +226,6 @@ const Section179Calculator: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Understanding Section 179 Article */}
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="mt-16 bg-gray-50 rounded-xl p-8"
-      >
-        <h3 className="text-3xl font-bold text-[#0D3853] mb-6">Understanding Section 179</h3>
-        
-        <div className="prose prose-lg max-w-none text-[#0D3853]/90 space-y-6">
-          <p>
-            Section 179 of the IRS tax code allows businesses to deduct the full purchase price of qualifying equipment and/or software purchased or financed during the tax year. This means that if you buy (or lease) a piece of qualifying equipment, you can deduct the FULL PURCHASE PRICE from your gross income.
-          </p>
-          
-          <p>
-            This is an especially powerful tax strategy for small and medium-sized businesses looking to invest in equipment while reducing their tax burden. Instead of depreciating the equipment over several years, Section 179 allows you to take the entire deduction in the year of purchase.
-          </p>
-          
-          <h4 className="text-2xl font-semibold text-[#0D3853] mt-8 mb-4">Key Benefits:</h4>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Immediate tax deduction for the full purchase price</li>
-            <li>Reduces taxable income dollar-for-dollar</li>
-            <li>Applies to both new and used equipment</li>
-            <li>Can be combined with equipment financing</li>
-            <li>Helps improve cash flow through tax savings</li>
-          </ul>
-          
-          <h4 className="text-2xl font-semibold text-[#0D3853] mt-8 mb-4">2024 Limits:</h4>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Maximum deduction: $1,160,000</li>
-            <li>Total equipment purchases threshold: $2,890,000</li>
-            <li>Deduction phases out dollar-for-dollar above the threshold</li>
-          </ul>
-          
-          <p>
-            <strong>Important:</strong> This article provides general information about Section 179 and should not be considered tax advice. Tax laws are complex and change frequently. Always consult with a qualified tax professional to understand how Section 179 applies to your specific situation.
-          </p>
-        </div>
-      </motion.div>
-
       {/* About the Author Section */}
       <motion.div
         variants={fadeInUp}
@@ -253,6 +253,13 @@ const Section179Calculator: React.FC = () => {
                 className="text-[#0EB5B2] hover:text-[#0D3853] font-medium transition-colors"
               >
                 alanj@vistapacificcapital.com
+              </a>
+              {' '}or{' '}
+              <a 
+                href="tel:+17145007017" 
+                className="text-[#0EB5B2] hover:text-[#0D3853] font-medium transition-colors"
+              >
+                (714) 500-7017
               </a>
               .
             </p>

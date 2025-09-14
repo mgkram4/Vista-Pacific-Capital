@@ -69,8 +69,7 @@ export default function FAQClient() {
       <PageHeader
         title="Frequently Asked Questions"
         subtitle="Find answers to common questions about our equipment financing solutions"
-        buttonText="Get Personalized Answers"
-        buttonHref="/contact"
+        backgroundImage="/Images/bg-wave1.png"
       />
 
       {/* Section Divider */}

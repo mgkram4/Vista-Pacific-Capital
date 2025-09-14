@@ -358,14 +358,14 @@ export default function FinanceApplicationPage() {
 
   // Handle currency input change
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = formatCurrency(e.target.value.replace(/^\$/, ''));
-    // Set the value without the dollar sign in the input field to avoid duplication
-    const valueForInput = formattedValue.replace(/^\$/, '');
+    // Get the raw input value and remove any existing dollar signs
+    const rawValue = e.target.value.replace(/^\$/, '');
+    const formattedValue = formatCurrency(rawValue);
     
-    // Update the corresponding state
+    // Update the corresponding state with the formatted value (including $)
     setBusinessData({
       ...businessData,
-      amountNeeded: valueForInput
+      amountNeeded: formattedValue
     });
   };
 
@@ -887,7 +887,7 @@ export default function FinanceApplicationPage() {
                 <input
                   id="amountNeeded"
                   type="text"
-                  value={businessData.amountNeeded}
+                  value={businessData.amountNeeded || '$'}
                   onChange={handleCurrencyChange}
                   onFocus={() => setFocused('amountNeeded')}
                   onBlur={() => setFocused('')}
@@ -1216,7 +1216,7 @@ export default function FinanceApplicationPage() {
                 onChange={(e) => setBusinessData({...businessData, equipmentDescription: e.target.value})}
                 onFocus={() => setFocused('equipmentDescription')}
                 onBlur={() => setFocused('')}
-                placeholder="e.g., 2022 Freightliner Cascadia"
+                placeholder="Equipment Description"
                 className={`${inputClasses} ${focused === 'equipmentDescription' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
               />
             </div>

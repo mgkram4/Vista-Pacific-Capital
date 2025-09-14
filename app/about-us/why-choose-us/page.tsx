@@ -62,6 +62,7 @@ export default function WhyChooseUsPage() {
         subtitle="Our commitment to your business growth sets us apart. Here's why clients choose us for their equipment financing needs."
         buttonText="Get Started"
         buttonHref="/apply"
+        backgroundImage="/Images/header8.png"
       />
 
       {/* Section Divider */}

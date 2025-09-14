@@ -250,7 +250,7 @@ export const toolsLinks: EquipmentLink[] = [
         description: 'Calculate your equipment financing payments'
     },
     {
-        topText: 'Tax',
+        topText: '179 Tax',
         bottomText: 'Calculator',
         path: '/tax-calculator',
         description: 'Section 179 Tax Calculator'
@@ -260,12 +260,6 @@ export const toolsLinks: EquipmentLink[] = [
         bottomText: '',
         path: '/faq',
         description: 'Frequently Asked Questions'
-    },
-    {
-        topText: '179 Tax',
-        bottomText: 'Calculator',
-        path: '/tax-calculator',
-        description: 'Section 179 Tax Calculator'
     }
 ];
 

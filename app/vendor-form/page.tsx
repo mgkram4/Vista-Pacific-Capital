@@ -12,7 +12,7 @@ export default function VendorApply() {
                 subtitle="The View is Better at the Top — Join Us on the Path to Success"
                 buttonText="Get Started"
                 buttonHref="/apply"
-                backgroundImage="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2926&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                backgroundImage="/Images/office.png"
                 highlightWord="Partner"
             />
             

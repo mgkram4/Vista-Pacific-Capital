@@ -65,6 +65,7 @@ export default function AboutUsPage() {
         subtitle="Your trusted partner in equipment financing. We're dedicated to helping your business thrive."
         buttonText="Get in Touch"
         buttonHref="/contact"
+        backgroundImage="/Images/header1.png"
       />
 
       {/* Section Divider */}

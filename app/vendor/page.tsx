@@ -41,31 +41,26 @@ export default function VendorPrograms() {
       title: 'Increased Sales Potential',
       description: 'Offer financing options to customers who may not have the capital to purchase equipment outright.',
       icon: FaChartLine,
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
     {
       title: 'Improved Cash Flow',
       description: 'Get paid quickly upon equipment delivery, reducing accounts receivable and improving your cash flow.',
       icon: FaMoneyBillWave,
-      image: 'https://images.unsplash.com/photo-1642211840197-62e225801ca4?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FzaCUyMGZsb3d8ZW58MHx8MHx8fDA%3D',
     },
     {
       title: 'Enhanced Customer Relationships',
       description: 'Provide added value to your customers by offering flexible financing solutions.',
       icon: FaHandshake,
-      image: 'https://images.unsplash.com/photo-1577415124269-fc1140a69e91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
     {
       title: 'Streamlined Process',
       description: 'Our easy-to-use online portal simplifies the application and approval process.',
       icon: FaRocket,
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
     {
       title: 'Dedicated Support',
       description: 'Work with our experienced team to create customized financing programs for your business.',
       icon: FaUserFriends,
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
     },
   ];
 
@@ -110,6 +105,7 @@ export default function VendorPrograms() {
         subtitle="Focus on the selling, we'll handle the financing"
         buttonText="Become a Partner"
         buttonHref="/apply"
+        backgroundImage="/Images/office.png"
       />
 
       {/* Section Divider */}

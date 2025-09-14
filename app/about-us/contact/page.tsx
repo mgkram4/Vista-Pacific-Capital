@@ -36,6 +36,7 @@ export default function ContactUsPage() {
         subtitle="Ready to discuss your financing needs? We're here to help you every step of the way."
         buttonText="Apply Now"
         buttonHref="/apply"
+        backgroundImage="/Images/header2.png"
       />
 
       {/* Section Divider */}

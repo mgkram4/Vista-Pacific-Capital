@@ -29,8 +29,8 @@ const staggerContainer = {
 
 const founder = {
   name: 'Alan Johnson',
-  role: 'CEO & Founder',
-  bio: "Alan Johnson is the founder and CEO of Vista Pacific Capital, bringing over 20 years of experience in equipment financing and business development. A graduate of California State University, Fullerton, Alan has dedicated his career to helping businesses across all industries secure the equipment financing they need to grow and succeed.\n\nBased in Orange County, California, Alan founded Vista Pacific Capital with a vision to provide personalized, relationship-driven financing solutions. His approach combines industry expertise with cutting-edge technology to deliver fast, flexible financing options from $20,000 to $50 million.\n\nAlan's commitment to excellence and customer service has made Vista Pacific Capital a trusted partner for businesses nationwide. When he's not helping clients achieve their financing goals, Alan enjoys spending time with his family and staying active in the Southern California community.",
+  role: 'CEO, President & Founder',
+  bio: "Vista Pacific Capital founder and president Alan Johnson has two decades of experience in capital equipment. He began his career as a financial broker while earning his degree in finance at Cal State University, Fullerton, and has worked full time in the industry ever since.\n\nWith over 20 years of experience in the finance industry, Alan founded Vista Pacific Capital to combine best practices with a people-first approach, adapting to changes in technology, the commercial marketplace, and lending institutions.\n\nOver the years Alan has worked with thousands of customers, both end users and also equipment and software vendors seeking a financing partner to support their sales activities.\n\nHe has worked with dozens of lenders and is expert in matching the best lender to the needs of each customer.\n\nHe excels in helping Vista Pacific Capital clients secure advantageous financing terms through his deep understanding of financial statements, an understanding of the goals of the client, and the requirements of lenders.",
   image: '/Images/alan-johnson.jpg',
   email: 'alanj@vistapacificcapital.com',
   phone: '(714) 500-7017',
@@ -46,6 +46,7 @@ export default function MeetTheFounderPage() {
         subtitle="Get to know Alan Johnson, the visionary behind Vista Pacific Capital and our commitment to excellence."
         buttonText="Get Started"
         buttonHref="/apply"
+        backgroundImage="/Images/header3.png"
       />
 
       {/* Section Divider */}

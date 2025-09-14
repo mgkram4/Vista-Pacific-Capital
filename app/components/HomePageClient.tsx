@@ -369,7 +369,6 @@ export default function HomePageClient() {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <span className="text-sm font-semibold text-[#0EB5B2] mb-2 block">COMMON QUESTIONS</span>
               <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-4">
                 Frequently Asked Questions
               </h2>

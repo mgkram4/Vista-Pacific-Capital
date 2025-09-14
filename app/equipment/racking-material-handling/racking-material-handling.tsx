@@ -6,11 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BsGearFill } from 'react-icons/bs';
 import {
-  FaCalendarAlt,
-  FaShippingFast,
-  FaStore,
-  FaTools,
-  FaWarehouse
+    FaCalendarAlt,
+    FaShippingFast,
+    FaStore,
+    FaTools,
+    FaWarehouse
 } from 'react-icons/fa';
 
 
@@ -214,15 +214,6 @@ export default function RackingFinancingContent() {
       {/* Benefits Section - Updated to match other pages */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold mb-16 text-center text-indigo-dye"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Why Go With Us
-          </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div

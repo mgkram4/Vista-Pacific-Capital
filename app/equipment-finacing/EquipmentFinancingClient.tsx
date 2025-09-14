@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 import {
-    Banknote,
-    CheckCircle,
-    ChevronRight,
-    FileText,
-    MailCheck,
-    PenSquare,
-    Phone,
-    ThumbsUp
+  Banknote,
+  CheckCircle,
+  ChevronRight,
+  FileText,
+  MailCheck,
+  PenSquare,
+  Phone,
+  ThumbsUp
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -197,18 +197,7 @@ export default function EquipmentFinancingClient() {
                           ))}
                       </motion.div>
                   </div>
-                   <div className="text-center mt-12">
-                      <Link
-                        href="/apply"
-                        className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                          text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                          shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                          transform hover:-translate-y-1 transition-all duration-300"
-                      >
-                        Start Your Application
-                        <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                  </div>
+                 
               </motion.section>
             </div>
 

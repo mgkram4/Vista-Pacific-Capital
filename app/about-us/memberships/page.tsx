@@ -59,6 +59,7 @@ export default function MembershipsPage() {
         subtitle="We are proud to be associated with leading industry organizations that uphold the highest standards."
         buttonText="Get Started"
         buttonHref="/apply"
+        backgroundImage="/Images/header6.png"
       />
 
       {/* Section Divider */}

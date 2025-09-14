@@ -24,6 +24,7 @@ export default function WhoWeArePage() {
         subtitle="Learn about Vista Pacific Capital and our commitment to excellence in equipment financing."
         buttonText="Get Started"
         buttonHref="/apply"
+        backgroundImage="/Images/header7.png"
       />
 
       {/* Section Divider */}
