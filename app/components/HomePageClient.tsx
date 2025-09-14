@@ -37,7 +37,7 @@ interface Benefit {
 interface Stat {
   value: string;
   label: string;
-  description:string;
+  description: string;
 }
 
 interface FAQ {
@@ -183,7 +183,7 @@ export default function HomePageClient() {
   return (
     <>
       <main className="bg-white font-sans">
-        <section className="relative w-full h-[70vh] lg:h-[60vh]">
+        <section className="relative w-full h-[80vh] lg:h-[70vh]">
           {/* Background image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -237,41 +237,84 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0EB5B2]/20 to-[#0D3853]/20"></div>
         
-        {/* Benefits Section - 2 columns layout */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
-                Benefits of Our Equipment Financing
-              </h2>
-              <p className="text-lg text-[#B3B3B3] max-w-3xl mx-auto">
-                Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="bg-gradient-to-br from-[#0EB5B2]/20 to-[#0EB5B2]/5 rounded-lg p-3 w-fit mb-4">
-                      <Icon className="h-12 w-12 text-[#0EB5B2]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0D3853] mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-[#B3B3B3] mb-4">{benefit.description}</p>
-                    <ul className="space-y-2">
-                      {benefit.points.map((point, idx) => (
-                        <li key={idx} className="flex items-center space-x-2 text-[#B3B3B3]">
-                          <CheckCircle2 className="h-5 w-5 text-[#0EB5B2]" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
+        {/* Mid-Section with Office Image */}
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/Images/photo-1717386255773-a456c611dc4e.avif"
+              alt="Modern office environment for business financing"
+              fill
+              className="object-cover"
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+          
+          <div className="relative z-10 max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left side - Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-white"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Why Choose Vista Pacific Capital?
+                </h2>
+                <p className="text-lg text-white/90 mb-8">
+                  Our streamlined process, competitive rates, and dedicated support make our equipment financing and business loans the ideal solution for your growth.
+                </p>
+                
+                <div className="grid gap-6">
+                  {benefits.map((benefit, index) => {
+                    const Icon = benefit.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start space-x-4"
+                      >
+                        <div className="bg-[#0EB5B2]/20 rounded-lg p-2 flex-shrink-0">
+                          <Icon className="h-6 w-6 text-[#0EB5B2]" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
+                          <p className="text-white/80 text-sm">{benefit.description}</p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+              
+              {/* Right side - Stats */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-2 gap-6"
+              >
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20"
+                  >
+                    <div className="text-3xl font-bold text-[#0EB5B2] mb-2">{stat.value}</div>
+                    <div className="text-white font-semibold mb-1">{stat.label}</div>
+                    <div className="text-white/70 text-sm">{stat.description}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
@@ -279,7 +322,7 @@ export default function HomePageClient() {
         {/* Section Divider */}
         <div className="w-full h-1 bg-gradient-to-r from-[#0D3853]/20 to-[#0EB5B2]/20"></div>
         
-        {/* Equipment Types Section */}
+        {/* Equipment Types Section with Carousel */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
@@ -291,37 +334,8 @@ export default function HomePageClient() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow duration-300">
-                    <div className="flex items-center mb-4">
-                      <div className="bg-[#0EB5B2]/10 p-3 rounded-lg mr-4">
-                        <Icon className="h-8 w-8 text-[#0EB5B2]" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#0D3853]">{service.title}</h3>
-                    </div>
-                    <p className="text-[#B3B3B3] mb-4">{service.description}</p>
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center space-x-2 text-sm text-[#B3B3B3]">
-                          <CheckCircle2 className="h-4 w-4 text-[#0EB5B2] flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      href={service.href}
-                      className="inline-flex items-center text-[#0EB5B2] hover:text-[#0D3853] font-medium transition-colors"
-                    >
-                      Learn More
-                      <ChevronRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Services Carousel */}
+            <ServicesCarousel services={services} />
           </div>
         </section>
         
