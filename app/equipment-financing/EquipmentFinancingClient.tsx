@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 import {
-  Banknote,
-  CheckCircle,
-  ChevronRight,
-  FileText,
-  MailCheck,
-  PenSquare,
-  Phone,
-  ThumbsUp
+    Banknote,
+    CheckCircle,
+    ChevronRight,
+    FileText,
+    MailCheck,
+    PenSquare,
+    Phone,
+    ThumbsUp
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
