@@ -7,7 +7,6 @@ import { TEAM_MEMBERS } from '../utils/team-members';
 export default function IanFinancePage() {
   return (
     <motion.div 
-      className="pt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 

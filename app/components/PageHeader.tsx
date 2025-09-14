@@ -1,5 +1,6 @@
 'use client';
 
+import { HERO_SUBHEAD, HERO_TITLE } from '@/app/styles/hero';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
@@ -26,7 +27,7 @@ export default function PageHeader({
   const renderTitle = () => {
     if (!highlightWord) {
       return (
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+        <h1 className={`${HERO_TITLE} bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6`}>
           {title}
         </h1>
       );
@@ -34,7 +35,7 @@ export default function PageHeader({
 
     const parts = title.split(highlightWord);
     return (
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+      <h1 className={`${HERO_TITLE} bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6`}>
         {parts[0]}
         <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent">
           {highlightWord}
@@ -45,7 +46,7 @@ export default function PageHeader({
   };
 
   return (
-    <section className="relative w-full h-[600px] lg:h-[700px]">
+    <section className="relative w-full h-[500px] lg:h-[600px]">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -70,7 +71,7 @@ export default function PageHeader({
             className="w-full max-w-md mx-auto"
           >
             {renderTitle()}
-            <p className="text-lg md:text-xl text-white lg:text-[#B3B3B3] mb-8">
+            <p className={`${HERO_SUBHEAD} text-white lg:text-[#B3B3B3] mb-8`}>
               {subtitle}
             </p>
             <Link

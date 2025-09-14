@@ -1,5 +1,6 @@
 "use client"
 
+import { HERO_SUBHEAD, HERO_TITLE } from '@/app/styles/hero';
 import { motion } from 'framer-motion';
 import {
     Building2,
@@ -183,7 +184,7 @@ export default function HomePageClient() {
   return (
     <>
       <main className="bg-white font-sans">
-        <section className="relative w-full h-[80vh] lg:h-[70vh]">
+        <section className="relative w-full h-[70vh] lg:h-[60vh]">
           {/* Background image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -207,11 +208,11 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 className="w-full max-w-md mx-auto [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none"
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6">
+                <h1 className={`${HERO_TITLE} bg-clip-text text-transparent bg-gradient-to-r from-white via-[#F2F2F2] to-[#B3B3B3] mb-6`}>
                 Your Growth 
                   <span className="bg-gradient-to-r from-[#FF6B35] to-[#ff825c] bg-clip-text text-transparent"> Partner</span>
                 </h1>
-                <p className="text-lg md:text-xl text-white lg:text-[#B3B3B3] mb-8">
+                <p className={`${HERO_SUBHEAD} text-white lg:text-[#B3B3B3] mb-8`}>
                 Equipment Financing from $20,000 to $50 million
                 </p>
                 <Link

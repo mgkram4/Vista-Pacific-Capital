@@ -100,7 +100,7 @@ export default function FinanceApplication({ teamMember = TEAM_MEMBERS.alan }: F
   const [showSuccessToast, setShowSuccessToast] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto pb-10 pt-[200px] px-4">
+    <div className="max-w-4xl mx-auto pb-10 px-4">
       {/* Add the Toast component here */}
       {showSuccessToast && (
         <Toast

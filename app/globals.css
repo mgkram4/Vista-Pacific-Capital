@@ -28,6 +28,10 @@ body {
     white-space: nowrap;
     border-width: 0;
   }
+  .first-section-tight > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 }
 
 @keyframes blob {

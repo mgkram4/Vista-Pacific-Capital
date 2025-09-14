@@ -6,7 +6,6 @@ import FinanceApplicationPage from "../pdf-form/page";
 export default function Apply() {
   return (
     <motion.div 
-      className="pt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 

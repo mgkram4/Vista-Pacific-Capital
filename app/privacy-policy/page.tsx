@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
       }}
     >
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden pt-20">
+      <section className="relative w-full overflow-hidden">
         <div className="relative z-20 h-[25vh] md:h-[30vh] flex items-center bg-gradient-to-r from-[#113E59] to-[#0EB5B2]">
           <div className="max-w-6xl mx-auto px-4 w-full">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
