@@ -109,14 +109,14 @@ const stats: Stat[] = [
     description: "We work with all credit profiles - from excellent A credit to rebuilding C credit businesses"
   },
   {
-    value: "24hrs",
-    label: "Fast Approval",
+    value: "Fast",
+    label: "Quick Approval",
     description: "Quick decisions with funding available next business day for qualified applications"
   },
   {
-    value: "15+",
+    value: "Many",
     label: "Lender Network",
-    description: "Access to over 15 specialized lenders ensuring competitive rates and flexible terms"
+    description: "Access to many specialized lenders ensuring competitive rates and flexible terms"
   }
 ];
 
@@ -125,7 +125,7 @@ const benefits: Benefit[] = [
     title: "Financing Solutions",
     description: "Industry-leading solutions with our comprehensive funding programs.",
     icon: DollarSign,
-    points: ["Terms up to 84 months", "Access to as many as 15 different lenders", "No money down for qualified customers", "Competitive Rates", "New and Used Equipment"]
+    points: ["Terms up to 84 months", "Access to many different lenders", "No money down for qualified customers", "Competitive Rates", "New and Used Equipment"]
   },
   {
     title: "Quick Approval Time",
@@ -246,9 +246,8 @@ export default function HomePageClient() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
-              <span className="text-sm font-semibold text-[#0EB5B2] mb-4 block tracking-wider">WHY CHOOSE US</span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-6">
                 Equipment Financing Made Simple
               </h2>
@@ -302,14 +301,13 @@ export default function HomePageClient() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
-              <span className="text-sm font-semibold text-[#0EB5B2] mb-4 block">BY THE NUMBERS</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Trusted by Businesses Nationwide
               </h2>
               <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                Our track record speaks for itself - delivering fast, reliable equipment financing solutions.
+                Our track record speaks for itself - delivering fast, reliable equipment financing&nbsp;solutions.
               </p>
             </motion.div>
             
@@ -370,7 +368,7 @@ export default function HomePageClient() {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3853] mb-4">
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-[#B3B3B3]">
@@ -450,7 +448,7 @@ export default function HomePageClient() {
         </footer>
         <div className="sr-only">
           <h2>Comprehensive Equipment Financing and Business Loans</h2>
-          <p>Vista Pacific Capital provides equipment financing solutions for businesses across the United States. We serve all 50 states, including California, Texas, Florida, and New York. Our business equipment loans cover a wide range of industries, from construction and medical to restaurant and manufacturing. We offer quick equipment financing with approvals in as little as 24 hours.</p>
+          <p>Vista Pacific Capital provides equipment financing solutions for businesses across the United States. We serve all 50 states, including California, Texas, Florida, and New York. Our business equipment loans cover a wide range of industries, from construction and medical to restaurant and manufacturing. We offer quick equipment financing with fast approvals.</p>
           <h3>Construction and Heavy Equipment</h3>
           <p>Our construction equipment financing programs cover everything from excavators and dump trucks to cranes and other heavy machinery. We work with both new and used equipment vendors.</p>
           <h3>Medical and Dental Equipment</h3>

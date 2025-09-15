@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 import {
-    Banknote,
-    CheckCircle,
-    ChevronRight,
-    FileText,
-    MailCheck,
-    PenSquare,
-    Phone,
-    ThumbsUp
+  Banknote,
+  CheckCircle,
+  ChevronRight,
+  FileText,
+  MailCheck,
+  PenSquare,
+  Phone,
+  ThumbsUp
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -38,7 +38,7 @@ const staggerContainer = {
 const programHighlights = [
     'Up to $500,000 with just an application',
     'Terms from 24 to 72 months',
-    'Approvals as quick as same day - typically within 24 hours',
+    'Fast approvals - typically same day',
     'Soft credit pull in most cases',
     'Competitive rates',
     'New or Used Equipment',

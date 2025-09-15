@@ -46,7 +46,7 @@ export default function PageHeader({
   };
 
   return (
-    <section className="relative w-full h-[500px] lg:h-[600px]">
+    <section className="relative w-full h-[70vh] lg:h-[60vh]">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -57,18 +57,18 @@ export default function PageHeader({
           className="object-cover"
           quality={100}
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/20 lg:hidden" />
       </div>
 
       {/* Content layout */}
-      <div className="relative z-10 w-full h-full">
+      <div className="relative z-10 lg:grid lg:grid-cols-10 w-full h-full">
         {/* Left content area with overlay */}
-        <div className="absolute inset-0 lg:inset-y-0 lg:left-0 lg:right-1/2 bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16">
+        <div className="lg:col-span-3 lg:bg-[#0D3853]/95 text-white flex flex-col justify-center p-8 sm:p-12 lg:p-16 h-full lg:h-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="w-full max-w-md mx-auto"
+            className="w-full max-w-md mx-auto [filter:drop-shadow(0_3px_4px_rgba(0,0,0,0.6))] lg:filter-none"
           >
             {renderTitle()}
             <p className={`${HERO_SUBHEAD} text-white lg:text-[#B3B3B3] mb-8`}>
@@ -87,6 +87,10 @@ export default function PageHeader({
           </motion.div>
         </div>
 
+        {/* Right-side spacer for desktop grid */}
+        <div className="hidden lg:block lg:col-span-7">
+          {/* This area is transparent, revealing the background image */}
+        </div>
       </div>
     </section>
   );

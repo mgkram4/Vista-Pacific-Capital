@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import {
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  Cog,
-  DollarSign,
-  Factory,
-  LucideIcon,
-  Stethoscope,
-  Truck,
-  UtensilsCrossed
+    Building2,
+    CheckCircle2,
+    ChevronRight,
+    Clock,
+    Cog,
+    DollarSign,
+    Factory,
+    LucideIcon,
+    Stethoscope,
+    Truck,
+    UtensilsCrossed
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -118,7 +118,7 @@ const benefits: Benefit[] = [
     title: "Financing Solutions",
     description: "Industry-leading solutions with our comprehensive funding programs.",
     icon: DollarSign,
-    points: ["Terms up to 84 months", "Access to as many as 15 different lenders", "No money down for qualified customers", "Competitive Rates", "New and Used Equipment"]
+    points: ["Terms up to 84 months", "Access to many different lenders", "No money down for qualified customers", "Competitive Rates", "New and Used Equipment"]
   },
   {
     title: "Quick Approval Process",
