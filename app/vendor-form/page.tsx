@@ -1,23 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import NewVendorPartnerForm from "../components/NewVendorPartnerForm";
 import PageHeader from "../components/PageHeader";
+import VendorPartnershipForm from "../components/VendorPartnershipForm";
 
-export default function VendorApply() {
+export default function VendorFormPage() {
     return (
         <div className="bg-white font-sans">
             <PageHeader
-                title="Vendor Partner Form"
-                subtitle="The View is Better at the Top — Join Us on the Path to Success"
-                buttonText="Get Started"
-                buttonHref="/apply"
-                backgroundImage="/Images/office.png"
+                title="Vendor Partner Application"
+                subtitle="Join our network of trusted equipment vendors"
+                buttonText="Learn More"
+                buttonHref="/partner-program"
+                backgroundImage="/Images/header4.png"
                 highlightWord="Partner"
             />
             
             <motion.div 
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+                className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -26,8 +26,18 @@ export default function VendorApply() {
                     delay: 0.1
                 }}
             >
-                <NewVendorPartnerForm />
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                        Become a Vendor Partner
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Partner with Vista Pacific Capital to offer your customers flexible financing solutions. 
+                        Complete the application below to get started.
+                    </p>
+                </div>
+
+                <VendorPartnershipForm />
             </motion.div>
         </div>
-    )
+    );
 }

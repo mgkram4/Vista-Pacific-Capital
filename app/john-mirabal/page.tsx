@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
-import HomePageApplicationForm, { TEAM_MEMBERS } from '../components/HomePageApplicationForm';
+import { TEAM_MEMBERS } from '../components/HomePageApplicationForm';
+import PageHeader from '../components/PageHeader';
 
 export default function JohnMirabalPage() {
   const router = useRouter();
   
-  // Custom submit handler to redirect to the PDF form
+  // Custom submit handler to redirect to John's finance application
   const handleFormSubmit = () => {
     // Store the team member in session storage
     sessionStorage.setItem('teamMember', JSON.stringify(TEAM_MEMBERS.johnMirabal));
-    router.push('/pdf-form');
+    router.push('/john-finance');
   };
 
   return (
@@ -34,54 +34,40 @@ export default function JohnMirabalPage() {
           "email": "johnm@vistapacificcapital.com"
         }) }}
       />
-      {/* Hero Section with Equipment Financing Image */}
-      <section className="w-full relative overflow-hidden">
-        {/* Background Image Container */}
-        <div className="absolute inset-0 h-[40vh] md:h-[30vh]">
-          <div className="absolute inset-0 bg-black/20 z-10" />
-          <Image 
-            src="/Images/bg-wave2.png"
-            alt="Equipment Financing"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-20 h-[40vh] md:h-[40vh] flex items-center">
-          <div className="max-w-6xl mx-auto px-4 w-full">
-            <motion.div
-              className="max-w-3xl bg-[#0D3853]/85 backdrop-blur-sm rounded-xl p-6 md:p-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Equipment Financing Finance Application
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90">
-                Fill out the form below to get your free finance application and fast approval
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Equipment Financing Application"
+        subtitle="CLICK the button below to start the fast approval process."
+        buttonText="Apply Now"
+        buttonHref="/apply/john-mirabal"
+        backgroundImage="/Images/bg-wave2.png"
+      />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 -mt-24 relative z-30 pb-12">
+      <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {/* Application Form - Sticky on desktop, normal on mobile */}
+          {/* Click to Apply Button - Sticky on desktop, normal on mobile */}
           <div className="lg:order-2 lg:sticky lg:top-8 mt-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 text-center"
             >
-              <HomePageApplicationForm 
-                teamMember={TEAM_MEMBERS.johnMirabal} 
-                onSubmit={handleFormSubmit} 
-              />
+              <h3 className="text-2xl font-bold text-[#113E59] mb-4">
+                Ready to Get Started?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Complete this simple no-financials application to get pre-approved for equipment financing.
+              </p>
+              <a
+                href="/apply/john-mirabal"
+                className="w-full inline-block bg-[#0EB5B2] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-[#0D3853] transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Click to Apply
+              </a>
+              <p className="text-sm text-gray-500 mt-4">
+                Complete this simple no-financials form. We will respond within 2 business days.
+              </p>
             </motion.div>
           </div>
 

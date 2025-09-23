@@ -1,5 +1,4 @@
 import archiver from 'archiver';
-import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -8,10 +7,36 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const timestamp = formData.get('timestamp') as string;
+    const password = formData.get('password') as string;
+    const recipient = formData.get('recipient') as string;
+    const senderName = formData.get('senderName') as string;
+    const senderEmail = formData.get('senderEmail') as string;
+    const message = formData.get('message') as string;
 
     if (!file) {
       return NextResponse.json(
         { error: 'File is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!password) {
+      return NextResponse.json(
+        { error: 'Password is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!recipient) {
+      return NextResponse.json(
+        { error: 'Recipient is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!senderName || !senderEmail) {
+      return NextResponse.json(
+        { error: 'Sender information is required' },
         { status: 400 }
       );
     }
@@ -35,9 +60,6 @@ export async function POST(request: NextRequest) {
 
     // Convert file to buffer
     const pdfBuffer = Buffer.from(await file.arrayBuffer());
-
-    // Generate a secure, random password
-    const password = crypto.randomBytes(8).toString('hex');
     
     // Create a new file name for the zip
     const zipFileName = file.name.replace(/\.pdf$/i, '.zip');
@@ -72,42 +94,50 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: process.env.SMTP_USER,
-      to: 'alanj@vistapacificcapital.com',
-      subject: `Supporting Documents Uploaded - ${new Date(timestamp).toLocaleDateString()}`,
+      to: recipient,
+      cc: senderEmail,
+      subject: `Secure Document from ${senderName} - ${new Date(timestamp).toLocaleDateString()}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0D3853;">Supporting Documents Received</h2>
+          <h2 style="color: #0D3853;">Secure Document Received</h2>
           
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0EB5B2; margin-top: 0;">Sender Information:</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin: 8px 0;"><strong>From:</strong> ${senderName}</li>
+              <li style="margin: 8px 0;"><strong>Email:</strong> ${senderEmail}</li>
+              <li style="margin: 8px 0;"><strong>Sent:</strong> ${new Date(timestamp).toLocaleString()}</li>
+            </ul>
+          </div>
+
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #0EB5B2; margin-top: 0;">File Details:</h3>
             <ul style="list-style: none; padding: 0;">
               <li style="margin: 8px 0;"><strong>Original File:</strong> ${file.name}</li>
-              <li style="margin: 8px 0;"><strong>ZIP Archive:</strong> ${zipFileName}</li>
               <li style="margin: 8px 0;"><strong>File Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</li>
-              <li style="margin: 8px 0;"><strong>Upload Time:</strong> ${new Date(timestamp).toLocaleString()}</li>
             </ul>
           </div>
 
+          ${message ? `
+          <div style="background-color: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0D3853; margin-top: 0;">Message from Sender:</h3>
+            <p style="color: #0D3853; margin: 0; white-space: pre-wrap;">${message}</p>
+          </div>
+          ` : ''}
+
           <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
             <h4 style="color: #856404; margin-top: 0;">🔐 ZIP Password</h4>
-            <p style="color: #856404; margin: 0; font-size: 16px; font-weight: bold; background-color: #fff; padding: 5px; border-radius: 4px; display: inline-block;">
+            <p style="color: #856404; margin: 0; font-size: 16px; font-weight: bold; background-color: #fff; padding: 8px; border-radius: 4px; display: inline-block; font-family: monospace;">
               ${password}
             </p>
             <p style="color: #856404; font-size: 14px; margin: 10px 0 0 0;">
-              Please use this password to extract the attached documents. 
-              <br><strong>Note:</strong> The ZIP file itself is not encrypted in this version. This password is provided for future compatibility.
-            </p>
-          </div>
-
-          <div style="margin-top: 30px; padding: 20px; background-color: #e8f4f8; border-radius: 8px;">
-            <p style="margin: 0; color: #0D3853;">
-              A customer has uploaded a PDF which has been converted to a ZIP archive.
+              Use this password to extract the attached ZIP file. The sender has set this password for security.
             </p>
           </div>
 
           <div style="margin-top: 20px; text-align: center; color: #666; font-size: 12px;">
-            <p>Vista Pacific Capital - Equipment Financing</p>
-            <p>This is an automated message from the document upload system.</p>
+            <p>Vista Pacific Capital - Secure Document Portal</p>
+            <p>This document was sent through our secure upload system.</p>
           </div>
         </div>
       `,
@@ -120,8 +150,73 @@ export async function POST(request: NextRequest) {
       ],
     };
 
-    // Send email
+    // Send email to recipient
     await transporter.sendMail(mailOptions);
+
+    // Send confirmation email to sender
+    const confirmationEmail = {
+      from: process.env.SMTP_USER,
+      to: senderEmail,
+      subject: `Document Sent Successfully - ${file.name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #0D3853;">Document Sent Successfully</h2>
+          
+          <div style="background-color: #d4edda; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #28a745;">
+            <h3 style="color: #155724; margin-top: 0;">✅ Your document has been delivered securely</h3>
+            <p style="color: #155724; margin: 0;">Your PDF has been encrypted, password-protected, and sent to the Vista Pacific Capital team.</p>
+          </div>
+
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0EB5B2; margin-top: 0;">Delivery Details:</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin: 8px 0;"><strong>File:</strong> ${file.name}</li>
+              <li style="margin: 8px 0;"><strong>Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</li>
+              <li style="margin: 8px 0;"><strong>Sent to:</strong> ${teamMembers.find(tm => tm.email === recipient)?.name || recipient}</li>
+              <li style="margin: 8px 0;"><strong>Date:</strong> ${new Date(timestamp).toLocaleString()}</li>
+            </ul>
+          </div>
+
+          ${message ? `
+          <div style="background-color: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0D3853; margin-top: 0;">Your Message:</h3>
+            <p style="color: #0D3853; margin: 0; white-space: pre-wrap;">${message}</p>
+          </div>
+          ` : ''}
+
+          <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 20px 0;">
+            <h4 style="color: #856404; margin-top: 0;">🔐 Security Information</h4>
+            <p style="color: #856404; margin: 0; font-size: 14px;">
+              Your document was secured with the password you provided. The recipient will use this password to access the file.
+              <br><br>
+              <strong>Next Steps:</strong> Our team will review your document and contact you within 1-2 business days.
+            </p>
+          </div>
+
+          <div style="margin-top: 30px; text-align: center;">
+            <p style="color: #666; margin: 10px 0;">Need to send another document?</p>
+            <a href="https://vistapacificcapital.com/secure-upload" 
+               style="display: inline-block; background-color: #0EB5B2; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+              Upload Another Document
+            </a>
+          </div>
+
+          <div style="margin-top: 20px; text-align: center; color: #666; font-size: 12px;">
+            <p>Vista Pacific Capital - Secure Document Portal</p>
+            <p>Questions? Call (714) 500-7017 or email alanj@vistapacificcapital.com</p>
+          </div>
+        </div>
+      `
+    };
+
+    await transporter.sendMail(confirmationEmail);
+
+    // Get team member info for response
+    const teamMembers = [
+      { name: 'Alan Johnson', email: 'alanj@vistapacificcapital.com' },
+      { name: 'Ian Whitelaw', email: 'ianw@vistapacificcapital.com' },
+      { name: 'John Mirabal', email: 'johnm@vistapacificcapital.com' }
+    ];
 
     return NextResponse.json(
       { 

@@ -1,0 +1,122 @@
+title,body,labels,assignees
+Navigation Update,"Epic for adding top-level 'Forms' navigation with dropdown items.
+Scope: /apply, /apply-commercial, /vendor-form, Secure Upload Portal
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+Finance Application Updates,"Epic for updates to the finance application form: EIN formatting, Owner/Guarantor fields, Email/Phone row, remove Print button, submission popup date, completed email with logo + footer
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+Sales Rep Pages (Ian & John),"Epic for updating sales rep pages with headline/subhead, 'Click to Apply' buttons, helper text, phone fixes, rep-specific emails.
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+Commercial Equipment Financing Page,"Epic for $500k+ financing: update subhead, button CTA, new streamlined form, new submission message.
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+Secure Document Submission Page,"Epic for adding 'Secure Application Submission' under Tools with simplified page.
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+Vendor Partner Updates,"Epic for vendor partner updates: delete /vendor-form, rename nav, adjust layout, update buttons, remove embedded form, update email template.
+
+Type: Epic
+Priority: High
+Parent: None",epic,
+EIN field format update (Page 1),"Change Federal Tax ID to Employer Identification Number (EIN), enforce XX-XXXXXXX, auto hyphen.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Owner & Guarantor name field updates (Page 2),"Update Owner and Guarantor fields to 'First Name' and 'Last Name'.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Add Email + Phone fields,"Add Email and Phone row before SSN.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Remove Print buttons,"Remove hidden Print button from pages 1 & 2.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Submission popup with date,"Popup should include submission date after form submission.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Email: Send completed application,"Email must include completed form, Vista logo, rep info, footer.
+
+Type: Task
+Priority: Medium
+Parent: 2.0",task,
+Update headline & subhead,"Change headline to 'Equipment Financing Application', subhead to 'CLICK the button...'.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Replace sidebar form with 'Click to Apply' button,"Remove 'Business Information' form, add turquoise button linking to unique rep URLs.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Add helper text next to button,"Add 'Complete this simple no-financials...' text near CTA.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Fix John's phone format,"Update to (714) 551-9955.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Add Ian's phone number,"Add (714) 408-4574 to Ian's page.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Customize submission emails per rep,"Rep-specific submission emails with direct line and name.
+
+Type: Task
+Priority: Medium
+Parent: 3.0",task,
+Update subhead,"Change subhead to 'Financing from $500,000 to $50 million'.
+
+Type: Task
+Priority: Medium
+Parent: 4.0",task,
+Update CTA to /apply-commercial,"Update button text and link to new form.
+
+Type: Task
+Priority: Medium
+Parent: 4.0",task,
+Create /apply-commercial form,"Streamlined single-page form for $500k+ applications.
+
+Type: Task
+Priority: Medium
+Parent: 4.0",task,
+New submission message for $500k+ form,"Thank you message with Alan Johnson's contact + upload button.
+
+Type: Task
+Priority: Medium
+Parent: 4.0",task,
+"Vendor Partner layout, nav, buttons, form removal","Delete /vendor-form, rename nav, adjust layout, update buttons, remove embedded form.
+
+Type: Task
+Priority: Medium
+Parent: 6.0",task,
+Vendor Partner email updates,"Update email template: remove sections, enlarge final line.
+
+Type: Task
+Priority: Medium
+Parent: 6.0",task,

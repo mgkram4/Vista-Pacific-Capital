@@ -8,9 +8,10 @@ interface SuccessModalProps {
   onClose: () => void;
   isVendorForm?: boolean;
   customMessage?: string;
+  submissionDate?: string;
 }
 
-export default function SuccessModal({ isVisible, onClose, isVendorForm = false, customMessage }: SuccessModalProps) {
+export default function SuccessModal({ isVisible, onClose, isVendorForm = false, customMessage, submissionDate }: SuccessModalProps) {
   const [showContent, setShowContent] = useState(false);
   const [showFileUpload, setShowFileUpload] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -124,6 +125,16 @@ export default function SuccessModal({ isVisible, onClose, isVendorForm = false,
           >
             Application Submitted!
           </h2>
+          
+          {submissionDate && (
+            <p 
+              className={`text-sm text-gray-500 mb-3 transform transition-all duration-500 delay-250 ${
+                showContent ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Submitted on {submissionDate}
+            </p>
+          )}
           
           <div 
             className={`text-gray-600 space-y-3 transform transition-all duration-500 delay-300 ${

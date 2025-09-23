@@ -36,6 +36,8 @@ interface TeamMember {
 interface OwnerFormData {
   firstName: string;
   lastName: string;
+  email?: string;
+  phone?: string;
   socialSecurityNumber: string;
   ownershipPercentage: string;
   homeAddress: string;
@@ -154,6 +156,7 @@ export default function FinanceApplicationPage() {
   // Add this after the state declarations (around line 61)
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [submissionDate, setSubmissionDate] = useState<string>('');
 
   // Business types dropdown options
   const businessTypes = [
@@ -326,6 +329,13 @@ export default function FinanceApplicationPage() {
     return `${ssn.slice(0, 3)}-${ssn.slice(3, 5)}-${ssn.slice(5, 9)}`;
   };
 
+  // Format EIN (XX-XXXXXXX)
+  const formatEIN = (value: string): string => {
+    const ein = value.replace(/\D/g, '');
+    if (ein.length < 3) return ein;
+    return `${ein.slice(0, 2)}-${ein.slice(2, 9)}`;
+  };
+
   // Format currency
   const formatCurrency = (value: string): string => {
     // Remove any non-digit characters
@@ -463,7 +473,7 @@ export default function FinanceApplicationPage() {
       { label: 'Business Type', value: businessData.businessType },
       { label: 'Business Phone', value: businessData.businessPhone },
       { label: 'Email', value: businessData.email },
-      { label: 'Federal Tax ID', value: businessData.federalTaxId || 'N/A' },
+      { label: 'EIN', value: businessData.federalTaxId || 'N/A' },
       { label: 'Business Address', value: `${businessData.businessAddress}, ${businessData.businessSuite ? 'Suite ' + businessData.businessSuite + ', ' : ''}${businessData.city}, ${businessData.state} ${businessData.zip}` },
       { label: 'Years in Business (estimated)', value: businessData.yearsInBusiness },
       { label: 'Annual Revenue', value: businessData.annualRevenue || 'N/A' },
@@ -499,6 +509,8 @@ export default function FinanceApplicationPage() {
     // Owner Information Fields
     const ownerFields = [
       { label: 'Name', value: `${ownerData.firstName} ${ownerData.lastName}` },
+      { label: 'Email', value: ownerData.email || 'N/A' },
+      { label: 'Phone', value: ownerData.phone || 'N/A' },
       { label: 'Social Security Number', value: ownerData.socialSecurityNumber || 'N/A' },
       { label: 'Ownership Percentage', value: ownerData.ownershipPercentage ? `${ownerData.ownershipPercentage}%` : 'N/A' },
       { label: 'Home Address', value: `${ownerData.homeAddress}, ${ownerData.homeSuite ? 'Suite ' + ownerData.homeSuite + ', ' : ''}${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}` },
@@ -770,7 +782,16 @@ export default function FinanceApplicationPage() {
       const data = await response.json();
 
       if (data.success) {
-        // Show success modal instead of toast
+        // Show success modal instead of toast with submission date
+        const submissionDate = new Date().toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        setSubmissionDate(submissionDate);
         setShowSuccessModal(true);
         
         // Reset form
@@ -1013,20 +1034,23 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            {/* Added Federal Tax ID to business information */}
+            {/* Updated EIN field with formatting */}
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
               <div>
                 <label htmlFor="federalTaxId" className={labelClasses}>
-                  Federal Tax ID Number (if available)
+                  EIN (if available)
                 </label>
                 <input
                   id="federalTaxId"
                   type="text"
                   value={businessData.federalTaxId}
-                  onChange={(e) => setBusinessData({...businessData, federalTaxId: e.target.value})}
+                  onChange={(e) => {
+                    const formatted = formatEIN(e.target.value);
+                    setBusinessData({...businessData, federalTaxId: formatted});
+                  }}
                   onFocus={() => setFocused('federalTaxId')}
                   onBlur={() => setFocused('')}
-                  placeholder="Tax ID Number"
+                  placeholder="XX-XXXXXXX"
                   className={`${inputClasses} ${focused === 'federalTaxId' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
                 />
               </div>
@@ -1277,7 +1301,83 @@ export default function FinanceApplicationPage() {
               </div>
             </div>
 
-            {/* Second row - Social Security Number / Ownership Percentage */}
+            {/* Second row - Email / Phone */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="ownerEmail" className={labelClasses}>
+                  Email (optional)
+                </label>
+                <input
+                  id="ownerEmail"
+                  type="email"
+                  value={ownerData.email || ''}
+                  onChange={(e) => setOwnerData({...ownerData, email: e.target.value})}
+                  onFocus={() => setFocused('ownerEmail')}
+                  onBlur={() => setFocused('')}
+                  placeholder="owner@example.com"
+                  className={`${inputClasses} ${focused === 'ownerEmail' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ownerPhone" className={labelClasses}>
+                  Phone (optional)
+                </label>
+                <input
+                  id="ownerPhone"
+                  type="tel"
+                  value={ownerData.phone || ''}
+                  onChange={(e) => {
+                    const formatted = formatPhoneNumber(e.target.value);
+                    setOwnerData({...ownerData, phone: formatted});
+                  }}
+                  onFocus={() => setFocused('ownerPhone')}
+                  onBlur={() => setFocused('')}
+                  placeholder="(555) 123-4567"
+                  className={`${inputClasses} ${focused === 'ownerPhone' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
+                />
+              </div>
+            </div>
+
+            {/* Third row - SSN / Ownership */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="socialSecurityNumber" className={labelClasses}>
+                  Email Address
+                </label>
+                <input
+                  id="ownerEmail"
+                  type="email"
+                  value={ownerData.email || businessData.email}
+                  onChange={(e) => setOwnerData({...ownerData, email: e.target.value})}
+                  onFocus={() => setFocused('ownerEmail')}
+                  onBlur={() => setFocused('')}
+                  placeholder="you@example.com"
+                  className={`${inputClasses} ${focused === 'ownerEmail' ? 'ring-2 ring-green-500' : ''}`}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="ownerPhone" className={labelClasses}>
+                  Phone Number
+                </label>
+                <input
+                  id="ownerPhone"
+                  type="tel"
+                  value={ownerData.phone || businessData.businessPhone}
+                  onChange={(e) => {
+                    const formattedPhone = formatPhoneNumber(e.target.value);
+                    setOwnerData({...ownerData, phone: formattedPhone});
+                  }}
+                  onFocus={() => setFocused('ownerPhone')}
+                  onBlur={() => setFocused('')}
+                  placeholder="(111) 111-1111"
+                  className={`${inputClasses} ${focused === 'ownerPhone' ? 'ring-2 ring-green-500' : ''}`}
+                />
+              </div>
+            </div>
+
+            {/* Third row - Social Security Number / Ownership Percentage */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="socialSecurityNumber" className={labelClasses}>
@@ -1694,10 +1794,10 @@ export default function FinanceApplicationPage() {
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Business Phone:</span>
                   <span className="text-[#0D3853]">{businessData.businessPhone}</span>
                 </div>
-                {/* Show Federal Tax ID in business section if it exists */}
+                {/* Show EIN in business section if it exists */}
                 {businessData.federalTaxId && (
                   <div className="flex">
-                    <span className="font-medium w-40 text-[#0D3853] mr-2">Federal Tax ID:</span>
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">EIN:</span>
                     <span className="text-[#0D3853]">{businessData.federalTaxId}</span>
                   </div>
                 )}
@@ -1731,6 +1831,18 @@ export default function FinanceApplicationPage() {
                   <span className="font-medium w-40 text-[#0D3853] mr-2">Name:</span>
                   <span className="text-[#0D3853]">{ownerData.firstName} {ownerData.lastName}</span>
                 </div>
+                {ownerData.email && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Email:</span>
+                    <span className="text-[#0D3853]">{ownerData.email}</span>
+                  </div>
+                )}
+                {ownerData.phone && (
+                  <div className="flex">
+                    <span className="font-medium w-40 text-[#0D3853] mr-2">Phone:</span>
+                    <span className="text-[#0D3853]">{ownerData.phone}</span>
+                  </div>
+                )}
                 {ownerData.socialSecurityNumber && (
                   <div className="flex">
                     <span className="font-medium w-40 text-[#0D3853] mr-2">Social Security #:</span>
@@ -1870,6 +1982,7 @@ export default function FinanceApplicationPage() {
       <SuccessModal
         isVisible={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
+        submissionDate={submissionDate}
       />
       
       {/* Toast still available for other messages */}
@@ -1883,15 +1996,6 @@ export default function FinanceApplicationPage() {
         />
       )}
       
-      {/* Print Button */}
-      <div className="mb-4 text-right print:hidden">
-        <button
-          onClick={() => window.print()}
-          className="bg-[#0EB5B2] text-white px-4 py-2 rounded-lg hover:bg-[#0D3853] transition-colors text-sm font-medium"
-        >
-          🖨️ Print Form
-        </button>
-      </div>
       
       <div className="w-full bg-white shadow-xl rounded-xl p-4 md:p-6 border border-gray-100 print:shadow-none print:border-none print:rounded-none print:p-2">
         {/* Header with Logo */}

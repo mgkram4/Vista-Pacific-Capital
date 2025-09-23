@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <script
           type="application/ld+json"
@@ -98,7 +98,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="text-white">
+      <body className="text-white overflow-x-hidden">
         <a href="#main-content" className="sr-only focus:fixed focus:z-50 focus:top-0 focus:left-0 focus:p-4 focus:m-4 bg-white text-black rounded-lg">
           Skip to main content
         </a>

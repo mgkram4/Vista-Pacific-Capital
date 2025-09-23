@@ -228,16 +228,38 @@ export const partnerLinks: EquipmentLink[] = [
         description: 'Your Trusted Partner, No Matter the Tide'
     },
     {
-        topText: 'Become a',
-        bottomText: 'Partner',
+        topText: 'Partner',
+        bottomText: 'Benefits',
         path: '/partner-program',
         description: 'Your Trusted Partner, No Matter the Tide'
+    }
+];
+
+// NEW: Forms Links
+export const formsLinks: EquipmentLink[] = [
+    {
+        topText: 'Equipment Financing',
+        bottomText: 'Application',
+        path: '/apply',
+        description: 'Apply for equipment financing up to $500,000'
+    },
+    {
+        topText: 'Commercial Equipment',
+        bottomText: 'Financing ($500k+)',
+        path: '/apply-commercial',
+        description: 'Apply for commercial equipment financing $500,000 to $50 million'
     },
     {
         topText: 'Vendor Partner',
-        bottomText: 'Form',
+        bottomText: 'Application',
         path: '/vendor-form',
-        description: 'The View is Better at the Top — Join Us on the Path to Success'
+        description: 'Apply to become a vendor partner'
+    },
+    {
+        topText: 'Secure Upload',
+        bottomText: 'Portal',
+        path: '/secure-upload',
+        description: 'Securely upload documents for your application'
     }
 ];
 
@@ -254,6 +276,12 @@ export const toolsLinks: EquipmentLink[] = [
         bottomText: 'Calculator',
         path: '/tax-calculator',
         description: 'Section 179 Tax Calculator'
+    },
+    {
+        topText: 'Secure Application',
+        bottomText: 'Submission',
+        path: '/secure-upload',
+        description: 'Securely upload documents for your application'
     },
     {
         topText: 'FAQ',
@@ -276,6 +304,7 @@ export const quoteLink: EquipmentLink = {
   }
 };
 
+const formsMainLink: EquipmentLink = { topText: 'Forms', bottomText: '', path: '#', description: 'Application Forms and Documents' };
 const partnerMainLink: EquipmentLink = { topText: 'Become a Vendor', bottomText: 'Partner', path: '#', description: 'Become a Vendor Partner' };
 const aboutUsMainLink: EquipmentLink = { topText: 'About', bottomText: 'Us', path: '#', description: 'About Us' };
 
@@ -543,12 +572,12 @@ const AppNavBar: React.FC = () => {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200`}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center space-x-3" aria-label="Vista Pacific Capital home">
-                <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={60} height={60} priority />
-                <div className="text-xl font-bold whitespace-nowrap lg:text-2xl">
+                <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={50} height={50} priority />
+                <div className="text-lg font-bold whitespace-nowrap lg:text-xl">
                   <span className="text-slate-900">Vista Pacific</span>
                   <span className="text-sea-green-dark"> Capital</span>
                 </div>
@@ -562,6 +591,36 @@ const AppNavBar: React.FC = () => {
                 className="flex items-center space-x-4 bg-white/98 p-1 rounded-full shadow-xl border border-gray-200"
                 onMouseLeave={handleMouseLeave}
               >
+                <div className="relative" onMouseEnter={() => handleMouseEnter('forms')} >
+                  <NavLink
+                    link={formsMainLink}
+                    isActive={openDropdown === 'forms' || formsLinks.some(l => l.path === pathname)}
+                    isDropdownTrigger
+                    isDropdownOpen={openDropdown === 'forms'}
+                    onClick={() => setOpenDropdown(openDropdown === 'forms' ? null : 'forms')}
+                  />
+                  <AnimatePresence>
+                    {openDropdown === 'forms' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full mt-3 w-80 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
+                      >
+                        {formsLinks.map((link) => (
+                           <NavLink
+                                key={link.path}
+                                link={link}
+                                isActive={pathname === link.path}
+                                onClick={() => setOpenDropdown(null)}
+                                className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                              />
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <div className="relative" onMouseEnter={() => handleMouseEnter('equipmentFinancing')} >
                   <NavLink
                     link={equipmentFinancingMainLink}
@@ -736,7 +795,7 @@ const AppNavBar: React.FC = () => {
             className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden"
           >
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between h-24 px-4 sm:px-6 bg-white shadow-md">
+            <div className="flex items-center justify-between h-20 px-4 sm:px-6 bg-white shadow-md">
               <div className="flex-shrink-0">
                 <Link
                   href="/"
@@ -744,8 +803,8 @@ const AppNavBar: React.FC = () => {
                   aria-label="Vista Pacific Capital home"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={70} height={70} priority />
-                  <div className="text-2xl font-bold whitespace-nowrap">
+                  <Image src="/Images/logo3.png" alt="Vista Pacific Capital Logo" width={60} height={60} priority />
+                  <div className="text-xl font-bold whitespace-nowrap">
                     <span className="text-slate-900">Vista Pacific</span>
                     <span className="text-sea-green-dark"> Capital</span>
                   </div>
@@ -763,6 +822,28 @@ const AppNavBar: React.FC = () => {
             {/* Mobile Menu Links */}
             <div className="flex-1 overflow-y-auto">
               <div className="px-4 pt-4 pb-6 space-y-2">
+                <Disclosure>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="w-full flex justify-between items-center py-4 text-left text-slate-700 hover:text-sea-green-dark transition-colors duration-200 rounded-lg hover:bg-gray-50 px-3">
+                        <span className="text-xl font-semibold">Forms</span>
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'transform rotate-180' : ''}`} />
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="pl-4 border-l-2 border-gray-200 ml-3">
+                        {formsLinks.map((link) => (
+                           <NavLink
+                                key={link.path}
+                                link={link}
+                                isActive={pathname === link.path}
+                                isMobile
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              />
+                        ))}
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+
                 <Disclosure>
                   {({ open }) => (
                     <>

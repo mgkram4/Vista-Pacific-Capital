@@ -351,15 +351,6 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
         customMessage="Thank you, your application is being assigned to a Vista Pacific Capital representative and someone will reach out within one business day."
       />
 
-      {/* Print Button */}
-      <div className="mb-4 text-right print:hidden">
-        <button
-          onClick={() => window.print()}
-          className="bg-[#0EB5B2] text-white px-4 py-2 rounded-lg hover:bg-[#0D3853] transition-colors text-sm font-medium"
-        >
-          🖨️ Print Form
-        </button>
-      </div>
 
       <div className="bg-white rounded-xl shadow-lg border border-[#0EB5B2]/10 p-6 md:p-8 print:shadow-none print:border-none print:rounded-none print:p-2">
         {/* Header with Logo */}

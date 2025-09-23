@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import {
-    CheckCircle,
-    ChevronRight,
-    ThumbsUp
+  CheckCircle,
+  ChevronRight,
+  ThumbsUp
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -67,9 +67,9 @@ export default function CommercialEquipmentFinancingClient() {
       {/* Hero Section */}
       <PageHeader
         title="Commercial Equipment Financing"
-        subtitle="Financing from $500,000 to $50 million built for scale."
-        buttonText="Get a Quote / Apply Now"
-        buttonHref="/apply"
+        subtitle="Financing from $500,000 to $50 million"
+        buttonText="Apply for Commercial Financing"
+        buttonHref="/apply-commercial"
         backgroundImage="https://images.unsplash.com/photo-1568056308658-aa380181da25?q=80&w=3003&auto=format&fit=crop&ixlib-rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
 
