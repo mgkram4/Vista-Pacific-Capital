@@ -153,6 +153,13 @@ export async function POST(request: NextRequest) {
     // Send email to recipient
     await transporter.sendMail(mailOptions);
 
+    // Get team member info for response
+    const teamMembers = [
+      { name: 'Alan Johnson', email: 'alanj@vistapacificcapital.com' },
+      { name: 'Ian Whitelaw', email: 'ianw@vistapacificcapital.com' },
+      { name: 'John Mirabal', email: 'johnm@vistapacificcapital.com' }
+    ];
+
     // Send confirmation email to sender
     const confirmationEmail = {
       from: process.env.SMTP_USER,
@@ -210,13 +217,6 @@ export async function POST(request: NextRequest) {
     };
 
     await transporter.sendMail(confirmationEmail);
-
-    // Get team member info for response
-    const teamMembers = [
-      { name: 'Alan Johnson', email: 'alanj@vistapacificcapital.com' },
-      { name: 'Ian Whitelaw', email: 'ianw@vistapacificcapital.com' },
-      { name: 'John Mirabal', email: 'johnm@vistapacificcapital.com' }
-    ];
 
     return NextResponse.json(
       { 
