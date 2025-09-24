@@ -1,0 +1,168 @@
+name: Update GitHub Issues
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    types: [ opened, closed, merged ]
+  workflow_dispatch:
+
+jobs:
+  update-issues:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Update Issues from Commit Messages
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          
+          // Get recent commits
+          const commits = context.payload.commits || [];
+          
+          // Issue keywords that indicate completion
+          const completionKeywords = [
+            'fixes', 'fixed', 'fix', 'closes', 'closed', 'close',
+            'resolves', 'resolved', 'resolve', 'completes', 'completed', 'complete'
+          ];
+          
+          // Process each commit
+          for (const commit of commits) {
+            const message = commit.message.toLowerCase();
+            
+            // Look for issue references (#123)
+            const issueMatches = commit.message.match(/#(\d+)/g);
+            
+            if (issueMatches) {
+              for (const match of issueMatches) {
+                const issueNumber = parseInt(match.replace('#', ''));
+                
+                try {
+                  // Get the issue
+                  const issue = await github.rest.issues.get({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber
+                  });
+                  
+                  // Add comment with commit info
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: `🔄 **Commit Update**\n\n**Commit:** ${commit.id.substring(0, 7)}\n**Message:** ${commit.message}\n**Author:** ${commit.author.name}\n**Files Changed:** ${commit.modified?.length || 0} files\n\n[View Commit](${commit.url})`
+                  });
+                  
+                  // Check if commit message indicates completion
+                  const isCompletion = completionKeywords.some(keyword => 
+                    message.includes(keyword + ' #' + issueNumber) || 
+                    message.includes(keyword + ' ' + match)
+                  );
+                  
+                  if (isCompletion && issue.data.state === 'open') {
+                    // Close the issue
+                    await github.rest.issues.update({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      state: 'closed',
+                      labels: [...(issue.data.labels || []), 'completed']
+                    });
+                    
+                    await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      body: `✅ **Issue Completed**\n\nThis issue has been automatically closed based on the commit message.\n\n**Completed by:** ${commit.author.name}\n**Commit:** ${commit.id.substring(0, 7)}`
+                    });
+                  }
+                  
+                } catch (error) {
+                  console.log(`Could not update issue #${issueNumber}: ${error.message}`);
+                }
+              }
+            }
+          }
+
+    - name: Update Issues from PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          const pr = context.payload.pull_request;
+          
+          if (!pr) return;
+          
+          // Look for issue references in PR title and body
+          const prText = `${pr.title} ${pr.body || ''}`;
+          const issueMatches = prText.match(/#(\d+)/g);
+          
+          if (issueMatches) {
+            for (const match of issueMatches) {
+              const issueNumber = parseInt(match.replace('#', ''));
+              
+              try {
+                let commentBody = '';
+                
+                if (pr.state === 'open') {
+                  commentBody = `🔄 **Pull Request Created**\n\n**PR:** #${pr.number} - ${pr.title}\n**Author:** ${pr.user.login}\n**Status:** ${pr.state}\n\n[View Pull Request](${pr.html_url})`;
+                } else if (pr.merged) {
+                  commentBody = `✅ **Pull Request Merged**\n\n**PR:** #${pr.number} - ${pr.title}\n**Merged by:** ${pr.merged_by?.login || pr.user.login}\n**Files Changed:** ${pr.changed_files || 0}\n**Additions:** +${pr.additions || 0} **Deletions:** -${pr.deletions || 0}\n\n[View Pull Request](${pr.html_url})`;
+                  
+                  // If PR is merged, close the issue
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    state: 'closed',
+                    labels: ['completed']
+                  });
+                }
+                
+                if (commentBody) {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: commentBody
+                  });
+                }
+                
+              } catch (error) {
+                console.log(`Could not update issue #${issueNumber}: ${error.message}`);
+              }
+            }
+          }
+
+    - name: Create Deployment Status Comment
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          
+          // Get all open issues with 'in-progress' or 'ready-for-testing' labels
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            labels: 'in-progress,ready-for-testing'
+          });
+          
+          const deploymentUrl = 'https://vistapacificcapital.com'; // Update with your actual deployment URL
+          
+          for (const issue of issues.data) {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: `🚀 **Deployed to Production**\n\nLatest changes have been deployed and are now live!\n\n**Deployment URL:** ${deploymentUrl}\n**Commit:** ${context.sha.substring(0, 7)}\n**Deployed:** ${new Date().toISOString()}\n\n**Ready for testing and verification!**`
+            });
+          }

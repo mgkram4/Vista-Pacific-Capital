@@ -1,0 +1,241 @@
+name: Issue Management & Progress Tracking
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+  issue_comment:
+    types: [created]
+  schedule:
+    # Run daily at 9 AM UTC to update issue status
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  manage-issues:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Auto-label New Issues
+      if: github.event.action == 'opened'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          const issue = context.payload.issue;
+          
+          const labels = [];
+          const title = issue.title.toLowerCase();
+          const body = (issue.body || '').toLowerCase();
+          
+          // Auto-categorize based on keywords
+          if (title.includes('bug') || body.includes('error') || body.includes('broken')) {
+            labels.push('bug');
+          }
+          if (title.includes('feature') || title.includes('enhancement') || body.includes('new')) {
+            labels.push('enhancement');
+          }
+          if (title.includes('urgent') || title.includes('critical') || body.includes('urgent')) {
+            labels.push('priority: high');
+          }
+          if (title.includes('ui') || title.includes('design') || body.includes('styling')) {
+            labels.push('ui/ux');
+          }
+          if (title.includes('api') || title.includes('backend') || body.includes('server')) {
+            labels.push('backend');
+          }
+          if (title.includes('form') || body.includes('form')) {
+            labels.push('forms');
+          }
+          if (title.includes('navigation') || title.includes('menu') || body.includes('nav')) {
+            labels.push('navigation');
+          }
+          
+          // Add default labels
+          labels.push('needs-triage');
+          
+          if (labels.length > 0) {
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: labels
+            });
+          }
+          
+          // Add welcome comment for new issues
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: issue.number,
+            body: `👋 **Thanks for opening this issue!**\n\nThis issue has been automatically labeled and is now in our triage queue. We'll review it and provide updates soon.\n\n**Auto-assigned labels:** ${labels.join(', ')}\n\n**Next Steps:**\n- Issue will be reviewed and prioritized\n- Additional labels may be added\n- Assignment to milestone/project board\n\n**Need immediate attention?** Add the \`urgent\` label or mention @markgarcia in a comment.`
+          });
+
+    - name: Update Issue Progress
+      if: github.event.action == 'edited' || github.event_name == 'schedule'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          
+          // Get all open issues
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            per_page: 100
+          });
+          
+          for (const issue of issues.data) {
+            const labels = issue.labels.map(label => label.name);
+            const body = issue.body || '';
+            
+            // Check for progress indicators in issue body
+            const checkboxes = body.match(/- \[[ x]\]/g) || [];
+            const completedCheckboxes = body.match(/- \[x\]/g) || [];
+            
+            if (checkboxes.length > 0) {
+              const progress = Math.round((completedCheckboxes.length / checkboxes.length) * 100);
+              
+              // Update progress label
+              const progressLabels = labels.filter(label => label.startsWith('progress:'));
+              
+              let newProgressLabel = '';
+              if (progress === 0) newProgressLabel = 'progress: 0%';
+              else if (progress < 25) newProgressLabel = 'progress: 1-25%';
+              else if (progress < 50) newProgressLabel = 'progress: 25-50%';
+              else if (progress < 75) newProgressLabel = 'progress: 50-75%';
+              else if (progress < 100) newProgressLabel = 'progress: 75-99%';
+              else newProgressLabel = 'progress: 100%';
+              
+              // Remove old progress labels
+              for (const oldLabel of progressLabels) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    name: oldLabel
+                  });
+                } catch (error) {
+                  console.log(`Could not remove label ${oldLabel}: ${error.message}`);
+                }
+              }
+              
+              // Add new progress label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: [newProgressLabel]
+              });
+              
+              // If 100% complete, suggest closing
+              if (progress === 100 && !labels.includes('ready-to-close')) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  labels: ['ready-to-close']
+                });
+                
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `🎉 **All tasks completed!**\n\nThis issue appears to be 100% complete based on the checkboxes. Consider closing this issue if all work is finished.\n\n**Progress:** ${completedCheckboxes.length}/${checkboxes.length} tasks completed`
+                });
+              }
+            }
+          }
+
+    - name: Generate Daily Issue Report
+      if: github.event_name == 'schedule'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context, github } = require('@actions/github');
+          
+          // Get issue statistics
+          const openIssues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            per_page: 100
+          });
+          
+          const closedIssues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'closed',
+            since: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // Last 24 hours
+            per_page: 100
+          });
+          
+          // Categorize issues
+          const categories = {
+            'bug': 0,
+            'enhancement': 0,
+            'priority: high': 0,
+            'in-progress': 0,
+            'ready-for-testing': 0,
+            'needs-triage': 0
+          };
+          
+          openIssues.data.forEach(issue => {
+            issue.labels.forEach(label => {
+              if (categories.hasOwnProperty(label.name)) {
+                categories[label.name]++;
+              }
+            });
+          });
+          
+          // Create or update daily report issue
+          const reportTitle = `📊 Daily Issue Report - ${new Date().toISOString().split('T')[0]}`;
+          const reportBody = `# Daily Issue Report
+          
+## 📈 Issue Statistics
+- **Open Issues:** ${openIssues.data.length}
+- **Closed Today:** ${closedIssues.data.length}
+
+## 🏷️ Issue Categories
+- **🐛 Bugs:** ${categories['bug']}
+- **✨ Enhancements:** ${categories['enhancement']}
+- **🚨 High Priority:** ${categories['priority: high']}
+- **🔄 In Progress:** ${categories['in-progress']}
+- **🧪 Ready for Testing:** ${categories['ready-for-testing']}
+- **🔍 Needs Triage:** ${categories['needs-triage']}
+
+## 🎯 Action Items
+${categories['needs-triage'] > 0 ? `- ⚠️ ${categories['needs-triage']} issues need triage` : '- ✅ All issues have been triaged'}
+${categories['priority: high'] > 0 ? `- 🚨 ${categories['priority: high']} high priority issues need attention` : '- ✅ No high priority issues'}
+${categories['ready-for-testing'] > 0 ? `- 🧪 ${categories['ready-for-testing']} issues ready for testing` : '- ✅ No issues pending testing'}
+
+## 📋 Recent Activity
+${closedIssues.data.length > 0 ? 
+  closedIssues.data.map(issue => `- ✅ Closed: #${issue.number} - ${issue.title}`).join('\n') : 
+  '- No issues closed in the last 24 hours'
+}
+
+---
+*This report is automatically generated daily at 9 AM UTC*`;
+
+          // Check if today's report already exists
+          const existingReports = await github.rest.search.issuesAndPullRequests({
+            q: `repo:${context.repo.owner}/${context.repo.repo} is:issue "${reportTitle}" in:title`
+          });
+          
+          if (existingReports.data.total_count === 0) {
+            // Create new report
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: reportTitle,
+              body: reportBody,
+              labels: ['report', 'automated']
+            });
+          }

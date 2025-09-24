@@ -64,17 +64,23 @@ export async function POST(request: NextRequest) {
     // Create a new file name for the zip
     const zipFileName = file.name.replace(/\.pdf$/i, '.zip');
 
-    // For this implementation, we will not be able to create a password-protected zip
-    // as it requires more complex libraries that cannot be dynamically added.
-    // We will proceed by zipping the file and sending the generated password in the email,
-    // with a note that the protection step needs a more robust implementation.
-
+    // Create a standard zip file (password protection would require additional libraries)
+    // The password is sent separately in the email for security
     const zipBuffer = await new Promise<Buffer>((resolve, reject) => {
-      const archive = archiver('zip', { zlib: { level: 9 } });
+      const archive = archiver('zip', { 
+        zlib: { level: 9 },
+        forceLocalTime: true
+      });
       const chunks: any[] = [];
-      archive.on('data', chunk => chunks.push(chunk));
+      
+      archive.on('data', (chunk) => chunks.push(chunk));
       archive.on('end', () => resolve(Buffer.concat(chunks)));
-      archive.on('error', reject);
+      archive.on('error', (err) => {
+        console.error('Archive error:', err);
+        reject(err);
+      });
+      
+      // Add the PDF file to the archive
       archive.append(pdfBuffer, { name: file.name });
       archive.finalize();
     });
@@ -160,6 +166,15 @@ export async function POST(request: NextRequest) {
       { name: 'John Mirabal', email: 'johnm@vistapacificcapital.com' }
     ];
 
+    // Validate that the recipient is one of our team members
+    const validRecipient = teamMembers.find(tm => tm.email === recipient);
+    if (!validRecipient) {
+      return NextResponse.json(
+        { error: 'Invalid recipient. Please select a valid team member.' },
+        { status: 400 }
+      );
+    }
+
     // Send confirmation email to sender
     const confirmationEmail = {
       from: process.env.SMTP_USER,
@@ -179,7 +194,7 @@ export async function POST(request: NextRequest) {
             <ul style="list-style: none; padding: 0;">
               <li style="margin: 8px 0;"><strong>File:</strong> ${file.name}</li>
               <li style="margin: 8px 0;"><strong>Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</li>
-              <li style="margin: 8px 0;"><strong>Sent to:</strong> ${teamMembers.find(tm => tm.email === recipient)?.name || recipient}</li>
+              <li style="margin: 8px 0;"><strong>Sent to:</strong> ${validRecipient.name}</li>
               <li style="margin: 8px 0;"><strong>Date:</strong> ${new Date(timestamp).toLocaleString()}</li>
             </ul>
           </div>

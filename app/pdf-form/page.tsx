@@ -206,7 +206,7 @@ export default function FinanceApplicationPage() {
       errors.push({ field: 'businessPhone', message: 'Business phone is required' });
     } else {
       const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-      if (!phoneRegex.test(formatPhoneNumber(businessData.businessPhone))) {
+      if (!phoneRegex.test(businessData.businessPhone)) {
         errors.push({ field: 'businessPhone', message: 'Please enter a valid phone number' });
       }
     }
@@ -350,6 +350,8 @@ export default function FinanceApplicationPage() {
     const formattedPhone = formatPhoneNumber(e.target.value);
     if (formType === 'business') {
       setBusinessData({ ...businessData, businessPhone: formattedPhone });
+    } else if (formType === 'owner') {
+      setOwnerData({ ...ownerData, phone: formattedPhone });
     }
   };
 
@@ -1305,44 +1307,6 @@ export default function FinanceApplicationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="ownerEmail" className={labelClasses}>
-                  Email (optional)
-                </label>
-                <input
-                  id="ownerEmail"
-                  type="email"
-                  value={ownerData.email || ''}
-                  onChange={(e) => setOwnerData({...ownerData, email: e.target.value})}
-                  onFocus={() => setFocused('ownerEmail')}
-                  onBlur={() => setFocused('')}
-                  placeholder="owner@example.com"
-                  className={`${inputClasses} ${focused === 'ownerEmail' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="ownerPhone" className={labelClasses}>
-                  Phone (optional)
-                </label>
-                <input
-                  id="ownerPhone"
-                  type="tel"
-                  value={ownerData.phone || ''}
-                  onChange={(e) => {
-                    const formatted = formatPhoneNumber(e.target.value);
-                    setOwnerData({...ownerData, phone: formatted});
-                  }}
-                  onFocus={() => setFocused('ownerPhone')}
-                  onBlur={() => setFocused('')}
-                  placeholder="(555) 123-4567"
-                  className={`${inputClasses} ${focused === 'ownerPhone' ? 'ring-1 ring-[#0EB5B2]' : ''}`}
-                />
-              </div>
-            </div>
-
-            {/* Third row - SSN / Ownership */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="socialSecurityNumber" className={labelClasses}>
                   Email Address
                 </label>
                 <input
@@ -1365,10 +1329,7 @@ export default function FinanceApplicationPage() {
                   id="ownerPhone"
                   type="tel"
                   value={ownerData.phone || businessData.businessPhone}
-                  onChange={(e) => {
-                    const formattedPhone = formatPhoneNumber(e.target.value);
-                    setOwnerData({...ownerData, phone: formattedPhone});
-                  }}
+                  onChange={(e) => handlePhoneChange(e, 'owner')}
                   onFocus={() => setFocused('ownerPhone')}
                   onBlur={() => setFocused('')}
                   placeholder="(111) 111-1111"
