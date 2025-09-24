@@ -117,13 +117,22 @@ export async function POST(request: Request) {
             ${responseMessage}
           </p>
 
+          ${body.pdfAttachment ? `
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #0EB5B2;">
+            <h3 style="color: #0D3853; margin-top: 0;">📄 Your Application Copy</h3>
+            <p style="color: #0D3853; margin: 0;">
+              A copy of your completed application is attached to this email for your records.
+            </p>
+          </div>
+          ` : ''}
+
           <div style="margin-top: 30px; text-align: center; color: #666; font-size: 12px;">
             <p>Vista Pacific Capital - Equipment Financing</p>
             <p><a href="https://www.vistapacificcapital.com" style="color: #0EB5B2;">www.vistapacificcapital.com</a></p>
           </div>
         </div>
       `,
-      attachments: [] // No PDF attachment for customer email
+      attachments: [] as any[] // Will add PDF attachment below if available
     };
 
     // Generate detailed HTML for team emails
@@ -338,14 +347,20 @@ export async function POST(request: Request) {
       attachments: adminAttachments
     };
     
-    // Check for PDF attachment and add it to the team email
+    // Check for PDF attachment and add it to both customer and team emails
     if (body.pdfAttachment) {
-      teamEmailOptions.attachments.push({
+      const pdfAttachment = {
         filename: `${formData.name.replace(/\s+/g, '_')}_application.pdf`,
         content: body.pdfAttachment,
         encoding: 'base64',
         contentType: 'application/pdf',
-      });
+      };
+      
+      // Add PDF to customer email
+      customerEmail.attachments.push(pdfAttachment);
+      
+      // Add PDF to team email
+      teamEmailOptions.attachments.push(pdfAttachment);
     }
 
 

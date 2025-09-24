@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TEAM_MEMBERS, TeamMember } from '../utils/team-members';
-import Toast from './Toast';
 
 // Define types for form data
 interface BusinessFormData {
@@ -63,57 +62,43 @@ interface FinanceApplicationProps {
 }
 
 export default function FinanceApplication({ teamMember = TEAM_MEMBERS.alan }: FinanceApplicationProps) {
-  // Copy the entire component implementation from pdf-form/page.tsx here
-  // This will be a complete copy of the component with all its functionality
-  const [currentStep, setCurrentStep] = useState<number>(1);
-  const [selectedAgent, setSelectedAgent] = useState<string>('alan');
-  const [businessData, setBusinessData] = useState<BusinessFormData>({
-    amountNeeded: '',
-    email: '',
-    businessName: '',
-    businessType: '',
-    businessPhone: '',
-    businessAddress: '',
-    businessSuite: '',
-    city: '',
-    state: '',
-    zip: '',
-    yearsInBusiness: '',
-    annualRevenue: '',
-    federalTaxId: ''
-  });
+  // Use the PDF form component directly with the team member pre-set
+  const [mounted, setMounted] = useState(false);
 
-  // ... copy the rest of the component implementation here
-  
-  // For brevity, I'm including just the return statement
-  // In a real implementation, you would copy ALL the code from the original component
-  
-  const [loading, setLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
-  const [focused, setFocused] = useState<string>('');
+  useEffect(() => {
+    // Set the team member in session storage when component mounts
+    if (teamMember) {
+      sessionStorage.setItem('teamMember', JSON.stringify(teamMember));
+    }
+    setMounted(true);
+  }, [teamMember]);
 
-  // State for tracking completion status
-  const [businessComplete, setBusinessComplete] = useState<boolean>(false);
-  const [ownerComplete, setOwnerComplete] = useState<boolean>(false);
+  // Don't render until mounted to avoid hydration issues
+  if (!mounted) {
+    return (
+      <div className="max-w-4xl mx-auto pb-10 px-4">
+        <div className="w-full bg-white shadow-xl rounded-xl p-5 md:p-8 border border-gray-100">
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0EB5B2] mx-auto"></div>
+            <p className="mt-2 text-gray-600">Loading application...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  // Add the missing state declaration for showSuccessToast
-  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  // Redirect to the PDF form which has the full functionality
+  if (typeof window !== 'undefined') {
+    window.location.href = '/pdf-form';
+    return null;
+  }
 
   return (
     <div className="max-w-4xl mx-auto pb-10 px-4">
-      {/* Add the Toast component here */}
-      {showSuccessToast && (
-        <Toast
-          message="Your application was submitted successfully!"
-          type="success"
-          isVisible={showSuccessToast}
-          onClose={() => setShowSuccessToast(false)}
-          duration={5000}
-        />
-      )}
-      
       <div className="w-full bg-white shadow-xl rounded-xl p-5 md:p-8 border border-gray-100">
-        {/* ... rest of the component JSX ... */}
+        <div className="text-center py-8">
+          <p className="text-gray-600">Redirecting to application form...</p>
+        </div>
       </div>
     </div>
   );
