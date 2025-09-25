@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { AlertCircle, CheckCircle, FileText, Shield, Upload } from 'lucide-react';
+import { CheckCircle, FileText, Shield, Upload } from 'lucide-react';
 import { useRef, useState } from 'react';
 import PageHeader from "../components/PageHeader";
 
@@ -250,247 +250,56 @@ export default function SecureUpload() {
                     </div>
                 </div>
 
-                {/* Upload Area */}
+                {/* Coming Soon Area */}
                 <div className="max-w-2xl mx-auto">
-                    {uploadStatus.status === 'idle' && (
-                        <div
-                            className={`
-                                relative border-2 border-dashed rounded-lg p-12 text-center transition-all duration-200
-                                ${dragActive 
-                                    ? 'border-[#0EB5B2] bg-[#0EB5B2]/5' 
-                                    : 'border-gray-300 hover:border-[#0EB5B2] hover:bg-gray-50'
-                                }
-                            `}
-                            onDragEnter={handleDrag}
-                            onDragLeave={handleDrag}
-                            onDragOver={handleDrag}
-                            onDrop={handleDrop}
-                        >
-                            <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                Drop your PDF here or click to browse
-                            </h3>
-                            <p className="text-gray-600 mb-6">
-                                Maximum file size: 25MB • PDF format only
-                            </p>
-                            <button
-                                onClick={() => fileInputRef.current?.click()}
+                    <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-12 text-center bg-gray-50">
+                        <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                            Coming Soon
+                        </h3>
+                        <p className="text-gray-600 mb-6 text-lg">
+                            Secure document upload functionality is currently being updated and will be available soon.
+                        </p>
+                        <p className="text-gray-500 text-sm mb-6">
+                            In the meantime, please use our application forms or contact us directly to submit your documents.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a 
+                                href="/apply" 
                                 className="bg-[#0EB5B2] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0D3853] transition-colors duration-200"
                             >
-                                Select PDF File
-                            </button>
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                accept=".pdf"
-                                onChange={handleFileInput}
-                                className="hidden"
-                            />
+                                Start Application
+                            </a>
+                            <a 
+                                href="/contact" 
+                                className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
+                            >
+                                Contact Us
+                            </a>
                         </div>
-                    )}
+                    </div>
 
-                    {uploadStatus.status === 'file-selected' && (
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-8">
-                            <div className="flex items-center justify-center mb-6">
-                                <FileText className="w-8 h-8 text-blue-600 mr-3" />
-                                <div>
-                                    <h3 className="text-lg font-semibold text-blue-900">{uploadStatus.fileName}</h3>
-                                    <p className="text-sm text-blue-600">{uploadStatus.fileSize && formatFileSize(uploadStatus.fileSize)}</p>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-white rounded-lg p-6 space-y-6">
-                                <h4 className="text-xl font-semibold text-gray-900 mb-4">Secure Delivery Details</h4>
-                                
-                                {/* Sender Information */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Your Name *</label>
-                                        <input
-                                            type="text"
-                                            value={formData.senderName}
-                                            onChange={(e) => setFormData(prev => ({ ...prev, senderName: e.target.value }))}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                            placeholder="Your full name"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Your Email *</label>
-                                        <input
-                                            type="email"
-                                            value={formData.senderEmail}
-                                            onChange={(e) => setFormData(prev => ({ ...prev, senderEmail: e.target.value }))}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                            placeholder="your@email.com"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Recipient Selection */}
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-900 mb-2">Send To *</label>
-                                    <select
-                                        value={formData.recipient}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, recipient: e.target.value }))}
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                    >
-                                        <option value="">Select team member...</option>
-                                        {teamMembers.map((member) => (
-                                            <option key={member.email} value={member.email}>
-                                                {member.name} - {member.phone}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                {/* Password Fields */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-900 mb-2">ZIP Password *</label>
-                                        <input
-                                            type="password"
-                                            value={formData.password}
-                                            onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                            placeholder="Minimum 6 characters"
-                                            minLength={6}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Confirm Password *</label>
-                                        <input
-                                            type="password"
-                                            value={formData.confirmPassword}
-                                            onChange={(e) => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                            placeholder="Re-enter password"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Optional Message */}
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-900 mb-2">Message (Optional)</label>
-                                    <textarea
-                                        value={formData.message}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                                        rows={3}
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB5B2] focus:border-transparent"
-                                        placeholder="Add a note about this document..."
-                                    />
-                                </div>
-
-                                {/* Action Buttons */}
-                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <button
-                                        onClick={handleSubmit}
-                                        className="flex-1 bg-[#0EB5B2] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0D3853] transition-colors duration-200"
-                                    >
-                                        Send Secure Document
-                                    </button>
-                                    <button
-                                        onClick={resetUpload}
-                                        className="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
-                                    >
-                                        Choose Different File
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {uploadStatus.status === 'uploading' && (
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 text-center">
-                            <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-                            <h3 className="text-xl font-semibold text-blue-900 mb-2">Uploading Document</h3>
-                            <p className="text-blue-700 mb-2">{uploadStatus.message}</p>
-                            {uploadStatus.fileName && (
-                                <div className="text-sm text-blue-600">
-                                    <p className="font-medium">{uploadStatus.fileName}</p>
-                                    {uploadStatus.fileSize && (
-                                        <p>{formatFileSize(uploadStatus.fileSize)}</p>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    )}
-
-                    {uploadStatus.status === 'success' && (
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                            <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold text-green-900 mb-4">Upload Successful!</h3>
-                            <p className="text-green-700 mb-6">{uploadStatus.message}</p>
-                            {uploadStatus.fileName && (
-                                <div className="bg-white rounded-lg p-4 mb-6 border border-green-200">
-                                    <div className="flex items-center justify-center">
-                                        <FileText className="w-5 h-5 text-green-600 mr-2" />
-                                        <span className="font-medium text-green-900">{uploadStatus.fileName}</span>
-                                        {uploadStatus.fileSize && (
-                                            <span className="text-sm text-green-600 ml-2">
-                                                ({formatFileSize(uploadStatus.fileSize)})
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button
-                                    onClick={resetUpload}
-                                    className="bg-[#0EB5B2] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0D3853] transition-colors duration-200"
-                                >
-                                    Upload Another Document
-                                </button>
-                                <a 
-                                    href="/apply" 
-                                    className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
-                                >
-                                    Start New Application
-                                </a>
-                            </div>
-                        </div>
-                    )}
-
-                    {uploadStatus.status === 'error' && (
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-8 text-center">
-                            <AlertCircle className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold text-red-900 mb-4">Upload Failed</h3>
-                            <p className="text-red-700 mb-6">{uploadStatus.message}</p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button
-                                    onClick={resetUpload}
-                                    className="bg-[#0EB5B2] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0D3853] transition-colors duration-200"
-                                >
-                                    Try Again
-                                </button>
-                                <a 
-                                    href="/contact" 
-                                    className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
-                                >
-                                    Contact Support
-                                </a>
-                            </div>
-                        </div>
-                    )}
+                    {/* All upload functionality removed - showing Coming Soon message above */}
                 </div>
 
-                {/* Instructions */}
+                {/* Alternative Options */}
                 <div className="mt-16 max-w-3xl mx-auto">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">How It Works</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Alternative Ways to Submit Documents</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
                             <div className="w-12 h-12 bg-[#0EB5B2] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Upload Your PDF</h4>
-                            <p className="text-gray-600 text-sm">Drag and drop or select your PDF document (up to 25MB)</p>
+                            <h4 className="font-semibold text-gray-900 mb-2">Complete Application</h4>
+                            <p className="text-gray-600 text-sm">Fill out our comprehensive application form online</p>
                         </div>
                         <div className="text-center">
                             <div className="w-12 h-12 bg-[#0EB5B2] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Automatic Security</h4>
-                            <p className="text-gray-600 text-sm">Your document is encrypted, zipped, and password-protected</p>
+                            <h4 className="font-semibold text-gray-900 mb-2">Email Documents</h4>
+                            <p className="text-gray-600 text-sm">Send your documents directly to your assigned representative</p>
                         </div>
                         <div className="text-center">
                             <div className="w-12 h-12 bg-[#0EB5B2] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Instant Delivery</h4>
-                            <p className="text-gray-600 text-sm">Secure file is immediately sent to our financing team</p>
+                            <h4 className="font-semibold text-gray-900 mb-2">Call Us</h4>
+                            <p className="text-gray-600 text-sm">Speak with our team to discuss your document submission options</p>
                         </div>
                     </div>
                 </div>
