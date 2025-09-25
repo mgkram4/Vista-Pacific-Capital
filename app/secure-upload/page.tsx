@@ -305,7 +305,7 @@ export default function SecureUpload() {
                                 {/* Sender Information */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Your Name *</label>
                                         <input
                                             type="text"
                                             value={formData.senderName}
@@ -315,7 +315,7 @@ export default function SecureUpload() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Your Email *</label>
+                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Your Email *</label>
                                         <input
                                             type="email"
                                             value={formData.senderEmail}
@@ -328,7 +328,7 @@ export default function SecureUpload() {
 
                                 {/* Recipient Selection */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Send To *</label>
+                                    <label className="block text-sm font-semibold text-gray-900 mb-2">Send To *</label>
                                     <select
                                         value={formData.recipient}
                                         onChange={(e) => setFormData(prev => ({ ...prev, recipient: e.target.value }))}
@@ -346,7 +346,7 @@ export default function SecureUpload() {
                                 {/* Password Fields */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">ZIP Password *</label>
+                                        <label className="block text-sm font-semibold text-gray-900 mb-2">ZIP Password *</label>
                                         <input
                                             type="password"
                                             value={formData.password}
@@ -357,7 +357,7 @@ export default function SecureUpload() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
+                                        <label className="block text-sm font-semibold text-gray-900 mb-2">Confirm Password *</label>
                                         <input
                                             type="password"
                                             value={formData.confirmPassword}
@@ -370,7 +370,7 @@ export default function SecureUpload() {
 
                                 {/* Optional Message */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Message (Optional)</label>
+                                    <label className="block text-sm font-semibold text-gray-900 mb-2">Message (Optional)</label>
                                     <textarea
                                         value={formData.message}
                                         onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
