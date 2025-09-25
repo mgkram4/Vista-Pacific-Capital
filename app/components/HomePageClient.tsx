@@ -53,7 +53,7 @@ const services: Service[] = [
     features: ["New & refurbished systems", "Labor & installation included", "Application-only up to $500,000"],
     icon: Factory,
     href: "/equipment/racks",
-    imageSrc: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    imageSrc: "/Images/unsplash/warehouse-equipment.jpg"
   },
   {
     title: "Construction",
@@ -77,7 +77,7 @@ const services: Service[] = [
     features: ["Full production line programs", "International vendors supported", "Installation & shipping included"],
     icon: Cog,
     href: "/equipment/cnc-machine",
-    imageSrc: "https://images.unsplash.com/photo-1526290766257-c015850e4629?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y25jJTIwbWlsbGluZyUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
+    imageSrc: "/Images/unsplash/cnc-machine.jpg"
   },
   {
     title: "Restaurant",
@@ -85,7 +85,7 @@ const services: Service[] = [
     features: ["Furniture, POS & kitchen equipment", "New & used equipment", "All credit types considered"],
     icon: UtensilsCrossed,
     href: "/equipment/restaurant",
-    imageSrc: "https://images.unsplash.com/photo-1735599051587-6c13bb858214?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    imageSrc: "/Images/unsplash/construction-equipment.jpg"
   },
   {
     title: "Transportation",
@@ -93,7 +93,7 @@ const services: Service[] = [
     features: ["Long & short haul", "New & used vehicles", "Dealer or private party sales"],
     icon: Truck,
     href: "/equipment/dump-truck",
-    imageSrc: "https://images.unsplash.com/photo-1610831499021-8d206e50bbb6?q=80&w=3271&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    imageSrc: "/Images/unsplash/medical-equipment.jpg"
   }
 ];
 
