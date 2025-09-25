@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { useState } from 'react';
 import SuccessModal from '../components/SuccessModal';
 
@@ -109,6 +110,238 @@ export default function ApplyCommercialPage() {
     return `${ein.slice(0, 2)}-${ein.slice(2, 9)}`;
   };
 
+  // Generate PDF for commercial application
+  const generateCommercialPDF = async () => {
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage();
+    const { width, height } = page.getSize();
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    
+    // Add header to PDF
+    page.drawText('Vista Pacific Capital - Commercial Finance Application', {
+      x: 50,
+      y: height - 50,
+      size: 20,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    
+    // Add submission date
+    const currentDate = new Date().toLocaleDateString();
+    page.drawText(`Submission Date: ${currentDate}`, {
+      x: 50,
+      y: height - 80,
+      size: 12,
+      font,
+      color: rgb(0.3, 0.3, 0.3),
+    });
+
+    let currentY = height - 120;
+    
+    // Add Vista Pacific Capital contact information
+    page.drawText('Vista Pacific Capital Contact Information', {
+      x: 50,
+      y: currentY,
+      size: 14,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+    
+    const contactInfo = [
+      'Phone: (714) 500-7017',
+      'Website: www.vistapacificcapital.com',
+      'Email: info@vistapacificcapital.com',
+      'Office Hours: Monday - Friday, 8 AM - 5 PM (Pacific Time)'
+    ];
+
+    contactInfo.forEach((info) => {
+      page.drawText(info, {
+        x: 50,
+        y: currentY,
+        size: 11,
+        font,
+        color: rgb(0.2, 0.2, 0.2),
+      });
+      currentY -= 18;
+    });
+
+    currentY -= 20;
+
+    // Contact Information Section
+    page.drawText('Contact Information', {
+      x: 50,
+      y: currentY,
+      size: 16,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+
+    const contactData = [
+      ['Owner Name:', `${formData.ownerFirstName} ${formData.ownerLastName}`],
+      ['Email:', formData.email],
+      ['Phone:', formData.phone],
+    ];
+
+    contactData.forEach(([label, value]) => {
+      page.drawText(`${label} ${value}`, {
+        x: 50,
+        y: currentY,
+        size: 12,
+        font,
+        color: rgb(0, 0, 0),
+      });
+      currentY -= 20;
+    });
+
+    currentY -= 10;
+
+    // Business Information Section
+    page.drawText('Business Information', {
+      x: 50,
+      y: currentY,
+      size: 16,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+
+    const businessData = [
+      ['Business Name:', formData.businessName],
+      ['Business Type:', formData.businessType],
+      ['Years in Business:', formData.yearsInBusiness],
+      ['Annual Revenue:', formData.annualRevenue],
+      ['EIN:', formData.ein],
+      ['Address:', `${formData.businessAddress}, ${formData.city}, ${formData.state} ${formData.zip}`],
+    ];
+
+    businessData.forEach(([label, value]) => {
+      page.drawText(`${label} ${value}`, {
+        x: 50,
+        y: currentY,
+        size: 12,
+        font,
+        color: rgb(0, 0, 0),
+      });
+      currentY -= 20;
+    });
+
+    currentY -= 10;
+
+    // Equipment Information Section
+    page.drawText('Equipment Information', {
+      x: 50,
+      y: currentY,
+      size: 16,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+
+    const equipmentData = [
+      ['Equipment Type:', formData.equipmentType],
+      ['Equipment Cost:', formData.equipmentCost],
+      ['Vendor:', formData.vendor],
+      ['Description:', formData.equipmentDescription],
+    ];
+
+    equipmentData.forEach(([label, value]) => {
+      if (label === 'Description:' && value.length > 50) {
+        // Handle long descriptions by wrapping text
+        page.drawText(`${label}`, {
+          x: 50,
+          y: currentY,
+          size: 12,
+          font,
+          color: rgb(0, 0, 0),
+        });
+        currentY -= 20;
+        
+        const words = value.split(' ');
+        let line = '';
+        words.forEach((word) => {
+          if (line.length + word.length > 70) {
+            page.drawText(line, {
+              x: 70,
+              y: currentY,
+              size: 12,
+              font,
+              color: rgb(0, 0, 0),
+            });
+            currentY -= 20;
+            line = word + ' ';
+          } else {
+            line += word + ' ';
+          }
+        });
+        if (line.trim()) {
+          page.drawText(line.trim(), {
+            x: 70,
+            y: currentY,
+            size: 12,
+            font,
+            color: rgb(0, 0, 0),
+          });
+          currentY -= 20;
+        }
+      } else {
+        page.drawText(`${label} ${value}`, {
+          x: 50,
+          y: currentY,
+          size: 12,
+          font,
+          color: rgb(0, 0, 0),
+        });
+        currentY -= 20;
+      }
+    });
+
+    if (formData.additionalInfo) {
+      currentY -= 10;
+      page.drawText('Additional Information:', {
+        x: 50,
+        y: currentY,
+        size: 16,
+        font: boldFont,
+        color: rgb(0.1, 0.1, 0.4),
+      });
+      currentY -= 25;
+
+      // Handle long additional info by wrapping text
+      const words = formData.additionalInfo.split(' ');
+      let line = '';
+      words.forEach((word) => {
+        if (line.length + word.length > 70) {
+          page.drawText(line, {
+            x: 50,
+            y: currentY,
+            size: 12,
+            font,
+            color: rgb(0, 0, 0),
+          });
+          currentY -= 20;
+          line = word + ' ';
+        } else {
+          line += word + ' ';
+        }
+      });
+      if (line.trim()) {
+        page.drawText(line.trim(), {
+          x: 50,
+          y: currentY,
+          size: 12,
+          font,
+          color: rgb(0, 0, 0),
+        });
+      }
+    }
+
+    const pdfBytes = await pdfDoc.save();
+    return Buffer.from(pdfBytes).toString('base64');
+  };
+
   // Validate form
   const validateForm = (): boolean => {
     const newErrors: FormError[] = [];
@@ -143,6 +376,9 @@ export default function ApplyCommercialPage() {
     setLoading(true);
 
     try {
+      // Generate PDF for commercial application
+      const pdfBase64 = await generateCommercialPDF();
+
       const response = await fetch('/api/submit-finance-application', {
         method: 'POST',
         headers: {
@@ -159,6 +395,7 @@ export default function ApplyCommercialPage() {
           timeInBusiness: formData.yearsInBusiness,
           equipmentType: formData.equipmentType,
           additionalInfo: `Commercial Application - ${formData.additionalInfo}`,
+          pdfAttachment: pdfBase64, // Include PDF for email attachment
         }),
       });
 
