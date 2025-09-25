@@ -167,7 +167,7 @@ export default function SecureUpload() {
                     fileName: result.fileName,
                     fileSize: result.fileSize
                 });
-                // Reset form
+                // Reset form only on success
                 setFormData({
                     file: null,
                     password: '',
@@ -177,6 +177,10 @@ export default function SecureUpload() {
                     senderEmail: '',
                     message: ''
                 });
+                // Reset file input only on success
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = '';
+                }
             } else {
                 throw new Error(result.error || 'Upload failed');
             }
@@ -185,11 +189,7 @@ export default function SecureUpload() {
                 status: 'error',
                 message: error.message || 'Upload failed. Please try again or contact support.'
             });
-        }
-
-        // Reset file input
-        if (fileInputRef.current) {
-            fileInputRef.current.value = '';
+            // Don't reset form data on error - keep user's input
         }
     };
 

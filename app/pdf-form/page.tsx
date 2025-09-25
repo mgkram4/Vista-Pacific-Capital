@@ -448,20 +448,75 @@ export default function FinanceApplicationPage() {
     });
 
     // Add agent information if available
+    let currentY = height - 100;
     if (agent) {
       page.drawText(`Assigned Agent: ${agent.name}`, {
         x: 50,
-        y: height - 100,
+        y: currentY,
         size: 12,
         font,
         color: rgb(0.3, 0.3, 0.3),
       });
+      currentY -= 20;
+      
+      // Add agent contact information
+      if (agent.email) {
+        page.drawText(`Agent Email: ${agent.email}`, {
+          x: 50,
+          y: currentY,
+          size: 12,
+          font,
+          color: rgb(0.3, 0.3, 0.3),
+        });
+        currentY -= 20;
+      }
+      
+      if (agent.phone) {
+        page.drawText(`Agent Phone: ${agent.phone}`, {
+          x: 50,
+          y: currentY,
+          size: 12,
+          font,
+          color: rgb(0.3, 0.3, 0.3),
+        });
+        currentY -= 20;
+      }
     }
     
+    // Add Vista Pacific Capital contact information
+    currentY -= 10;
+    page.drawText('Vista Pacific Capital Contact Information', {
+      x: 50,
+      y: currentY,
+      size: 14,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+    
+    const contactInfo = [
+      'Phone: (714) 500-7017',
+      'Website: www.vistapacificcapital.com',
+      'Email: info@vistapacificcapital.com',
+      'Office Hours: Monday - Friday, 8 AM - 5 PM (Pacific Time)'
+    ];
+    
+    contactInfo.forEach((info) => {
+      page.drawText(info, {
+        x: 50,
+        y: currentY,
+        size: 11,
+        font,
+        color: rgb(0.2, 0.2, 0.2),
+      });
+      currentY -= 18;
+    });
+    
     // Business Information Header
+    currentY -= 20;
     page.drawText('Business Information', {
       x: 50,
-      y: height - 120,
+      y: currentY,
       size: 16,
       font: boldFont,
       color: rgb(0, 0.5, 0),
@@ -481,10 +536,12 @@ export default function FinanceApplicationPage() {
       { label: 'Annual Revenue', value: businessData.annualRevenue || 'N/A' },
     ];
     
+    currentY -= 30;
     businessFields.forEach((field, index) => {
+      const fieldY = currentY - (index * 25);
       page.drawText(`${field.label}:`, {
         x: 50,
-        y: height - 150 - (index * 25),
+        y: fieldY,
         size: 12,
         font: boldFont,
         color: rgb(0.3, 0.3, 0.3),
@@ -492,7 +549,7 @@ export default function FinanceApplicationPage() {
       
       page.drawText(field.value, {
         x: 220,
-        y: height - 150 - (index * 25),
+        y: fieldY,
         size: 12,
         font,
         color: rgb(0, 0, 0),
@@ -500,9 +557,10 @@ export default function FinanceApplicationPage() {
     });
     
     // Owner Information Header
+    currentY = currentY - (businessFields.length * 25) - 30;
     page.drawText('Owner Information', {
       x: 50,
-      y: height - 150 - (businessFields.length * 25) - 30,
+      y: currentY,
       size: 16,
       font: boldFont,
       color: rgb(0, 0.5, 0),
@@ -518,7 +576,7 @@ export default function FinanceApplicationPage() {
       { label: 'Home Address', value: `${ownerData.homeAddress}, ${ownerData.homeSuite ? 'Suite ' + ownerData.homeSuite + ', ' : ''}${ownerData.homeCity}, ${ownerData.homeState} ${ownerData.homeZip}` },
     ];
     
-    const ownerStartY = height - 150 - (businessFields.length * 25) - 60;
+    const ownerStartY = currentY - 30;
     
     ownerFields.forEach((field, index) => {
       page.drawText(`${field.label}:`, {

@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import {
-  CheckCircle,
-  ChevronRight,
-  ThumbsUp
+    CheckCircle,
+    ChevronRight,
+    ThumbsUp
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,7 +68,7 @@ export default function CommercialEquipmentFinancingClient() {
       <PageHeader
         title="Commercial Equipment Financing"
         subtitle="Financing from $500,000 to $50 million"
-        buttonText="Apply for Commercial Financing"
+        buttonText="Apply for $500,000 + Financing"
         buttonHref="/apply-commercial"
         backgroundImage="https://images.unsplash.com/photo-1568056308658-aa380181da25?q=80&w=3003&auto=format&fit=crop&ixlib-rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
@@ -132,13 +132,13 @@ export default function CommercialEquipmentFinancingClient() {
                 </motion.ul>
                 <div className="text-center">
                   <Link
-                    href="/apply"
+                    href="/apply-commercial"
                     className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                       text-white px-6 py-3 rounded-lg font-semibold text-lg 
                       shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                       transform hover:-translate-y-1 transition-all duration-300 w-full justify-center"
                   >
-                    Apply Now
+                    Apply for $500,000 + Financing
                     <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -208,13 +208,13 @@ export default function CommercialEquipmentFinancingClient() {
               Get financing from $500,000 to $50 million with flexible terms and competitive rates
             </p>
             <Link
-              href="/apply"
+              href="/apply-commercial"
               className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                 text-white px-8 py-4 rounded-lg font-semibold text-lg 
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                 transform hover:-translate-y-1 transition-all duration-300"
             >
-              Apply Now
+              Apply for $500,000 + Financing
               <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

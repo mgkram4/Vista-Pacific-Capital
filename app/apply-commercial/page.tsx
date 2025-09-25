@@ -7,12 +7,18 @@ import SuccessModal from '../components/SuccessModal';
 
 // Define types for form data
 interface CommercialFormData {
-  // Business Information
-  businessName: string;
-  contactName: string;
-  title: string;
+  // Owner Information (moved to top as required)
+  ownerFirstName: string;
+  ownerLastName: string;
   email: string;
   phone: string;
+  
+  // Business Information
+  businessName: string;
+  businessType: string;
+  yearsInBusiness: string;
+  annualRevenue: string;
+  ein: string;
   businessAddress: string;
   city: string;
   state: string;
@@ -23,12 +29,6 @@ interface CommercialFormData {
   equipmentCost: string;
   equipmentDescription: string;
   vendor: string;
-  
-  // Business Details
-  businessType: string;
-  yearsInBusiness: string;
-  annualRevenue: string;
-  ein: string;
   
   // Additional Information
   additionalInfo: string;
@@ -42,11 +42,15 @@ interface FormError {
 
 export default function ApplyCommercialPage() {
   const [formData, setFormData] = useState<CommercialFormData>({
-    businessName: '',
-    contactName: '',
-    title: '',
+    ownerFirstName: '',
+    ownerLastName: '',
     email: '',
     phone: '',
+    businessName: '',
+    businessType: '',
+    yearsInBusiness: '',
+    annualRevenue: '',
+    ein: '',
     businessAddress: '',
     city: '',
     state: '',
@@ -55,10 +59,6 @@ export default function ApplyCommercialPage() {
     equipmentCost: '',
     equipmentDescription: '',
     vendor: '',
-    businessType: '',
-    yearsInBusiness: '',
-    annualRevenue: '',
-    ein: '',
     additionalInfo: '',
     agreeToTerms: false
   });
@@ -114,10 +114,11 @@ export default function ApplyCommercialPage() {
     const newErrors: FormError[] = [];
 
     // Required fields validation
-    if (!formData.businessName) newErrors.push({ field: 'businessName', message: 'Business name is required' });
-    if (!formData.contactName) newErrors.push({ field: 'contactName', message: 'Contact name is required' });
+    if (!formData.ownerFirstName) newErrors.push({ field: 'ownerFirstName', message: 'Owner first name is required' });
+    if (!formData.ownerLastName) newErrors.push({ field: 'ownerLastName', message: 'Owner last name is required' });
     if (!formData.email) newErrors.push({ field: 'email', message: 'Email is required' });
     if (!formData.phone) newErrors.push({ field: 'phone', message: 'Phone is required' });
+    if (!formData.businessName) newErrors.push({ field: 'businessName', message: 'Business name is required' });
     if (!formData.equipmentType) newErrors.push({ field: 'equipmentType', message: 'Equipment type is required' });
     if (!formData.equipmentCost) newErrors.push({ field: 'equipmentCost', message: 'Equipment cost is required' });
     if (!formData.businessType) newErrors.push({ field: 'businessType', message: 'Business type is required' });
@@ -151,7 +152,7 @@ export default function ApplyCommercialPage() {
           ...formData,
           isCommercial: true,
           amountNeeded: formData.equipmentCost,
-          name: formData.contactName,
+          name: `${formData.ownerFirstName} ${formData.ownerLastName}`,
           businessPhone: formData.phone,
           address: formData.businessAddress,
           zipCode: formData.zip,
@@ -181,11 +182,15 @@ export default function ApplyCommercialPage() {
         
         // Reset form
         setFormData({
-          businessName: '',
-          contactName: '',
-          title: '',
+          ownerFirstName: '',
+          ownerLastName: '',
           email: '',
           phone: '',
+          businessName: '',
+          businessType: '',
+          yearsInBusiness: '',
+          annualRevenue: '',
+          ein: '',
           businessAddress: '',
           city: '',
           state: '',
@@ -194,10 +199,6 @@ export default function ApplyCommercialPage() {
           equipmentCost: '',
           equipmentDescription: '',
           vendor: '',
-          businessType: '',
-          yearsInBusiness: '',
-          annualRevenue: '',
-          ein: '',
           additionalInfo: '',
           agreeToTerms: false
         });
@@ -254,10 +255,10 @@ export default function ApplyCommercialPage() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Commercial Equipment Financing Application
+              Finance Application $500,000 to $50 million
             </h1>
             <p className="text-xl text-white/90">
-              Streamlined application for financing $500,000 to $50 million
+              Complete the application to start the financing process
             </p>
           </motion.div>
         </div>
@@ -285,7 +286,122 @@ export default function ApplyCommercialPage() {
             </div>
           </div>
 
+          {/* Required Information Note */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <p className="text-sm text-blue-800">
+              <span className="text-red-500 font-bold">*</span> Required information for application submission
+            </p>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Contact Information - Moved to Top */}
+            <section>
+              <h3 className="text-xl font-bold text-[#0D3853] mb-6 border-b border-gray-200 pb-2">
+                Contact Information
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="ownerFirstName" className={labelClasses}>
+                    Owner First Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="ownerFirstName"
+                    type="text"
+                    value={formData.ownerFirstName}
+                    onChange={(e) => setFormData({...formData, ownerFirstName: e.target.value})}
+                    onFocus={() => setFocused('ownerFirstName')}
+                    onBlur={() => setFocused('')}
+                    placeholder="John"
+                    className={`${inputClasses} ${focused === 'ownerFirstName' ? 'ring-2 ring-green-500' : ''} ${
+                      errors.some(error => error.field === 'ownerFirstName') ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {errors.some(error => error.field === 'ownerFirstName') && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.find(error => error.field === 'ownerFirstName')?.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="ownerLastName" className={labelClasses}>
+                    Owner Last Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="ownerLastName"
+                    type="text"
+                    value={formData.ownerLastName}
+                    onChange={(e) => setFormData({...formData, ownerLastName: e.target.value})}
+                    onFocus={() => setFocused('ownerLastName')}
+                    onBlur={() => setFocused('')}
+                    placeholder="Smith"
+                    className={`${inputClasses} ${focused === 'ownerLastName' ? 'ring-2 ring-green-500' : ''} ${
+                      errors.some(error => error.field === 'ownerLastName') ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {errors.some(error => error.field === 'ownerLastName') && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.find(error => error.field === 'ownerLastName')?.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className={labelClasses}>
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onFocus={() => setFocused('email')}
+                    onBlur={() => setFocused('')}
+                    placeholder="john@company.com"
+                    className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-green-500' : ''} ${
+                      errors.some(error => error.field === 'email') ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {errors.some(error => error.field === 'email') && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.find(error => error.field === 'email')?.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className={labelClasses}>
+                    Phone Number <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => {
+                      const formatted = formatPhoneNumber(e.target.value);
+                      setFormData({...formData, phone: formatted});
+                    }}
+                    onFocus={() => setFocused('phone')}
+                    onBlur={() => setFocused('')}
+                    placeholder="(555) 123-4567"
+                    className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-green-500' : ''} ${
+                      errors.some(error => error.field === 'phone') ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {errors.some(error => error.field === 'phone') && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.find(error => error.field === 'phone')?.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </section>
+
             {/* Business Information */}
             <section>
               <h3 className="text-xl font-bold text-[#0D3853] mb-6 border-b border-gray-200 pb-2">
@@ -340,97 +456,6 @@ export default function ApplyCommercialPage() {
                   {errors.some(error => error.field === 'businessType') && (
                     <p className="text-red-500 text-xs mt-1">
                       {errors.find(error => error.field === 'businessType')?.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="contactName" className={labelClasses}>
-                    Contact Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="contactName"
-                    type="text"
-                    value={formData.contactName}
-                    onChange={(e) => setFormData({...formData, contactName: e.target.value})}
-                    onFocus={() => setFocused('contactName')}
-                    onBlur={() => setFocused('')}
-                    placeholder="Your Full Name"
-                    className={`${inputClasses} ${focused === 'contactName' ? 'ring-2 ring-green-500' : ''} ${
-                      errors.some(error => error.field === 'contactName') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  />
-                  {errors.some(error => error.field === 'contactName') && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.find(error => error.field === 'contactName')?.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="title" className={labelClasses}>
-                    Title/Position
-                  </label>
-                  <input
-                    id="title"
-                    type="text"
-                    value={formData.title}
-                    onChange={(e) => setFormData({...formData, title: e.target.value})}
-                    onFocus={() => setFocused('title')}
-                    onBlur={() => setFocused('')}
-                    placeholder="CEO, Owner, etc."
-                    className={`${inputClasses} ${focused === 'title' ? 'ring-2 ring-green-500' : ''}`}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className={labelClasses}>
-                    Email Address <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    onFocus={() => setFocused('email')}
-                    onBlur={() => setFocused('')}
-                    placeholder="you@company.com"
-                    className={`${inputClasses} ${focused === 'email' ? 'ring-2 ring-green-500' : ''} ${
-                      errors.some(error => error.field === 'email') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  />
-                  {errors.some(error => error.field === 'email') && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.find(error => error.field === 'email')?.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className={labelClasses}>
-                    Phone Number <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => {
-                      const formatted = formatPhoneNumber(e.target.value);
-                      setFormData({...formData, phone: formatted});
-                    }}
-                    onFocus={() => setFocused('phone')}
-                    onBlur={() => setFocused('')}
-                    placeholder="(555) 123-4567"
-                    className={`${inputClasses} ${focused === 'phone' ? 'ring-2 ring-green-500' : ''} ${
-                      errors.some(error => error.field === 'phone') ? 'border-red-500' : ''
-                    }`}
-                    required
-                  />
-                  {errors.some(error => error.field === 'phone') && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.find(error => error.field === 'phone')?.message}
                     </p>
                   )}
                 </div>
@@ -670,13 +695,9 @@ export default function ApplyCommercialPage() {
                     <span>Processing...</span>
                   </>
                 ) : (
-                  'Submit Commercial Application'
+                  'Submit Application'
                 )}
               </button>
-              
-              <p className="text-sm text-gray-600 mt-4">
-                <span className="text-red-500">*</span> Required fields
-              </p>
             </div>
           </form>
         </motion.div>
