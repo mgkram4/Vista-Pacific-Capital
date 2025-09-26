@@ -255,12 +255,6 @@ export const formsLinks: EquipmentLink[] = [
         path: '/vendor-form',
         description: 'Apply to become a vendor partner'
     },
-    {
-        topText: 'Secure Upload',
-        bottomText: 'Portal',
-        path: '/secure-upload',
-        description: 'Securely upload documents for your application'
-    }
 ];
 
 // NEW: Tools Links
@@ -276,12 +270,6 @@ export const toolsLinks: EquipmentLink[] = [
         bottomText: 'Calculator',
         path: '/tax-calculator',
         description: 'Section 179 Tax Calculator'
-    },
-    {
-        topText: 'Secure Application',
-        bottomText: 'Submission',
-        path: '/secure-upload',
-        description: 'Securely upload documents for your application'
     },
     {
         topText: 'FAQ',

@@ -160,10 +160,12 @@ export async function POST(request: Request) {
               <td style="padding: 8px 0;"><strong>Address:</strong></td>
               <td style="padding: 8px 0;">${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}</td>
             </tr>
+            ${!body.isCommercial ? `
             <tr>
               <td style="padding: 8px 0;"><strong>Date of Birth:</strong></td>
-              <td style="padding: 8px 0;">${formData.dateOfBirth}</td>
+              <td style="padding: 8px 0;">${formData.dateOfBirth || 'N/A'}</td>
             </tr>
+            ` : ''}
           </table>
         </div>
 
@@ -186,10 +188,18 @@ export async function POST(request: Request) {
               <td style="padding: 8px 0;"><strong>Annual Revenue:</strong></td>
               <td style="padding: 8px 0;">${formData.annualRevenue}</td>
             </tr>
+            ${body.isCommercial && body.ein ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>EIN:</strong></td>
+              <td style="padding: 8px 0;">${body.ein}</td>
+            </tr>
+            ` : ''}
+            ${!body.isCommercial ? `
             <tr>
               <td style="padding: 8px 0;"><strong>Credit Score:</strong></td>
-              <td style="padding: 8px 0;">${formData.creditScore}</td>
+              <td style="padding: 8px 0;">${formData.creditScore || 'N/A'}</td>
             </tr>
+            ` : ''}
           </table>
         </div>
 
@@ -208,14 +218,28 @@ export async function POST(request: Request) {
               <td style="padding: 8px 0;"><strong>Equipment Cost:</strong></td>
               <td style="padding: 8px 0;">${formData.equipmentCost}</td>
             </tr>
+            ${body.isCommercial && body.equipmentDescription ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Equipment Description:</strong></td>
+              <td style="padding: 8px 0;">${body.equipmentDescription}</td>
+            </tr>
+            ` : ''}
+            ${body.isCommercial && body.vendor ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Vendor:</strong></td>
+              <td style="padding: 8px 0;">${body.vendor}</td>
+            </tr>
+            ` : ''}
+            ${!body.isCommercial ? `
             <tr>
               <td style="padding: 8px 0;"><strong>Down Payment:</strong></td>
-              <td style="padding: 8px 0;">${formData.downPayment}</td>
+              <td style="padding: 8px 0;">${formData.downPayment || 'N/A'}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Term Length:</strong></td>
-              <td style="padding: 8px 0;">${formData.termLength}</td>
+              <td style="padding: 8px 0;">${formData.termLength || 'N/A'}</td>
             </tr>
+            ` : ''}
           </table>
         </div>
 
@@ -266,7 +290,7 @@ export async function POST(request: Request) {
                   <tr><td class="field-label">Email:</td><td>${formData.email}</td></tr>
                   <tr><td class="field-label">Phone:</td><td>${formData.phone}</td></tr>
                   <tr><td class="field-label">Address:</td><td>${formData.address}, ${formData.city}, ${formData.state} ${formData.zipCode}</td></tr>
-                  <tr><td class="field-label">Date of Birth:</td><td>${formData.dateOfBirth}</td></tr>
+                  ${!body.isCommercial ? `<tr><td class="field-label">Date of Birth:</td><td>${formData.dateOfBirth || 'N/A'}</td></tr>` : ''}
               </table>
           </div>
 
