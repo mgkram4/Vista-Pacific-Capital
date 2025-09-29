@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import FeatureTabs from '../components/FeatureTabs';
 import PageHeader from '../components/PageHeader';
 
 const fadeInUp = {
@@ -173,7 +172,33 @@ export default function CommercialEquipmentFinancingClient() {
 
       {/* Why Choose Us Section - Teal Accent Background */}
       <section className="bg-gradient-to-br from-[#0EB5B2]/8 via-white to-[#0D3853]/5 py-20">
-        <FeatureTabs />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0D3853] mb-6">Why Choose Us?</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "We Shop the Lenders So You Don’t Have To", content: "We partner with a wide network of lenders to find you the most competitive financing rates and terms, so you don't have to spend your valuable time shopping around." },
+              { title: "We Understand Equipment Financing", content: "Our team specializes in equipment financing. We understand the nuances of the industry and can structure financing solutions that make sense for your business." },
+              { title: "A Built-In Source of Capital", content: "We provide a reliable source of capital, giving you the financial flexibility to acquire the equipment you need to grow your business without tying up your cash reserves." },
+              { title: "We Understand Time is of the Essence", content: "We know that in business, time is money. Our streamlined process ensures fast approvals and funding so you can get your equipment and get to work quickly." },
+              { title: "Fast, Flexible, and Straightforward", content: "Our financing process is designed to be as simple and transparent as possible. We offer flexible terms to match your business's cash flow and financial situation." },
+              { title: "Real People, Real Help", content: "When you work with us, you get a dedicated financing partner. Our team is here to provide personalized support and guidance throughout the entire process." },
+            ].map((feature, index) => (
+              <motion.div key={index} variants={fadeInUp} className="bg-white p-6 rounded-lg shadow-lg border border-gray-200/80">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <CheckCircle className="h-6 w-6 text-[#0EB5B2]" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-[#0D3853]">{feature.title}</h3>
+                    <p className="mt-2 text-base text-[#0D3853]/80">{feature.content}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Section Divider */}

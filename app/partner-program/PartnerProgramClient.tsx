@@ -108,7 +108,7 @@ export default function PartnerProgramClient() {
         title="Partner Program"
         subtitle="Your Trusted Partner, No Matter the Tide"
         buttonText="Start Partnering / Join Us"
-        buttonHref="/vendor-form/"
+        buttonHref="#vendor-form-section"
         backgroundImage="/Images/header4.png"
       />
 
@@ -144,7 +144,7 @@ export default function PartnerProgramClient() {
         </motion.section>
 
         {/* Vendor Partner Form Section */}
-        <motion.section variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
+        <motion.section id="vendor-form-section" variants={fadeInUp} initial="hidden" animate="visible" className="mb-16">
           <h3 className="text-3xl font-bold text-[#0D3853] mb-12 text-center">Start Your Partnership</h3>
           <NewVendorPartnerForm />
         </motion.section>
@@ -182,7 +182,7 @@ export default function PartnerProgramClient() {
               Partner with us and discover how easy equipment financing can be for your business and your customers
             </p>
             <Link
-              href="/vendor-form/"
+              href="#vendor-form-section"
               className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                 text-white px-8 py-4 rounded-lg font-semibold text-lg 
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 

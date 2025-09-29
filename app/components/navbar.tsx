@@ -579,36 +579,6 @@ const AppNavBar: React.FC = () => {
                 className="flex items-center space-x-4 bg-white/98 p-1 rounded-full shadow-xl border border-gray-200"
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="relative" onMouseEnter={() => handleMouseEnter('forms')} >
-                  <NavLink
-                    link={formsMainLink}
-                    isActive={openDropdown === 'forms' || formsLinks.some(l => l.path === pathname)}
-                    isDropdownTrigger
-                    isDropdownOpen={openDropdown === 'forms'}
-                    onClick={() => setOpenDropdown(openDropdown === 'forms' ? null : 'forms')}
-                  />
-                  <AnimatePresence>
-                    {openDropdown === 'forms' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full mt-3 w-80 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
-                      >
-                        {formsLinks.map((link) => (
-                           <NavLink
-                                key={link.path}
-                                link={link}
-                                isActive={pathname === link.path}
-                                onClick={() => setOpenDropdown(null)}
-                                className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                              />
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
                 <div className="relative" onMouseEnter={() => handleMouseEnter('equipmentFinancing')} >
                   <NavLink
                     link={equipmentFinancingMainLink}
@@ -669,6 +639,35 @@ const AppNavBar: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
+                <div className="relative" onMouseEnter={() => handleMouseEnter('forms')} >
+                  <NavLink
+                    link={formsMainLink}
+                    isActive={openDropdown === 'forms' || formsLinks.some(l => l.path === pathname)}
+                    isDropdownTrigger
+                    isDropdownOpen={openDropdown === 'forms'}
+                    onClick={() => setOpenDropdown(openDropdown === 'forms' ? null : 'forms')}
+                  />
+                  <AnimatePresence>
+                    {openDropdown === 'forms' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full mt-3 w-80 bg-white rounded-xl shadow-2xl p-4 z-10 border border-gray-200"
+                      >
+                        {formsLinks.map((link) => (
+                           <NavLink
+                                key={link.path}
+                                link={link}
+                                isActive={pathname === link.path}
+                                onClick={() => setOpenDropdown(null)}
+                                className="block w-full text-left px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                              />
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 <div className="relative" onMouseEnter={() => handleMouseEnter('tools')} >
                   <NavLink

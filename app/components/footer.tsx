@@ -22,23 +22,20 @@ export default function Footer() {
                 </div>
               </Link>
             </div>
-            <p className="text-sm text-[#B3B3B3]">© 2025 Vista Pacific Capital</p>
-            <Link 
-              href="/privacy-policy" 
-              className="block text-sm text-[#B3B3B3] hover:text-[#0EB5B2] transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <div className="space-y-1 text-sm text-[#B3B3B3]">
-              <p className="font-medium text-white">Office Hours:</p>
-              <p>Monday - Friday: 8:00 AM - 6:00 PM PST</p>
-            </div>
             <a 
               href="tel:+17145007017" 
               className="block text-lg font-medium text-white hover:text-[#0EB5B2] transition-colors"
             >
               (714) 500-7017
             </a>
+            <div className="space-y-1 text-sm text-[#B3B3B3]">
+              <p className="font-medium text-white">Office Hours:</p>
+              <p>Monday – Friday, 8 a.m. – 5:00 p.m. Pacific Time</p>
+            </div>
+            <div className="space-y-1 text-sm text-[#B3B3B3]">
+              <p className="font-medium text-white">Office Location:</p>
+              <p>180 N. Riverview Drive, Suite 360, Anaheim, CA 92808</p>
+            </div>
           </div>
 
           {/* Center Column - Professional Associations */}
@@ -98,13 +95,22 @@ export default function Footer() {
               </svg>
               <span className="text-sm">LinkedIn</span>
             </a>
-            <div className="pt-4 text-xs text-[#B3B3B3]">
+            <div className="pt-4 space-y-2 text-xs text-[#B3B3B3]">
               <Link 
                 href="/terms-of-service" 
-                className="hover:text-[#0EB5B2] transition-colors"
+                className="block hover:text-[#0EB5B2] transition-colors"
               >
                 Terms of Service
               </Link>
+              <Link 
+                href="/privacy-policy" 
+                className="block hover:text-[#0EB5B2] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </div>
+            <div className="pt-4 text-xs text-[#B3B3B3]">
+              <p>© 2025 Vista Pacific Capital</p>
             </div>
           </div>
         </div>

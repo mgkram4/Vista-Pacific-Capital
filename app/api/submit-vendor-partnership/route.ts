@@ -1,6 +1,4 @@
 // app/api/submit-vendor-partnership/route.ts
-import VendorPartnershipPDF from '@/app/components/VendorPartnershipPDF';
-import { renderToStream } from '@react-pdf/renderer';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { Readable } from 'stream';
@@ -90,10 +88,6 @@ export async function POST(request: Request) {
 
     console.log('Preparing to send vendor partnership emails');
 
-    // Generate PDF
-    const pdfStream = await renderToStream(VendorPartnershipPDF({ formData }));
-    const pdfBuffer = await streamToBuffer(pdfStream as Readable);
-
     // Format the submission date
     const submissionDate = new Date().toLocaleDateString('en-US', {
       year: 'numeric',
@@ -172,13 +166,6 @@ export async function POST(request: Request) {
             </p>
           </div>
 
-          <div style="margin-top: 20px; padding: 15px; background-color: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 5px;">
-            <h3 style="color: #856404; margin-top: 0;">📎 Your Partnership Application</h3>
-            <p style="margin: 0; font-size: 14px; color: #856404;">
-              A copy of your partnership application is attached to this email for your records.
-            </p>
-          </div>
-
           <div style="margin-top: 20px; padding: 20px; background-color: #f7f9fc; border-radius: 5px;">
             <h3 style="color: #0D3853; margin-top: 0;">What to Expect Next</h3>
             <ul style="color: #0D3853; line-height: 1.6;">
@@ -190,14 +177,6 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
-      attachments: [
-        {
-          content: pdfBuffer,
-          filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_application.pdf`,
-          contentType: 'application/pdf',
-          contentDisposition: 'attachment' as const,
-        }
-      ]
     };
 
     // Format detailed HTML for team emails
@@ -292,12 +271,6 @@ export async function POST(request: Request) {
 
     // Common attachment for team emails
     const adminAttachments: any[] = [
-      {
-        content: pdfBuffer,
-        filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_inquiry.pdf`,
-        contentType: 'application/pdf',
-        contentDisposition: 'attachment' as const,
-      },
     ];
 
     // Email to team member
