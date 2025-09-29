@@ -371,7 +371,7 @@ export default function NewVendorPartnerForm({ teamMember = TEAM_MEMBERS.alan }:
           </div>
           <div className="text-center">
             <h1 className="text-xl font-bold text-gray-800 mb-1">Vendor Partner Form</h1>
-            <p className="text-gray-600 text-sm font-medium">Required information</p>
+            <p className="text-gray-600 text-sm font-medium">Required information *</p>
           </div>
         </div>
 
