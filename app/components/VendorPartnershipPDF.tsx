@@ -92,6 +92,23 @@ const VendorPartnershipPDF = ({ formData }: VendorPartnershipPDFProps) => (
           {formData.additionalInfo && <Text style={styles.text}><Text style={styles.label}>Additional Info:</Text> {formData.additionalInfo}</Text>}
         </View>
       )}
+
+      <View style={styles.divider} />
+
+      <View style={styles.section}>
+        <Text style={styles.subHeading}>Vista Pacific Capital Contact</Text>
+        <Text style={styles.text}><Text style={styles.label}>Contact Person:</Text> Alan Johnson</Text>
+        <Text style={styles.text}><Text style={styles.label}>Title:</Text> Senior Equipment Finance Specialist</Text>
+        <Text style={styles.text}><Text style={styles.label}>Email:</Text> alanj@vistapacificcapital.com</Text>
+        <Text style={styles.text}><Text style={styles.label}>Phone:</Text> (714) 500-7017</Text>
+        <Text style={styles.text}><Text style={styles.label}>Website:</Text> www.vistapacificcapital.com</Text>
+      </View>
+
+      <View style={styles.divider} />
+
+      <View style={styles.section}>
+        <Text style={styles.text}>Thank you for your interest in partnering with Vista Pacific Capital. Alan will review your inquiry and contact you within 1-2 business days to discuss next steps.</Text>
+      </View>
     </Page>
   </Document>
 );

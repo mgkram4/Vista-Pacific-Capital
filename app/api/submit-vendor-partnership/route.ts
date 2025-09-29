@@ -195,7 +195,7 @@ export async function POST(request: Request) {
           content: pdfBuffer,
           filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_application.pdf`,
           contentType: 'application/pdf',
-          contentDisposition: 'attachment',
+          contentDisposition: 'attachment' as const,
         }
       ]
     };
@@ -296,7 +296,7 @@ export async function POST(request: Request) {
         content: pdfBuffer,
         filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_inquiry.pdf`,
         contentType: 'application/pdf',
-        contentDisposition: 'attachment',
+        contentDisposition: 'attachment' as const,
       },
     ];
 
