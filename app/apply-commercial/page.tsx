@@ -139,6 +139,34 @@ export default function ApplyCommercialPage() {
 
     let currentY = height - 120;
     
+    // Add assigned agent information (always Alan for commercial applications)
+    page.drawText('Assigned Agent: Alan Johnson', {
+      x: 50,
+      y: currentY,
+      size: 14,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+    currentY -= 25;
+    
+    const agentInfo = [
+      'Direct Phone: (714) 500-7017',
+      'Email: alanj@vistapacificcapital.com',
+    ];
+
+    agentInfo.forEach((info) => {
+      page.drawText(info, {
+        x: 50,
+        y: currentY,
+        size: 11,
+        font,
+        color: rgb(0.2, 0.2, 0.2),
+      });
+      currentY -= 18;
+    });
+
+    currentY -= 20;
+    
     // Add Vista Pacific Capital contact information
     page.drawText('Vista Pacific Capital Contact Information', {
       x: 50,
@@ -150,7 +178,7 @@ export default function ApplyCommercialPage() {
     currentY -= 25;
     
     const contactInfo = [
-      'Phone: (714) 500-7017',
+      'Main Phone: (714) 500-7017',
       'Website: www.vistapacificcapital.com',
       'Email: info@vistapacificcapital.com',
       'Office Hours: Monday - Friday, 8 AM - 5 PM (Pacific Time)'

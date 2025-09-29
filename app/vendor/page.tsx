@@ -104,7 +104,7 @@ export default function VendorPrograms() {
         title="Vendor Programs"
         subtitle="Focus on the selling, we'll handle the financing"
         buttonText="Become a Partner"
-        buttonHref="/apply"
+        buttonHref="/partner-program"
         backgroundImage="/Images/office.png"
       />
 
@@ -196,7 +196,7 @@ export default function VendorPrograms() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Link href="/vendor-form/" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+              <Link href="/partner-program" className="inline-flex items-center bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
                 text-white px-8 py-4 rounded-lg font-semibold text-lg 
                 shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
                 transform hover:-translate-y-1 transition-all duration-300">

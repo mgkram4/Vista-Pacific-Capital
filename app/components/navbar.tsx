@@ -252,7 +252,7 @@ export const formsLinks: EquipmentLink[] = [
     {
         topText: 'Vendor Partner',
         bottomText: 'Application',
-        path: '/vendor-form',
+        path: '/partner-program',
         description: 'Apply to become a vendor partner'
     },
 ];
