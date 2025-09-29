@@ -115,7 +115,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // Email to vendor (no attachment)
+    // Email to vendor (with PDF attachment)
     const vendorEmail = {
       to: formData.email,
       from: 'alanj@vistapacificcapital.com',
@@ -172,7 +172,14 @@ export async function POST(request: Request) {
             </p>
           </div>
 
-          <div style="margin-top: 30px; padding: 20px; background-color: #f7f9fc; border-radius: 5px;">
+          <div style="margin-top: 20px; padding: 15px; background-color: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 5px;">
+            <h3 style="color: #856404; margin-top: 0;">📎 Your Partnership Application</h3>
+            <p style="margin: 0; font-size: 14px; color: #856404;">
+              A copy of your partnership application is attached to this email for your records.
+            </p>
+          </div>
+
+          <div style="margin-top: 20px; padding: 20px; background-color: #f7f9fc; border-radius: 5px;">
             <h3 style="color: #0D3853; margin-top: 0;">What to Expect Next</h3>
             <ul style="color: #0D3853; line-height: 1.6;">
               <li>Initial consultation call within 1-2 business days</li>
@@ -183,7 +190,14 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
-      attachments: [] // No attachments for the vendor
+      attachments: [
+        {
+          content: pdfBuffer,
+          filename: `${formData.companyName.replace(/\s+/g, '_')}_partnership_application.pdf`,
+          contentType: 'application/pdf',
+          contentDisposition: 'attachment',
+        }
+      ]
     };
 
     // Format detailed HTML for team emails

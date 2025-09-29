@@ -106,11 +106,17 @@ export async function POST(request: Request) {
     const customerEmail = {
       to: formData.email,
       from: contactEmail,
-      subject: 'Thank You for Your Finance Application - Vista Pacific Capital',
+      subject: `Thank You for Your Finance Application - ${contactName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #0D3853;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #0EB5B2; margin-bottom: 10px;">Vista Pacific Capital</h1>
+            <p style="color: #0D3853; font-size: 18px; font-weight: 600; margin: 0;">Your Finance Specialist: ${contactName}</p>
+          </div>
+
+          <div style="background-color: #0EB5B2; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <h2 style="margin: 0 0 10px 0; font-size: 24px;">Application Received!</h2>
+            <p style="margin: 0; font-size: 16px;">Submitted on ${submissionDate}</p>
           </div>
 
           <p style="font-size: 16px; line-height: 1.5; margin-bottom: 25px;">
@@ -121,10 +127,27 @@ export async function POST(request: Request) {
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #0EB5B2;">
             <h3 style="color: #0D3853; margin-top: 0;">📄 Your Application Copy</h3>
             <p style="color: #0D3853; margin: 0;">
-              A copy of your completed application is attached to this email for your records.
+              A copy of your completed application is attached to this email for your records. This application includes your assigned finance specialist information.
             </p>
           </div>
           ` : ''}
+
+          <div style="background-color: #F2F2F2; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0D3853; margin-top: 0;">Your Finance Specialist</h3>
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+              <div style="background-color: #0EB5B2; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; margin-right: 15px;">
+                ${contactName.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div>
+                <p style="margin: 0; font-size: 18px; font-weight: 600; color: #0D3853;">${contactName}</p>
+                <p style="margin: 0; color: #666; font-size: 14px;">Equipment Finance Specialist</p>
+              </div>
+            </div>
+            <p style="margin: 0; color: #0D3853;">
+              📧 <a href="mailto:${contactEmail}" style="color: #0EB5B2; text-decoration: none;">${contactEmail}</a><br>
+              📞 <a href="tel:${contactPhone.replace(/[^\d]/g, '')}" style="color: #0EB5B2; text-decoration: none;">${contactPhone}</a>
+            </p>
+          </div>
 
           <div style="margin-top: 30px; text-align: center; color: #666; font-size: 12px;">
             <p>Vista Pacific Capital - Equipment Financing</p>
@@ -368,23 +391,30 @@ export async function POST(request: Request) {
       from: 'alanj@vistapacificcapital.com',
       subject: `New Finance Application - ${formData.name}`,
       html: detailedHtml,
-      attachments: adminAttachments
+      attachments: [] as any[]
     };
     
     // Check for PDF attachment and add it to both customer and team emails
     if (body.pdfAttachment) {
-      const pdfAttachment = {
+      const customerPdfAttachment = {
+        filename: `${formData.name.replace(/\s+/g, '_')}_application_${contactName.replace(/\s+/g, '_')}.pdf`,
+        content: body.pdfAttachment,
+        encoding: 'base64',
+        contentType: 'application/pdf',
+      };
+      
+      const teamPdfAttachment = {
         filename: `${formData.name.replace(/\s+/g, '_')}_application.pdf`,
         content: body.pdfAttachment,
         encoding: 'base64',
         contentType: 'application/pdf',
       };
       
-      // Add PDF to customer email
-      customerEmail.attachments.push(pdfAttachment);
+      // Add PDF to customer email (with agent name in filename)
+      customerEmail.attachments.push(customerPdfAttachment);
       
-      // Add PDF to team email
-      teamEmailOptions.attachments.push(pdfAttachment);
+      // Add PDF to team email (standard filename)
+      teamEmailOptions.attachments.push(teamPdfAttachment);
     }
 
 
