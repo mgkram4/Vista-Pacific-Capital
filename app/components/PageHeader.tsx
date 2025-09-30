@@ -11,6 +11,7 @@ interface PageHeaderProps {
   subtitle: string;
   buttonText?: string;
   buttonHref?: string;
+  onButtonClick?: () => void;
   backgroundImage?: string;
   highlightWord?: string; // Optional word to highlight in orange
 }
@@ -20,6 +21,7 @@ export default function PageHeader({
   subtitle,
   buttonText = "Apply Now",
   buttonHref = "/apply",
+  onButtonClick,
   backgroundImage = "/Images/bg-wave2.png",
   highlightWord
 }: PageHeaderProps) {
@@ -74,16 +76,29 @@ export default function PageHeader({
             <p className={`${HERO_SUBHEAD} text-white lg:text-[#B3B3B3] mb-8`}>
               {subtitle}
             </p>
-            <Link
-              href={buttonHref}
-              className="flex w-full max-w-[300px] mx-auto items-center justify-center lg:inline-flex lg:w-auto lg:max-w-none lg:mx-0 bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
-                text-white px-8 py-4 rounded-lg font-semibold text-lg 
-                shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
-                transform hover:-translate-y-1 transition-all duration-300"
-            >
-              {buttonText}
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
+            {onButtonClick ? (
+              <button
+                onClick={onButtonClick}
+                className="flex w-full max-w-[300px] mx-auto items-center justify-center lg:inline-flex lg:w-auto lg:max-w-none lg:mx-0 bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                {buttonText}
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </button>
+            ) : (
+              <Link
+                href={buttonHref}
+                className="flex w-full max-w-[300px] mx-auto items-center justify-center lg:inline-flex lg:w-auto lg:max-w-none lg:mx-0 bg-gradient-to-r from-[#FF6B35] to-[#ff825c] hover:from-[#ff825c] hover:to-[#FF6B35] 
+                  text-white px-8 py-4 rounded-lg font-semibold text-lg 
+                  shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40 
+                  transform hover:-translate-y-1 transition-all duration-300"
+              >
+                {buttonText}
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Link>
+            )}
           </motion.div>
         </div>
 

@@ -1,10 +1,12 @@
 // app/api/submit-vendor-partnership/route.ts
+import VendorPartnershipPDF from '@/app/components/VendorPartnershipPDF';
+import { renderToStream } from '@react-pdf/renderer';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { Readable } from 'stream';
 
 // Nodemailer transporter setup
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransporter({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT),
   secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false for other ports
@@ -15,18 +17,32 @@ const transporter = nodemailer.createTransport({
 });
 
 interface VendorPartnershipData {
-  companyName: string;
-  contactName: string;
-  email: string;
-  phone: string;
-  website: string;
-  equipmentType: string;
-  averageTicketSize: string;
-  monthlyDeals: string;
+  businessName: string;
+  contactPersonFirstName: string;
+  contactPersonLastName: string;
+  businessAddress: string;
+  phoneNumber: string;
+  emailAddress: string;
+  websiteUrl: string;
   yearsInBusiness: string;
-  currentFinancingPartners: string;
-  partnershipGoals: string;
-  additionalInfo: string;
+  numberOfSalesReps: string;
+  typesOfEquipmentSold: string;
+  newOrUsedEquipment: string;
+  averageTicketLowPrice: string;
+  averageTicketHighPrice: string;
+  manufacturerInformation: string;
+  averageLeadTime: string;
+  termsOfPayment: string;
+  currentlyOfferFinancing: string;
+  financingDescription: string;
+  currentCustomerLookingForFinancing: boolean;
+  lookingForInformationAboutPrograms: boolean;
+  wantToAddFinancingTabToWebsite: boolean;
+  lookingForCoBranding: boolean;
+  lookingForMeetingWithSalesStaff: boolean;
+  additionalInformation: string;
+  contactName: string;
+  averageTicketSize: string;
 }
 
 // Helper function to convert stream to buffer
@@ -67,26 +83,20 @@ export async function POST(request: Request) {
     const body = await request.json();
     console.log('Received vendor partnership data:', body);
 
-    const { companyName, contactName, email, phone, website, equipmentType, averageTicketSize, monthlyDeals, yearsInBusiness, currentFinancingPartners, partnershipGoals, additionalInfo, submissionAgent } = body;
+    // Format phone number
+    const formattedPhone = formatPhoneNumber(body.phoneNumber || '');
 
-    const formattedPhone = formatPhoneNumber(phone);
-
+    // Prepare form data for PDF generation
     const formData: VendorPartnershipData = {
-      companyName,
-      contactName,
-      email,
-      phone: formattedPhone,
-      website,
-      equipmentType,
-      averageTicketSize,
-      monthlyDeals,
-      yearsInBusiness,
-      currentFinancingPartners,
-      partnershipGoals,
-      additionalInfo,
+      ...body,
+      phoneNumber: formattedPhone,
     };
 
     console.log('Preparing to send vendor partnership emails');
+
+    // Generate PDF
+    const pdfStream = await renderToStream(VendorPartnershipPDF({ formData }));
+    const pdfBuffer = await streamToBuffer(pdfStream as Readable);
 
     // Format the submission date
     const submissionDate = new Date().toLocaleDateString('en-US', {
@@ -99,11 +109,11 @@ export async function POST(request: Request) {
     let teamEmailAddress = 'alanj@vistapacificcapital.com'; // Default to Alan
     let teamMemberName = 'Alan Johnson';
     
-    if (submissionAgent && submissionAgent.email) {
-      if (submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
+    if (body.submissionAgent && body.submissionAgent.email) {
+      if (body.submissionAgent.email.toLowerCase() === 'johnm@vistapacificcapital.com') {
         teamEmailAddress = 'johnm@vistapacificcapital.com';
         teamMemberName = 'John Mirabal';
-      } else if (submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
+      } else if (body.submissionAgent.email.toLowerCase() === 'ianw@vistapacificcapital.com') {
         teamEmailAddress = 'ianw@vistapacificcapital.com';
         teamMemberName = 'Ian Whitelaw';
       }
@@ -111,7 +121,7 @@ export async function POST(request: Request) {
 
     // Email to vendor (with PDF attachment)
     const vendorEmail = {
-      to: formData.email,
+      to: formData.emailAddress,
       from: 'alanj@vistapacificcapital.com',
       subject: 'Thank You for Your Partnership Interest - Vista Pacific Capital',
       html: `
@@ -127,7 +137,7 @@ export async function POST(request: Request) {
             <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
               <tr>
                 <td style="padding: 8px 0; width: 40%;"><strong>Company:</strong></td>
-                <td style="padding: 8px 0;">${formData.companyName}</td>
+                <td style="padding: 8px 0;">${formData.businessName}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0;"><strong>Contact:</strong></td>
@@ -135,15 +145,15 @@ export async function POST(request: Request) {
               </tr>
               <tr>
                 <td style="padding: 8px 0;"><strong>Equipment Type:</strong></td>
-                <td style="padding: 8px 0;">${formData.equipmentType}</td>
+                <td style="padding: 8px 0;">${formData.typesOfEquipmentSold}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0;"><strong>Average Ticket Size:</strong></td>
                 <td style="padding: 8px 0;">${formData.averageTicketSize}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0;"><strong>Monthly Deals:</strong></td>
-                <td style="padding: 8px 0;">${formData.monthlyDeals}</td>
+                <td style="padding: 8px 0;"><strong>Sales Reps:</strong></td>
+                <td style="padding: 8px 0;">${formData.numberOfSalesReps}</td>
               </tr>
               ${formData.yearsInBusiness ? `
               <tr>
@@ -162,7 +172,14 @@ export async function POST(request: Request) {
             <p style="margin: 0; font-size: 14px;">
               If you have any questions, please contact ${teamMemberName} at 
               <a href="mailto:${teamEmailAddress}" style="color: white; text-decoration: underline;">${teamEmailAddress}</a> 
-              ${submissionAgent && submissionAgent.phone ? `or call ${submissionAgent.phone}` : 'or call (714) 500-7017'}.
+              ${body.submissionAgent && body.submissionAgent.phone ? `or call ${body.submissionAgent.phone}` : 'or call (714) 500-7017'}.
+            </p>
+          </div>
+
+          <div style="margin-top: 20px; padding: 15px; background-color: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 5px;">
+            <h3 style="color: #856404; margin-top: 0;">📎 Your Partnership Application</h3>
+            <p style="margin: 0; font-size: 14px; color: #856404;">
+              A copy of your partnership application is attached to this email for your records.
             </p>
           </div>
 
@@ -177,6 +194,14 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
+      attachments: [
+        {
+          content: pdfBuffer,
+          filename: `${formData.businessName.replace(/\s+/g, '_')}_partnership_application.pdf`,
+          contentType: 'application/pdf',
+          contentDisposition: 'attachment' as const,
+        }
+      ]
     };
 
     // Format detailed HTML for team emails
@@ -190,7 +215,7 @@ export async function POST(request: Request) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; width: 250px;"><strong>Company Name:</strong></td>
-              <td style="padding: 8px 0;">${formData.companyName}</td>
+              <td style="padding: 8px 0;">${formData.businessName}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Contact Name:</strong></td>
@@ -198,16 +223,20 @@ export async function POST(request: Request) {
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Email:</strong></td>
-              <td style="padding: 8px 0;">${formData.email}</td>
+              <td style="padding: 8px 0;">${formData.emailAddress}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Phone:</strong></td>
-              <td style="padding: 8px 0;">${formData.phone}</td>
+              <td style="padding: 8px 0;">${formData.phoneNumber}</td>
             </tr>
-            ${formData.website ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Business Address:</strong></td>
+              <td style="padding: 8px 0;">${formData.businessAddress}</td>
+            </tr>
+            ${formData.websiteUrl ? `
             <tr>
               <td style="padding: 8px 0;"><strong>Website:</strong></td>
-              <td style="padding: 8px 0;"><a href="${formData.website}" target="_blank">${formData.website}</a></td>
+              <td style="padding: 8px 0;"><a href="${formData.websiteUrl}" target="_blank">${formData.websiteUrl}</a></td>
             </tr>
             ` : ''}
             ${formData.yearsInBusiness ? `
@@ -224,36 +253,67 @@ export async function POST(request: Request) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; width: 250px;"><strong>Equipment Type:</strong></td>
-              <td style="padding: 8px 0;">${formData.equipmentType}</td>
+              <td style="padding: 8px 0;">${formData.typesOfEquipmentSold}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0;"><strong>Average Ticket Size:</strong></td>
               <td style="padding: 8px 0;">${formData.averageTicketSize}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0;"><strong>Monthly Deals Volume:</strong></td>
-              <td style="padding: 8px 0;">${formData.monthlyDeals}</td>
+              <td style="padding: 8px 0;"><strong>Sales Representatives:</strong></td>
+              <td style="padding: 8px 0;">${formData.numberOfSalesReps}</td>
             </tr>
-            ${formData.currentFinancingPartners ? `
             <tr>
-              <td style="padding: 8px 0;"><strong>Current Partners:</strong></td>
-              <td style="padding: 8px 0;">${formData.currentFinancingPartners}</td>
+              <td style="padding: 8px 0;"><strong>New/Used Equipment:</strong></td>
+              <td style="padding: 8px 0;">${formData.newOrUsedEquipment}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0;"><strong>Manufacturer/Reseller:</strong></td>
+              <td style="padding: 8px 0;">${formData.manufacturerInformation}</td>
+            </tr>
+            ${formData.averageLeadTime ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Average Lead Time:</strong></td>
+              <td style="padding: 8px 0;">${formData.averageLeadTime}</td>
+            </tr>
+            ` : ''}
+            ${formData.termsOfPayment ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Terms of Payment:</strong></td>
+              <td style="padding: 8px 0;">${formData.termsOfPayment}</td>
+            </tr>
+            ` : ''}
+            ${formData.currentlyOfferFinancing ? `
+            <tr>
+              <td style="padding: 8px 0;"><strong>Currently Offers Financing:</strong></td>
+              <td style="padding: 8px 0;">${formData.currentlyOfferFinancing}</td>
             </tr>
             ` : ''}
           </table>
         </div>
 
-        ${formData.partnershipGoals ? `
+        ${formData.financingDescription ? `
         <div style="background-color: #F2F2F2; padding: 15px; border-radius: 5px; margin: 20px 0;">
-          <h2 style="color: #0EB5B2; margin-top: 0;">Partnership Goals</h2>
-          <p style="margin: 0; line-height: 1.6;">${formData.partnershipGoals}</p>
+          <h2 style="color: #0EB5B2; margin-top: 0;">Current Financing Description</h2>
+          <p style="margin: 0; line-height: 1.6;">${formData.financingDescription}</p>
         </div>
         ` : ''}
 
-        ${formData.additionalInfo ? `
+        <div style="background-color: #F2F2F2; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h2 style="color: #0EB5B2; margin-top: 0;">Vendor Interest Options</h2>
+          <ul style="margin: 0; padding-left: 20px;">
+            ${formData.currentCustomerLookingForFinancing ? '<li>Current customer looking for financing</li>' : ''}
+            ${formData.lookingForInformationAboutPrograms ? '<li>Looking for information about financing programs</li>' : ''}
+            ${formData.wantToAddFinancingTabToWebsite ? '<li>Want to add financing tab to website</li>' : ''}
+            ${formData.lookingForCoBranding ? '<li>Looking for co-branding</li>' : ''}
+            ${formData.lookingForMeetingWithSalesStaff ? '<li>Looking for meeting with sales staff</li>' : ''}
+          </ul>
+        </div>
+
+        ${formData.additionalInformation ? `
         <div style="background-color: #F2F2F2; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h2 style="color: #0EB5B2; margin-top: 0;">Additional Information</h2>
-          <p style="margin: 0; line-height: 1.6;">${formData.additionalInfo}</p>
+          <p style="margin: 0; line-height: 1.6;">${formData.additionalInformation}</p>
         </div>
         ` : ''}
 
@@ -271,13 +331,19 @@ export async function POST(request: Request) {
 
     // Common attachment for team emails
     const adminAttachments: any[] = [
+      {
+        content: pdfBuffer,
+        filename: `${formData.businessName.replace(/\s+/g, '_')}_partnership_inquiry.pdf`,
+        contentType: 'application/pdf',
+        contentDisposition: 'attachment' as const,
+      },
     ];
 
     // Email to team member
     const teamEmail = {
       to: teamEmailAddress,
       from: 'alanj@vistapacificcapital.com',
-      subject: `New Vendor Partnership Inquiry - ${formData.companyName}`,
+      subject: `New Vendor Partnership Inquiry - ${formData.businessName}`,
       html: detailedHtml,
       attachments: adminAttachments // Attach PDF file
     };

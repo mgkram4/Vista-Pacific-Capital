@@ -37,7 +37,7 @@ export default function IanWhitelawPage() {
         title="Equipment Financing Application"
         subtitle="CLICK the button below to start the fast approval process."
         buttonText="Apply Now"
-        buttonHref="/apply/ian-whitelaw"
+        onButtonClick={handleFormSubmit}
         backgroundImage="/Images/bg-wave2.png"
       />
 
@@ -58,12 +58,12 @@ export default function IanWhitelawPage() {
               <p className="text-gray-600 mb-6">
                 Complete this simple no-financials application to get pre-approved for equipment financing.
               </p>
-              <a
-                href="/apply/ian-whitelaw"
+              <button
+                onClick={handleFormSubmit}
                 className="w-full inline-block bg-[#0EB5B2] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-[#0D3853] transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Click to Apply
-              </a>
+              </button>
               <p className="text-sm text-gray-500 mt-4">
                 Complete this simple no-financials form. We will respond within 2 business days.
               </p>
